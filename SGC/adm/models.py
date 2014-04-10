@@ -14,3 +14,11 @@ class producto(models.Model):
     status      = models.BooleanField(default=True)
     def __unicode__(self):
         return self.nombre
+
+class user(models.Model):
+    name = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200)
+    status = models.BooleanField(default=True)
+    def __unicode__(self):
+        nombreCompleto = "%s %s"%(self.nombre,self.apellido)
+        return nombreCompleto

@@ -3,7 +3,7 @@
 # Custom imports
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from sells.models import producto
+from adm.models import producto
 from home.forms import ContactForm, LoginForm
 from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth import login as auth_login, logout as auth_logout, authenticate
