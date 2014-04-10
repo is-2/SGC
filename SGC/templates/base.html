@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<TITLE>{% block title %} Titulo Base {% endblock %}</TITLE>
+	</HEAD>
+	<BODY>
+		{% load staticfiles %}
+		<img src="{% static "images/django-logo-positive.png" %}" alt="My image"/>
+		<HEADER>
+			<h1>Projecto mysite (Venta de Productos)</h1>
+			<NAV>
+				<a href="{% url 'home.views.index' %}">Inicio</a>
+				<a href="{% url 'home.views.products' %}">Productos</a>
+				<a href="{% url 'home.views.contact' %}">Contacto</a>
+				<a href="{% url 'home.views.about' %}">Acerca de ...</a>
+				{% if user.is_authenticated %}
+				<a href="{% url 'home.views.logout' %}">Cerrar Sesion</a>
+				{% else %}
+				<a href="{% url 'home.views.login' %}">Iniciar Sesion</a>
+				{% endif %}
+			</NAV>
+		</HEADER>
+		<SECTION>
+			{% block content %}
+				
+			{% endblock %}
+		</SECTION>
+	</BODY>
+</HTML>
