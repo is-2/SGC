@@ -1,4 +1,3 @@
-#from django.shortcuts import render
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http.response import HttpResponseRedirect
@@ -14,15 +13,14 @@ def list_users_view(request):
     """
     users = User.objects.all()
     ctx = {'users':users}
-    return render_to_response('users/list_users.html', ctx, content_instance=RequestContext(request))
+    return render_to_response('adm/list_users.html', ctx, content_instance=RequestContext(request))
 
 @login_required(login_url = '/login/')
 def add_user_view(request):
     """
     Crea un usuario y lo almacena en el sistema.
     """
-    # FIX-HERE?: form = add_user_form(request.POST)
-    if request.method == "POST": # POST
+    if request.method == "POST":
         form = add_user_form(request.POST)
         if form.is_valid():
             username    = form.cleaned_data['username']
@@ -31,24 +29,24 @@ def add_user_view(request):
             lastName    = form.cleaned_data['lastName']
             email       = form.cleaned_data['email']
             phonenum    = form.cleaned_data['phonenum']
-            address   = form.cleaned_data['address']
+            address     = form.cleaned_data['address']
             observation = form.cleaned_data['observation']
             u = User.objects.create_user(username=username, firstName=firstName, lastName=lastName, email=email, password=password, phonenum=phonenum,
                                          address=address, observation=observation, status=True)
             u.save() # Save information
-            return HttpResponseRedirect('/admin/list_users.html')
+            return HttpResponseRedirect('/adm/list_users/')
         else:
             ctx = {'form':form}
-            return render_to_response('adm/list_users.html', ctx, context_instance=RequestContext(request))
+            return render_to_response('adm/add_users.html', ctx, context_instance=RequestContext(request))
     ctx = {'form':form}
-    return render_to_response('adm/list_users.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('adm/add_users.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url = '/login/')
-def mod_user_view(request, id_usuario):
+def mod_user_view(request, id_user):
     """
     Modifica un usuario existente en el sistema.
     """
-    u = User.objects.get(id=id_usuario)
+    u = User.objects.get(id=id_user)
     if request.method == "POST":
         form = mod_user_form(data=request.POST)
         if form.is_valid():
@@ -68,8 +66,9 @@ def mod_user_view(request, id_usuario):
             u.email     = email
             u.phonenum  = phonenum
             u.address   = address
+            u.observation = observation
             u.save()
-            return HttpResponseRedirect('/admin/list_users.html'%u.id)
+            return HttpResponseRedirect('/adm/list_users/'%u.id)
             
     if request.method == "GET":
         form = mod_user_form(initial={
@@ -81,7 +80,18 @@ def mod_user_view(request, id_usuario):
             'address': u.address,
             'observation' : u.observation
             })
-    ctx = {'form': form, 'usuario': u}
-    return render_to_response('usuario/modificar_usuario.html', ctx, context_instance=RequestContext(request))
+    ctx = {'form': form, 'user': u}
+    return render_to_response('adm/mod_user.html', ctx, context_instance=RequestContext(request))
 
-
+@login_required(login_url = '/login/')
+def del_user_view(request, id_user):
+    """
+    Elimina un usuario existente en el sistema.
+    """
+    u = User.objects.get(id=id_user)
+    if request.method == "POST":
+        User.objects.get(id=id_user).delete()
+        return HttpResponseRedirect('/adm/list_users/')
+    if request.method == "GET":
+        ctx = {'user':u}
+        return render_to_response('adm/del_user.html', ctx, context_instance=RequestContext(request))
