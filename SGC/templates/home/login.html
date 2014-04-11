@@ -1,14 +1,6 @@
 {% extends "base.html" %}
 {% block title %} Login {% endblock %}
 {% block content %}
-<<<<<<< HEAD
-<form action="." method="POST">
-	{% csrf_token %}
-	{{ message }}
-	{{ form.as_p }}
-	<input type="submit" value="Login">
-</form>
-=======
 <div class="jumbotron">
 	<div class="bs-example">
 		{% if not valido %}
@@ -40,6 +32,5 @@
     	</form>
 	</div>
 </div>
->>>>>>> refs/heads/iteration-1
 
 {% endblock %}
