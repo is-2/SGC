@@ -32,7 +32,7 @@ def add_user_view(request):
             phonenum = form.cleaned_data['phonenum']
             direction = form.cleaned_data['direction']
             observation = form.cleaned_data['observation']
-            u = User.objects.create_user(username=username, email=email, password=password, 
+            u = User.objects.create_user(username=username, email=email, password=password, phonenum=phonenum,
                                          direction=direction, observation=observation, status=True)
             u.save() # Save information
             return HttpResponseRedirect('/admin/list_users.html')
