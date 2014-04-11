@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<<<<<<< HEAD
 <HTML>
 	<HEAD>
 		<TITLE>{% block title %} Titulo Base {% endblock %}</TITLE>
@@ -25,3 +26,62 @@
 		</SECTION>
 	</BODY>
 </HTML>
+=======
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="#">
+	
+	<title>{% block title %}SGC{% endblock %}</title>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css"/>
+	<link href="/static/bootstrap/css/sticky-footer-navbar.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap-theme.min.css"/>
+	<script src="/static/js/jquery.min.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    	<div class="container">
+        	<div class="navbar-header">
+          		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+          		</button>
+          		<a class="navbar-brand" href="#">SGC</a>
+        	</div>
+        	<div class="collapse navbar-collapse">
+          		<ul class="nav navbar-nav">
+          			{% if user.is_authenticated %}
+          				<li><a href="{% url 'home.views.index' %}">Inicio</a>
+            			<li class="dropdown">
+      						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración <b class="caret"></b></a>
+         					<ul class="dropdown-menu">
+         						<li><a href="{% url 'home.views.about' %}">Adm. de usuarios</a></li>
+         					</ul>
+         				</li>
+						<li><a href="#">Desarrollo</a></li>
+        				<li><a href="#">Gestión de Cambio</a></li>
+            			<li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+					{% else %}
+						<li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+					{% endif %}
+          		</ul>
+          		{% if user.is_authenticated %}
+					<p class="navbar-text navbar-right">Usuario {{ user.username }}</p>
+				{% endif %}
+       		</div><!--/.nav-collapse -->
+    	</div>
+    </div>
+    <div class="container">
+		{% block content %}
+		{% endblock %}
+    </div><!-- /.container -->    
+</body>
+</html>
+>>>>>>> refs/heads/iteration-1
