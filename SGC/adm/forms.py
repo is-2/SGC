@@ -1,14 +1,14 @@
 from django import forms
 from django.contrib.auth.models import User
 
-class addUserForm(forms.Form):
+class add_user_form(forms.Form):
     username    = forms.CharField(label="username", widget=forms.TextInput(), required=True)
     password    = forms.CharField(label="password", widget=forms.PasswordInput(render_value=False), required=True)
     firstName   = forms.CharField(label="firstName", widget=forms.TextInput(), required=True)
     lastName    = forms.CharField(label="lastName", widget=forms.TextInput(), required=True)
     email       = forms.EmailField(label="email", widget=forms.TextInput(), required=True)
     phonenum    = forms.CharField(label="phonenum", widget=forms.TextInput(), required=False)
-    direction   = forms.CharField(label="direction", widget=forms.TextInput(), required=False)
+    address   = forms.CharField(label="address", widget=forms.TextInput(), required=False)
     observation = forms.CharField(label="observation", widget=forms.TextInput(), required=False)
 
     def clean_username(self):
@@ -31,13 +31,13 @@ class addUserForm(forms.Form):
             return email
         raise forms.ValidationError('El e-mail ya existe.')
     
-class ModUserForm(forms.Form):
+class mod_user_form(forms.Form):
   
     firstName   = forms.CharField(label="firstName", widget=forms.TextInput(), required=True)
     lastName    = forms.CharField(label="lastName", widget=forms.TextInput(), required=True)
     email       = forms.EmailField(label="email", widget=forms.TextInput(), required=True)
     phonenum    = forms.CharField(label="phonenum", widget=forms.TextInput(), required=False)
-    direction   = forms.CharField(label="direction", widget=forms.TextInput(), required=False)
+    address     = forms.CharField(label="address", widget=forms.TextInput(), required=False)
     observation = forms.CharField(label="observation", widget=forms.TextInput(), required=False)
     
                
