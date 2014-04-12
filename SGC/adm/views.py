@@ -44,7 +44,7 @@ def add_user_view(request):
 @login_required(login_url = '/login/')
 def mod_user_view(request, id_user):
     """
-    Modifica un usuario existente en el sistema.
+    Modifica un usuario.
     """
     u = User.objects.get(id=id_user)
     if request.method == "POST":
@@ -86,7 +86,7 @@ def mod_user_view(request, id_user):
 @login_required(login_url = '/login/')
 def del_user_view(request, id_user):
     """
-    Elimina un usuario existente en el sistema.
+    Elimina un usuario.
     """
     u = User.objects.get(id=id_user)
     if request.method == "POST":
@@ -95,3 +95,12 @@ def del_user_view(request, id_user):
     if request.method == "GET":
         ctx = {'user':u}
         return render_to_response('adm/del_user.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def visualize_user_view(request, id_user):
+    """
+    Despliega los campos de un usuario.
+    """
+    u = User.objects.get(id=id_user)
+    ctx = {'user': u}
+    return render_to_response('visualize_user.html', ctx, context_instance=RequestContext(request))
