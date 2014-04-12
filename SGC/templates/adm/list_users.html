@@ -22,14 +22,16 @@
                     </thead>
                 	<tbody>
                 		{% for u in users %}
-                			<tr>
-                    			<td>{{ u.id }}</td>
-                    			<td>{{ u.username }}</td>
-                    			<td>{{ u.email }}</td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}"><span class="#"></span> Modificar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/del_user/{{ u.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/visualize_user/{{ u.id }}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
-                			</tr>
+                			{% if u.id != 1%}
+	                			<tr>
+	                    			<td>{{ u.id }}</td>
+	                    			<td>{{ u.username }}</td>
+	                    			<td>{{ u.email }}</td>
+	                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}"><span class="#"></span> Modificar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="/adm/del_user/{{ u.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="/adm/visualize_user/{{ u.id }}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+	                			</tr>
+	                		{% endif %}
                 		{% endfor %}
                 	</tbody>
         		</table>
