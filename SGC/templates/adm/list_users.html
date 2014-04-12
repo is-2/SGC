@@ -18,7 +18,6 @@
                     		<th></th>
                     		<th></th>
                     		<th></th>
-                    		<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -27,9 +26,8 @@
                     			<td>{{ u.id }}</td>
                     			<td>{{ u.username }}</td>
                     			<td>{{ u.email }}</td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}/"><span class="glyphicon glyphicon-edit"></span> Modificar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-cog"></span> Roles</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}"><span class="glyphicon glyphicon-edit"></span> Modificar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="/adm/del_user/{{ u.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
                     			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
                 			</tr>
                 		{% endfor %}

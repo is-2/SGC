@@ -20,6 +20,7 @@ def add_user_view(request):
     """
     Crea un usuario y lo almacena en el sistema.
     """
+    form = add_user_form()
     if request.method == "POST":
         form = add_user_form(request.POST)
         if form.is_valid():
@@ -37,9 +38,9 @@ def add_user_view(request):
             return HttpResponseRedirect('/adm/list_users/')
         else:
             ctx = {'form':form}
-            return render_to_response('adm/add_users.html', ctx, context_instance=RequestContext(request))
+            return render_to_response('adm/add_user.html', ctx, context_instance=RequestContext(request))
     ctx = {'form':form}
-    return render_to_response('adm/add_users.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('adm/add_user.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url = '/login/')
 def mod_user_view(request, id_user):
@@ -50,8 +51,8 @@ def mod_user_view(request, id_user):
     if request.method == "POST":
         form = mod_user_form(data=request.POST)
         if form.is_valid():
-            username    = form.cleaned_data['username']
-            password    = form.cleaned_data['password']
+            #username    = form.cleaned_data['username']
+            passwd    = form.cleaned_data['passwd']
             firstName   = form.cleaned_data['firstName']
             lastName    = form.cleaned_data['lastName']
             email       = form.cleaned_data['email']
@@ -59,8 +60,8 @@ def mod_user_view(request, id_user):
             address     = form.cleaned_data['address']
             observation = form.cleaned_data['observation']
             
-            u.username  = username
-            u.set_password(password)
+            #u.username  = username
+            u.set_password(passwd)
             u.firstName = firstName
             u.lastName  = lastName
             u.email     = email
@@ -68,7 +69,7 @@ def mod_user_view(request, id_user):
             u.address   = address
             u.observation = observation
             u.save()
-            return HttpResponseRedirect('/adm/list_users/'%u.id)
+            return HttpResponseRedirect('/adm/list_users/')
             
     if request.method == "GET":
         form = mod_user_form(initial={
