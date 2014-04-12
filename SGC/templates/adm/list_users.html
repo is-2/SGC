@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}SGC - Gestión de usuarios{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1>Administración de usuarios</h1>
+		<a class="btn btn-sm btn-default" href="{% url 'add_user' %}"><span class="glyphicon glyphicon-record"></span>Agregar Usuario</a>
+		<br><br>
+		{% if users %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre de usuario</th>
+                    		<th></th>
+                    		<th></th>
+                    		<th></th>
+                    		<th></th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for u in users %}
+                			<tr>
+                    			<td>{{ u.id }}</td>
+                    			<td>{{ u.username }}</td>
+                    			<td>{{ u.email }}</td>
+                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}/"><span class="glyphicon glyphicon-edit"></span> Modificar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-cog"></span> Roles</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen usuarios</h3>
+    	{% endif %}
+	</div>
+</div>
+{% endblock %}

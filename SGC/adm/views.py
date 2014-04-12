@@ -13,7 +13,7 @@ def list_users_view(request):
     """
     users = User.objects.all()
     ctx = {'users':users}
-    return render_to_response('adm/list_users.html', ctx, content_instance=RequestContext(request))
+    return render_to_response('adm/list_users.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url = '/login/')
 def add_user_view(request):
