@@ -5,7 +5,7 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h1>Administración de usuarios</h1>
-		<a class="btn btn-sm btn-default" href="{% url 'add_user' %}"><span class="glyphicon glyphicon-record"></span>Agregar Usuario</a>
+		<a class="btn btn-sm btn-default" href="{% url 'add_user' %}"><span class="#"></span>Agregar Usuario</a>
 		<br><br>
 		{% if users %}
 			<div class="table-responsive"> 
@@ -26,9 +26,9 @@
                     			<td>{{ u.id }}</td>
                     			<td>{{ u.username }}</td>
                     			<td>{{ u.email }}</td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}"><span class="glyphicon glyphicon-edit"></span> Modificar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}"><span class="#"></span> Modificar</a></td>
                     			<td><a class="btn btn-sm btn-default" href="/adm/del_user/{{ u.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="/adm/visualize_user/{{ u.id }}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
                 			</tr>
                 		{% endfor %}
                 	</tbody>

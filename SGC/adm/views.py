@@ -104,4 +104,4 @@ def visualize_user_view(request, id_user):
     """
     u = User.objects.get(id=id_user)
     ctx = {'user': u}
-    return render_to_response('visualize_user.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('adm/visualize_user.html', ctx, context_instance=RequestContext(request))
