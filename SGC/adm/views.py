@@ -140,7 +140,6 @@ def add_role_view(request):
     return render_to_response('adm/add_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-# NO OLVIDAR DE ARREGLAR LA DIRECCION
 def mod_role_view(request, id_role):
     """
     Modifica un rol del sistema.
@@ -154,7 +153,7 @@ def mod_role_view(request, id_role):
             role.name = name
             role.description = description
             role.save()
-            return HttpResponseRedirect('/administracion/gestion_roles/rol/%s'%role.id)
+            return HttpResponseRedirect('/adm/visualize_role/%s'%role.id)
             
     if request.method == "GET":
         form = mod_role_form(initial={
