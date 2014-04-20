@@ -7,7 +7,6 @@ class Permission(models.Model):
     Clase que especifica el permiso mediante un codigo.
     """
     name     = models.CharField(max_length=30, blank=False)
-    permCode = models.IntegerField(blank=False)
     
     def __unicode__(self):
         return self.name

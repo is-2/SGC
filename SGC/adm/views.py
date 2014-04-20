@@ -5,7 +5,7 @@ from adm.forms import add_user_form, mod_user_form, add_role_form, mod_role_form
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from adm.models import Permission, Role
-
+from home.decorators import permission_required
 
 @login_required(login_url = '/login/')
 def list_users_view(request):
