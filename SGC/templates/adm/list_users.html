@@ -18,6 +18,7 @@
                     		<th></th>
                     		<th></th>
                     		<th></th>
+                    		<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -30,6 +31,7 @@
 	                    			<td><a class="btn btn-sm btn-default" href="/adm/mod_user/{{ u.id }}"><span class="#"></span> Modificar</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="/adm/del_user/{{ u.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="/adm/visualize_user/{{ u.id }}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="/adm/user_role/{{ u.id }}"><span class="glyphicon glyphicon-search"></span> Roles</a></td>
 	                			</tr>
 	                		{% endif %}
                 		{% endfor %}

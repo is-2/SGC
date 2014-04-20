@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}SGC - Permisos del rol {{ role.name }}{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1><small>Permisos del rol {{ role.name }}</small></h1>
+		<a class="btn btn-sm btn-default" href="{% url 'list_permission' id_role=role.id %}"><span class="glyphicon glyphicon-plus"></span> Asingar</a>
+		<br><br>
+		{% if permissions %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre del permiso</th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for p in permissions %}
+                			<tr>
+                    			<td>{{ p.id }}</td>
+                    			<td>{{ p.name }}</td>
+                    			<td><a class="btn btn-sm btn-default" href="/adm/deny_permission/{{ role.id }}/{{ p.id }}/"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No posee permisos.</h3>
+    	{% endif %}
+	</div>
+	<br>
+	<a class="btn btn-default" href="{% url 'all_roles' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver a la gestión de roles</a>
+</div>
+{% endblock %}

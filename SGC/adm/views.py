@@ -108,8 +108,6 @@ def visualize_user_view(request, id_user):
     ctx = {'user': u}
     return render_to_response('adm/visualize_user.html', ctx, context_instance=RequestContext(request))
 
-
-
 @login_required(login_url='/login/')
 def all_roles_view(request):
     """
@@ -132,7 +130,7 @@ def add_role_view(request):
             description = form.cleaned_data['description']
             role = Role.objects.create(name=name, description=description)
             role.save()
-            return HttpResponseRedirect('/adm/list_roles/')
+            return HttpResponseRedirect('/adm/all_roles/')
         else:
             ctx = {'form':form}
             return render_to_response('adm/add_role.html', ctx, context_instance=RequestContext(request))
@@ -153,12 +151,12 @@ def mod_role_view(request, id_role):
             role.name = name
             role.description = description
             role.save()
-            return HttpResponseRedirect('/adm/visualize_role/%s'%role.id)
+            return HttpResponseRedirect('/adm/all_roles/')
             
     if request.method == "GET":
         form = mod_role_form(initial={
             'name': role.name,
-            'description': role.descripction,
+            'description': role.description,
             })
     ctx = {'form': form, 'role': role}
     return render_to_response('adm/mod_role.html', ctx, context_instance=RequestContext(request))
@@ -170,11 +168,12 @@ def del_role_view(request, id_role):
     """
     role = Role.objects.get(id=id_role)
     if request.method == "POST":
-        Role.objects.get(id=id_role).delete()
-        return HttpResponseRedirect('/adm/list_roles/')
+        #Role.objects.get(id=id_role).delete()
+        role.delete()
+        return HttpResponseRedirect('/adm/all_roles/')
     if request.method == "GET":
         ctx = {'role':role}
-        return render_to_response('rol/del_rol.html', ctx, context_instance=RequestContext(request))
+        return render_to_response('adm/del_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def visualize_role_view(request, id_role):
@@ -221,7 +220,7 @@ def grant_role_view(request, id_user, id_role):
         user.roles.add(role)
         user.save()
     ctx = {'user':user, 'role':role, 'valid':new_role}
-    return render_to_response('adm/grant_rol.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('adm/grant_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def deny_role_view(request, id_user, id_role):
@@ -233,9 +232,7 @@ def deny_role_view(request, id_user, id_role):
     user.roles.remove(role)
     user.save()
     ctx = {'user':user, 'role':role}
-    return render_to_response('user/deny_rol.html', ctx, context_instance=RequestContext(request))
-
-
+    return render_to_response('adm/deny_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def role_permission_view(request, id_role):
@@ -243,7 +240,7 @@ def role_permission_view(request, id_role):
     Despliega los permisos con los que cuenta un rol.
     """
     role = Role.objects.get(id=id_role)
-    permission = Permission.objects.filter(rol__id=id_role)
+    permission = Permission.objects.filter(role__id=id_role)
     ctx = {'role':role, 'permission':permission}
     return render_to_response('adm/role_permission.html', ctx, context_instance=RequestContext(request))
 

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}SGC - Confirmación{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		{% if valid %}
+			<div class="panel panel-success">
+      			<div class="panel-heading">
+        			<h3 class="panel-title">¡Éxito!</h3>
+      			</div>
+      			<div class="panel-body">
+        			El rol {{ role.name }} fue asignado al usuario {{ user.username }}.
+      			</div>
+      		</div>
+		{% else %}
+			<div class="panel panel-warning">
+      			<div class="panel-heading">
+        			<h3 class="panel-title">¡Alto ahí!</h3>
+      			</div>
+      			<div class="panel-body">
+        			El rol {{ role.name }} no puede ser asignado porque ya está asignado al usuario {{ user.username }}.
+      			</div>
+      		</div>
+		{% endif %}
+		<br>
+		<a class="btn btn-default" href="{% url 'list_role' id_user=user.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver a la gestión de roles del usuario {{ user.username }}</a>
+	</div>
+</div>
+{% endblock %}
