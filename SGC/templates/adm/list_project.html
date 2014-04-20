@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}SGC - Gestión de proyectos{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1>Administración de proyectos y fases</h1>
+		<a class="btn btn-sm btn-default" href="{% url 'add_project' %}"><span class="#"></span>Agregar Proyecto</a>
+		<br><br>
+		{% if users %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre de proyecto</th>
+                    		<th>Lider</th>
+                    		<th></th>
+                    		<th></th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for p in projects %}
+	                			<tr>
+	                    			<td>{{ p.id }}</td>
+	                    			<td>{{ p.name }}</td>
+	                    			<td>{{ p.leader }}</td>
+	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="#"></span> Modificar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+	                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen proyectos</h3>
+    	{% endif %}
+	</div>
+</div>
+{% endblock %}
