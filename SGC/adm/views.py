@@ -1,14 +1,14 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http.response import HttpResponseRedirect
-from adm.forms import add_user_form, mod_user_form, add_role_form, mod_role_form
+from adm.forms import add_user_form, mod_user_form, add_role_form, mod_role_form, add_project_form
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from adm.models import Permission, Role
+from adm.models import Permission, Role, Project
 from home.decorators import permission_required
 
 @login_required(login_url = '/login/')
-@permission_required(permission='View user')
+#@permission_required(permission='View user')
 def list_users_view(request):
     """
     Lista todos los usuarios almacenados en el sistema.
@@ -195,7 +195,7 @@ def visualize_role_view(request, id_role):
     return render_to_response('adm/visualize_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-@permission_required(permission='View user')
+#@permission_required(permission='View user')
 def user_role_view(request, id_user):
     """
     Lista los roles asignados a un usuario en particular.
@@ -206,7 +206,7 @@ def user_role_view(request, id_user):
     return render_to_response('adm/user_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-@permission_required(permission='Assign role')
+#@permission_required(permission='Assign role')
 def list_role_view(request, id_user):
     """
     Despliega los roles disponibles en el sistema para el usuario seleccionado.
@@ -217,7 +217,7 @@ def list_role_view(request, id_user):
     return render_to_response('adm/list_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-@permission_required(permission='Assign role')
+#@permission_required(permission='Assign role')
 def grant_role_view(request, id_user, id_role):
     """
     Asigna un rol al usuario previamente seleccionado.
@@ -303,12 +303,32 @@ def deny_permission_view(request, id_role, id_permission):
     return render_to_response('adm/deny_permission.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-@permission_required(permission='')
+@permission_required(permission='View project')
 def list_project_view(request):
     """
     Lista todos los proyectos almacenados en el sistema.
     Otorga las opciones de eliminar y modificar al proyecto listado.
     """
-    project = Project.objects.all()
+    projects = Project.objects.all()
     ctx = {'projects':projects}
-    return render_to_response('adm/list_users.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('adm/list_project.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+@permission_required(permission='Add project')
+def add_project_view(request):
+    """
+    """
+    form = add_project_form()
+    if request.method == "POST":
+        form = add_role_form(request.POST)
+        if form.is_valid():
+            name        = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            project = Project.objects.create(name=name, description=description)
+            project.save()
+            return HttpResponseRedirect("/adm/list_project/")
+        else:
+            ctx = {'form':form}
+            return render_to_response('adm/add_project.html', ctx, context_instance=RequestContext(request))
+    ctx = {'form':form}
+    return render_to_response('adm/add_project.html', ctx, context_instance=RequestContext(request))

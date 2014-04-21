@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from adm.models import Permission, Role
+from adm.models import Permission, Role, Project
 
 class add_user_form(forms.Form):
     username    = forms.CharField(label="Username", widget=forms.TextInput(), required=True)
@@ -85,3 +85,19 @@ class mod_role_form(forms.Form):
         except Role.DoesNotExist:
             return name 
         raise forms.ValidationError('El nombre de rol ya existe.')
+
+class add_project_form(forms.Form):
+    """
+    
+    """
+    name = forms.CharField(label="Nombre", required=True)
+    description = forms.CharField(label="Descripcion", required=True)
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        try:
+            project = Project.objects.get(name=name)
+            if project.name == name:
+                return name
+        except Project.DoesNotExist:
+            return name
+        raise forms.ValidationError('El nombre de proyecto ya existe.')

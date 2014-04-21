@@ -23,6 +23,20 @@ class Role(models.Model):
     def __unicode__(self):
         return self.name
 
+# PROJECT
+class Project(models.Model):
+    """
+    
+    """
+    name = models.CharField(max_length=30, blank=False)
+    description = models.CharField(max_length=100, blank=False)
+    roles = models.ManyToManyField(Role, null=True, blank=True)
+    committee = models.ManyToManyField(User, null=True, blank=True)
+    #phases = models.ManyToManyField(Phase, null=True, blank=True)
+    
+    def __unicode__(self):
+        return self.name
+    
 # USER
 User.add_to_class('firstName', models.CharField(max_length=100, blank=True))
 User.add_to_class('lastName', models.CharField(max_length=100, blank=True))

@@ -20,4 +20,6 @@ urlpatterns = patterns('',
     url(r'^adm/list_permission/(?P<id_role>.*)/$', views.list_permission_view, name="list_permission"),    
     url(r'^adm/grant_permission/(?P<id_role>.*)/(?P<id_permission>.*)/$', views.grant_permission_view, name="grant_permission"),
     url(r'^adm/deny_permission/(?P<id_role>.*)/(?P<id_permission>.*)/$', views.deny_permission_view, name="deny_permission"),    
+    url(r'^adm/list_project/$', views.list_project_view, name='list_project'),
+    url(r'^adm/add_project/$', views.add_project_view, name='add_project'),
 )
