@@ -28,10 +28,10 @@
 	                    			<td>{{ u.id }}</td>
 	                    			<td>{{ u.username }}</td>
 	                    			<td>{{ u.email }}</td>
-	                    			<td><a class="btn btn-sm btn-default" href="/adm/list_users/mod_user/{{ u.id }}"><span class="#"></span> Modificar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="/adm/list_users/del_user/{{ u.id }}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="/adm/list_users/visualize_user/{{ u.id }}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="/adm/list_users/user_role/{{ u.id }}"><span class="glyphicon glyphicon-search"></span> Roles</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'mod_user' id_user=u.id %}"><span class="#"></span> Modificar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'del_user' id_user=u.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'vis_user' id_user=u.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'user_role' id_user=u.id %}"><span class="glyphicon glyphicon-search"></span> Roles</a></td>
 	                			</tr>
 	                		{% endif %}
                 		{% endfor %}

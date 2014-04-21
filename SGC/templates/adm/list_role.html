@@ -21,7 +21,7 @@
                 			<tr>
                     			<td>{{ r.id }}</td>
                     			<td>{{ r.name }}</td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/list_users/user_role/list_role/grant_role/{{ user.id }}/{{ r.id }}/"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="{% url 'grant_role' id_user=user.id id_role=r.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
                 			</tr>
                 		{% endfor %}
                 	</tbody>

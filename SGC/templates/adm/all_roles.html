@@ -5,7 +5,7 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h1><small>Gestión de roles</small></h1>
-		<a class="btn btn-sm btn-default" href="/adm/add_role/"><span class="glyphicon glyphicon-record"></span> Crear</a>
+		<a class="btn btn-sm btn-default" href="{% url 'add_role' %}"><span class="glyphicon glyphicon-record"></span> Crear</a>
 		<br><br>
 		{% if roles %}
 			<div class="table-responsive"> 
@@ -25,10 +25,10 @@
                 			<tr>
                     			<td>{{ r.id }}</td>
                     			<td>{{ r.name }}</td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/all_roles/mod_role/{{ r.id }}/"><span class="glyphicon glyphicon-edit"></span> Modificar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/all_roles/del_role/{{ r.id }}/"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/all_roles/role_permission/{{ r.id }}/"><span class="glyphicon glyphicon-cog"></span> Permisos</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="/adm/all_roles/visualize_role/{{ r.id }}/"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="{% url 'mod_role' id_role=r.id %}"><span class="glyphicon glyphicon-edit"></span> Modificar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="{% url 'del_role' id_role=r.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="{% url 'role_permission' id_role=r.id %}"><span class="glyphicon glyphicon-cog"></span> Permisos</a></td>
+                    			<td><a class="btn btn-sm btn-default" href="{% url 'vis_role' id_role=r.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
                 			</tr>
                 		{% endfor %}
                 	</tbody>
