@@ -7,7 +7,7 @@
 		<h1><small>Permisos del rol {{ role.name }}</small></h1>
 		<a class="btn btn-sm btn-default" href="{% url 'list_permission' id_role=role.id %}"><span class="glyphicon glyphicon-plus"></span> Asingar</a>
 		<br><br>
-		{% if permissions %}
+		{% if permission %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
             		<thead>
@@ -18,7 +18,7 @@
                     	</tr>
                     </thead>
                 	<tbody>
-                		{% for p in permissions %}
+                		{% for p in permission %}
                 			<tr>
                     			<td>{{ p.id }}</td>
                     			<td>{{ p.name }}</td>

@@ -8,6 +8,7 @@ from adm.models import Permission, Role
 from home.decorators import permission_required
 
 @login_required(login_url = '/login/')
+@permission_required(permission='View user')
 def list_users_view(request):
     """
     Lista todos los usuarios almacenados en el sistema.
@@ -18,6 +19,7 @@ def list_users_view(request):
     return render_to_response('adm/list_users.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url = '/login/')
+@permission_required(permission='Add user')
 def add_user_view(request):
     """
     Crea un usuario y lo almacena en el sistema.
@@ -45,6 +47,7 @@ def add_user_view(request):
     return render_to_response('adm/add_user.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url = '/login/')
+@permission_required(permission='Modify user')
 def mod_user_view(request, id_user):
     """
     Modifica un usuario.
@@ -87,6 +90,7 @@ def mod_user_view(request, id_user):
     return render_to_response('adm/mod_user.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url = '/login/')
+@permission_required(permission='Delete user')
 def del_user_view(request, id_user):
     """
     Elimina un usuario.
@@ -100,6 +104,7 @@ def del_user_view(request, id_user):
         return render_to_response('adm/del_user.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='View user')
 def visualize_user_view(request, id_user):
     """
     Despliega los campos de un usuario.
@@ -109,6 +114,7 @@ def visualize_user_view(request, id_user):
     return render_to_response('adm/visualize_user.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='View role')
 def all_roles_view(request):
     """
     Despliega una lista de todos los roles disponibles del sistema.
@@ -118,6 +124,7 @@ def all_roles_view(request):
     return render_to_response('adm/all_roles.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Add role')
 def add_role_view(request):
     """
     Agrega un nuevo rol en el sistema.
@@ -138,6 +145,7 @@ def add_role_view(request):
     return render_to_response('adm/add_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Modify role')
 def mod_role_view(request, id_role):
     """
     Modifica un rol del sistema.
@@ -162,6 +170,7 @@ def mod_role_view(request, id_role):
     return render_to_response('adm/mod_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Delete role')
 def del_role_view(request, id_role):
     """
     Elimina un rol del sistema.
@@ -176,6 +185,7 @@ def del_role_view(request, id_role):
         return render_to_response('adm/del_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='View role')
 def visualize_role_view(request, id_role):
     """
     Despliega los datos de un rol del sistema.
@@ -185,6 +195,7 @@ def visualize_role_view(request, id_role):
     return render_to_response('adm/visualize_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='View user')
 def user_role_view(request, id_user):
     """
     Lista los roles asignados a un usuario en particular.
@@ -195,6 +206,7 @@ def user_role_view(request, id_user):
     return render_to_response('adm/user_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Assign role')
 def list_role_view(request, id_user):
     """
     Despliega los roles disponibles en el sistema para el usuario seleccionado.
@@ -205,6 +217,7 @@ def list_role_view(request, id_user):
     return render_to_response('adm/list_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Assign role')
 def grant_role_view(request, id_user, id_role):
     """
     Asigna un rol al usuario previamente seleccionado.
@@ -223,6 +236,7 @@ def grant_role_view(request, id_user, id_role):
     return render_to_response('adm/grant_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Assign role')
 def deny_role_view(request, id_user, id_role):
     """
     Quitar un rol al usuario previamente seleccionado.
@@ -235,6 +249,7 @@ def deny_role_view(request, id_user, id_role):
     return render_to_response('adm/deny_role.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='View role')
 def role_permission_view(request, id_role):
     """
     Despliega los permisos con los que cuenta un rol.
@@ -245,6 +260,7 @@ def role_permission_view(request, id_role):
     return render_to_response('adm/role_permission.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Assign permission')
 def list_permission_view(request, id_role):
     """
     Despliega los permisos disponibles en el sistema para el rol seleccionado.
@@ -255,6 +271,7 @@ def list_permission_view(request, id_role):
     return render_to_response('adm/list_permission.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Assign permission')
 def grant_permission_view(request, id_role, id_permission):
     """
     Asigna un permiso al rol previamente seleccionado.
@@ -273,13 +290,14 @@ def grant_permission_view(request, id_role, id_permission):
     return render_to_response('adm/grant_permission.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+@permission_required(permission='Assign permission')
 def deny_permission_view(request, id_role, id_permission):
     """
     Quita un permiso del rol previamente seleccionado.    
     """
     role = Role.objects.get(id=id_role)
     permission = Permission.objects.get(id=id_permission)
-    role.permisos.remove(permission)
+    role.permissions.remove(permission)
     role.save()
     ctx = {'role':role, 'permission':permission}
     return render_to_response('adm/deny_permission.html', ctx, context_instance=RequestContext(request))
