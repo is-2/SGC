@@ -301,3 +301,14 @@ def deny_permission_view(request, id_role, id_permission):
     role.save()
     ctx = {'role':role, 'permission':permission}
     return render_to_response('adm/deny_permission.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+@permission_required(permission='')
+def list_project_view(request):
+    """
+    Lista todos los proyectos almacenados en el sistema.
+    Otorga las opciones de eliminar y modificar al proyecto listado.
+    """
+    project = Project.objects.all()
+    ctx = {'projects':projects}
+    return render_to_response('adm/list_users.html', ctx, context_instance=RequestContext(request))
