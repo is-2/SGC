@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% block title %}SGC - Modificar rol {{ rol.name }}{% endblock %}
+{% extends "index.html" %}
+{% block title %}SGC - Modificar rol {{ group.name }}{% endblock %}
 {% block content %}
 <div class="jumbotron">
 	<h1><small>Modificar rol</small></h1>
@@ -28,7 +28,7 @@
       									{% endif %}
     								</ul>
     							{% endfor %}
-  							</li>
+  							</li>s
   						{% endif %}
   					{% endfor %}
 				</ul>
@@ -40,18 +40,14 @@
 		<p class="text-muted">Campos obligatorios (*)</p>
 		<div class="input-group">
 			<span class="input-group-addon"><b>* Nombre</b></span>
-			<input type="text" class="form-control" id="name" name="name" value="{{ role.name }}">
+			<input type="text" class="form-control" id="name" name="name" value="{{ group.name }}">
         </div>
         <br>
-        <div class="input-group">
-			<span class="input-group-addon"><b>Descripción</b></span>
-			<textarea rows="3" class="form-control" id="description" name="description">{{ role.description }}</textarea>
-        </div>
 		
 		<br>
         <button type="submit" class="btn btn-success">Modificar</button>
 	</form>
 	<br>
-	<a class="btn btn-default" href="{% url 'all_roles' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver a la gestión de roles</a>
+	<a class="btn btn-default" href="{% url 'list_groups' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver a la gestión de roles</a>
 </div>
 {% endblock %}

@@ -1,11 +1,11 @@
-{% extends "base.html" %}
-{% block title %}SGC - Gestión de proyectos{% endblock %}
+{% extends "index.html" %}
+{% block title %}Mysite - Administracion de Proyectos y Fases{% endblock %}
 {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Administración de proyectos y fases</h1>
-		<a class="btn btn-sm btn-default" href="{% url 'add_project' %}"><span class="#"></span>Agregar Proyecto</a>
+		<h1>Administración de Proyectos y Fases</h1>
+		<a class="btn btn-sm btn-default" href="{% url 'create_project' %}"><span class="glyphicon glyphicon-plus"></span>Crear Proyecto</a>
 		<br><br>
 		{% if projects %}
 			<div class="table-responsive"> 
@@ -13,8 +13,7 @@
             		<thead>
                 		<tr>
                     		<th>ID</th>
-                    		<th>Nombre de proyecto</th>
-                    		<th>Descripcion</th>
+                    		<th>Nombre de Proyecto</th>
                     		<th></th>
                     		<th></th>
                     		<th></th>
@@ -25,9 +24,8 @@
 	                			<tr>
 	                    			<td>{{ p.id }}</td>
 	                    			<td>{{ p.name }}</td>
-	                    			<td>{{ p.description }}</td>
-	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="#"></span> Modificar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_project' id_project=p.id %}"><span class="#"></span> Modificar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_project' id_project=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
 	                			</tr>
                 		{% endfor %}

@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block title %}Eliminar Proyecto{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h3>¿Desea eliminar el proyecto {{ project.name }}?</h3>
+		<form action="" method="post">
+			{% csrf_token %}
+			<p class="text-warning"><small>Se borrarán los registros del proyecto.</small></p>
+			<br>
+			<a type="button" class="btn btn-default" href="{% url 'list_projects' %}">Volver</a>
+        	<button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+	</div>
+</div>
+{% endblock %}

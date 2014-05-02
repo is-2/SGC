@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block title %}Confirmación{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<div class="panel panel-success">
+      		<div class="panel-heading">
+        		<h3 class="panel-title">Hecho!</h3>
+      		</div>
+      		<div class="panel-body">
+        		El Permiso {{ permission.name }} fue desasignado del Rol {{ group.name }}.
+      		</div>
+      	</div>
+		<br>
+		<a class="btn btn-default" href="{% url 'assign_perm' id_group=group.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver a la asignación de Rol {{ group.name }} </a>
+	</div>
+</div>
+{% endblock %}
