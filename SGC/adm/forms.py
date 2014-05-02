@@ -1,22 +1,23 @@
+# -*- coding: utf-8 -*-
 from django import forms
-from django.contrib.auth.models import User
-from adm.models import Permission, Role, Project
+from django.contrib.auth.models import Group, User
+from adm.models import Project
 
-class add_user_form(forms.Form):
-    username    = forms.CharField(label="Username", widget=forms.TextInput(), required=True)
-    password    = forms.CharField(label="Contrasena", widget=forms.PasswordInput(render_value=False), required=True)
-    firstName   = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
-    lastName    = forms.CharField(label="Apellido", widget=forms.TextInput(), required=True)
-    email       = forms.EmailField(label="E-mail", widget=forms.TextInput(), required=True)
-    phonenum    = forms.CharField(label="Telefono", widget=forms.TextInput(), required=False)
-    address     = forms.CharField(label="Direccion", widget=forms.TextInput(), required=False)
-    observation = forms.CharField(label="Observacion", widget=forms.TextInput(), required=False)
+class AddUserForm(forms.Form):
+    username = forms.CharField(label="Username", widget=forms.TextInput(), required=True)
+    password = forms.CharField(label=u"Contraseña", widget=forms.PasswordInput(render_value=False), required=True)
+    first_name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    last_name = forms.CharField(label="Apellido", widget=forms.TextInput(), required=True)
+    email = forms.EmailField(label="E-mail", widget=forms.TextInput(), required=True)
+    telephone = forms.CharField(label=u"Teléfono", widget=forms.TextInput(), required=True)
+    address = forms.CharField(label=u"Dirección", widget=forms.TextInput(), required=False)
+    observation = forms.CharField(label=u"Observación", widget=forms.TextInput(), required=False)
 
     def clean_username(self):
         username = self.cleaned_data['username']
         try:
             user = User.objects.get(username=username)
-            if user.username==username:
+            if user.username == username:
                 return username
         except User.DoesNotExist:
             return username
@@ -30,16 +31,16 @@ class add_user_form(forms.Form):
                 return email
         except User.DoesNotExist:
             return email
-        raise forms.ValidationError('El e-mail ya existe.')
+        raise forms.ValidationError('El email ya existe.')
     
-class mod_user_form(forms.Form):
-    passwd      = forms.CharField(label="Contrasena", widget=forms.PasswordInput(render_value=False), required=False)
-    firstName   = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
-    lastName    = forms.CharField(label="Apellido", widget=forms.TextInput(), required=True)
-    email       = forms.EmailField(label="E-mail", widget=forms.TextInput(), required=True)
-    phonenum    = forms.CharField(label="Telefono", widget=forms.TextInput(), required=False)
-    address     = forms.CharField(label="Direccion", widget=forms.TextInput(), required=False)
-    observation = forms.CharField(label="Observacion", widget=forms.TextInput(), required=False)
+class ModUserForm(forms.Form):
+    password = forms.CharField(label=u"Contraseña", widget=forms.PasswordInput(render_value=False), required=False)
+    first_name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    last_name = forms.CharField(label="Apellido", widget=forms.TextInput(), required=True)
+    email = forms.EmailField(label="E-mail", widget=forms.TextInput(), required=True)
+    telephone = forms.CharField(label=u"Teléfono", widget=forms.TextInput(), required=True)
+    address = forms.CharField(label=u"Dirección", widget=forms.TextInput(), required=False)
+    observation = forms.CharField(label=u"Observación", widget=forms.TextInput(), required=False)
     
                
     def clean_email(self):
@@ -51,47 +52,40 @@ class mod_user_form(forms.Form):
         except User.DoesNotExist:
             return email
         raise forms.ValidationError('El E-mail ya existe.')
-
-class add_role_form(forms.Form):
-    """
     
-    """
-    name        = forms.CharField(label="Nombre", required=True)
-    description = forms.CharField(label="Descripcion", required=False)
+class CreateGroupForm(forms.Form):
+    name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)
     
     def clean_name(self):
         name = self.cleaned_data['name']
         try:
-            role = Role.objects.get(name=name)
-            if role.name == name:
-                return name 
-        except Role.DoesNotExist:
+            group = Group.objects.get(name=name)
+            if group.name == name:
+                return name
+        except Group.DoesNotExist:
             return name
-        raise forms.ValidationError('El nombre de rol ya existe.')    
+        raise forms.ValidationError('El Rol ya existe.')
 
-class mod_role_form(forms.Form):
+class ModGroupForm(forms.Form):
     """
     
     """
-    name        = forms.CharField(label="Nombre", required=True)
-    description = forms.CharField(label="Descripcion", required=False)
+    name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
         
     def clean_nombre(self): 
         name = self.cleaned_data['name'] 
         try: 
-            role = Role.objects.get(name=name) 
-            if role.name == name:
+            group = Group.objects.get(name=name) 
+            if group.name == name:
                 return name 
-        except Role.DoesNotExist:
+        except Group.DoesNotExist:
             return name 
         raise forms.ValidationError('El nombre de rol ya existe.')
 
-class add_project_form(forms.Form):
-    """
+class CreateProjectForm(forms.Form):
+    name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
     
-    """
-    name = forms.CharField(label="Nombre", required=True)
-    description = forms.CharField(label="Descripcion", required=True)
     def clean_name(self):
         name = self.cleaned_data['name']
         try:
@@ -101,3 +95,17 @@ class add_project_form(forms.Form):
         except Project.DoesNotExist:
             return name
         raise forms.ValidationError('El nombre de proyecto ya existe.')
+    
+class ModifyProjectForm(forms.Form):
+    name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)
+    description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        try:
+            project = Project.objects.get(name=name)
+            if project.name == name:
+                return name
+        except Project.DoesNotExist:
+            return name
+        raise forms.ValidationError('El nombre de Proyecto ya existe.')
