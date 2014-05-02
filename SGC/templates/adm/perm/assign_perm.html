@@ -1,0 +1,44 @@
+{% extends "index.html" %}
+{% block title %}SGC - Asignar{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1><small>{{ group.name }} - Permisos</small></h1>
+		{% if permissions %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre</th>
+                    		<th>Codigo</th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for p in permissions %}
+                			{% if p.id >= 22 %}
+	                			<tr>
+	                    			<td>{{ p.id }}</td>
+	                    			<td>{{ p.name }}</td>
+	                    			<td>{{ p.codename }}</td>
+	                    				{% if p in group.permissions.all %}
+	                    					<td><a class="btn btn-sm btn-default" href="{% url 'deny_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+	                    				{% else %}
+	                    					<td><a class="btn btn-sm btn-default" href="{% url 'grant_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-plus"></span> Agregar</a></td>
+	                    				{% endif %}	
+	                			</tr>
+                			{% endif %}
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen permisos.</h3>
+    	{% endif %}
+	</div>
+	<br>
+	<a class="btn btn-default" href="{% url 'list_groups' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

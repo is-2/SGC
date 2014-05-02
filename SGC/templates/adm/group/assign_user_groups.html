@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block title %}SGC - Roles {{ user.username }}{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1><small>Roles del Usuario {{ user.name }}</small></h1>
+		<br><br>
+		{% if groups %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre del rol</th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for g in groups %}
+                			<tr>
+                    			<td>{{ g.id }}</td>
+                    			<td>{{ g.name }}</td>
+                    			{% if g in user.groups.all %}
+                    				<td><a class="btn btn-sm btn-default" href="{% url 'deny_user_group' id_user=user.id id_group=g.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                    			{% else %}
+                    				<td><a class="btn btn-sm btn-default" href="{% url 'grant_user_group' id_user=user.id id_group=g.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    			{% endif %}
+                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No posee roles.</h3>
+    	{% endif %}
+	</div>
+	<br>
+		<a class="btn btn-default" href="{% url 'list_users' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}
