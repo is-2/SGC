@@ -1,0 +1,48 @@
+{% extends "index.html" %} {% block title %}SGC - Administración de Tipo
+de Atributos{% endblock %} {% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1>Administración de Tipo de Atributos</h1>
+		<a class="btn btn-sm btn-default" href="{% url 'create_attribute_type' %}"><span
+			class="glyphicon glyphicon-plus"></span>Crear Tipo de Atributo</a> <br>
+		<br> {% if attribute_types %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre de Tipo de Atributo</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for attr in attribute_types %}
+					<tr>
+						<td>{{ attr.id }}</td>
+						<td>{{ attr.name }}</td>
+						<td><a class="btn btn-sm btn-default"
+							href="#"><span class="#"></span>
+								Modificar</a></td>
+						<td><a class="btn btn-sm btn-default"
+							href="#"><span
+								class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+						<td><a class="btn btn-sm btn-default"
+							href="#"><span
+								class="glyphicon glyphicon-search"></span> Lalala</a></td>
+						<td><a class="btn btn-sm btn-default"
+							href="3"><span
+								class="glyphicon glyphicon-search"></span> Lalala</a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		<h3>No existen Tipo de Atributos</h3>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
