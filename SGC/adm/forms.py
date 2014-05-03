@@ -109,9 +109,3 @@ class ModifyProjectForm(forms.Form):
         except Project.DoesNotExist:
             return name
         raise forms.ValidationError('El nombre de Proyecto ya existe.')
-
-class CreatePhaseForm(forms.Form):
-    """
-    """
-    name = forms.CharField(label="Nombre", required=True)
-    

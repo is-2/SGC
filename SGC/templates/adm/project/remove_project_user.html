@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block title %}SGC - Confirmación{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<div class="panel panel-success">
+      		<div class="panel-heading">
+        		<h3 class="panel-title">Hecho!</h3>
+      		</div>
+      		<div class="panel-body">
+        		El Usuario {{ user.username }} fue desasignado del proyecto {{ project.name }}.
+      		</div>
+      	</div>
+		<br>
+		<a class="btn btn-default" href="{% url 'manage_project_users' id_project=project.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver </a>
+	</div>
+</div>
+{% endblock %}

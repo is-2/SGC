@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from adm.models import Project
 
 class Client(models.Model):
     user        = models.OneToOneField(User)
