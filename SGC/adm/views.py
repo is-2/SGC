@@ -242,7 +242,6 @@ def list_projects(request):
     ctx = {'projects':projects}
     return render_to_response('adm/project/list_projects.html', ctx, context_instance=RequestContext(request))
 
-
 def create_project(request):
     form = forms.CreateProjectForm()
     if request.method == "POST":
@@ -250,9 +249,10 @@ def create_project(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
-            g = Project(name=name, description=description)
-            g.save()  # Save information
-            return HttpResponseRedirect('/adm/list_projects/')
+            p = Project(name=name, description=description)
+            p.save()  # Save information
+            ctx = {"project":p}
+            return render_to_response('adm/project/mohave_wasteland.html', ctx, context_instance=RequestContext(request))
         else:
             ctx = {'form':form}
             return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
@@ -268,14 +268,24 @@ def create_project_phase(request, id_project):
         form = forms.CreatePhaseForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
-            phase = Phase.objects.create(name=name, project=Project.objects.get(id=id_project))
-            phase.save()            
-            return HttpResponseRedirect("/adm/project/create_project/")
+            project = Project.objects.get(id=id_project)
+            phase = Phase.objects.create(name=name, project=project)
+            phase.save()
+            ctx = {'project':project}            
+            return render_to_response('adm/project/mohave_wasteland.html', ctx, context_instance=RequestContext(request))
         else:
             ctx = {'form':form}
             return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
     ctx = {'form':form}
     return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
+
+def list_project_phases(request, id_project):
+    """
+    """
+    project = Project.objects.get(id=id_project)    
+    phases = Phase.objects.filter(project__id=id_project)
+    ctx = {'project':project, 'phases':phases}
+    return render_to_response('adm/project/list_project_phases.html', ctx, context_instance=RequestContext(request))
 
 def manage_project_users(request, id_project):
     """
