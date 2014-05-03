@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -242,7 +243,11 @@ def list_projects(request):
     ctx = {'projects':projects}
     return render_to_response('adm/project/list_projects.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def create_project(request):
+    """
+    Crea un nuevo proyecto.
+    """
     form = forms.CreateProjectForm()
     if request.method == "POST":
         form = forms.CreateProjectForm(request.POST)
@@ -259,9 +264,10 @@ def create_project(request):
     ctx = {'form':form}
     return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def create_project_phase(request, id_project):
     """
-    
+    Crea un nueva fase para el proyecto.
     """
     form = forms.CreatePhaseForm()
     if request.method == 'POST':
@@ -279,25 +285,32 @@ def create_project_phase(request, id_project):
     ctx = {'form':form}
     return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def list_project_phases(request, id_project):
     """
+    Despliega las fases que tiene el proyecto seleccionado.
     """
     project = Project.objects.get(id=id_project)    
     phases = Phase.objects.filter(project__id=id_project)
     ctx = {'project':project, 'phases':phases}
     return render_to_response('adm/project/list_project_phases.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def manage_project_users(request, id_project):
     """
+    Despliega la lista de todos los usuarios del sistema,
+    y junto con ellos las opciones de asignar o quitar un
+    usuario al proyecto.
     """
     project = Project.objects.get(id=id_project)
     users = User.objects.all()
     ctx = {'project':project, 'users':users}
     return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def assign_project_user(request, id_user, id_project):
     """
-    
+    Asigna un usuario al proyecto.
     """
     
     project = Project.objects.get(id=id_project) 
@@ -315,9 +328,10 @@ def assign_project_user(request, id_user, id_project):
     ctx = { 'user':user, 'project':project, 'valid':new_user}
     return render_to_response('adm/project/assign_project_user.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def remove_project_user(request, id_user, id_project):
     """
-    
+    Quita un usuario del proyecto.
     """
     user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)    
@@ -327,16 +341,22 @@ def remove_project_user(request, id_user, id_project):
     ctx = { 'user':user, 'project':project}
     return render_to_response('adm/project/remove_project_user.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def manage_project_committee(request, id_project):
     """
+    Despliega la lista de usuarios relacionados con el proyecto,
+    junto con las opciones de asignar o quitar un usuario del
+    comité de gestión de cambio.
     """
     project = Project.objects.get(id=id_project)    
     users = project.users.all()
     ctx = {'users':users, 'project':project}
     return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def assign_committee_user(request, id_project, id_user):
     """
+    Asigna un usuario al comité de gestión de cambio.
     """
     user = User.objects.get(id=id_user) 
     project = Project.objects.get(id=id_project)       
@@ -352,9 +372,12 @@ def assign_committee_user(request, id_project, id_user):
         project.save()
     ctx = {'project':project, 'user':user, 'valid':new_user}
     return render_to_response('adm/project/assign_committee_user.html', ctx, context_instance=RequestContext(request))
-    
+
+@login_required(login_url='/login/')
 def remove_committee_user(request, id_project, id_user):
-    
+    """
+    Quita un usuario del comité  de cambio.
+    """
     project = Project.objects.get(id=id_project)
     user = User.objects.get(id=id_user)    
     project.committee.remove(user)

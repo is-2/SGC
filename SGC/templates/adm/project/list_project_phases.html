@@ -4,7 +4,7 @@
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Fases</h1>
+		<h2>Fases del proyecto {{ project.name }}</h2>
 		<br><br>
 		{% if phases %}
 			<div class="table-responsive"> 
@@ -29,5 +29,6 @@
     		<h3>No existen fases</h3>
     	{% endif %}
 	</div>
+		<a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}
