@@ -30,4 +30,12 @@ urlpatterns = patterns('',
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/assign_committee_user/(?P<id_user>\d+)/$', views.assign_committee_user, name='assign_committee_user'),
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/remove_committee_user/(?P<id_user>\d+)/$', views.remove_committee_user, name='remove_committee_user'),
     
+    url(r'^adm/list_projects/list_project_phases/(?P<id_project>\d+)/$', views.list_project_phases, name='list_project_phases'),
+    url(r'^adm/list_projects/create_project/(?P<id_project>\d+)/create_project_phase/$', views.create_project_phase, name='create_project_phase'),
+    url(r'^adm/list_projects/manage_project_users/(?P<id_project>\d+)/$', views.manage_project_users, name='manage_project_users'),
+    url(r'^adm/list_projects/manage_project_users/(?P<id_project>\d+)/assign_project_user/(?P<id_user>\d+)/$', views.assign_project_user, name='assign_project_user'),
+    url(r'^adm/list_projects/manage_project_users/(?P<id_project>\d+)/remove_project_user/(?P<id_user>\d+)/$', views.remove_project_user, name='remove_project_user'),    
+    url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/$', views.manage_project_committee, name='manage_project_committee'),
+    url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/assign_committee_user/(?P<id_user>\d+)/$', views.assign_committee_user, name='assign_committee_user'),
+    url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/remove_committee_user/(?P<id_user>\d+)/$', views.remove_committee_user, name='remove_committee_user'),
 )
