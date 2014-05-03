@@ -1,14 +1,21 @@
 from django.db import models
-from django.contrib.contenttypes import generic
-from django.contrib.contenttypes.models import ContentType
 # Create your models here.
+class ItemType(models.Model):
+    name = models.CharField("Attribute's name", max_length=100)
+    description = models.CharField("Description", max_length=100)
+    attributes = models.ManyToManyField("Attribute")
+    class Meta:
+        permissions = (("puede_crear_tipo_de_item","Puede crear tipo de item"),
+                       ("puede_modificar_tipo_de_item","Puede modificar tipo de item"),
+                       ("puede_eliminar_tipo_de_item","Puede eliminar tipo de item"),)
+        
+    def __unicode__(self):
+        return self.name
+    
 class AttributeType(models.Model):
     name = models.CharField("Attribute's name", max_length=100)
     description = models.CharField("Description", max_length=100)
-    
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    choice = models.IntegerField("Choice")
     
     class Meta:
         permissions = (("puede_crear_tipo_de_atributo","Puede crear tipo de atributo"),
@@ -18,15 +25,19 @@ class AttributeType(models.Model):
     def __unicode__(self):
         return self.name
     
-# Generic classes for AttributeType
-class NumericType(models.Model):
-    value = models.IntegerField()
+class Attribute(models.Model):
+    type = models.ForeignKey('AttributeType', null=True)
+    name = models.CharField("Name", max_length=100)
+    description = models.CharField("Description", max_length=100)
+    attr_int = models.IntegerField("Integer", null=True)
+    attr_str = models.CharField("String", max_length=100, null=True, blank=True)
+    attr_bool = models.BooleanField("Boolean", default=False)
+    attr_date = models.DateField("Date", null=True)
     
-class StringType(models.Model):
-    value = models.CharField(max_length=100)
-    
-class BooleanType(models.Model):
-    value = models.BooleanField()
-    
-class DateType(models.Model):
-    value = models.DateField()
+    class Meta:
+        permissions = (("puede_crear_atributo","Puede crear atributo"),
+                       ("puede_modificar_atributo","Puede modificar atributo"),
+                       ("puede_eliminar_atributo","Puede eliminar atributo"),)
+        
+    def __unicode__(self):
+        return self.name

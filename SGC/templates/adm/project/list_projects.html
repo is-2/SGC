@@ -4,8 +4,8 @@
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Administración de Proyectos y Fases</h1>
-		<a class="btn btn-sm btn-default" href="{% url 'create_project' %}"><span class="glyphicon glyphicon-plus"></span>Crear Proyecto</a>
+		<h2>Administración de Proyectos y Fases</h2>
+		<a class="btn btn-sm btn-default" href="{% url 'create_project' %}"><span class="glyphicon glyphicon-plus"></span> Crear Proyecto </a>
 		<br><br>
 		{% if projects %}
 			<div class="table-responsive"> 
@@ -13,7 +13,9 @@
             		<thead>
                 		<tr>
                     		<th>ID</th>
-                    		<th>Nombre de Proyecto</th>
+                    		<th>Nombre del Proyecto</th>
+                    		<th></th>
+                    		<th></th>
                     		<th></th>
                     		<th></th>
                     		<th></th>
@@ -26,7 +28,9 @@
 	                    			<td>{{ p.name }}</td>
 	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_project' id_project=p.id %}"><span class="#"></span> Modificar</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_project' id_project=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_users' id_project=p.id %}"><span class="#"></span> Usuarios</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_committee' id_project=p.id %}"><span class="#"></span> Comité</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'list_project_phases' id_project=p.id %}"><span class="#"></span> Fases</a></td>
 	                			</tr>
                 		{% endfor %}
                 	</tbody>

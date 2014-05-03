@@ -1,0 +1,47 @@
+{% extends "index.html" %} {% block title %}SGC - Administración de Atributo{% endblock %} {% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1>Administración Atributos</h1>
+		<a class="btn btn-sm btn-default" href="{% url 'create_attribute' %}"><span
+			class="glyphicon glyphicon-plus"></span>Crear Tipo de Atributos</a> <br>
+		<br> {% if attributes %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre Atributos</th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for a in attributes %}
+					<tr>
+						<td>{{ a.id }}</td>
+						<td>{{ a.name }}</td>
+						<td><a class="btn btn-sm btn-default"
+							href="{% url 'modify_attribute' id_attribute=a.id %}"><span class="#"></span>
+								Modificar</a></td>
+						<td><a class="btn btn-sm btn-default"
+							href="{% url 'delete_attribute' id_attribute=a.id %}"><span
+								class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+						<td><a class="btn btn-sm btn-default"
+							href="{% url 'assign_attribute_type' id_attribute=a.id %}"><span
+								class="glyphicon glyphicon-search"></span> Asignar Tipo</a></td>
+						<td><a class="btn btn-sm btn-default"
+							href="{% url 'visualize_attribute' id_attribute=a.id %}"><span
+								class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		<h3>No existen Atributos</h3>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

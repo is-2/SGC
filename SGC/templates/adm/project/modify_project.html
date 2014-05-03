@@ -2,7 +2,7 @@
 {% block title %}SGC - Modificar proyecto {{ project.name }}{% endblock %}
 {% block content %}
 <div class="jumbotron">
-		<h1>Modificar proyecto</h1>
+		<h2>Modificar proyecto</h2>
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}

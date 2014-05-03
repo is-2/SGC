@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block title %}Confirmation{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		{% if valid %}
+			<div class="panel panel-success">
+      			<div class="panel-heading">
+        			<h3 class="panel-title">Done!</h3>
+      			</div>
+      			<div class="panel-body">
+        			El Atributo {{ attr.name }} fue asignado al Tipo de Item {{ item_t.name }}.
+      			</div>
+      		</div>
+		{% else %}
+			<div class="panel panel-warning">
+      			<div class="panel-heading">
+        			<h3 class="panel-title">Wait!</h3>
+      			</div>
+      			<div class="panel-body">
+        			El Atributo {{ attr.name }} no puede ser asignado al Tipo de Item {{ item_t.name }}.
+      			</div>
+      		</div>
+		{% endif %}
+	</div>
+	<br>
+	<a class="btn btn-default" href="{% url 'assign_item_attribute' id_item_type=item_t.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver </a>
+</div>
+{% endblock %}

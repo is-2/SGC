@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block title %}SGC - Crear Atributo{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1>Crear Atributo</h1>
+		<form class="form-horizontal" method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Crear</button>
+		</form>
+		<br>
+		<a class="btn btn-sm btn-default" href="{% url 'list_attributes' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}

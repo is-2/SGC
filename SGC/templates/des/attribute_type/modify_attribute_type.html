@@ -1,8 +1,8 @@
 {% extends "index.html" %}
-{% block title %}SGC - Modificar Tipo de Item {{ item_type.name }}{% endblock %}
+{% block title %}SGC - Modificar Tipo de Atributo {{ attribute_type.name }}{% endblock %}
 {% block content %}
 <div class="jumbotron">
-	<h1><small>Modificar Tipo de Item</small></h1>
+	<h1><small>Modificar Tipo de Atributo</small></h1>
 	<form class="form-horizontal" method="POST">
 		{% csrf_token %}
 		
@@ -40,14 +40,17 @@
 		<p class="text-muted">Campos obligatorios (*)</p>
 		<div class="input-group">
 			<span class="input-group-addon"><b>* Nombre</b></span>
-			<input type="text" class="form-control" id="name" name="name" value="{{ item_type.name }}">
+			<input type="text" class="form-control" id="name" name="name" value="{{ attribute_type.name }}">
         </div>
         <br>
-		
+		<div class="input-group">
+			<span class="input-group-addon"><b>* Descripcion</b></span>
+			<input type="text" class="form-control" id="description" name="description" value="{{ attribute_type.description }}">
+        </div>
 		<br>
         <button type="submit" class="btn btn-success">Modificar</button>
 	</form>
 	<br>
-	<a class="btn btn-default" href="{% url 'list_item_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	<a class="btn btn-default" href="{% url 'list_attribute_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}
