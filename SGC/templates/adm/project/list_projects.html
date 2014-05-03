@@ -17,6 +17,8 @@
                     		<th></th>
                     		<th></th>
                     		<th></th>
+                    		<th></th>
+                    		<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -26,6 +28,8 @@
 	                    			<td>{{ p.name }}</td>
 	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_project' id_project=p.id %}"><span class="#"></span> Modificar</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_project' id_project=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_users' id_project=p.id %}"><span class="#"></span> Usuarios</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_committee' id_project=p.id %}"><span class="#"></span> Comité</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
 	                			</tr>
                 		{% endfor %}
