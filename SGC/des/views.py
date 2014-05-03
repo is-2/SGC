@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import permission_required, login_required
-from des.models import AttributeType, AttributeType, Attribute, ItemType
+from des.models import AttributeType, Attribute, ItemType
 from des import forms
 # Create your views here.
 @login_required(login_url='/login/')

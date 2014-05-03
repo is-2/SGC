@@ -6,7 +6,8 @@ de Atributo{% endblock %} {% block content %}
 		<h1>Administración de Tipo de Atributos</h1>
 		<a class="btn btn-sm btn-default" href="{% url 'create_attribute_type' %}"><span
 			class="glyphicon glyphicon-plus"></span>Crear Tipo de Atributos</a> <br>
-		<br> {% if attribute_types %}
+		<br> 
+		{% if attribute_types %}
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
