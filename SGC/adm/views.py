@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.auth.decorators import permission_required, login_required
 from adm import forms
 from home.models import Client
-from adm.models import Project
+from adm.models import Project, Phase
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -242,7 +242,7 @@ def list_projects(request):
     ctx = {'projects':projects}
     return render_to_response('adm/project/list_projects.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+
 def create_project(request):
     form = forms.CreateProjectForm()
     if request.method == "POST":
@@ -258,6 +258,100 @@ def create_project(request):
             return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
     ctx = {'form':form}
     return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
+
+def create_project_phase(request, id_project):
+    """
+    
+    """
+    form = forms.CreatePhaseForm()
+    if request.method == 'POST':
+        form = forms.CreatePhaseForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            phase = Phase.objects.create(name=name, project=Project.objects.get(id=id_project))
+            phase.save()            
+            return HttpResponseRedirect("/adm/project/create_project/")
+        else:
+            ctx = {'form':form}
+            return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
+    ctx = {'form':form}
+    return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
+
+def manage_project_users(request, id_project):
+    """
+    """
+    project = Project.objects.get(id=id_project)
+    users = User.objects.all()
+    ctx = {'project':project, 'users':users}
+    return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
+
+def assign_project_user(request, id_user, id_project):
+    """
+    
+    """
+    
+    project = Project.objects.get(id=id_project) 
+    user = User.objects.get(id=id_user)          
+    new_user = False
+    
+    try:
+        user = project.users.get(id=id_user)
+    except User.DoesNotExist:
+        new_user = True
+        
+    if new_user:
+        project.users.add(user)
+        project.save()
+    ctx = { 'user':user, 'project':project, 'valid':new_user}
+    return render_to_response('adm/project/assign_project_user.html', ctx, context_instance=RequestContext(request))
+
+def remove_project_user(request, id_user, id_project):
+    """
+    
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)    
+    project.users.remove(user)
+    project.save()
+    
+    ctx = { 'user':user, 'project':project}
+    return render_to_response('adm/project/remove_project_user.html', ctx, context_instance=RequestContext(request))
+
+def manage_project_committee(request, id_project):
+    """
+    """
+    project = Project.objects.get(id=id_project)    
+    users = project.users.all()
+    ctx = {'users':users, 'project':project}
+    return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
+
+def assign_committee_user(request, id_project, id_user):
+    """
+    """
+    user = User.objects.get(id=id_user) 
+    project = Project.objects.get(id=id_project)       
+    new_user = False
+    
+    try:
+        user = project.committee.get(id=id_user)
+    except User.DoesNotExist:
+        new_user = True
+        
+    if new_user:
+        project.committee.add(user)
+        project.save()
+    ctx = {'project':project, 'user':user, 'valid':new_user}
+    return render_to_response('adm/project/assign_committee_user.html', ctx, context_instance=RequestContext(request))
+    
+def remove_committee_user(request, id_project, id_user):
+    
+    project = Project.objects.get(id=id_project)
+    user = User.objects.get(id=id_user)    
+    project.committee.remove(user)
+    project.save()
+    
+    ctx = {'project':project, 'user':user}
+    return render_to_response('adm/project/remove_committee_user.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def modify_project(request, id_project):
