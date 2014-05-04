@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>adm package &mdash; SGC 0.3 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SGC 0.3 documentation" href="index.html"/>
+        <link rel="next" title="des package" href="des.html"/>
+        <link rel="prev" title="home package" href="home.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="fa fa-home"> SGC</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">home package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="home.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#module-home.admin">home.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#module-home.forms">home.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#module-home.models">home.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#module-home.tests">home.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#module-home.urls">home.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#module-home.views">home.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#module-home">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">adm package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-adm.admin">adm.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-adm.forms">adm.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-adm.models">adm.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-adm.tests">adm.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-adm.urls">adm.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-adm.views">adm.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-adm">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="des.html">des package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="des.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="des.html#module-des.admin">des.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="des.html#module-des.forms">des.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="des.html#module-des.models">des.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="des.html#module-des.tests">des.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="des.html#module-des.urls">des.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="des.html#module-des.views">des.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="des.html#module-des">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SGC</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>adm package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/adm.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <div class="section" id="adm-package">
+<h1>adm package<a class="headerlink" href="#adm-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-adm.admin">
+<span id="adm-admin-module"></span><h2>adm.admin module<a class="headerlink" href="#module-adm.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-adm.forms">
+<span id="adm-forms-module"></span><h2>adm.forms module<a class="headerlink" href="#module-adm.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="adm.forms.AddUserForm">
+<em class="property">class </em><tt class="descclassname">adm.forms.</tt><tt class="descname">AddUserForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/adm/forms.html#AddUserForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.AddUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="adm.forms.AddUserForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'username': &lt;django.forms.fields.CharField object at 0x2afb8056d450&gt;, 'password': &lt;django.forms.fields.CharField object at 0x2afb8056d4d0&gt;, 'first_name': &lt;django.forms.fields.CharField object at 0x2afb8056d550&gt;, 'last_name': &lt;django.forms.fields.CharField object at 0x2afb8056d5d0&gt;, 'email': &lt;django.forms.fields.EmailField object at 0x2afb8056d650&gt;, 'telephone': &lt;django.forms.fields.CharField object at 0x2afb8056d6d0&gt;, 'address': &lt;django.forms.fields.CharField object at 0x2afb8056d750&gt;, 'observation': &lt;django.forms.fields.CharField object at 0x2afb8056d7d0&gt;}</em><a class="headerlink" href="#adm.forms.AddUserForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="adm.forms.AddUserForm.clean_email">
+<tt class="descname">clean_email</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/adm/forms.html#AddUserForm.clean_email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.AddUserForm.clean_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="adm.forms.AddUserForm.clean_username">
+<tt class="descname">clean_username</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/adm/forms.html#AddUserForm.clean_username"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.AddUserForm.clean_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.forms.AddUserForm.media">
+<tt class="descname">media</tt><a class="headerlink" href="#adm.forms.AddUserForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="adm.forms.CreateGroupForm">
+<em class="property">class </em><tt class="descclassname">adm.forms.</tt><tt class="descname">CreateGroupForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/adm/forms.html#CreateGroupForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.CreateGroupForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="adm.forms.CreateGroupForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'name': &lt;django.forms.fields.CharField object at 0x2afb8056db90&gt;}</em><a class="headerlink" href="#adm.forms.CreateGroupForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="adm.forms.CreateGroupForm.clean_name">
+<tt class="descname">clean_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/adm/forms.html#CreateGroupForm.clean_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.CreateGroupForm.clean_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.forms.CreateGroupForm.media">
+<tt class="descname">media</tt><a class="headerlink" href="#adm.forms.CreateGroupForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="adm.forms.CreatePhaseForm">
+<em class="property">class </em><tt class="descclassname">adm.forms.</tt><tt class="descname">CreatePhaseForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/adm/forms.html#CreatePhaseForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.CreatePhaseForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="adm.forms.CreatePhaseForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'name': &lt;django.forms.fields.CharField object at 0x2afb8057b090&gt;}</em><a class="headerlink" href="#adm.forms.CreatePhaseForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.forms.CreatePhaseForm.media">
+<tt class="descname">media</tt><a class="headerlink" href="#adm.forms.CreatePhaseForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="adm.forms.CreateProjectForm">
+<em class="property">class </em><tt class="descclassname">adm.forms.</tt><tt class="descname">CreateProjectForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/adm/forms.html#CreateProjectForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.CreateProjectForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="adm.forms.CreateProjectForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'name': &lt;django.forms.fields.CharField object at 0x2afb8056dd90&gt;, 'description': &lt;django.forms.fields.CharField object at 0x2afb8056de90&gt;}</em><a class="headerlink" href="#adm.forms.CreateProjectForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="adm.forms.CreateProjectForm.clean_name">
+<tt class="descname">clean_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/adm/forms.html#CreateProjectForm.clean_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.CreateProjectForm.clean_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.forms.CreateProjectForm.media">
+<tt class="descname">media</tt><a class="headerlink" href="#adm.forms.CreateProjectForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="adm.forms.ModGroupForm">
+<em class="property">class </em><tt class="descclassname">adm.forms.</tt><tt class="descname">ModGroupForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/adm/forms.html#ModGroupForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.ModGroupForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="adm.forms.ModGroupForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'name': &lt;django.forms.fields.CharField object at 0x2afb8056dc90&gt;}</em><a class="headerlink" href="#adm.forms.ModGroupForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="adm.forms.ModGroupForm.clean_nombre">
+<tt class="descname">clean_nombre</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/adm/forms.html#ModGroupForm.clean_nombre"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.ModGroupForm.clean_nombre" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.forms.ModGroupForm.media">
+<tt class="descname">media</tt><a class="headerlink" href="#adm.forms.ModGroupForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="adm.forms.ModUserForm">
+<em class="property">class </em><tt class="descclassname">adm.forms.</tt><tt class="descname">ModUserForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/adm/forms.html#ModUserForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.ModUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="adm.forms.ModUserForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'password': &lt;django.forms.fields.CharField object at 0x2afb8056d850&gt;, 'first_name': &lt;django.forms.fields.CharField object at 0x2afb8056d8d0&gt;, 'last_name': &lt;django.forms.fields.CharField object at 0x2afb8056d950&gt;, 'email': &lt;django.forms.fields.EmailField object at 0x2afb8056d9d0&gt;, 'telephone': &lt;django.forms.fields.CharField object at 0x2afb8056da50&gt;, 'address': &lt;django.forms.fields.CharField object at 0x2afb8056dad0&gt;, 'observation': &lt;django.forms.fields.CharField object at 0x2afb8056db50&gt;}</em><a class="headerlink" href="#adm.forms.ModUserForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="adm.forms.ModUserForm.clean_email">
+<tt class="descname">clean_email</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/adm/forms.html#ModUserForm.clean_email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.ModUserForm.clean_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.forms.ModUserForm.media">
+<tt class="descname">media</tt><a class="headerlink" href="#adm.forms.ModUserForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="adm.forms.ModifyProjectForm">
+<em class="property">class </em><tt class="descclassname">adm.forms.</tt><tt class="descname">ModifyProjectForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/adm/forms.html#ModifyProjectForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.ModifyProjectForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="adm.forms.ModifyProjectForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'name': &lt;django.forms.fields.CharField object at 0x2afb8056ded0&gt;, 'description': &lt;django.forms.fields.CharField object at 0x2afb8057b050&gt;}</em><a class="headerlink" href="#adm.forms.ModifyProjectForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="adm.forms.ModifyProjectForm.clean_name">
+<tt class="descname">clean_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/adm/forms.html#ModifyProjectForm.clean_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.forms.ModifyProjectForm.clean_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.forms.ModifyProjectForm.media">
+<tt class="descname">media</tt><a class="headerlink" href="#adm.forms.ModifyProjectForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-adm.models">
+<span id="adm-models-module"></span><h2>adm.models module<a class="headerlink" href="#module-adm.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="adm.models.Phase">
+<em class="property">class </em><tt class="descclassname">adm.models.</tt><tt class="descname">Phase</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/models.html#Phase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.models.Phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<dl class="exception">
+<dt id="adm.models.Phase.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#adm.models.Phase.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="adm.models.Phase.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Phase.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#adm.models.Phase.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="adm.models.Phase.objects">
+<tt class="descclassname">Phase.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x2afb80525cd0&gt;</em><a class="headerlink" href="#adm.models.Phase.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.models.Phase.project">
+<tt class="descclassname">Phase.</tt><tt class="descname">project</tt><a class="headerlink" href="#adm.models.Phase.project" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="adm.models.Project">
+<em class="property">class </em><tt class="descclassname">adm.models.</tt><tt class="descname">Project</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/models.html#Project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.models.Project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Project(id, name, description)</p>
+<dl class="exception">
+<dt id="adm.models.Project.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#adm.models.Project.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="adm.models.Project.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Project.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#adm.models.Project.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="adm.models.Project.committee">
+<tt class="descclassname">Project.</tt><tt class="descname">committee</tt><a class="headerlink" href="#adm.models.Project.committee" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.models.Project.objects">
+<tt class="descclassname">Project.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x2afb80525810&gt;</em><a class="headerlink" href="#adm.models.Project.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.models.Project.phase_set">
+<tt class="descclassname">Project.</tt><tt class="descname">phase_set</tt><a class="headerlink" href="#adm.models.Project.phase_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="adm.models.Project.users">
+<tt class="descclassname">Project.</tt><tt class="descname">users</tt><a class="headerlink" href="#adm.models.Project.users" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-adm.tests">
+<span id="adm-tests-module"></span><h2>adm.tests module<a class="headerlink" href="#module-adm.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-adm.urls">
+<span id="adm-urls-module"></span><h2>adm.urls module<a class="headerlink" href="#module-adm.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-adm.views">
+<span id="adm-views-module"></span><h2>adm.views module<a class="headerlink" href="#module-adm.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="adm.views.add_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">add_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#add_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.add_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crea un usuario y lo almacena en el sistema.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.assign_committee_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">assign_committee_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#assign_committee_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.assign_committee_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asigna un usuario al comité de gestión de cambio.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.assign_permissions">
+<tt class="descclassname">adm.views.</tt><tt class="descname">assign_permissions</tt><big>(</big><em>request</em>, <em>id_group</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#assign_permissions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.assign_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="adm.views.assign_project_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">assign_project_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#assign_project_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.assign_project_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Asigna un usuario al proyecto.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.assign_user_groups">
+<tt class="descclassname">adm.views.</tt><tt class="descname">assign_user_groups</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#assign_user_groups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.assign_user_groups" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="adm.views.create_group">
+<tt class="descclassname">adm.views.</tt><tt class="descname">create_group</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#create_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.create_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="adm.views.create_project">
+<tt class="descclassname">adm.views.</tt><tt class="descname">create_project</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#create_project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.create_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crea un nuevo proyecto.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.create_project_phase">
+<tt class="descclassname">adm.views.</tt><tt class="descname">create_project_phase</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#create_project_phase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.create_project_phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crea un nueva fase para el proyecto.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.delete_group">
+<tt class="descclassname">adm.views.</tt><tt class="descname">delete_group</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#delete_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.delete_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elimina un rol del sistema.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.delete_project">
+<tt class="descclassname">adm.views.</tt><tt class="descname">delete_project</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#delete_project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.delete_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elimina un proyecto.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.delete_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">delete_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#delete_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.delete_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elimina un usuario.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.deny_permissions">
+<tt class="descclassname">adm.views.</tt><tt class="descname">deny_permissions</tt><big>(</big><em>request</em>, <em>id_group</em>, <em>id_perm</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#deny_permissions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.deny_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="adm.views.deny_user_group">
+<tt class="descclassname">adm.views.</tt><tt class="descname">deny_user_group</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#deny_user_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.deny_user_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quitar un rol al usuario previamente seleccionado.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.grant_permissions">
+<tt class="descclassname">adm.views.</tt><tt class="descname">grant_permissions</tt><big>(</big><em>request</em>, <em>id_group</em>, <em>id_perm</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#grant_permissions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.grant_permissions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="adm.views.grant_user_group">
+<tt class="descclassname">adm.views.</tt><tt class="descname">grant_user_group</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#grant_user_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.grant_user_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="adm.views.list_groups">
+<tt class="descclassname">adm.views.</tt><tt class="descname">list_groups</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#list_groups"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.list_groups" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="adm.views.list_project_phases">
+<tt class="descclassname">adm.views.</tt><tt class="descname">list_project_phases</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#list_project_phases"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.list_project_phases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Despliega las fases que tiene el proyecto seleccionado.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.list_projects">
+<tt class="descclassname">adm.views.</tt><tt class="descname">list_projects</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#list_projects"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.list_projects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Listan todos los projectos existentes en el sistema.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.list_users">
+<tt class="descclassname">adm.views.</tt><tt class="descname">list_users</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#list_users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.list_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lista todos los usuarios almacenados en el sistema.
+Otorga las opciones de eliminar y modificar a usuario listado.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.manage_project_committee">
+<tt class="descclassname">adm.views.</tt><tt class="descname">manage_project_committee</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#manage_project_committee"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.manage_project_committee" title="Permalink to this definition">¶</a></dt>
+<dd><p>Despliega la lista de usuarios relacionados con el proyecto,
+junto con las opciones de asignar o quitar un usuario del
+comité de gestión de cambio.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.manage_project_users">
+<tt class="descclassname">adm.views.</tt><tt class="descname">manage_project_users</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#manage_project_users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.manage_project_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>Despliega la lista de todos los usuarios del sistema,
+y junto con ellos las opciones de asignar o quitar un
+usuario al proyecto.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.modify_group">
+<tt class="descclassname">adm.views.</tt><tt class="descname">modify_group</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#modify_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.modify_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifica un rol del sistema.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.modify_project">
+<tt class="descclassname">adm.views.</tt><tt class="descname">modify_project</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#modify_project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.modify_project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifica un proyecto del sistema.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.modify_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">modify_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#modify_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.modify_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifica un usuario.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.remove_committee_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">remove_committee_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#remove_committee_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.remove_committee_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quita un usuario del comité  de cambio.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.remove_project_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">remove_project_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#remove_project_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.remove_project_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quita un usuario del proyecto.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="adm.views.visualize_user">
+<tt class="descclassname">adm.views.</tt><tt class="descname">visualize_user</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/adm/views.html#visualize_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#adm.views.visualize_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Despliega los campos de un usuario.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-adm">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-adm" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="des.html" class="btn btn-neutral float-right" title="des package"/>Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="home.html" class="btn btn-neutral" title="home package"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Akira Shimosoeda - Marcos Aquino.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
