@@ -11,3 +11,8 @@ Este programa es un gestor de proyectos que maneja diversas modalidades. Gestion
 2. Loguearse
 3. Crear proyecto
 4. Crear fases
+
+### Autores
+```
+Akira Shimosoeda, Marcos Aquino.
+```
