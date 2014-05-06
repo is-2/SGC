@@ -23,4 +23,9 @@ urlpatterns = patterns('',
     url(r'des/list_item_types/assign_item_attribute/(?P<id_item_type>\d+)/$', views.assign_item_attribute, name='assign_item_attribute'),
     url(r'des/list_item_types/assign_item_attribute/(?P<id_item_type>\d+)/grant_attribute/(?P<id_attribute>\d+)/$', views.grant_attribute, name='grant_attribute'),
     url(r'des/list_item_types/assign_item_attribute/(?P<id_item_type>\d+)/deny_attribute/(?P<id_attribute>\d+)/$', views.deny_attribute, name='deny_attribute'),
+    url(r'des/list_items/$', views.list_items, name='list_items'),
+    url(r'des/list_items/create_item/$', views.create_item, name='create_item'),
+    url(r'des/list_items/modify_item/(?P<id_item>\d+)/$', views.modify_item, name='modify_item'),
+    url(r'des/list_items/delete_item/(?P<id_item>\d+)/$', views.delete_item, name='delete_item'),
+    url(r'des/list_items/revert_item/')
 )

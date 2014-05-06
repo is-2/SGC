@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from des.models import AttributeType, Attribute, ItemType
+from des.models import AttributeType, Attribute, ItemType, Item
 import datetime
 
 class CreateAttributeTypeForm(forms.Form):
@@ -96,3 +96,31 @@ class ModifyItemTypeForm(forms.Form):
         except ItemType.DoesNotExist:
             return name
         raise forms.ValidationError('El tipo de item ya existe.')
+    
+class CreateItemForm(forms.Form):
+    name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        try:
+            item = Item.objects.get(name=name)
+            if item.name == name:
+                return name
+        except Item.DoesNotExist:
+            return name
+        raise forms.ValidationError('El Item ya existe.')
+    
+class ModifyItemForm(forms.Form):
+    name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        try:
+            item = Item.objects.get(name=name)
+            if item.name == name:
+                return name
+        except Item.DoesNotExist:
+            return name
+        raise forms.ValidationError('El Item ya existe.')

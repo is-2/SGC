@@ -1,9 +1,11 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
+from django.db import transaction
 from django.contrib.auth.decorators import permission_required, login_required
-from des.models import AttributeType, Attribute, ItemType
+from des.models import AttributeType, Attribute, ItemType, Item
 from des import forms
+import reversion
 # Create your views here.
 @login_required(login_url='/login/')
 def list_attribute_types(request):
@@ -328,3 +330,79 @@ def visualize_item_type(request, id_item_type):
     attrs = item_t.attributes.all()
     ctx = {'item_t': item_t, 'attrs':attrs}
     return render_to_response('des/item_type/visualize_item_type.html', ctx, context_instance=RequestContext(request))
+
+def list_items(request):
+    """
+    Visualiza todos los items del sistema.
+    """
+    items = Item.objects.all()
+    ctx = {'items':items}
+    return render_to_response('des/item/list_items.html', ctx, context_instance=RequestContext(request))
+
+@transaction.atomic()
+@reversion.create_revision()
+def create_item(request):
+    """
+    Crear un item y lo almacena en la base de datos.
+    """
+    """
+    Crea un tipo de atributo y lo almacena en el sistema.
+    """
+    form = forms.CreateItemForm()
+    if request.method == "POST":
+        form = forms.CreateItemForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            item = Item(name=name, description=description)
+            item.save()
+            return HttpResponseRedirect('/des/list_items/')
+        else:
+            ctx = {'form':form}
+            return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
+    ctx = {'form':form}
+    return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
+
+@transaction.atomic()
+@reversion.create_revision()   
+def modify_item(request, id_item):
+    """
+    Modifica los datos del item seleccionado. El item debera estar activo para poder ser modificado.
+    Si el item se encuentra cerrado. Se debe de crear una peticion de cambio para hacer los cambios
+    pertinentes.
+    """
+    item = Item.objects.get(id=id_item)
+    if request.method == "POST":
+        form = forms.ModifyItemForm(data=request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            item.name = name
+            item.description = description
+            item.save()
+            return HttpResponseRedirect('/des/list_items/')
+            
+    if request.method == "GET":
+        form = forms.ModifyItemForm(initial={
+            'name': item.name,
+            'description':item.description,
+            })
+    ctx = {'form': form, 'item': item}
+    return render_to_response('des/item/modify_item.html', ctx, context_instance=RequestContext(request))
+
+@transaction.atomic()
+@reversion.create_revision()   
+def delete_item(request, id_item):
+    """
+    Elimina logicamente el item seleccionado. El item debera estar activo para poder ser eliminado.
+    Si el item se encuentra cerrado. Se debe de crear una peticion de cambio para hacer los cambios
+    pertinentes.
+    """
+    item = Item.objects.get(id=id_item)
+    if request.method == "POST":
+        item.delete()
+        return HttpResponseRedirect('/des/list_items/')
+    if request.method == "GET":
+        ctx = {'item':item}
+        return render_to_response('des/item/delete_item.html', ctx, context_instance=RequestContext(request))
+    

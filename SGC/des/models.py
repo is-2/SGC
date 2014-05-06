@@ -41,3 +41,15 @@ class Attribute(models.Model):
         
     def __unicode__(self):
         return self.name
+
+class Item(models.Model):
+    name = models.CharField('Name', max_length=100)
+    description = models.CharField('Description', max_length=100)
+    
+    class Meta:
+        permissions = (("puede_crear_item", "Puede crear item"),
+                       ("puede_modificar_item", "Puede modificar item"),
+                       ("puede_eliminar_item", "Puede eliminar item"),)
+        
+    def __unicode__(self):
+        return self.name
