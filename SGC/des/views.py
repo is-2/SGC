@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-from django.db import transaction
 from django.contrib.auth.decorators import permission_required, login_required
 from des.models import AttributeType, Attribute, ItemType, Item
 from des import forms
-import reversion
+
 # Create your views here.
 @login_required(login_url='/login/')
 def list_attribute_types(request):
@@ -234,7 +235,7 @@ def assign_attribute_value(request, id_attribute):
 
 def list_item_types(request):
     """
-    Lista los tipos de atributos existentes en el sistema.
+    Función que lista los Tipo de Ítems existentes en el Sistema.
     """
     item_ts = ItemType.objects.all()
     ctx = {'item_ts':item_ts}
@@ -242,7 +243,7 @@ def list_item_types(request):
 
 def create_item_type(request):
     """
-    Crea un tipo de item y lo almacena en el sistema.
+    Función que crea un Tipo de Ítem y lo almacena en el Sistema.
     """
     form = forms.CreateItemTypeForm()
     if request.method == "POST":
@@ -261,7 +262,7 @@ def create_item_type(request):
     
 def modify_item_type(request, id_item_type):
     """
-    Modifica un tipo de item del sistema.
+    Función que modifica un Tipo de Ítem del Sistema.
     """
     item_t = ItemType.objects.get(id=id_item_type)
     if request.method == "POST":
@@ -284,7 +285,7 @@ def modify_item_type(request, id_item_type):
 
 def delete_item_type(request, id_item_type):
     """
-    Elimina un atributo del sistema.
+    Función que elimina un Tipo de Ítem del Sistema.
     """
     item_t = ItemType.objects.get(id=id_item_type)
     if request.method == "POST":
@@ -295,12 +296,19 @@ def delete_item_type(request, id_item_type):
         return render_to_response('des/item_type/delete_item_type.html', ctx, context_instance=RequestContext(request))
 
 def assign_item_attribute(request, id_item_type):
+    """
+    Función que despliega todos los Atributos disponibles en el sistema para ser asignados/desasignados 
+    por por Tipo de Ítem seleccionado.
+    """
     attr = Attribute.objects.all()
     item_t = ItemType.objects.get(id=id_item_type)
     ctx = {'item_t':item_t, 'attr':attr}
     return render_to_response('des/item_type/assign_item_attribute.html', ctx, context_instance=RequestContext(request))
     
 def grant_attribute(request, id_item_type, id_attribute):
+    """
+    Función que asigna un Atributo al Tipo de Ítem.
+    """
     item_t = ItemType.objects.get(id=id_item_type)
     attr = Attribute.objects.get(id=id_attribute)
     new_attr = False
@@ -315,6 +323,9 @@ def grant_attribute(request, id_item_type, id_attribute):
     return render_to_response('des/item_type/grant_attribute.html', ctx, context_instance=RequestContext(request))
 
 def deny_attribute(request, id_item_type, id_attribute):
+    """
+    Función que desasigna un Atributo al Tipo de Ítem.
+    """
     item_t = ItemType.objects.get(id=id_item_type)
     attr = Attribute.objects.get(id=id_attribute)
     item_t.attributes.remove(attr)
@@ -324,7 +335,7 @@ def deny_attribute(request, id_item_type, id_attribute):
 
 def visualize_item_type(request, id_item_type):
     """
-    Despliega los campos de un tipo de item.
+    Función que despliega los campos de un Tipo de Ítem.
     """
     item_t = ItemType.objects.get(id=id_item_type)
     attrs = item_t.attributes.all()
@@ -333,20 +344,15 @@ def visualize_item_type(request, id_item_type):
 
 def list_items(request):
     """
-    Visualiza todos los items del sistema.
+    Función que visualiza todos los Ítems del Sistema.
     """
     items = Item.objects.all()
     ctx = {'items':items}
     return render_to_response('des/item/list_items.html', ctx, context_instance=RequestContext(request))
 
-@transaction.atomic()
-@reversion.create_revision()
-def create_item(request):
+def  create_item(request):
     """
-    Crear un item y lo almacena en la base de datos.
-    """
-    """
-    Crea un tipo de atributo y lo almacena en el sistema.
+    Función que crea un Ítem y lo almacena en el Sistema.
     """
     form = forms.CreateItemForm()
     if request.method == "POST":
@@ -362,13 +368,11 @@ def create_item(request):
             return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
     ctx = {'form':form}
     return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
-
-@transaction.atomic()
-@reversion.create_revision()   
+    
 def modify_item(request, id_item):
     """
-    Modifica los datos del item seleccionado. El item debera estar activo para poder ser modificado.
-    Si el item se encuentra cerrado. Se debe de crear una peticion de cambio para hacer los cambios
+    Función que modifica los datos del Ítem seleccionado. El Ítem deberá estar activo para poder ser modificado.
+    Si el Ítem se encuentra cerrado. Se debe de crear una Petición de Cambio para hacer los cambios
     pertinentes.
     """
     item = Item.objects.get(id=id_item)
@@ -390,12 +394,10 @@ def modify_item(request, id_item):
     ctx = {'form': form, 'item': item}
     return render_to_response('des/item/modify_item.html', ctx, context_instance=RequestContext(request))
 
-@transaction.atomic()
-@reversion.create_revision()   
 def delete_item(request, id_item):
     """
-    Elimina logicamente el item seleccionado. El item debera estar activo para poder ser eliminado.
-    Si el item se encuentra cerrado. Se debe de crear una peticion de cambio para hacer los cambios
+    Función que elimina lógicamente el Ítem seleccionado. El Ítem deberá estar activo para poder ser eliminado.
+    Si el Ítem se encuentra cerrado, se debe de crear una Petición de Cambio para hacer los cambios
     pertinentes.
     """
     item = Item.objects.get(id=id_item)
@@ -406,3 +408,25 @@ def delete_item(request, id_item):
         ctx = {'item':item}
         return render_to_response('des/item/delete_item.html', ctx, context_instance=RequestContext(request))
     
+def assign_item_type(request, id_item):
+    """
+    Función que lista los Tipo de Ítems asignables al Ítem seleccionado. El usuario debe seleccionar el botón
+    al lado derecho para Asignar/Quitar el Tipo de Ítem. Si el Ítem ya tiene un Tipo de Ítem seleccionado, solo
+    podrá visualizar el Tipo de Ítem seleccionado.
+    """
+    item_types = ItemType.objects.all()
+    item = Item.objects.get(id=id_item)
+    ctx = {'item':item, 'item_types':item_types}
+    return render_to_response('des/item/assign_item_type.html', ctx, context_instance=RequestContext(request))
+
+def add_item_type(request, id_item, id_item_type):
+    """
+    Función que asigna el Tipo de Item al Item seleccionado. El Item sera la instancia del Tipo de Items con
+    sus respectivos atributos.
+    """
+    item = Item.objects.get(id=id_item)
+    item_type = ItemType.objects.get(id=id_item_type)
+    item.type = item_type
+    item.save()
+    ctx = {'item':item, 'item_type':item_type}
+    return render_to_response('des/item/add_item_type.html', ctx, context_instance=RequestContext(request))

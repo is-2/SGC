@@ -31,11 +31,8 @@
 							href="{% url 'delete_item' id_item=i.id %}"><span
 								class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
 						<td><a class="btn btn-sm btn-default"
-							href="#"><span
+							href="{% url 'assign_item_type' id_item=i.id %}"><span
 								class="glyphicon glyphicon-search"></span> Asignar Tipo</a></td>
-						<td><a class="btn btn-sm btn-default"
-							href="#"><span
-								class="glyphicon glyphicon-search"></span> Visualizar</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>

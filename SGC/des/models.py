@@ -45,6 +45,7 @@ class Attribute(models.Model):
 class Item(models.Model):
     name = models.CharField('Name', max_length=100)
     description = models.CharField('Description', max_length=100)
+    type = models.ForeignKey('ItemType', null=True)
     
     class Meta:
         permissions = (("puede_crear_item", "Puede crear item"),
