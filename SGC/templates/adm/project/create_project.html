@@ -7,7 +7,7 @@
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
-            <button type="submit" class="btn btn-primary"> Aceptar </button>
+            <button type="submit" class="btn btn-primary"> Finalizar </button>
 		</form>
 		<br>
 		<a class="btn btn-sm btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>

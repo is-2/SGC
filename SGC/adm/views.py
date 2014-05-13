@@ -255,9 +255,8 @@ def create_project(request):
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
             p = Project(name=name, description=description)
-            p.save()  # Save information
-            ctx = {"project":p}
-            return render_to_response('adm/project/mohave_wasteland.html', ctx, context_instance=RequestContext(request))
+            p.save()           
+            return HttpResponseRedirect('/adm/list_projects/')
         else:
             ctx = {'form':form}
             return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
@@ -265,35 +264,92 @@ def create_project(request):
     return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def create_project_phase(request, id_project):
-    """
-    Crea un nueva fase para el proyecto.
-    """
-    form = forms.CreatePhaseForm()
-    if request.method == 'POST':
-        form = forms.CreatePhaseForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            project = Project.objects.get(id=id_project)
-            phase = Phase.objects.create(name=name, project=project)
-            phase.save()
-            ctx = {'project':project}            
-            return render_to_response('adm/project/mohave_wasteland.html', ctx, context_instance=RequestContext(request))
-        else:
-            ctx = {'form':form}
-            return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
-    ctx = {'form':form}
-    return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
-
-@login_required(login_url='/login/')
-def list_project_phases(request, id_project):
+def manage_project_phases(request, id_project):
     """
     Despliega las fases que tiene el proyecto seleccionado.
     """
     project = Project.objects.get(id=id_project)    
-    phases = Phase.objects.filter(project__id=id_project)
+    phases = Phase.objects.filter(project_id=id_project)
     ctx = {'project':project, 'phases':phases}
-    return render_to_response('adm/project/list_project_phases.html', ctx, context_instance=RequestContext(request))
+    return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def create_project_phase(request, id_project):
+    """
+    Crea un nueva fase para el proyecto.
+    """
+    project = Project.objects.get(id=id_project)
+    form = forms.CreatePhaseForm()
+    
+    if request.method == 'POST':
+        
+        form = forms.CreatePhaseForm(request.POST)
+        
+        if form.is_valid():
+            name = form.cleaned_data['name']            
+            phase = Phase.objects.create(name=name, project=project)
+            phase.save()
+            ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
+            return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+        
+        else:
+            ctx = {'form':form, 'project':project}
+            return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
+        
+    ctx = {'form':form, 'project':project}
+    return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def modify_project_phase(request, id_project, id_phase):
+    """
+    Modifica una fase.
+    """
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    
+    if request.method == "POST":
+        form = forms.ModPhaseForm(data=request.POST)
+        if form.is_valid():
+
+            name = form.cleaned_data['name']
+            phase.name = name
+            phase.save()
+            
+            ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
+            return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+            
+    if request.method == "GET":
+        form = forms.ModPhaseForm(initial={
+            'name' : phase.name,
+            })
+    ctx = {'form': form, 'project':project, 'phase': phase}
+    return render_to_response('adm/project/modify_project_phase.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def visualize_phase(request,id_project, id_phase):
+    """
+    """
+    project = Project.objects.get(id=id_project)
+    p = Phase.objects.get(id=id_phase)
+    ctx = {'project':project, 'phase': p}
+    return render_to_response('adm/project/visualize_phase.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def delete_project_phase(request, id_project, id_phase):
+    """
+    Elimina una fase.
+    """
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    
+    if request.method == "POST":
+        phase.delete()
+        ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}          
+        return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+    
+    if request.method == "GET":
+        ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}
+        return render_to_response('adm/project/delete_project_phase.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def manage_project_users(request, id_project):
@@ -358,8 +414,8 @@ def assign_committee_user(request, id_project, id_user):
     """
     Asigna un usuario al comité de gestión de cambio.
     """
-    user = User.objects.get(id=id_user) 
-    project = Project.objects.get(id=id_project)       
+    project = Project.objects.get(id=id_project) 
+    user = User.objects.get(id=id_user)          
     new_user = False
     
     try:

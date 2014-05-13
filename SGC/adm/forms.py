@@ -114,4 +114,6 @@ class CreatePhaseForm(forms.Form):
     """
     """
     name = forms.CharField(label="Nombre", required=True)
-    
+
+class ModPhaseForm(forms.Form):
+    name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)

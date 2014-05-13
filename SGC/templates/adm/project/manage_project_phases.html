@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block title %} SGC {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Gestión de Fases</h2>
+		<a class="btn btn-sm btn-default" href="{% url 'create_project_phase' id_project=project.id %}"><span class="glyphicon glyphicon-plus"></span> Crear Fase </a>
+		<br><br>
+		{% if phases %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre</th>
+                    		<th></th>
+                    		<th></th>
+                    		<th></th>                    		
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for p in phases %}
+	                			<tr>
+	                    			<td>{{ p.id }}</td>
+	                    			<td>{{ p.name }}</td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_project_phase' id_project=project.id id_phase=p.id %}"><span class="#"></span> Modificar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_project_phase' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'visualize_phase' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>	                    			
+	                			</tr>	                		
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen fases.</h3>
+    	{% endif %}
+	</div>
+	<a class="btn btn-sm btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

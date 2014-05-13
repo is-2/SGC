@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block title %} SGC {% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h3>¿Desea eliminar la fase {{ phase.name }}?</h3>
+		<form action="" method="post">
+			{% csrf_token %}
+			<p class="text-warning"><small>Se borrarán los registros de la fase.</small></p>
+			<br>
+			<a type="button" class="btn btn-default" href="{% url 'manage_project_phases' id_project=project.id %}">Volver</a>
+        	<button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+	</div>
+</div>
+{% endblock %}

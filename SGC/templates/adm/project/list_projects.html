@@ -1,5 +1,5 @@
 {% extends "index.html" %}
-{% block title %}Mysite - Administracion de Proyectos y Fases{% endblock %}
+{% block title %} SGC {% endblock %}
 {% block content %}
 
 <div class="jumbotron">
@@ -28,9 +28,9 @@
 	                    			<td>{{ p.name }}</td>
 	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_project' id_project=p.id %}"><span class="#"></span> Modificar</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_project' id_project=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_phases' id_project=p.id %}"><span class="#"></span> Fases</a></td>
 	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_users' id_project=p.id %}"><span class="#"></span> Usuarios</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_committee' id_project=p.id %}"><span class="#"></span> Comité</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'list_project_phases' id_project=p.id %}"><span class="#"></span> Fases</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_committee' id_project=p.id %}"><span class="#"></span> Comité</a></td>	                    			
 	                			</tr>
                 		{% endfor %}
                 	</tbody>
