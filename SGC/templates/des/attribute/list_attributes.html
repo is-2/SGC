@@ -1,39 +1,37 @@
-{% extends "index.html" %} {% block title %}SGC - Administración de Atributo{% endblock %} {% block content %}
+{% extends "index.html" %} {% block title %}SGC - Administración de
+Atributo{% endblock %} {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Administración Atributos</h1>
-		<a class="btn btn-sm btn-default" href="{% url 'create_attribute' %}"><span
-			class="glyphicon glyphicon-plus"></span>Crear Tipo de Atributos</a> <br>
-		<br> {% if attributes %}
+		<h2>Administración Atributos</h2>
+		<br> {% if attr %}
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
 						<th>Nombre Atributos</th>
-						<th></th>
+						<th>Valor</th>
 						<th></th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for a in attributes %}
+					{% for a in attr %}
 					<tr>
 						<td>{{ a.id }}</td>
 						<td>{{ a.name }}</td>
-						<td><a class="btn btn-sm btn-default"
-							href="{% url 'modify_attribute' id_attribute=a.id %}"><span class="#"></span>
-								Modificar</a></td>
-						<td><a class="btn btn-sm btn-default"
-							href="{% url 'delete_attribute' id_attribute=a.id %}"><span
-								class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-						<td><a class="btn btn-sm btn-default"
-							href="{% url 'assign_attribute_type' id_attribute=a.id %}"><span
-								class="glyphicon glyphicon-search"></span> Asignar Tipo</a></td>
-						<td><a class="btn btn-sm btn-default"
-							href="{% url 'visualize_attribute' id_attribute=a.id %}"><span
-								class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+						{% if a.type = "Numerico" %}
+							<td>{{ a.attr_int }}</td>
+						{% elif a.type == 'Cadena' %}
+							<td>{{ a.attr_str }}</td>
+						{% elif a.type == 'Booleano' %}
+							<td>{{ a.attr_bool }}</td>
+						{% else %}
+							<td>{{ a.attr_date }}</td>
+						{% endif %}
+						<td><a class="btn btn-sm btn-default" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id %}"><span
+								class="#"></span> Asignar valor</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>
@@ -43,5 +41,7 @@
 		<h3>No existen Atributos</h3>
 		{% endif %}
 	</div>
+	<br> <a class="btn btn-default" href="{% url 'list_items' %}"><span
+		class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

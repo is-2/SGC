@@ -1,18 +1,19 @@
-{% extends "index.html" %} {% block title %}SGC - Administración de Items{% endblock %} {% block content %}
+{% extends "index.html" %} {% block title %}SGC - Administración de Ítems{% endblock %} {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Administración Items</h1>
+		<h2>Administración Ítems</h2>
 		<a class="btn btn-sm btn-default" href="{% url 'create_item' %}"><span
-			class="glyphicon glyphicon-plus"></span>Crear Item</a> <br>
+			class="glyphicon glyphicon-plus"></span>Crear Ítem</a> <br>
 		<br> {% if items %}
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nombre Item</th>
-						<th>Descripcion</th>
+						<th>Nombre de Ítem</th>
+						<th>Descripción</th>
+						<th>Predecesor</th>
 						<th></th>
 						<th></th>
 						<th></th>
@@ -24,6 +25,7 @@
 						<td>{{ i.id }}</td>
 						<td>{{ i.name }}</td>
 						<td>{{ i.description }}</td>
+						<td>{{ i.predecessor.name }}</td>
 						<td><a class="btn btn-sm btn-default"
 							href="{% url 'modify_item' id_item=i.id %}"><span class="#"></span>
 								Modificar</a></td>
@@ -31,15 +33,18 @@
 							href="{% url 'delete_item' id_item=i.id %}"><span
 								class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
 						<td><a class="btn btn-sm btn-default"
-							href="{% url 'assign_item_type' id_item=i.id %}"><span
+							href="{% url 'assign_item_type' id_item=i.id%}"><span
 								class="glyphicon glyphicon-search"></span> Asignar Tipo</a></td>
+						<td><a class="btn btn-sm btn-default"
+							href="{% url 'list_attributes' id_item=i.id%}"><span
+								class="glyphicon glyphicon-search"></span> Listar Atributos</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
 		{% else %}
-		<h3>No existen Items</h3>
+		<h3>No existen Ítems</h3>
 		{% endif %}
 	</div>
 </div>

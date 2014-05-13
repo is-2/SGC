@@ -3,9 +3,9 @@ de Atributo{% endblock %} {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Administración de Tipo de Atributos</h1>
+		<h2>Administración de Tipo de Atributos</h2>
 		<a class="btn btn-sm btn-default" href="{% url 'create_attribute_type' %}"><span
-			class="glyphicon glyphicon-plus"></span>Crear Tipo de Atributos</a> <br>
+			class="glyphicon glyphicon-plus"></span> Crear Tipo de Atributos</a> <br>
 		<br> 
 		{% if attribute_types %}
 		<div class="table-responsive">
@@ -14,6 +14,7 @@ de Atributo{% endblock %} {% block content %}
 					<tr>
 						<th>ID</th>
 						<th>Nombre de Tipo de Atributos</th>
+						<th>Tipo</th>
 						<th></th>
 						<th></th>
 						<th></th>
@@ -24,6 +25,7 @@ de Atributo{% endblock %} {% block content %}
 					<tr>
 						<td>{{ attribute_type.id }}</td>
 						<td>{{ attribute_type.name }}</td>
+						<td>{{ attribute_type.attr_type }}</td>
 						<td><a class="btn btn-sm btn-default"
 							href="{% url 'modify_attribute_type' id_attribute_type=attribute_type.id %}"><span class="#"></span>
 								Modificar</a></td>

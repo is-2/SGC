@@ -1,18 +1,18 @@
 {% extends "index.html" %}
-{% block title %}SGC - Item {{ item.name }}{% endblock %}
+{% block title %}SGC - Ítem {{ item.name }}{% endblock %}
 {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1><small>Asignar Tipo de Item</small></h1>
+		<h2>Asignar Tipo de Ítem</h2>
 		<br><br>
-		{% if item.type == null %}
+		{% if item.attribute_set.all == null %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
             		<thead>
                 		<tr>
                     		<th>ID</th>
-                    		<th>Nombre del Tipo de Item</th>
+                    		<th>Nombre del Tipo de Ítem</th>
                     		<th></th>
                     	</tr>
                     </thead>
@@ -28,10 +28,10 @@
         		</table>
     		</div>
     	{% else %}
-    		<h3>No posee tipo de tipo de items.</h3>
+    		<h3>Tipo de Ítems ya asignado o no existe Tipo de Ítems.</h3>
     	{% endif %}
 	</div>
 	<br>
-		<a class="btn btn-default" href="{% url 'list_attributes' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-default" href="{% url 'list_items' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

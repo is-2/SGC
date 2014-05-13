@@ -1,20 +1,12 @@
 {% extends "index.html" %}
-{% block title %} Usuario {{ attribute_type.name }}{% endblock %}
+{% block title %} Tipo de Atributo - {{ attribute_type.name }}{% endblock %}
 {% block content %}
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Detalles del Atributo</h1>
-		<p><label><b>Nombre</b></label> {{ attribute_type.name }}</p>
-		<p><label><b>Descripcion</b></label> {{ attribute_type.description }}</p> 
-		{% if attribute_type.choice == 0 %}
-			<p><label><b>Numero</b></label></p>
-		{% elif attribute_type.choce == 1 %}
-			<p><label><b>Cadena</b></label></p>
-		{% elif attribute_type.choice == 2 %}
-			<p><label><b>Booleano</b></label></p>
-		{% else %}
-			<p><label><b>Fecha</b></label></p>
-		{% endif %}
+		<h2>Detalles del Tipo de Atributo</h2>
+		<p><label><b>Nombre:</b></label> {{ attribute_type.name }}</p>
+		<p><label><b>Descripción:</b></label> {{ attribute_type.description }}</p> 
+	    <p><label><b>Tipo:</b></label> {{ attribute_type.attr_type}}</p>
 		<br>
 		<a class="btn btn-sm btn-default" href="{% url 'list_attribute_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 	</div>

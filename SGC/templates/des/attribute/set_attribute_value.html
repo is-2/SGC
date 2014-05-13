@@ -3,14 +3,14 @@
 {% block content %}
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Asignar Valor al Atributo</h1>
+		<h2>Asignar Valor al Atributo</h2>
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
             <button type="submit" class="btn btn-primary">Asignar</button>
 		</form>
 		<br>
-		<a class="btn btn-sm btn-default" href="{% url 'list_attributes' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-sm btn-default" href="{% url 'list_attributes' id_item=item.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 	</div>
 </div>
 {% endblock %}

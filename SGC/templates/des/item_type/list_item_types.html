@@ -1,17 +1,17 @@
-{% extends "index.html" %} {% block title %}SGC - Administración de Tipo de Item{% endblock %} {% block content %}
+{% extends "index.html" %} {% block title %}SGC - Administración de Tipo de Ítem{% endblock %} {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Administración de Tipo de Item</h1>
+		<h2>Administración de Tipo de Ítem</h2>
 		<a class="btn btn-sm btn-default" href="{% url 'create_item_type' %}"><span
-			class="glyphicon glyphicon-plus"></span> Crear Tipo de Item</a> <br>
+			class="glyphicon glyphicon-plus"></span> Crear Tipo de Ítem</a> <br>
 		<br> {% if item_ts %}
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nombre Tipo de Item</th>
+						<th>Nombre Tipo de Ítem</th>
 						<th></th>
 						<th></th>
 						<th></th>
@@ -29,8 +29,8 @@
 							href="{% url 'delete_item_type' id_item_type=i.id %}"><span
 								class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
 						<td><a class="btn btn-sm btn-default"
-							href="{% url 'assign_item_attribute' id_item_type=i.id %}"><span
-								class="glyphicon glyphicon-search"></span> Asignar Tipo a Atributo</a></td>
+							href="{% url 'assign_attribute_type' id_item_type=i.id %}"><span
+								class="glyphicon glyphicon-search"></span> Asignar Tipo de Atributo</a></td>
 						<td><a class="btn btn-sm btn-default"
 							href="{% url 'visualize_item_type' id_item_type=i.id %}"><span
 								class="glyphicon glyphicon-search"></span> Visualizar</a></td>

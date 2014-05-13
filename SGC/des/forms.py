@@ -3,17 +3,19 @@ from django import forms
 from des.models import AttributeType, Attribute, ItemType, Item
 import datetime
 
+CHOICES = (
+               (0, "Numerico"),
+               (1, "Cadena"),
+               (2, "Booleano"),
+               (3, "Fecha"),
+)
+
 class CreateAttributeTypeForm(forms.Form):
-    CHOICES = (
-             (0, "Numerico"),
-             (1, "Cadena"),
-             (2, "Booleano"),
-             (3, "Fecha"),
-    )
+    
     
     name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
-    choice = forms.ChoiceField(label='Tipo', widget=forms.RadioSelect(), choices=CHOICES, required=True)
+    attr_type = forms.ChoiceField(label='Tipo', widget=forms.RadioSelect(), choices=CHOICES, required=True)
     
     def clean_name(self):
         name = self.cleaned_data['name']
@@ -23,7 +25,7 @@ class CreateAttributeTypeForm(forms.Form):
                 return name
         except AttributeType.DoesNotExist:
             return name
-        raise forms.ValidationError('El tipo de atributo ya existe.')
+        raise forms.ValidationError('El Tipo de Atributo ya existe.')
 
 class AssignIntegerForm(forms.Form):
     attr_int = forms.IntegerField(label="Numero", widget=forms.NumberInput(), required=True)
@@ -37,9 +39,15 @@ class AssignBooleanForm(forms.Form):
 class AssignDateForm(forms.Form):
     attr_date = forms.DateField(label="Fecha", widget=forms.DateInput(), required=True, initial=datetime.date.today)
     
+    
+    
 class ModifyAttributeTypeForm(forms.Form):
-    name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    """
+    Formulario para modificar el Tipo de Atributo seleccionado.
+    """
+    name = forms.CharField(label=u"Nombre", widget=forms.TextInput(), required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    attr_type = forms.ChoiceField(label='Tipo', widget=forms.RadioSelect(), choices=CHOICES, required=True)
     
     def clean_name(self):
         name = self.cleaned_data['name']
@@ -49,14 +57,16 @@ class ModifyAttributeTypeForm(forms.Form):
                 return name
         except AttributeType.DoesNotExist:
             return name
-        raise forms.ValidationError('El tipo de atributo ya existe.')
-    
+        raise forms.ValidationError('El Tipo de Atributo ya existe.')
+
+# NOT USED
 class CreateAttributeForm(forms.Form):
-    name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    name = forms.CharField(label=u"Nombre", widget=forms.TextInput(), required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
-    
+
+# NOT USED
 class ModifyAttributeForm(forms.Form):
-    name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
+    name = forms.CharField(label=u"Nombre", widget=forms.TextInput(), required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
     
     def clean_name(self):
@@ -67,7 +77,7 @@ class ModifyAttributeForm(forms.Form):
                 return name
         except Attribute.DoesNotExist:
             return name
-        raise forms.ValidationError('El atributo ya existe.')
+        raise forms.ValidationError('El Atributo ya existe.')
     
 class CreateItemTypeForm(forms.Form):
     name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
