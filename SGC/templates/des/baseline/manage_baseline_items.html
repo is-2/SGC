@@ -22,9 +22,9 @@
                     			<td>{{ i.id }}</td>
                     			<td>{{ i.name }}</td>
                     			{% if i in bsitems %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'remove_baseline_item' id_user=u.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                    				<td><a class="btn btn-sm btn-default" href="{% url 'remove_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
                     			{% else %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'assign_baseline_item' id_user=u.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    				<td><a class="btn btn-sm btn-default" href="{% url 'assign_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
                     			{% endif %}
                 			</tr>
                 		{% endfor %}
@@ -36,6 +36,6 @@
     	{% endif %}
 	</div>
 	<br>
-		<a class="btn btn-default" href="{% url 'list_phase_baseline id_user=user.id id_project=project.id' id_phase=phase.id%}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=phase.id%}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

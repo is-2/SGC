@@ -2,7 +2,7 @@
 {% block title %}SGC - Modificar Tipo de Item {{ item_type.name }}{% endblock %}
 {% block content %}
 <div class="jumbotron">
-	<h1><small>Modificar Tipo de Item</small></h1>
+	<h2>Modificar rol</h2>
 	<form class="form-horizontal" method="POST">
 		{% csrf_token %}
 		
@@ -45,9 +45,8 @@
         <br>
 		
 		<br>
-        <button type="submit" class="btn btn-success">Modificar</button>
-	</form>
-	<br>
-	<a class="btn btn-default" href="{% url 'list_item_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+        <button type="submit" class="btn btn-warning">Modificar</button>
+        <a class="btn btn-default" href="{% url 'list_item_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</form>	
 </div>
 {% endblock %}

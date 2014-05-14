@@ -1,9 +1,9 @@
 {% extends "index.html" %}
-{% block title %} Usuario {{ user.username }}{% endblock %}
+{% block title %} SGC {% endblock %}
 {% block content %}
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Detalles del usuario</h1>
+		<h2>Detalles del usuario</h2>
 		<p><label><b>Username:</b></label> {{ user.username }}</p>
 		<p><label><b>Nombre:</b></label> {{ user.first_name }}</p>
 		<p><label><b>Apellido:</b></label> {{ user.last_name}}</p>
@@ -12,7 +12,7 @@
 		<p><label><b>Dirección:</b></label> {{ user.client.address }}</p>
 		<p><label><b>Observación:</b></label> {{ user.client.observation }}</p>
 		<br>
-		<a class="btn btn-sm btn-default" href="{% url 'list_users' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-default" href="{% url 'list_users' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 	</div>
 </div>
 {% endblock %}

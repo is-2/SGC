@@ -4,8 +4,7 @@
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1><small>Roles del Usuario {{ user.name }}</small></h1>
-		<br><br>
+		<h2>Roles del usuario: {{user.username}}</h2>
 		{% if groups %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
@@ -22,9 +21,9 @@
                     			<td>{{ g.id }}</td>
                     			<td>{{ g.name }}</td>
                     			{% if g in user.groups.all %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'deny_user_group' id_user=user.id id_group=g.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                    				<td><a class="btn btn-sm btn-danger" href="{% url 'deny_user_group' id_user=user.id id_group=g.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Quitar</a></td>
                     			{% else %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'grant_user_group' id_user=user.id id_group=g.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    				<td><a class="btn btn-sm btn-primary" href="{% url 'grant_user_group' id_user=user.id id_group=g.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Asignar</a></td>
                     			{% endif %}
                 			</tr>
                 		{% endfor %}

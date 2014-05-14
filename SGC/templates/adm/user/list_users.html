@@ -4,8 +4,8 @@
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Administración de usuarios</h1>
-		<a class="btn btn-sm btn-default" href="{% url 'add_user' %}"><span class="glyphicon glyphicon-plus"></span>Crear Usuario</a>
+		<h2>Administración de usuarios</h2>
+		<a class="btn btn-success" href="{% url 'add_user' %}"><span class="glyphicon glyphicon-plus"></span> Crear usuario</a>
 		<br><br>
 		{% if users %}
 			<div class="table-responsive"> 
@@ -16,9 +16,6 @@
                     		<th>Nombre de usuario</th>
                     		<th>Email</th>
                     		<th></th>
-                    		<th></th>
-                    		<th></th>
-                    		<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -27,11 +24,15 @@
 	                			<tr>
 	                    			<td>{{ u.id }}</td>
 	                    			<td>{{ u.username }}</td>
-	                    			<td>{{ u.email }}</td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_user' id_user=u.id %}"><span class="#"></span> Modificar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_user' id_user=u.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'visualize_user' id_user=u.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'assign_user_groups' id_user=u.id %}"><span class="glyphicon glyphicon-search"></span> Asignar Roles</a></td>
+	                    			<td>{{ u.email }}</td>	                    			
+	                    			<td>
+		                    			<div class="btn-group">
+		                    				<a class="btn btn-sm btn-default" href="{% url 'assign_user_groups' id_user=u.id %}"><span class="glyphicon glyphicon-flag"></span> Asignar Roles</a>
+		                    				<a class="btn btn-sm btn-default" href="{% url 'visualize_user' id_user=u.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar</a>
+		                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_user' id_user=u.id %}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+		                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_user' id_user=u.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+		                    			</div>		                    				
+	                    			</td>	                    			
 	                			</tr>
 	                		{% endif %}
                 		{% endfor %}
