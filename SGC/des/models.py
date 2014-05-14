@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from adm.models import Phase
 import reversion
 # Create your models here.
 class AttributeType(models.Model):
@@ -91,3 +92,15 @@ class Item(models.Model):
     
 reversion.register(Item, follow=["attribute_set"])
 reversion.register(Attribute)
+
+BASELINE_STATES = (
+    (0, "Abierto"),
+    (1, "Cerrado"),
+)
+
+class BaseLine(models.Model):
+    """
+    """
+    name = models.CharField(max_length=30, blank=False)
+    state = models.IntegerField(max_length=30,choices= BASELINE_STATES, default=0)
+    phase = models.ForeignKey(Phase)

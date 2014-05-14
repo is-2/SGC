@@ -18,8 +18,9 @@ urlpatterns = patterns('',
     url(r'^adm/list_groups/assign_perm/(?P<id_group>\d+)/grant_perm/(?P<id_perm>\d+)$', views.grant_permissions, name='grant_perm'),
     url(r'^adm/list_groups/assign_perm/(?P<id_group>\d+)/deny_perm/(?P<id_perm>\d+)$', views.deny_permissions, name='deny_perm'),    
     url(r'^adm/list_projects/$', views.list_projects, name='list_projects'),
-    url(r'^adm/list_projects/create_project/$', views.create_project, name='create_project'),
+    url(r'^adm/list_projects/create_project/$', views.create_project, name='create_project'),    
     url(r'^adm/list_projects/modify_project/(?P<id_project>\d+)/$', views.modify_project, name='modify_project'),
+    url(r'^adm/list_projects/modify_project_state/(?P<id_project>\d+)/$', views.modify_project_state, name='modify_project_state'),
     url(r'^adm/list_projects/delete_project/(?P<id_project>\d+)/$', views.delete_project, name='delete_project'),    
     url(r'^adm/list_projects/manage_project_phases/(?P<id_project>\d+)/$', views.manage_project_phases, name='manage_project_phases'),
     url(r'^adm/list_projects/manage_project_phases/(?P<id_project>\d+)/create_project_phase/$', views.create_project_phase, name='create_project_phase'),
@@ -32,6 +33,5 @@ urlpatterns = patterns('',
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/$', views.manage_project_committee, name='manage_project_committee'),
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/assign_committee_user/(?P<id_user>\d+)/$', views.assign_committee_user, name='assign_committee_user'),
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/remove_committee_user/(?P<id_user>\d+)/$', views.remove_committee_user, name='remove_committee_user'),
-    
-    
+       
 )

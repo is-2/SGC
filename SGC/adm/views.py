@@ -254,7 +254,7 @@ def create_project(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
-            p = Project(name=name, description=description)
+            p = Project(name=name, description=description, state=0)
             p.save()           
             return HttpResponseRedirect('/adm/list_projects/')
         else:
@@ -308,7 +308,7 @@ def modify_project_phase(request, id_project, id_phase):
     phase = Phase.objects.get(id=id_phase)
     
     if request.method == "POST":
-        form = forms.ModPhaseForm(data=request.POST)
+        form = forms.ModifyPhaseForm(data=request.POST)
         if form.is_valid():
 
             name = form.cleaned_data['name']
@@ -319,7 +319,7 @@ def modify_project_phase(request, id_project, id_phase):
             return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
             
     if request.method == "GET":
-        form = forms.ModPhaseForm(initial={
+        form = forms.ModifyPhaseForm(initial={
             'name' : phase.name,
             })
     ctx = {'form': form, 'project':project, 'phase': phase}
@@ -467,7 +467,37 @@ def modify_project(request, id_project):
     return render_to_response('adm/project/modify_project.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+def modify_project_state(request, id_project):
+    """
+    """    
+    project = Project.objects.get(id=id_project)
+    if request.method == "POST":
+        form = forms.ModifyProjectStateForm(data=request.POST)
+        if form.is_valid():
+            state = form.cleaned_data['state']
+            project.state = state
+            project.save()
+            return HttpResponseRedirect('/adm/list_projects/')
+            
+    if request.method == "GET":
+        form = forms.ModifyProjectStateForm(initial={
+            'state': project.state,
+            })
+    ctx = {'form': form, 'project': project}
+    return render_to_response('adm/project/modify_project_state.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
 def delete_project(request, id_project):
+    """
+    Elimina un proyecto.
+    """
+    p = Project.objects.get(id=id_project)
+    if request.method == "POST":
+        Project.objects.get(id=id_project).delete()
+        return HttpResponseRedirect('/adm/list_projects/')
+    if request.method == "GET":
+        ctx = {'project':p}
+        return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
     """
     Elimina un proyecto.
     """

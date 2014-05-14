@@ -4,8 +4,10 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import permission_required, login_required
-from des.models import AttributeType, Attribute, ItemType, Item
+from adm.models import Project, Phase
+from des.models import AttributeType, Attribute, ItemType, Item, BaseLine
 from des import forms
 import reversion
 from reversion.models import Version
@@ -441,4 +443,91 @@ def revive_item(request, id_item):
     item.save()
     ctx = {'item':item}
     return render_to_response('des/item/revive_item.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def list_user_projects(request, id_user):
+    """
+
+    """
+    user = User.objects.get(id=id_user)
+    projects = user.projects.all()
+    ctx = {'user': user, 'projects':projects}
+    return render_to_response('des/baseline/list_user_projects.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def list_project_phases(request, id_user, id_project):
+    """
+    
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)    
+    phases = Phase.objects.filter(project_id=id_project)
+    ctx = {'user':user, 'project':project, 'phases':phases}
+    return render_to_response('des/baseline/list_project_phases.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def list_phase_baseline(request, id_user, id_project, id_phase):
+    """
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.filter(phase_id=id_phase)
+    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
+    return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def create_baseline(request, id_user, id_project, id_phase):
+    """
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    form = forms.CreateBaseLineForm()
+    
+    if request.method == 'POST':
+        
+        form = forms.CreateBaseLineForm(request.POST)
+        
+        if form.is_valid():
+            name = form.cleaned_data['name']            
+            baseline = BaseLine.objects.create(name=name, state=0, phase=phase)
+            baseline.save()
+            ctx = {'user':user, 'project':project, 'phase': phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+            return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+        
+        else:
+            ctx = {'form':form, 'user':user, 'project':project, 'phase':phase}
+            return render_to_response('des/baseline/create_baseline.html', ctx, context_instance=RequestContext(request))
+        
+    ctx = {'form':form, 'user':user, 'project':project, 'phase':phase}
+    return render_to_response('des/baseline/create_baseline.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def modify_baseline(request, id_user, id_project, id_phase, id_baseline):
+    """
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    
+    if request.method == "POST":
+        form = forms.ModifyBaseLineForm(data=request.POST)
+        if form.is_valid():
+
+            name = form.cleaned_data['name']
+            baseline.name = name
+            baseline.save()
+            
+            ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+            return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+            
+    if request.method == "GET":
+        form = forms.ModifyBaseLineForm(initial={
+            'name' : baseline.name,
+            })
+    ctx = {'form': form, 'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
+    return render_to_response('des/baseline/modify_baseline.html', ctx, context_instance=RequestContext(request))    
+
     

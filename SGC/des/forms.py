@@ -134,3 +134,13 @@ class ModifyItemForm(forms.Form):
         except Item.DoesNotExist:
             return name
         raise forms.ValidationError('El Item ya existe.')
+    
+class CreateBaseLineForm(forms.Form):
+    """
+    """
+    name = forms.CharField(label="Nombre", required=True)
+    
+class ModifyBaseLineForm(forms.Form):
+    """
+    """
+    name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)

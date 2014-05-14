@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.models import Group, User
-from adm.models import Project
+from adm.models import Project, PROYECT_STATES
 
 class AddUserForm(forms.Form):
     username = forms.CharField(label="Username", widget=forms.TextInput(), required=True)
@@ -83,6 +83,8 @@ class ModGroupForm(forms.Form):
         raise forms.ValidationError('El nombre de rol ya existe.')
 
 class CreateProjectForm(forms.Form):
+    """
+    """
     name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
     
@@ -97,6 +99,8 @@ class CreateProjectForm(forms.Form):
         raise forms.ValidationError('El nombre de proyecto ya existe.')
     
 class ModifyProjectForm(forms.Form):
+    """
+    """
     name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
     
@@ -110,10 +114,17 @@ class ModifyProjectForm(forms.Form):
             return name
         raise forms.ValidationError('El nombre de Proyecto ya existe.')
 
+class ModifyProjectStateForm(forms.Form):
+    """
+    """
+    state = forms.ChoiceField(label="Estado", choices=PROYECT_STATES, required=True)
+
 class CreatePhaseForm(forms.Form):
     """
     """
     name = forms.CharField(label="Nombre", required=True)
 
-class ModPhaseForm(forms.Form):
+class ModifyPhaseForm(forms.Form):
+    """
+    """
     name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)

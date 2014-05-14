@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% block title %} SGC {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Líneas bases</h2>
+		<a class="btn btn-sm btn-default" href="{% url 'create_baseline' id_user=user.id id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-plus"></span> Crear Línea base </a>
+		<br><br>
+		{% if baseline %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre</th>
+							<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for b in baseline %}
+	                			<tr>
+	                    			<td>{{ b.id }}</td>
+	                    			<td>{{ b.name }}</td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="#"></span> Modificar</a></td>	                    			
+	                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen líneas bases</h3>
+    	{% endif %}
+	</div>
+	<a class="btn btn-default" href="{% url 'list_project_phases' id_user=user.id id_project=project.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

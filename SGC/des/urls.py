@@ -27,4 +27,10 @@ urlpatterns = patterns('',
     url(r'des/list_items/list_attributes/(?P<id_item>\d+)/set_attribute_value/(?P<id_attr>\d+)/$', views.set_attribute_value, name='set_attribute_value'),
     url(r'des/list_items/list_deleted_items/$', views.list_deleted_items, name='list_deleted_items'),
     url(r'des/list_items/list_deleted_items/(?P<id_item>\d+)/revive_item/$', views.revive_item, name='revive_item'),
+    
+    url(r'des/list_user_projects/(?P<id_user>\d+)/$', views.list_user_projects, name='list_user_projects'),
+    url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/$', views.list_project_phases, name='list_project_phases'),
+    url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/$', views.list_phase_baseline, name='list_phase_baseline'),
+    url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/create_baseline/$', views.create_baseline, name='create_baseline'),
+    url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/modify_baseline/(?P<id_baseline>\d+)/$', views.modify_baseline, name='modify_baseline'),
 )
