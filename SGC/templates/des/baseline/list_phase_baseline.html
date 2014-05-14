@@ -15,6 +15,7 @@
                     		<th>ID</th>
                     		<th>Nombre</th>
 							<th></th>
+							<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -22,7 +23,8 @@
 	                			<tr>
 	                    			<td>{{ b.id }}</td>
 	                    			<td>{{ b.name }}</td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="#"></span> Modificar</a></td>	                    			
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="#"></span> Modificar</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="#"></span> Ítem</a></td>	                    				                    			
 	                			</tr>
                 		{% endfor %}
                 	</tbody>

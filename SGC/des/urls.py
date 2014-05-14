@@ -33,4 +33,7 @@ urlpatterns = patterns('',
     url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/$', views.list_phase_baseline, name='list_phase_baseline'),
     url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/create_baseline/$', views.create_baseline, name='create_baseline'),
     url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/modify_baseline/(?P<id_baseline>\d+)/$', views.modify_baseline, name='modify_baseline'),
+    url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/manage_baseline_items/(?P<id_baseline>\d+)/$', views.manage_baseline_items, name='manage_baseline_items'),
+    url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/manage_baseline_items/(?P<id_baseline>\d+)/assign_baseline_item/(?P<id_item>\d+)/$', views.assign_baseline_item, name='assign_baseline_item'),
+    url(r'des/list_user_projects/(?P<id_user>\d+)/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/manage_baseline_items/(?P<id_baseline>\d+)/remove_baseline_item/(?P<id_item>\d+)/$', views.remove_baseline_item, name='remove_baseline_item'),
 )

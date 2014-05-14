@@ -530,4 +530,62 @@ def modify_baseline(request, id_user, id_project, id_phase, id_baseline):
     ctx = {'form': form, 'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
     return render_to_response('des/baseline/modify_baseline.html', ctx, context_instance=RequestContext(request))    
 
+@login_required(login_url='/login/')
+def manage_baseline_items(request, id_user, id_project, id_phase, id_baseline):
+    """
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    items = Item.objects.filter(phase_id=id_phase)
+    bsitems = Item.objects.filter(baseline_id=id_baseline)
     
+    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def assign_baseline_item(request, id_user, id_project, id_phase, id_baseline, id_item):
+    """
+    
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    items = Item.objects.filter(phase_id=id_phase)
+    bsitems = Item.objects.filter(baseline_id=id_baseline)
+              
+    new_item = False
+    
+    try:
+        item = bsitems.get(id=id_item)
+    except Item.DoesNotExist:
+        new_item = True
+        
+    if new_item:
+        item.baseline_id = baseline.id
+        item.save()
+        
+    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def remove_baseline_item(request, id_user, id_project, id_phase, id_baseline, id_item):
+    """
+    
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    item = Item.objects.get(id=id_item)
+    items = Item.objects.filter(phase_id=id_phase)
+    bsitems = Item.objects.filter(baseline_id=id_baseline)
+    
+       
+    item.baseline_id = None
+    item.save()
+    
+    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))   
