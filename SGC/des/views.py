@@ -538,7 +538,10 @@ def modify_baseline(request, id_user, id_project, id_phase, id_baseline):
     ctx = {'form': form, 'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
     return render_to_response('des/baseline/modify_baseline.html', ctx, context_instance=RequestContext(request))    
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> refs/remotes/origin/iteration-1
 @login_required(login_url='/login/')
 def manage_baseline_items(request, id_user, id_project, id_phase, id_baseline):
     """
