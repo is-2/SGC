@@ -1,0 +1,37 @@
+{% extends "index.html" %} {% block title %}SGC - Administración de
+Ítems{% endblock %} {% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Historial del Ítem</h2>
+		{% if version_list %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Fecha de la revision creada</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for v in version_list %}
+					<tr>
+						<td>{{ v.revision.date_created }}</td>
+						<td>
+							<div class="btn-group">
+								<a class="btn btn-sm btn-default" href="{% url 'revert_item' id_item=item.id id_version=v.id %}"><span
+									class="glyphicon glyphicon-time"></span> Revertir</a>
+							</div>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		<h3>No existe historial</h3>
+		{% endif %} <a class="btn btn-default" href="{% url 'list_items' %}"><span
+			class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}

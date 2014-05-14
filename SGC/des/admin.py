@@ -7,7 +7,10 @@ admin.site.register(ItemType)
 admin.site.register(AttributeType)
 admin.site.register(Attribute)
 
+class AttributeInlineAdmin(admin.StackedInline):
+    model = Attribute
+    
 class ItemAdmin(reversion.VersionAdmin):
-    pass
+    inlines = [AttributeInlineAdmin,]
 
 admin.site.register(Item, ItemAdmin)

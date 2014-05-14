@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+import reversion
 # Create your models here.
 class AttributeType(models.Model):
     """
@@ -64,17 +65,20 @@ class Item(models.Model):
     Ítem es la clase que instancia a Tipo de Ítem. Es la clase que será utilizada como base para
     ser asignados a las fases.
     """
-    name = models.CharField('Name', max_length=100)
+    name = models.CharField('Name', max_length=100, unique=True)
     description = models.CharField('Description', max_length=100)
     
-    DEVELOP = 0
-    FINISHED = 1
-    DELETED = 2
-    STATUS_CHOICES = ((DEVELOP, 'Desarrollo'),
+    
+    DEVELOPED = 0
+    DEPLOYED = 1
+    FINISHED = 2
+    DELETED = 3
+    STATUS_CHOICES = ((DEVELOPED, 'Desarrollado'),
+                      (DEPLOYED, 'Desplegado'),
                       (FINISHED, 'Terminado'),
                       (DELETED, 'Eliminado'),)
     
-    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=DEVELOP)
+    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=DEVELOPED)
     predecessor = models.ForeignKey('Item', blank=True, null=True, on_delete=models.SET_NULL)
     
     class Meta:
@@ -84,3 +88,6 @@ class Item(models.Model):
         
     def __unicode__(self):
         return self.name
+    
+reversion.register(Item, follow=["attribute_set"])
+reversion.register(Attribute)

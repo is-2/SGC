@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from django.db import transaction
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -7,6 +7,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import permission_required, login_required
 from des.models import AttributeType, Attribute, ItemType, Item
 from des import forms
+import reversion
+from reversion.models import Version
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -218,6 +220,9 @@ def list_items(request):
     ctx = {'items':items}
     return render_to_response('des/item/list_items.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
+@transaction.atomic()
+@reversion.create_revision()
 def create_item(request):
     """
     Función que crea un Ítem y lo almacena en el Sistema.
@@ -236,7 +241,10 @@ def create_item(request):
             return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
     ctx = {'form':form}
     return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
-    
+ 
+@login_required(login_url='/login/')
+@transaction.atomic()
+@reversion.create_revision()   
 def modify_item(request, id_item):
     """
     Función que modifica los datos del Ítem seleccionado. El Ítem deberá estar activo para poder ser modificado.
@@ -262,6 +270,9 @@ def modify_item(request, id_item):
     ctx = {'form': form, 'item': item}
     return render_to_response('des/item/modify_item.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
+@transaction.atomic()
+@reversion.create_revision()
 def delete_item(request, id_item):
     """
     Función que elimina lógicamente el Ítem seleccionado. El Ítem deberá estar activo para poder ser eliminado.
@@ -276,7 +287,8 @@ def delete_item(request, id_item):
     if request.method == "GET":
         ctx = {'item':item}
         return render_to_response('des/item/delete_item.html', ctx, context_instance=RequestContext(request))
-    
+
+@login_required(login_url='/login/')
 def assign_item_type(request, id_item):
     """
     Función que lista los Tipo de Ítems asignables al Ítem seleccionado. El usuario debe seleccionar el botón
@@ -286,9 +298,13 @@ def assign_item_type(request, id_item):
     
     item_types = ItemType.objects.all()
     item = Item.objects.get(id=id_item)
-    ctx = {'item':item, 'item_types':item_types}
+    valid = False
+    if item.status  == Item.DEVELOPED: # If new instance
+        valid = True
+    ctx = {'item':item, 'item_types':item_types, 'valid':valid}
     return render_to_response('des/item/assign_item_type.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def add_item_type(request, id_item, id_item_type):
     """
     Función que asigna el Tipo de Item al Item seleccionado. El Item sera la instancia del Tipo de Items con
@@ -296,18 +312,23 @@ def add_item_type(request, id_item, id_item_type):
     """
     item = Item.objects.get(id=id_item)
     item_type = ItemType.objects.get(id=id_item_type)
-    for a in item_type.attribute_types.all():
-        attr = Attribute(name=a.name, description=a.description, type=a.attr_type, item=item)
-        attr.save()
+    
+    if item.status != Item.DEPLOYED:
+        item.status = Item.DEPLOYED # Set to phase deployment
+        item.save()
+        for a in item_type.attribute_types.all(): # Create all attribute skeletons to item
+            Attribute.objects.create(name=a.name, description=a.description, type=a.attr_type, item=item)
     ctx = {'item':item, 'item_type':item_type}
     return render_to_response('des/item/add_item_type.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
 def list_attributes(request, id_item):
     item = Item.objects.get(id=id_item)
     attr = item.attribute_set.all()
     ctx = {'item':item, 'attr':attr}
     return render_to_response('des/attribute/list_attributes.html', ctx, context_instance=RequestContext(request))
-    
+
+@login_required(login_url='/login/')
 def set_attribute_value(request, id_item, id_attr):
     """
     Asigna un valor al Atributo.
@@ -392,3 +413,20 @@ def set_attribute_value(request, id_item, id_attr):
                 })
         ctx = {'form':form, 'item':item}
         return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def item_history(request, id_item):
+    item = Item.objects.get(id=id_item)
+    # Build a list of all previous versions, latest versions first:
+    version_list = reversion.get_for_object(item)   
+    ctx = {'item':item, 'version_list':version_list}
+    return render_to_response('des/item/item_history.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def revert_item(request, id_item, id_version):
+    item = Item.objects.get(id=id_item)
+    version = Version.objects.get(id=id_version)
+    version.revision.revert()
+    ctx = {'item':item}
+    return render_to_response('des/item/revert_item.html', ctx, context_instance=RequestContext(request))
+

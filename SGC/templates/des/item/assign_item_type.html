@@ -6,7 +6,7 @@
 	<div class="bs-example">
 		<h2>Asignar Tipo de Ítem</h2>
 		<br><br>
-		{% if item.attribute_set.all == null %}
+		{% if valid %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
             		<thead>
@@ -21,14 +21,14 @@
                 			<tr>
                     			<td>{{ item_type.id }}</td>
                     			<td>{{ item_type.name }}</td>
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'add_item_type' id_item=item.id id_item_type=item_type.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    				<td><a class="btn btn-sm btn-success" href="{% url 'add_item_type' id_item=item.id id_item_type=item_type.id %}"><span class="glyphicon glyphicon-ok"></span> Asignar</a></td>
                 			</tr>
                 		{% endfor %}
                 	</tbody>
         		</table>
     		</div>
     	{% else %}
-    		<h3>Tipo de Ítems ya asignado o no existe Tipo de Ítems.</h3>
+    		<h3>Tipo de Ítem ya asignado o no existen Tipo de Ítems.</h3>
     	{% endif %}
 	</div>
 	<br>

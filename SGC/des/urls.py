@@ -20,7 +20,10 @@ urlpatterns = patterns('',
     url(r'des/list_items/modify_item/(?P<id_item>\d+)/$', views.modify_item, name='modify_item'),
     url(r'des/list_items/delete_item/(?P<id_item>\d+)/$', views.delete_item, name='delete_item'),
     url(r'des/list_items/assign_item_type/(?P<id_item>\d+)/$', views.assign_item_type, name='assign_item_type'),
-    url(r'des/list_items/add_item_type/(?P<id_item>\d+)/(?P<id_item_type>\d+)/$', views.add_item_type, name='add_item_type'),
+    url(r'des/list_items/assign_item_type/(?P<id_item>\d+)/add_item_type/(?P<id_item_type>\d+)/$', views.add_item_type, name='add_item_type'),
+    url(r'des/list_items/item_history/(?P<id_item>\d+)/$', views.item_history, name='item_history'),
+    url(r'des/list_items/item_history/(?P<id_item>\d+)/revert_item/(?P<id_version>\d+)/$', views.revert_item, name='revert_item'),
     url(r'des/list_items/list_attributes/(?P<id_item>\d+)/$', views.list_attributes, name='list_attributes'),
     url(r'des/list_items/list_attributes/(?P<id_item>\d+)/set_attribute_value/(?P<id_attr>\d+)/$', views.set_attribute_value, name='set_attribute_value'),
+
 )

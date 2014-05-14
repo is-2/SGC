@@ -1,16 +1,16 @@
 {% extends "index.html" %}
-{% block title %}SGC - Crear Item{% endblock %}
+{% block title %}SGC - Crear Ítem{% endblock %}
 {% block content %}
 <div class="jumbotron">
 	<div class="bs-example">
-		<h2>Crear Item</h2>
+		<h2>Crear Ítem</h2>
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Crear</button>
 		</form>
 		<br>
-		<a class="btn btn-sm btn-default" href="{% url 'list_items' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-default" href="{% url 'list_items' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 	</div>
 </div>
 {% endblock %}

@@ -3,14 +3,15 @@ Atributo{% endblock %} {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h2>Administración Atributos</h2>
+		<h2>Administración de los Atributos del Ítem <b>{{ item.name }}</b></h2>
 		<br> {% if attr %}
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nombre Atributos</th>
+						<th>Nombre</th>
+						<th>Tipo</th>
 						<th>Valor</th>
 						<th></th>
 						<th></th>
@@ -21,6 +22,7 @@ Atributo{% endblock %} {% block content %}
 					<tr>
 						<td>{{ a.id }}</td>
 						<td>{{ a.name }}</td>
+						<td>{{ a.type }}</td>
 						{% if a.type = "Numerico" %}
 							<td>{{ a.attr_int }}</td>
 						{% elif a.type == 'Cadena' %}
@@ -30,8 +32,8 @@ Atributo{% endblock %} {% block content %}
 						{% else %}
 							<td>{{ a.attr_date }}</td>
 						{% endif %}
-						<td><a class="btn btn-sm btn-default" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id %}"><span
-								class="#"></span> Asignar valor</a></td>
+						<td><a class="btn btn-sm btn-success" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id %}"><span
+								class="glyphicon glyphicon-pencil"></span> Asignar valor</a></td>
 					</tr>
 					{% endfor %}
 				</tbody>

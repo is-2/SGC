@@ -7,10 +7,10 @@
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Asignar</button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Asignar</button>
 		</form>
 		<br>
-		<a class="btn btn-sm btn-default" href="{% url 'list_attributes' id_item=item.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-default" href="{% url 'list_attributes' id_item=item.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 	</div>
 </div>
 {% endblock %}
