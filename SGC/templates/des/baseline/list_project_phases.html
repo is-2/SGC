@@ -13,6 +13,7 @@
                 		<tr>
                     		<th>ID</th>
                     		<th>Nombre</th>
+							<th></th>
 
                     	</tr>
                     </thead>
@@ -20,7 +21,9 @@
                 		{% for p in phases %}
 	                			<tr>
 	                    			<td>{{ p.id }}</td>
-	                    			<td><a href = "{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=p.id %}">{{ p.name }}</a></td>	                    			
+	                    			<td>{{ p.name }}</a></td>
+	                    			<td><a class="btn btn-sm btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=p.id %}"><span class="#"></span> Líneas bases</a></td>
+	                    				
 	                			</tr>
                 		{% endfor %}
                 	</tbody>
