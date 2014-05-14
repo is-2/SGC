@@ -66,21 +66,23 @@ class Item(models.Model):
     Ítem es la clase que instancia a Tipo de Ítem. Es la clase que será utilizada como base para
     ser asignados a las fases.
     """
-    name = models.CharField('Name', max_length=100, unique=True)
+    name        = models.CharField('Name', max_length=100, unique=True)
     description = models.CharField('Description', max_length=100)
     
     
-    DEVELOPED = 0
-    DEPLOYED = 1
-    FINISHED = 2
-    DELETED = 3
+    DEVELOPED   = 0
+    DEPLOYED    = 1
+    FINISHED    = 2
+    DELETED     = 3
     STATUS_CHOICES = ((DEVELOPED, 'Desarrollado'),
                       (DEPLOYED, 'Desplegado'),
                       (FINISHED, 'Terminado'),
                       (DELETED, 'Eliminado'),)
     
-    status = models.SmallIntegerField(choices=STATUS_CHOICES, default=DEVELOPED)
+    status      = models.SmallIntegerField(choices=STATUS_CHOICES, default=DEVELOPED)
     predecessor = models.ForeignKey('Item', blank=True, null=True, on_delete=models.SET_NULL)
+    baseline    = models.ForeignKey('BaseLine', blank=True, null=True, on_delete=models.SET_NULL)
+    phase       = models.ForeignKey('adm.Phase', blank=True, null=False, on_delete=models.CASCADE)
     
     class Meta:
         permissions = (("puede_crear_item", u"Puede crear Ítem"),

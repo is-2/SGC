@@ -32,8 +32,9 @@ Atributo{% endblock %} {% block content %}
 						{% else %}
 							<td>{{ a.attr_date }}</td>
 						{% endif %}
-						<td><a class="btn btn-sm btn-success" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id %}"><span
-								class="glyphicon glyphicon-pencil"></span> Asignar valor</a></td>
+						<td>
+							<a class="btn btn-sm btn-success" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id id_user=id_user id_project=id_project id_phase=id_phase %}"><spanclass="glyphicon glyphicon-pencil"></span> Asignar valor</a>
+						</td>
 					</tr>
 					{% endfor %}
 				</tbody>
@@ -43,7 +44,7 @@ Atributo{% endblock %} {% block content %}
 		<h3>No existen Atributos</h3>
 		{% endif %}
 	</div>
-	<br> <a class="btn btn-default" href="{% url 'list_items' %}"><span
+	<br> <a class="btn btn-default" href="{% url 'list_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span
 		class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

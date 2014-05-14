@@ -214,18 +214,19 @@ def deny_attribute_type(request, id_item_type, id_attr_type):
     ctx = {'item_t':item_t, 'attr_t':attr_t}
     return render_to_response('des/item_type/deny_attribute_type.html', ctx, context_instance=RequestContext(request))
 
-def list_items(request):
+def list_items(request, id_user, id_project, id_phase):
     """
     Función que visualiza todos los Ítems del Sistema.
     """
-    items = Item.objects.exclude(status=Item.DELETED)
-    ctx = {'items':items}
+    phase=Phase.objects.get(id=id_phase)
+    items = Item.objects.exclude(status=Item.DELETED).filter(phase=phase)
+    ctx = {'items':items, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/list_items.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 @transaction.atomic()
 @reversion.create_revision()
-def create_item(request):
+def create_item(request, id_user, id_project, id_phase):
     """
     Función que crea un Ítem y lo almacena en el Sistema.
     """
@@ -235,19 +236,20 @@ def create_item(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
-            item = Item(name=name, description=description)
-            item.save()
-            return HttpResponseRedirect('/des/list_items/')
+            phase = Phase.objects.get(id=id_phase)
+            Item.objects.create(name=name, description=description, phase=phase)
+            ctx = {'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+            return HttpResponseRedirect(reverse('list_items', kwargs=ctx))
         else:
-            ctx = {'form':form}
+            ctx = {'form':form, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
             return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
-    ctx = {'form':form}
+    ctx = {'form':form, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/create_item.html', ctx, context_instance=RequestContext(request))
  
 @login_required(login_url='/login/')
 @transaction.atomic()
 @reversion.create_revision()   
-def modify_item(request, id_item):
+def modify_item(request, id_item, id_user, id_project, id_phase):
     """
     Función que modifica los datos del Ítem seleccionado. El Ítem deberá estar activo para poder ser modificado.
     Si el Ítem se encuentra cerrado. Se debe de crear una Petición de Cambio para hacer los cambios
@@ -262,20 +264,21 @@ def modify_item(request, id_item):
             item.name = name
             item.description = description
             item.save()
-            return HttpResponseRedirect('/des/list_items/')
+            ctx = {'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+            return HttpResponseRedirect(reverse('list_items', kwargs=ctx))
             
     if request.method == "GET":
         form = forms.ModifyItemForm(initial={
             'name': item.name,
             'description':item.description,
             })
-    ctx = {'form': form, 'item': item}
+    ctx = {'form': form, 'item': item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/modify_item.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 @transaction.atomic()
 @reversion.create_revision()
-def delete_item(request, id_item):
+def delete_item(request, id_item, id_user, id_project, id_phase):
     """
     Función que elimina lógicamente el Ítem seleccionado. El Ítem deberá estar activo para poder ser eliminado.
     Si el Ítem se encuentra cerrado, se debe de crear una Petición de Cambio para hacer los cambios
@@ -285,13 +288,14 @@ def delete_item(request, id_item):
     if request.method == "POST":
         item.status = Item.DELETED
         item.save()
-        return HttpResponseRedirect('/des/list_items/')
+        ctx = {'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+        return HttpResponseRedirect(reverse('list_items', kwargs=ctx))
     if request.method == "GET":
-        ctx = {'item':item}
+        ctx = {'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
         return render_to_response('des/item/delete_item.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def assign_item_type(request, id_item):
+def assign_item_type(request, id_item, id_user, id_project, id_phase):
     """
     Función que lista los Tipo de Ítems asignables al Ítem seleccionado. El usuario debe seleccionar el botón
     al lado derecho para Asignar/Quitar el Tipo de Ítem. Si el Ítem ya tiene un Tipo de Ítem seleccionado, solo
@@ -301,13 +305,13 @@ def assign_item_type(request, id_item):
     item_types = ItemType.objects.all()
     item = Item.objects.get(id=id_item)
     valid = False
-    if item.status  == Item.DEVELOPED: # If new instance
+    if item.status == Item.DEVELOPED:  # If new instance
         valid = True
-    ctx = {'item':item, 'item_types':item_types, 'valid':valid}
+    ctx = {'item':item, 'item_types':item_types, 'valid':valid, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/assign_item_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def add_item_type(request, id_item, id_item_type):
+def add_item_type(request, id_item, id_item_type, id_user, id_project, id_phase):
     """
     Función que asigna el Tipo de Item al Item seleccionado. El Item sera la instancia del Tipo de Items con
     sus respectivos atributos.
@@ -316,22 +320,22 @@ def add_item_type(request, id_item, id_item_type):
     item_type = ItemType.objects.get(id=id_item_type)
     
     if item.status != Item.DEPLOYED:
-        item.status = Item.DEPLOYED # Set to phase deployment
+        item.status = Item.DEPLOYED  # Set to phase deployment
         item.save()
-        for a in item_type.attribute_types.all(): # Create all attribute skeletons to item
+        for a in item_type.attribute_types.all():  # Create all attribute skeletons to item
             Attribute.objects.create(name=a.name, description=a.description, type=a.attr_type, item=item)
-    ctx = {'item':item, 'item_type':item_type}
+    ctx = {'item':item, 'item_type':item_type, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/add_item_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def list_attributes(request, id_item):
+def list_attributes(request, id_item, id_user, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     attr = item.attribute_set.all()
-    ctx = {'item':item, 'attr':attr}
+    ctx = {'item':item, 'attr':attr, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/attribute/list_attributes.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def set_attribute_value(request, id_item, id_attr):
+def set_attribute_value(request, id_item, id_attr, id_user, id_project, id_phase):
     """
     Asigna un valor al Atributo.
     """
@@ -345,15 +349,16 @@ def set_attribute_value(request, id_item, id_attr):
                 attr_int = form.cleaned_data['attr_int']
                 attribute.attr_int = attr_int
                 attribute.save()
-                return HttpResponseRedirect(reverse('list_attributes', kwargs={'id_item':id_item}))
+                ctx = {'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+                return HttpResponseRedirect(reverse('list_attributes', kwargs=ctx))
             else:
-                ctx = {'form':form, 'item':item}
+                ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
                 return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
         if request.method == "GET":
             form = forms.AssignIntegerForm(initial={
                 'item': item,
             })
-        ctx = {'form':form, 'item':item}
+        ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
         return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
         
     elif attribute.type == 'Cadena':
@@ -365,15 +370,16 @@ def set_attribute_value(request, id_item, id_attr):
                 attr_str = form.cleaned_data['attr_str']
                 attribute.attr_str = attr_str
                 attribute.save()
-                return HttpResponseRedirect(reverse('list_attributes', kwargs={'id_item':id_item}))
+                ctx = {'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+                return HttpResponseRedirect(reverse('list_attributes', kwargs=ctx))
             else:
-                ctx = {'form':form, 'item':item}
+                ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
                 return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
         if request.method == "GET":
             form = forms.AssignStringForm(initial={
                 'item': item,
             })    
-        ctx = {'form':form, 'item':item}
+        ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
         return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
     
     elif attribute.type == 'Booleano':
@@ -385,15 +391,16 @@ def set_attribute_value(request, id_item, id_attr):
                 attr_bool = form.cleaned_data['attr_bool']
                 attribute.attr_bool = attr_bool
                 attribute.save()
-                return HttpResponseRedirect(reverse('list_attributes', kwargs={'id_item':id_item}))
+                ctx = {'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+                return HttpResponseRedirect(reverse('list_attributes', kwargs=ctx))
             else:
-                ctx = {'form':form, 'item':item}
+                ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
                 return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
         if request.method == "GET":
             form = forms.AssignBooleanForm(initial={
                 'item': item,
             })
-        ctx = {'form':form, 'item':item}
+        ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
         return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
     
     else:
@@ -405,43 +412,44 @@ def set_attribute_value(request, id_item, id_attr):
                 attr_date = form.cleaned_data['attr_date']
                 attribute.attr_date = attr_date
                 attribute.save()
-                return HttpResponseRedirect(reverse('list_attributes', kwargs={'id_item':id_item}))
+                ctx = {'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+                return HttpResponseRedirect(reverse('list_attributes', kwargs=ctx))
             else:
-                ctx = {'form':form, 'item':item}
+                ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
                 return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
             if request.method == "GET":
                 form = forms.AssignDateForm(initial={
                     'item': item,
                 })
-        ctx = {'form':form, 'item':item}
+        ctx = {'form':form, 'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
         return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def item_history(request, id_item):
+def item_history(request, id_item, id_user, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     # Build a list of all previous versions, latest versions first:
     version_list = reversion.get_for_object(item)   
-    ctx = {'item':item, 'version_list':version_list}
+    ctx = {'item':item, 'version_list':version_list, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/item_history.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
-def revert_item(request, id_item, id_version):
+def revert_item(request, id_item, id_version, id_user, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     version = Version.objects.get(id=id_version)
     version.revision.revert()
-    ctx = {'item':item}
+    ctx = {'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/revert_item.html', ctx, context_instance=RequestContext(request))
 
-def list_deleted_items(request):
+def list_deleted_items(request, id_user, id_project, id_phase):
     items = Item.objects.filter(status=Item.DELETED)
-    ctx = {'items':items}
+    ctx = {'items':items, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/list_deleted_items.html', ctx, context_instance=RequestContext(request))
 
-def revive_item(request, id_item):
+def revive_item(request, id_item, id_user, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     item.status = Item.DEPLOYED
     item.save()
-    ctx = {'item':item}
+    ctx = {'item':item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render_to_response('des/item/revive_item.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
@@ -531,3 +539,62 @@ def modify_baseline(request, id_user, id_project, id_phase, id_baseline):
     return render_to_response('des/baseline/modify_baseline.html', ctx, context_instance=RequestContext(request))    
 
     
+@login_required(login_url='/login/')
+def manage_baseline_items(request, id_user, id_project, id_phase, id_baseline):
+    """
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    items = Item.objects.filter(phase_id=id_phase)
+    bsitems = Item.objects.filter(baseline_id=id_baseline)
+    
+    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def assign_baseline_item(request, id_user, id_project, id_phase, id_baseline, id_item):
+    """
+    
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    items = Item.objects.filter(phase_id=id_phase)
+    bsitems = Item.objects.filter(baseline_id=id_baseline)
+              
+    new_item = False
+    
+    try:
+        item = bsitems.get(id=id_item)
+    except Item.DoesNotExist:
+        new_item = True
+        
+    if new_item:
+        item.baseline_id = baseline.id
+        item.save()
+        
+    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def remove_baseline_item(request, id_user, id_project, id_phase, id_baseline, id_item):
+    """
+    
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    item = Item.objects.get(id=id_item)
+    items = Item.objects.filter(phase_id=id_phase)
+    bsitems = Item.objects.filter(baseline_id=id_baseline)
+    
+       
+    item.baseline_id = None
+    item.save()
+    
+    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))   
