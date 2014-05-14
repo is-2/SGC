@@ -430,3 +430,15 @@ def revert_item(request, id_item, id_version):
     ctx = {'item':item}
     return render_to_response('des/item/revert_item.html', ctx, context_instance=RequestContext(request))
 
+def list_deleted_items(request):
+    items = Item.objects.filter(status=Item.DELETED)
+    ctx = {'items':items}
+    return render_to_response('des/item/list_deleted_items.html', ctx, context_instance=RequestContext(request))
+
+def revive_item(request, id_item):
+    item = Item.objects.get(id=id_item)
+    item.status = Item.DEPLOYED
+    item.save()
+    ctx = {'item':item}
+    return render_to_response('des/item/revive_item.html', ctx, context_instance=RequestContext(request))
+    

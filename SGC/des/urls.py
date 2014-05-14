@@ -25,5 +25,6 @@ urlpatterns = patterns('',
     url(r'des/list_items/item_history/(?P<id_item>\d+)/revert_item/(?P<id_version>\d+)/$', views.revert_item, name='revert_item'),
     url(r'des/list_items/list_attributes/(?P<id_item>\d+)/$', views.list_attributes, name='list_attributes'),
     url(r'des/list_items/list_attributes/(?P<id_item>\d+)/set_attribute_value/(?P<id_attr>\d+)/$', views.set_attribute_value, name='set_attribute_value'),
-
+    url(r'des/list_items/list_deleted_items/$', views.list_deleted_items, name='list_deleted_items'),
+    url(r'des/list_items/list_deleted_items/(?P<id_item>\d+)/revive_item/$', views.revive_item, name='revive_item'),
 )

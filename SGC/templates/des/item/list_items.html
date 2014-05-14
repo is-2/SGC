@@ -4,8 +4,12 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Administración Ítems</h2>
-		<a class="btn btn-success" href="{% url 'create_item' %}"><span
-			class="glyphicon glyphicon-plus"></span> Crear Ítem</a> <br> <br>
+		<div class="btn-group">
+			<a class="btn btn-success" href="{% url 'create_item' %}"><span
+				class="glyphicon glyphicon-plus"></span> Crear Ítem</a> <a
+				class="btn btn-default" href="{% url 'list_deleted_items' %}"><span
+				class="glyphicon glyphicon-search"></span> Ver Ítems Eliminados</a>
+		</div>
 		{% if items %}
 		<div class="table-responsive">
 			<table class="table table-hover">
