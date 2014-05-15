@@ -5,8 +5,10 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Administración de roles</h2>
-		<a class="btn btn-success" href="{% url 'create_group' %}"><span class="glyphicon glyphicon-plus"></span> Crear rol</a>
-		<br><br>
+		<div class="btn-group">
+			<a class="btn btn-success" href="{% url 'create_group' %}"><span class="glyphicon glyphicon-plus"></span> Crear rol</a>
+		</div>
+		<br><br>		
 		{% if groups %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">

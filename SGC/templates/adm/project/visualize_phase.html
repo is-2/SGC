@@ -6,7 +6,7 @@
 		<h2>Detalles de la fase</h2>
 		<p><label><b>Nombre: </b></label> {{ phase.name }}</p>
 		<br>
-		<a class="btn btn-sm btn-default" href="{% url 'manage_project_phases' id_project=project.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-default" href="{% url 'manage_project_phases' id_project=project.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 	</div>
 </div>
 {% endblock %}

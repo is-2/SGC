@@ -4,8 +4,8 @@
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h2>Lista ítems</h2>
-		<br><br>
+		<h2>Lista de ítems</h2>
+		<br>
 		{% if items %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
@@ -22,9 +22,9 @@
                     			<td>{{ i.id }}</td>
                     			<td>{{ i.name }}</td>
                     			{% if i in bsitems %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'remove_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                    				<td><a class="btn btn-sm btn-danger" href="{% url 'remove_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
                     			{% else %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'assign_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    				<td><a class="btn btn-sm btn-primary" href="{% url 'assign_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Asignar</a></td>
                     			{% endif %}
                 			</tr>
                 		{% endfor %}

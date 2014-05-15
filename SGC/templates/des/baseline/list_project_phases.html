@@ -5,7 +5,7 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Fases</h2>
-		<br><br>
+		<br>
 		{% if phases %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
@@ -24,8 +24,8 @@
 	                    			<td>{{ p.name }}</a></td>
 	                    			<td>
 	                    				<div class="btn-group">
-	                    					<a class="btn btn-sm btn-default" href="{% url 'list_items' id_user=user.id id_project=project.id id_phase=p.id %}"><span class="#"></span> Ítems</a>
-	                    					<a class="btn btn-sm btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=p.id %}"><span class="#"></span> Líneas bases</a>
+	                    					<a class="btn btn-sm btn-default" href="{% url 'list_items' id_user=user.id id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-briefcase"></span> Ítems</a>
+	                    					<a class="btn btn-sm btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-stats"></span> Líneas bases</a>
 	                    				</div>
                     				</td>
 	                			</tr>

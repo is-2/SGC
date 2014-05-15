@@ -5,7 +5,9 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Administración de usuarios</h2>
+		<div class="btn-group">
 		<a class="btn btn-success" href="{% url 'add_user' %}"><span class="glyphicon glyphicon-plus"></span> Crear usuario</a>
+		</div>
 		<br><br>
 		{% if users %}
 			<div class="table-responsive"> 
