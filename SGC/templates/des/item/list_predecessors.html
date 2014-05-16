@@ -1,0 +1,42 @@
+{% extends "index.html" %} 
+{% block title %}SGC - Administración de Ítems{% endblock %} 
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Lista de Ítems predecesores.</h2>
+		{% if valid %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre de Ítem</th>
+						<th>Descripción</th>
+						<th>Predecesor</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in prev_items %}
+					<tr>
+						<td>{{ i.id }}</td>
+						<td>{{ i.name }}</td>
+						<td>{{ i.description }}</td>
+						<td>{{ i.predecessor.name }}</td>
+						<td>
+							<div class="btn-group">
+								<a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a> 
+							</div>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		  <h3>Ésta es la primera fase. Los Ítems no requiren de un antecesor.</h3>
+		{% endif %}
+	</div>
+	<a class="btn btn-default" href="{% url 'list_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

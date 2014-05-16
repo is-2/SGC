@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.db.models.query import EmptyQuerySet
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -286,8 +287,9 @@ def create_project_phase(request, id_project):
         form = forms.CreatePhaseForm(request.POST)
         
         if form.is_valid():
-            name = form.cleaned_data['name']            
-            phase = Phase.objects.create(name=name, project=project)
+            name = form.cleaned_data['name']
+            order = form.cleaned_data['order']          
+            phase = Phase.objects.create(name=name, state=0, order=order, project=project)
             phase.save()
             ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
             return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
@@ -312,7 +314,9 @@ def modify_project_phase(request, id_project, id_phase):
         if form.is_valid():
 
             name = form.cleaned_data['name']
+            order = form.cleaned_data['order']
             phase.name = name
+            phase.order = order
             phase.save()
             
             ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
@@ -321,6 +325,8 @@ def modify_project_phase(request, id_project, id_phase):
     if request.method == "GET":
         form = forms.ModifyPhaseForm(initial={
             'name' : phase.name,
+            'state': phase.state,
+            'order': phase.order,            
             })
     ctx = {'form': form, 'project':project, 'phase': phase}
     return render_to_response('adm/project/modify_project_phase.html', ctx, context_instance=RequestContext(request))
@@ -471,13 +477,28 @@ def modify_project_state(request, id_project):
     """
     """    
     project = Project.objects.get(id=id_project)
+    
     if request.method == "POST":
+                
         form = forms.ModifyProjectStateForm(data=request.POST)
-        if form.is_valid():
+                
+        if form.is_valid():            
             state = form.cleaned_data['state']
-            project.state = state
-            project.save()
-            return HttpResponseRedirect('/adm/list_projects/')
+            validOrder = True
+                        
+            if state=="1":                
+                               
+                phases = Phase.objects.filter(project_id=id_project)
+                project = Project.objects.get(id=id_project)                                   
+                for i in range(1, (len(phases)+1)):                                                                                   
+                    if not Phase.objects.filter(project=project, order=i):
+                        validOrder = False
+                        break
+                    
+            if validOrder:
+                project.state = state
+                project.save()
+                return HttpResponseRedirect('/adm/list_projects/')
             
     if request.method == "GET":
         form = forms.ModifyProjectStateForm(initial={
@@ -486,6 +507,30 @@ def modify_project_state(request, id_project):
     ctx = {'form': form, 'project': project}
     return render_to_response('adm/project/modify_project_state.html', ctx, context_instance=RequestContext(request))
 
+@login_required(login_url='/login/')
+def modify_phase_state(request, id_project, id_phase):
+    """
+    """
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    
+    if request.method == "POST":
+        form = forms.ModifyPhaseStateForm(data=request.POST)
+        if form.is_valid():
+            state = form.cleaned_data['state']
+            phase.state = state
+            phase.save()
+            phases = Phase.objects.filter(project_id=id_project)
+            ctx = {'project':project, 'phases':phases}
+            return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))            
+            
+    if request.method == "GET":
+        form = forms.ModifyPhaseStateForm(initial={
+            'state': phase.state,
+            })
+    ctx = {'form': form, 'project': project, 'phase':phase}
+    return render_to_response('adm/project/modify_phase_state.html', ctx, context_instance=RequestContext(request))
+    
 @login_required(login_url='/login/')
 def delete_project(request, id_project):
     """
@@ -498,13 +543,12 @@ def delete_project(request, id_project):
     if request.method == "GET":
         ctx = {'project':p}
         return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def visualize_project(request, id_project):
     """
-    Elimina un proyecto.
     """
-    p = Project.objects.get(id=id_project)
-    if request.method == "POST":
-        Project.objects.get(id=id_project).delete()
-        return HttpResponseRedirect('/adm/list_projects/')
-    if request.method == "GET":
-        ctx = {'project':p}
-        return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
+    project = Project.objects.get(id=id_project)
+    ctx = {'project':project}
+    return render_to_response('adm/project/visualize_project.html', ctx, context_instance=RequestContext(request))
+    
