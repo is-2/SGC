@@ -15,7 +15,6 @@
                     		<th>ID</th>
                     		<th>Nombre</th>
 							<th></th>
-							<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -26,7 +25,9 @@
 	                    			<td>
 	                    			<div class="btn-group">
 	                    				<a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-briefcase"></span> Ítem</a>
-	                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>	                    				
+	                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+	                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+	                    					                    				
 	                    			</div>
 	                    			</td>	                    				                    			
 	                			</tr>

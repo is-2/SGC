@@ -565,9 +565,9 @@ def assign_baseline_item(request, id_user, id_project, id_phase, id_baseline, id
     items = Item.objects.filter(phase_id=id_phase)
     bsitems = Item.objects.filter(baseline_id=id_baseline)   
         
-    if item not in bsitems:
-        item.baseline_id = baseline.id
-        item.save()
+    #if item not in bsitems:
+    item.baseline_id = baseline.id
+    item.save()
                 
     ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
     return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))
@@ -583,11 +583,27 @@ def remove_baseline_item(request, id_user, id_project, id_phase, id_baseline, id
     baseline = BaseLine.objects.get(id=id_baseline)
     item = Item.objects.get(id=id_item)
     items = Item.objects.filter(phase_id=id_phase)
-    bsitems = Item.objects.filter(baseline_id=id_baseline)
-    
+    bsitems = Item.objects.filter(baseline_id=id_baseline)    
        
     item.baseline_id = None
     item.save()
     
     ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
     return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))   
+
+@login_required(login_url='/login/')
+def delete_baseline(request, id_user, id_project, id_phase, id_baseline):
+    
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)  
+    
+    if request.method == "POST":
+        baseline.delete()
+        ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+        return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+   
+    if request.method == "GET":
+        ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
+        return render_to_response('des/baseline/delete_baseline.html', ctx, context_instance=RequestContext(request))

@@ -8,6 +8,7 @@
 			<a class="btn btn-success" href="{% url 'create_item' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-plus"></span> Crear Ítem</a> 
 			<a class="btn btn-default" href="{% url 'list_deleted_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-search"></span> Ver Ítems Eliminados</a>
 		</div>
+		<br><br>
 		{% if items %}
 		<div class="table-responsive">
 			<table class="table table-hover">

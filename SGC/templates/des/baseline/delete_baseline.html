@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block title %}Eliminar Proyecto{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h3>¿Desea eliminar la línea base {{ baseline.name }}?</h3>
+		<form action="" method="post">
+			{% csrf_token %}
+			<p class="text-warning"><small>Se borrarán los registros de la línea base.</small></p>
+			<br>
+			<a class="btn btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+        	<button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+	</div>
+</div>
+{% endblock %}

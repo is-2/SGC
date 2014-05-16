@@ -498,13 +498,3 @@ def delete_project(request, id_project):
     if request.method == "GET":
         ctx = {'project':p}
         return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
-    """
-    Elimina un proyecto.
-    """
-    p = Project.objects.get(id=id_project)
-    if request.method == "POST":
-        Project.objects.get(id=id_project).delete()
-        return HttpResponseRedirect('/adm/list_projects/')
-    if request.method == "GET":
-        ctx = {'project':p}
-        return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
