@@ -16,6 +16,7 @@
                		<tr>
                    		<th>ID</th>
                    		<th>Nombre</th>
+                   		<th>Orden</th>
                    		<th></th>                   		
                    	</tr>
                    </thead>
@@ -24,9 +25,11 @@
                 			<tr>
                     			<td>{{ p.id }}</td>
                     			<td>{{ p.name }}</td>
+                    			<td>{{ p.order }}</td>
                     			<td>
                     				<div class="btn-group">
                     					<a class="btn btn-sm btn-default" href="{% url 'visualize_phase' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar</a>
+	                    				<a class="btn btn-sm btn-default" href="{% url 'modify_phase_state' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-retweet"></span> Estado</a>
 	                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_project_phase' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
 	                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_project_phase' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>		                    				
                     				</div>

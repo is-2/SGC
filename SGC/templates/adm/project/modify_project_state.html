@@ -1,15 +1,14 @@
 {% extends "index.html" %}
-{% block title %}Crear Proyecto{% endblock %}
+{% block title %}SGC - Modificar proyecto {{ project.name }}{% endblock %}
 {% block content %}
 <div class="jumbotron">
-	<div class="bs-example">
-		<h2>Crear Proyecto</h2>
+		<h2>Estado del proyecto</h2>
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
-            <button type="submit" class="btn btn-success"> Crear </button>
+            <button class="btn btn-default" type="submit" class="btn btn-primary">Cambiar de estado</button>
             <a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
-		</form>		
-	</div>
+		</form>
+		<br>		
 </div>
 {% endblock %}

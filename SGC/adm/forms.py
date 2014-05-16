@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.models import Group, User
-from adm.models import Project, PROYECT_STATES
+from adm.models import Project, Phase, PROYECT_STATES, PHASE_STATES
 
 class AddUserForm(forms.Form):
     username = forms.CharField(label="Username", widget=forms.TextInput(), required=True)
@@ -123,8 +123,31 @@ class CreatePhaseForm(forms.Form):
     """
     """
     name = forms.CharField(label="Nombre", required=True)
+    order = forms.IntegerField(label="Orden", required=True)
+        
+    def clean_order(self):
+        order = self.cleaned_data['order']
+        try:
+            Phase.objects.get(order=order)
+        except Phase.DoesNotExist:
+            return order
+        raise forms.ValidationError('El orden ya existe.')
 
 class ModifyPhaseForm(forms.Form):
     """
     """
     name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)
+    order = forms.IntegerField(label="Orden", required=True)
+    
+    def clean_order(self):
+        order = self.cleaned_data['order']
+        try:
+            Phase.objects.get(order=order)
+        except Phase.DoesNotExist:
+            return order
+        raise forms.ValidationError('El orden ya existe.')
+
+class ModifyPhaseStateForm(forms.Form):
+    """
+    """
+    state = forms.ChoiceField(label="Estado", choices=PHASE_STATES, required=True)

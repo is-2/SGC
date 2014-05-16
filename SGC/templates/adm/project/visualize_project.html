@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block title %} SGC {% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Detalles del proyecto</h2>
+		<p><label><b>Nombre: </b></label> {{ project.name }}</p>
+		<p><label><b>Descripción: </b></label> {{ project.description }}</p>
+		<p><label><b>Estado: </b></label> {{ project.state }}</p>
+		<br>
+		<a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}
