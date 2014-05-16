@@ -31,5 +31,6 @@ class Phase(models.Model):
     
     """
     name = models.CharField(max_length=30, blank=False)
-    state = models.IntegerField(max_length=30,choices= PHASE_STATES, default=0)
-    project = models.ForeignKey(Project)      
+    state = models.IntegerField(max_length=30,choices=PHASE_STATES, default=0)
+    order = models.IntegerField(max_length=30, blank=False, unique=True)
+    project = models.ForeignKey(Project)
