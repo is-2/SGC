@@ -5,7 +5,7 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Líneas bases</h2>
-		<a class="btn btn-sm btn-default" href="{% url 'create_baseline' id_user=user.id id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-plus"></span> Crear Línea base </a>
+		<a class="btn btn-success" href="{% url 'create_baseline' id_user=user.id id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-plus"></span> Crear Línea base </a>
 		<br><br>
 		{% if baseline %}
 			<div class="table-responsive"> 
@@ -15,7 +15,6 @@
                     		<th>ID</th>
                     		<th>Nombre</th>
 							<th></th>
-							<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -23,8 +22,14 @@
 	                			<tr>
 	                    			<td>{{ b.id }}</td>
 	                    			<td>{{ b.name }}</td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="#"></span> Modificar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="#"></span> Ítem</a></td>	                    				                    			
+	                    			<td>
+	                    			<div class="btn-group">
+	                    				<a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-briefcase"></span> Ítem</a>
+	                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+	                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+	                    					                    				
+	                    			</div>
+	                    			</td>	                    				                    			
 	                			</tr>
                 		{% endfor %}
                 	</tbody>

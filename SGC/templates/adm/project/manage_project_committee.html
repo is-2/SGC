@@ -5,7 +5,7 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Lista de usuarios del proyecto</h2>
-		<br><br>
+		<br>
 		{% if users %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
@@ -22,9 +22,9 @@
                     			<td>{{ u.id }}</td>
                     			<td>{{ u.username }}</td>
                     			{% if u in project.committee.all %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'remove_committee_user' id_user=u.id id_project=project.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                    				<td><a class="btn btn-sm btn-danger" href="{% url 'remove_committee_user' id_user=u.id id_project=project.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
                     			{% else %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'assign_committee_user' id_user=u.id id_project=project.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    				<td><a class="btn btn-sm btn-primary" href="{% url 'assign_committee_user' id_user=u.id id_project=project.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Asignar</a></td>
                     			{% endif %}
                 			</tr>
                 		{% endfor %}

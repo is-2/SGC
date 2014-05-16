@@ -3,42 +3,46 @@
 {% block content %}
 
 <div class="jumbotron">
-	<div class="bs-example">
+	<div class="bs-example">	
 		<h2>Administración de Proyectos y Fases</h2>
-		<a class="btn btn-sm btn-default" href="{% url 'create_project' %}"><span class="glyphicon glyphicon-plus"></span> Crear Proyecto </a>
+		<div class="btn-group">
+			<a class="btn btn-success" href="{% url 'create_project' %}"><span class="glyphicon glyphicon-plus"></span> Crear Proyecto </a>
+		</div>
 		<br><br>
 		{% if projects %}
-			<div class="table-responsive"> 
-        		<table class="table table-hover">
-            		<thead>
-                		<tr>
-                    		<th>ID</th>
-                    		<th>Nombre del Proyecto</th>
-                    		<th></th>
-                    		<th></th>
-                    		<th></th>
-                    		<th></th>
-                    		<th></th>
-                    	</tr>
-                    </thead>
-                	<tbody>
-                		{% for p in projects %}
-	                			<tr>
-	                    			<td>{{ p.id }}</td>
-	                    			<td>{{ p.name }}</td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_project' id_project=p.id %}"><span class="#"></span> Modificar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_project' id_project=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_phases' id_project=p.id %}"><span class="#"></span> Fases</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_users' id_project=p.id %}"><span class="#"></span> Usuarios</a></td>
-	                    			<td><a class="btn btn-sm btn-default" href="{% url 'manage_project_committee' id_project=p.id %}"><span class="#"></span> Comité</a></td>	                    			
-	                			</tr>
-                		{% endfor %}
-                	</tbody>
-        		</table>
-    		</div>
-    	{% else %}
-    		<h3>No existen proyectos</h3>
-    	{% endif %}
+		<div class="table-responsive"> 
+	     	<table class="table table-hover">
+	           	<thead>
+	               	<tr>
+	                	<th>ID</th>
+	                	<th>Nombre del Proyecto</th>
+	                	<th></th>
+	                </tr>
+	            </thead>
+	            <tbody>
+	            {% for p in projects %}
+	   			<tr>
+	       			<td>{{ p.id }}</td>
+	       			<td>{{ p.name }}</td>
+	       			<td>
+	       				<div class="btn-group">
+			       			<a class="btn btn-sm btn-default" href="{% url 'manage_project_phases' id_project=p.id %}"><span class="glyphicon glyphicon-th"></span> Fases</a>
+			       			<a class="btn btn-sm btn-default" href="{% url 'manage_project_users' id_project=p.id %}"><span class="glyphicon glyphicon-user"></span> Usuarios</a>
+			       			<a class="btn btn-sm btn-default" href="{% url 'manage_project_committee' id_project=p.id %}"><span class="glyphicon glyphicon-tower"></span> Comité</a>
+			       			<a class="btn btn-sm btn-default" href="{% url 'visualize_project' id_project=p.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar </a>
+			       			<a class="btn btn-sm btn-default" href="{% url 'modify_project_state' id_project=p.id %}"><span class="glyphicon glyphicon-retweet"></span> Estado </a>
+			       			<a class="btn btn-sm btn-warning" href="{% url 'modify_project' id_project=p.id %}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+			       			<a class="btn btn-sm btn-danger" href="{% url 'delete_project' id_project=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+			       		</div>			       		
+			       	</td>	                    			
+			   	</tr>
+	            {% endfor %}
+	            </tbody>
+	        </table>
+	    </div>
+	    {% else %}
+	    <h2>No existen proyectos</h2>
+	    {% endif %}
 	</div>
 </div>
 {% endblock %}

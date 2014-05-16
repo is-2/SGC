@@ -8,7 +8,7 @@
 			{% csrf_token %}
 			<p class="text-warning"><small>Se borrarán los registros de la fase.</small></p>
 			<br>
-			<a type="button" class="btn btn-default" href="{% url 'manage_project_phases' id_project=project.id %}">Volver</a>
+			<a type="button" class="btn btn-default" href="{% url 'manage_project_phases' id_project=project.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
         	<button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
 	</div>
