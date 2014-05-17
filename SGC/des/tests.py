@@ -228,7 +228,7 @@ class BaseLineTests(TestCase):
         request = self.factory.post(reverse('create_baseline', kwargs=ctx), {'name':'bs1'})
         request.user = self.user
         response = views.create_baseline(request, 1, 1, 1)
-        self.assertEqual(response.status_code, 200, "No debe contener campos obligatorios vacios")
+        self.assertEqual(response.status_code, 200)
     
     def test_modify_baseline_get(self):
         
@@ -246,7 +246,7 @@ class BaseLineTests(TestCase):
         request = self.factory.post(reverse('modify_baseline', kwargs=ctx), {'name':'test2'})
         request.user = self.user
         response = views.modify_baseline(request, 1, 1, 1, 1)
-        self.assertEqual(response.status_code, 302, "No debe contener campos obligatorios vacios")
+        self.assertEqual(response.status_code, 200, "No debe contener campos obligatorios vacios")
         
     def test_manage_baseline_items(self):
         ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1}

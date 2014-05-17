@@ -630,16 +630,3 @@ def set_predecessor(request, id_user, id_project, id_phase, id_item, id_pred):
     ctx={'predecessor':pred, 'item':item, 'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/set_predecessor.html', ctx)
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
