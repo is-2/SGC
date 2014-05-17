@@ -124,14 +124,6 @@ class CreatePhaseForm(forms.Form):
     """
     name = forms.CharField(label="Nombre", required=True)
     order = forms.IntegerField(label="Orden", required=True)
-        
-    def clean_order(self):
-        order = self.cleaned_data['order']
-        try:
-            Phase.objects.get(order=order)
-        except Phase.DoesNotExist:
-            return order
-        raise forms.ValidationError('El orden ya existe.')
 
 class ModifyPhaseForm(forms.Form):
     """
@@ -139,14 +131,6 @@ class ModifyPhaseForm(forms.Form):
     name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)
     order = forms.IntegerField(label="Orden", required=True)
     
-    def clean_order(self):
-        order = self.cleaned_data['order']
-        try:
-            Phase.objects.get(order=order)
-        except Phase.DoesNotExist:
-            return order
-        raise forms.ValidationError('El orden ya existe.')
-
 class ModifyPhaseStateForm(forms.Form):
     """
     """

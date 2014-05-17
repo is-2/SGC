@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.db.models.query import EmptyQuerySet
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -288,12 +288,13 @@ def create_project_phase(request, id_project):
         
         if form.is_valid():
             name = form.cleaned_data['name']
-            order = form.cleaned_data['order']          
-            phase = Phase.objects.create(name=name, state=0, order=order, project=project)
-            phase.save()
-            ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
-            return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
-        
+            order = form.cleaned_data['order']
+            
+            if not Phase.objects.filter(project=project, order=order):                     
+                phase = Phase.objects.create(name=name, state=0, order=order, project=project)
+                phase.save()
+                ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
+                return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))        
         else:
             ctx = {'form':form, 'project':project}
             return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
