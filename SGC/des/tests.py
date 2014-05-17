@@ -182,11 +182,10 @@ class ItemTests(TestCase):
         del self.factory
         del self.user
         
-
-
 class BaseLineTests(TestCase):
     """
     """
+    fixtures = ['des.json']
     def setUp(self):
         self.factory = RequestFactory()
         self.user = User.objects.create_user(username='akira', email='akirashimosoeda@gmail.com', password='wtf')
@@ -200,82 +199,79 @@ class BaseLineTests(TestCase):
         ctx={'id_user':1}
         request = self.factory.get(reverse('list_user_projects', kwargs=ctx))
         request.user = self.user
-        response = views.list_user_projects(request)
+        response = views.list_user_projects(request,1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
         
     def test_list_project_phases(self):
         ctx={'id_user':1, 'id_project':1}
         request = self.factory.get(reverse('list_project_phases', kwargs=ctx))
         request.user = self.user
-        response = views.list_project_phases(request)
+        response = views.list_project_phases(request, 1, 1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
         
     def test_list_phase_baseline(self):
         ctx={'id_user':1, 'id_project':1, 'id_phase':1}
         request = self.factory.get(reverse('list_phase_baseline', kwargs=ctx))
         request.user = self.user
-        response = views.list_phase_baseline(request)
+        response = views.list_phase_baseline(request, 1, 1, 1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
     
     def test_create_baseline_get(self):
         ctx={'id_user':1, 'id_project':1, 'id_phase':1}
         request = self.factory.get(reverse('create_baseline', kwargs=ctx))
         request.user = self.user
-        response = views.create_baseline(request)
+        response = views.create_baseline(request, 1, 1, 1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
     
     def test_create_baseline_post(self):
         ctx={'id_user':1, 'id_project':1, 'id_phase':1}
-        request = self.factory.post(reverse('create_baseline'), {'name':'bs1'}, kwargs=ctx)
+        request = self.factory.post(reverse('create_baseline', kwargs=ctx), {'name':'bs1'})
         request.user = self.user
-        response = views.create_baseline(request)
+        response = views.create_baseline(request, 1, 1, 1)
         self.assertEqual(response.status_code, 200, "No debe contener campos obligatorios vacios")
     
     def test_modify_baseline_get(self):
         
-        BaseLine.objects.create(name='bs1')
-        pk = BaseLine.objects.get(name='bs1').pk
-        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':pk}
+        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1}
         
         # Create an instance of a GET request.
         request = self.factory.get(reverse('modify_baseline', kwargs=ctx))
         request.user = self.user
-        response = views.modify_baseline(request, 1)
+        response = views.modify_baseline(request, 1, 1, 1, 1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
         
     def test_modify_baseline_post(self):
-        BaseLine.objects.create(name='bs1')
-        pk = BaseLine.objects.get(name='bs1').pk
-        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':pk}
+
+        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1}
         request = self.factory.post(reverse('modify_baseline', kwargs=ctx), {'name':'test2'})
         request.user = self.user
-        response = views.modify_baseline(request, 1)
+        response = views.modify_baseline(request, 1, 1, 1, 1)
         self.assertEqual(response.status_code, 302, "No debe contener campos obligatorios vacios")
         
     def test_manage_baseline_items(self):
         ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1}
         request = self.factory.get(reverse('manage_baseline_items', kwargs=ctx))
         request.user = self.user
-        response = views.list_user_projects(request)
+        response = views.manage_baseline_items(request, 1, 1, 1, 1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
         
     def test_assign_baseline_item(self):
         ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1,'id_item':1}
         request = self.factory.get(reverse('assign_baseline_item', kwargs=ctx))
         request.user = self.user
-        response = views.assign_baseline_item(request)
+        response = views.assign_baseline_item(request, 1, 1, 1, 1, 1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")        
         
     def test_remove_baseline_item(self):
-        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1,'id_item':1}
+        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1,'id_item':2}
         request = self.factory.get(reverse('remove_baseline_item', kwargs=ctx))
         request.user = self.user
-        response = views.remove_baseline_item(request)
+        response = views.remove_baseline_item(request, 1, 1, 1, 1, 2)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
         
     def test_delete_baseline(self):
-        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':1}
+        ctx={'id_user':1, 'id_project':1, 'id_phase':1, 'id_baseline':2}
         request = self.factory.get(reverse('delete_baseline', kwargs=ctx))
         request.user = self.user
-        response = views.delete_baseline(request)
+        response = views.delete_baseline(request, 1, 1, 1, 2)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
