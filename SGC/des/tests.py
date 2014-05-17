@@ -48,7 +48,7 @@ class AttributeTypeTests(TestCase):
         ctx={'id_attribute_type':1}
         request = self.factory.get(reverse('modify_attribute_type', kwargs=ctx))
         request.user = self.user
-        response = views.modify_attribute_type(request, 1)
+        response = views.modify_attribute_type(request)###
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
     
     def test_modify_attribute_type_post(self):
@@ -102,14 +102,85 @@ class ItemTypeTests(TestCase):
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
             
     def test_create_item_type_get(self):
-        request = self.factory.get(reverse('create_item_type'))
+        ctx = {'id_item_type':1}
+        request = self.factory.get(reverse('create_item_type', kwargs=ctx))
         request.user = self.user
         response = views.create_item_type(request)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
         
     def test_create_item_type_post(self):
-        request = self.factory.post(reverse('create_item_type'), {'name':'test' , 'description':'test'})
+        ctx = {'id_item_type':1}
+        request = self.factory.post(reverse('create_item_type', kwargs=ctx), {'name':'test' , 'description':'test'})
         request.user = self.user
         response = views.create_item_type(request)
         self.assertEqual(response.status_code, 302)
+        
+    def test_modify_item_type_get(self):
+        ctx = {'id_item_type':1}
+        request = self.factory.get(reverse('modify_item_type', kwargs=ctx))
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
+    
+    def test_modify_item_type_post(self):
+        ctx = {'id_item_type':1}
+        request = self.factory.post(reverse('modify_item_type', kwargs=ctx), {'name':'test' , 'description':'test'})
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 302)
+        
+    def test_delete_item_type_get(self):
+        ctx = {'id_item_type':1}
+        request = self.factory.get(reverse('delete_item_type', kwargs=ctx))
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
+        
+    def test_delete_item_type_post(self):
+        ctx = {'id_item_type':1}
+        request = self.factory.post(reverse('delete_item_type', kwargs=ctx), {'name':'test' , 'description':'test'})
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 302)
+        
+    def test_visualize_item_type(self):
+        ctx = {'id_item_type':1}
+        request = self.factory.get(reverse('visualize_item_type', kwargs=ctx))
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
+        
+    def test_assign_attribute_type(self):
+        ctx = {'id_item_type':1}
+        request = self.factory.get(reverse('assign_attribute_type', kwargs=ctx))
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
+        
+    def test_grant_attribute_type(self):
+        ctx = {'id_item_type':1, 'id_attr_type':1}
+        request = self.factory.get(reverse('grant_attribute_type', kwargs=ctx))
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
+        
+    def test_deny_attribute_type(self):
+        ctx = {'id_item_type':1, 'id_attr_type':1}
+        request = self.factory.get(reverse('deny_attribute_type', kwargs=ctx))
+        request.user = self.user
+        response = views.create_item_type(request)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
+        
+class ItemTests(TestCase):
+    """
+    """
+    
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(username='akira', email='akirashimosoeda@gmail.com', password='wtf')
+        
+    def tearDown(self):
+        del self.factory
+        del self.user
+        
     
