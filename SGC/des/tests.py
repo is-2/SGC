@@ -296,8 +296,19 @@ class ItemTests(TestCase):
         response = views.revive_item(request,1,1,1,1)
         self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
     
+    def list_predecessors(self):
+        ctx = {'id_item':1,'id_user':1, 'id_project':1, 'id_phase':1}
+        request = self.factory.get(reverse('list_predecessors', kwargs=ctx))
+        request.user = self.user
+        response = views.list_predecessors(request,1,1,1,1)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
     
-    
+    def set_predecessor(self):
+        ctx = {'id_pred':2, 'id_item':1,'id_user':1, 'id_project':1, 'id_phase':1}
+        request = self.factory.get(reverse('set_predecessor', kwargs=ctx))
+        request.user = self.user
+        response = views.set_predecessor(request,2,1,1,1,1)
+        self.assertEqual(response.status_code, 200, "No ha retornado la pagina")
     
     
 class BaseLineTests(TestCase):
