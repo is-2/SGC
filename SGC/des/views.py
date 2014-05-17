@@ -619,4 +619,26 @@ def list_predecessors(request, id_user, id_project, id_phase, id_item):
         ctx={'prev_items':previous_items, 'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
     else:
         ctx={'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
-    render(request, 'des/item/list_predecessors.html', ctx)
+    return render(request, 'des/item/list_predecessors.html', ctx)
+    
+def set_predecessor(request, id_user, id_project, id_phase, id_item, id_pred):
+    item = Item.objects.get(id=id_item)
+    pred = Item.objects.get(id=id_pred)
+    item.predecessor = pred
+    item.save()
+    ctx={'predecessor':pred, 'item':item, 'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+    return render(request, 'des/item/set_predecessor.html', ctx)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
