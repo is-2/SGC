@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block title %} Tipo de Atributo - {{ attribute_type.name }}{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Detalles del Tipo de Atributo</h2>
+		<p><label><b>Nombre:</b></label> {{ attribute_type.name }}</p>
+		<p><label><b>Descripción:</b></label> {{ attribute_type.description }}</p> 
+	    <p><label><b>Tipo:</b></label> {{ attribute_type.attr_type}}</p>
+		<br>
+		<a class="btn btn-sm btn-default" href="{% url 'list_attribute_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}

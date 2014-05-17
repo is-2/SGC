@@ -2,13 +2,13 @@
 {% block title %}SGC - Modificar proyecto {{ project.name }}{% endblock %}
 {% block content %}
 <div class="jumbotron">
-		<h1>Modificar proyecto</h1>
+		<h2>Modificar proyecto</h2>
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
 			{{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Modificar</button>
+            <button class="btn btn-warning" type="submit" class="btn btn-primary">Modificar</button>
+            <a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 		</form>
-		<br>
-		<a class="btn btn-sm btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<br>		
 </div>
 {% endblock %}

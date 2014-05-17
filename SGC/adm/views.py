@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
@@ -5,7 +7,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.contrib.auth.decorators import permission_required, login_required
 from adm import forms
 from home.models import Client
-from adm.models import Project
+from adm.models import Project, Phase
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -244,20 +246,208 @@ def list_projects(request):
 
 @login_required(login_url='/login/')
 def create_project(request):
+    """
+    Crea un nuevo proyecto.
+    """
     form = forms.CreateProjectForm()
     if request.method == "POST":
         form = forms.CreateProjectForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
-            g = Project(name=name, description=description)
-            g.save()  # Save information
+            p = Project(name=name, description=description, state=0)
+            p.save()           
             return HttpResponseRedirect('/adm/list_projects/')
         else:
             ctx = {'form':form}
             return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
     ctx = {'form':form}
     return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def manage_project_phases(request, id_project):
+    """
+    Despliega las fases que tiene el proyecto seleccionado.
+    """
+    project = Project.objects.get(id=id_project)    
+    phases = Phase.objects.filter(project_id=id_project)
+    ctx = {'project':project, 'phases':phases}
+    return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def create_project_phase(request, id_project):
+    """
+    Crea un nueva fase para el proyecto.
+    """
+    project = Project.objects.get(id=id_project)
+    form = forms.CreatePhaseForm()
+    
+    if request.method == 'POST':
+        
+        form = forms.CreatePhaseForm(request.POST)
+        
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            order = form.cleaned_data['order']
+            
+            if not Phase.objects.filter(project=project, order=order):                     
+                phase = Phase.objects.create(name=name, state=0, order=order, project=project)
+                phase.save()
+                ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
+                return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))        
+        else:
+            ctx = {'form':form, 'project':project}
+            return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
+        
+    ctx = {'form':form, 'project':project}
+    return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def modify_project_phase(request, id_project, id_phase):
+    """
+    Modifica una fase.
+    """
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    
+    if request.method == "POST":
+        form = forms.ModifyPhaseForm(data=request.POST)
+        if form.is_valid():
+
+            name = form.cleaned_data['name']
+            order = form.cleaned_data['order']
+            phase.name = name
+            phase.order = order
+            phase.save()
+            
+            ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}            
+            return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+            
+    if request.method == "GET":
+        form = forms.ModifyPhaseForm(initial={
+            'name' : phase.name,
+            'state': phase.state,
+            'order': phase.order,            
+            })
+    ctx = {'form': form, 'project':project, 'phase': phase}
+    return render_to_response('adm/project/modify_project_phase.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def visualize_phase(request,id_project, id_phase):
+    """
+    """
+    project = Project.objects.get(id=id_project)
+    p = Phase.objects.get(id=id_phase)
+    ctx = {'project':project, 'phase': p}
+    return render_to_response('adm/project/visualize_phase.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def delete_project_phase(request, id_project, id_phase):
+    """
+    Elimina una fase.
+    """
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    
+    if request.method == "POST":
+        phase.delete()
+        ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}          
+        return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+    
+    if request.method == "GET":
+        ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}
+        return render_to_response('adm/project/delete_project_phase.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def manage_project_users(request, id_project):
+    """
+    Despliega la lista de todos los usuarios del sistema,
+    y junto con ellos las opciones de asignar o quitar un
+    usuario al proyecto.
+    """
+    project = Project.objects.get(id=id_project)
+    users = User.objects.all()
+    ctx = {'project':project, 'users':users}
+    return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def assign_project_user(request, id_user, id_project):
+    """
+    Asigna un usuario al proyecto.
+    """
+    
+    project = Project.objects.get(id=id_project) 
+    user = User.objects.get(id=id_user)          
+    new_user = False
+    
+    try:
+        user = project.users.get(id=id_user)
+    except User.DoesNotExist:
+        new_user = True
+        
+    if new_user:
+        project.users.add(user)
+        project.save()
+    ctx = { 'user':user, 'project':project, 'valid':new_user}
+    return render_to_response('adm/project/assign_project_user.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def remove_project_user(request, id_user, id_project):
+    """
+    Quita un usuario del proyecto.
+    """
+    user = User.objects.get(id=id_user)
+    project = Project.objects.get(id=id_project)    
+    project.users.remove(user)
+    project.save()
+    
+    ctx = { 'user':user, 'project':project}
+    return render_to_response('adm/project/remove_project_user.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def manage_project_committee(request, id_project):
+    """
+    Despliega la lista de usuarios relacionados con el proyecto,
+    junto con las opciones de asignar o quitar un usuario del
+    comité de gestión de cambio.
+    """
+    project = Project.objects.get(id=id_project)    
+    users = project.users.all()
+    ctx = {'users':users, 'project':project}
+    return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def assign_committee_user(request, id_project, id_user):
+    """
+    Asigna un usuario al comité de gestión de cambio.
+    """
+    project = Project.objects.get(id=id_project) 
+    user = User.objects.get(id=id_user)          
+    new_user = False
+    
+    try:
+        user = project.committee.get(id=id_user)
+    except User.DoesNotExist:
+        new_user = True
+        
+    if new_user:
+        project.committee.add(user)
+        project.save()
+    ctx = {'project':project, 'user':user, 'valid':new_user}
+    return render_to_response('adm/project/assign_committee_user.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def remove_committee_user(request, id_project, id_user):
+    """
+    Quita un usuario del comité  de cambio.
+    """
+    project = Project.objects.get(id=id_project)
+    user = User.objects.get(id=id_user)    
+    project.committee.remove(user)
+    project.save()
+    
+    ctx = {'project':project, 'user':user}
+    return render_to_response('adm/project/remove_committee_user.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def modify_project(request, id_project):
@@ -284,6 +474,65 @@ def modify_project(request, id_project):
     return render_to_response('adm/project/modify_project.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
+def modify_project_state(request, id_project):
+    """
+    """    
+    project = Project.objects.get(id=id_project)
+    
+    if request.method == "POST":
+                
+        form = forms.ModifyProjectStateForm(data=request.POST)
+                
+        if form.is_valid():            
+            state = form.cleaned_data['state']
+            validOrder = True
+                        
+            if state=="1":                
+                               
+                phases = Phase.objects.filter(project_id=id_project)
+                project = Project.objects.get(id=id_project)                                   
+                for i in range(1, (len(phases)+1)):                                                                                   
+                    if not Phase.objects.filter(project=project, order=i):
+                        validOrder = False
+                        break
+                    
+            if validOrder:
+                project.state = state
+                project.save()
+                return HttpResponseRedirect('/adm/list_projects/')
+            
+    if request.method == "GET":
+        form = forms.ModifyProjectStateForm(initial={
+            'state': project.state,
+            })
+    ctx = {'form': form, 'project': project}
+    return render_to_response('adm/project/modify_project_state.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def modify_phase_state(request, id_project, id_phase):
+    """
+    """
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    
+    if request.method == "POST":
+        form = forms.ModifyPhaseStateForm(data=request.POST)
+        if form.is_valid():
+            state = form.cleaned_data['state']
+            phase.state = state
+            phase.save()
+            phases = Phase.objects.filter(project_id=id_project)
+            ctx = {'project':project, 'phases':phases}
+            return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))            
+            
+    if request.method == "GET":
+        form = forms.ModifyPhaseStateForm(initial={
+            'state': phase.state,
+            })
+    ctx = {'form': form, 'project': project, 'phase':phase}
+    return render_to_response('adm/project/modify_phase_state.html', ctx, context_instance=RequestContext(request))
+    
+@login_required(login_url='/login/')
 def delete_project(request, id_project):
     """
     Elimina un proyecto.
@@ -295,3 +544,12 @@ def delete_project(request, id_project):
     if request.method == "GET":
         ctx = {'project':p}
         return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
+
+@login_required(login_url='/login/')
+def visualize_project(request, id_project):
+    """
+    """
+    project = Project.objects.get(id=id_project)
+    ctx = {'project':project}
+    return render_to_response('adm/project/visualize_project.html', ctx, context_instance=RequestContext(request))
+    

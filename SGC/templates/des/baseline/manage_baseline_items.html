@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block title %}SGC{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Lista de ítems</h2>
+		<br>
+		{% if items %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre</th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for i in items %}
+                			<tr>
+                    			<td>{{ i.id }}</td>
+                    			<td>{{ i.name }}</td>
+                    			{% if i in bsitems %}
+                    				<td><a class="btn btn-sm btn-danger" href="{% url 'remove_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
+                    			{% else %}
+                    				<td><a class="btn btn-sm btn-primary" href="{% url 'assign_baseline_item' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=baseline.id id_item=i.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Asignar</a></td>
+                    			{% endif %}
+                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen items relacionados.</h3>
+    	{% endif %}
+	</div>
+	<br>
+		<a class="btn btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=phase.id%}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

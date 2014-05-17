@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% block title %}SGC - Confirmación{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Detalles del Tipo de Ítem</h2>
+		
+		<div class="input-group">
+			<span class="input-group-addon"><b>Nombre</b></span>
+			<input type="text" class="form-control" id="name" name="name" value="{{ item_t.name }}" disabled="disabled">
+        </div>
+        <br>
+		
+		<br>
+		<form action="" method="POST">
+			{% csrf_token %}
+			<div class="panel panel-danger">
+    			<div class="panel-heading">
+    				<h3 class="panel-title">¡Atención!</h3>
+            	</div>
+            	<div class="panel-body">
+            		<h3 class="panel-title">¿Realmente desea eliminar el Tipo de Ítem {{ item_t.name }}?</h3>
+            		<br>
+					<h3 class="panel-title"><em>Si acepta, los registros del Tipo de Ítem {{ item_t.name }} se perderán.</em></h3>
+					<br>
+					<a type="button" class="btn btn-default" href="{% url 'list_item_types' %}">Cancelar</a>
+        			<button type="submit" class="btn btn-danger">Eliminar</button>
+			    </div>
+        	</div>
+        </form>
+	</div>
+</div>
+{% endblock %}

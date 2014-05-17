@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block title %}SGC - Proyecto {{ project.name }}{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Lista de usuarios</h2>
+		<br>
+		{% if users %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Usuario</th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for u in users %}
+                			<tr>
+                    			<td>{{ u.id }}</td>
+                    			<td>{{ u.username }}</td>
+                    			{% if u in project.users.all %}
+                    				<td><a class="btn btn-sm btn-danger" href="{% url 'remove_project_user' id_user=u.id id_project=project.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
+                    			{% else %}
+                    				<td><a class="btn btn-sm btn-primary" href="{% url 'assign_project_user' id_user=u.id id_project=project.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Asignar</a></td>
+                    			{% endif %}
+                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen usuarios.</h3>
+    	{% endif %}
+	</div>
+	<br>
+		<a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

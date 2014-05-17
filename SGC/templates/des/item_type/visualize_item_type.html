@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+{% block title %} Tipo de Item {{ item_t.name }}{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Detalles del Tipo de Ítem</h2>
+		
+			<p><label><b>Nombre</b></label> {{ item_t.name }}</p>
+			<p><label><b>Descripción</b></label> {{ item_t.description }}</p> 
+			<h3><b>Tipo de Atributos</b></h3>
+			{% for a in attr_types %}
+				<p><label><b>Nombre</b></label> {{ a.name }}</p>
+				<p><label><b>Descripcion</b></label> {{ a.description }}</p>
+				<p><label><b>Tipo</b></label> {{ a.attr_type }}</p>
+			{% endfor %}
+		<br>
+		<a class="btn btn-sm btn-default" href="{% url 'list_item_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}

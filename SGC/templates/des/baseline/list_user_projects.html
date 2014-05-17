@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% block title %} SGC {% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Proyectos</h2>
+		<br>
+		{% if projects %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre</th>
+
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for p in projects %}
+	                			<tr>
+	                    			<td>{{ p.id }}</td>
+	                    			<td><a href = "{% url 'list_project_phases' id_user=user.id id_project=p.id %}">{{ p.name }}</a></td>	                    			
+	                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No existen proyectos</h3>
+    	{% endif %}
+	</div>
+</div>
+{% endblock %}

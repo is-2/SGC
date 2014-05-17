@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>des.views &mdash; SGC 0.3 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="SGC 0.3 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> SGC</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../home.html">home package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#module-home.admin">home.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#module-home.forms">home.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#module-home.models">home.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#module-home.tests">home.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#module-home.urls">home.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#module-home.views">home.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../home.html#module-home">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../adm.html">adm package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#module-adm.admin">adm.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#module-adm.forms">adm.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#module-adm.models">adm.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#module-adm.tests">adm.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#module-adm.urls">adm.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#module-adm.views">adm.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../adm.html#module-adm">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../des.html">des package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#module-des.admin">des.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#module-des.forms">des.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#module-des.models">des.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#module-des.tests">des.tests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#module-des.urls">des.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#module-des.views">des.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../des.html#module-des">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">SGC</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>des.views</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <h1>Source code for des.views</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render_to_response</span>
+<span class="kn">from</span> <span class="nn">django.template</span> <span class="kn">import</span> <span class="n">RequestContext</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponseRedirect</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">permission_required</span><span class="p">,</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">des.models</span> <span class="kn">import</span> <span class="n">AttributeType</span><span class="p">,</span> <span class="n">Attribute</span><span class="p">,</span> <span class="n">ItemType</span>
+<span class="kn">from</span> <span class="nn">des</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="c"># Create your views here.</span>
+<span class="nd">@login_required</span><span class="p">(</span><span class="n">login_url</span><span class="o">=</span><span class="s">&#39;/login/&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="list_attribute_types"><a class="viewcode-back" href="../../des.html#des.views.list_attribute_types">[docs]</a><span class="k">def</span> <span class="nf">list_attribute_types</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Lista los tipos de atributos existentes en el sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute_types</span> <span class="o">=</span> <span class="n">AttributeType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attribute_types&#39;</span><span class="p">:</span><span class="n">attribute_types</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute_type/list_attribute_types.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="create_attribute_type"><a class="viewcode-back" href="../../des.html#des.views.create_attribute_type">[docs]</a><span class="k">def</span> <span class="nf">create_attribute_type</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crea un tipo de atributo y lo almacena en el sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CreateAttributeTypeForm</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CreateAttributeTypeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span>
+            <span class="n">choice</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;choice&#39;</span><span class="p">]</span>
+            <span class="n">attribute_type</span> <span class="o">=</span> <span class="n">AttributeType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">choice</span><span class="o">=</span><span class="n">choice</span><span class="p">)</span>
+            <span class="n">attribute_type</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attribute_types/&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+            <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute_type/create_attribute_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute_type/create_attribute_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    </div>
+<div class="viewcode-block" id="modify_attribute_type"><a class="viewcode-back" href="../../des.html#des.views.modify_attribute_type">[docs]</a><span class="k">def</span> <span class="nf">modify_attribute_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modifica un tipo de attribute del sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute_type</span> <span class="o">=</span> <span class="n">AttributeType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModifyAttributeTypeForm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span>
+            <span class="n">attribute_type</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">attribute_type</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+            <span class="n">attribute_type</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attribute_types/&#39;</span><span class="p">)</span>
+            
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModifyAttributeTypeForm</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">attribute_type</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s">&#39;description&#39;</span><span class="p">:</span><span class="n">attribute_type</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+            <span class="p">})</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s">&#39;attribute_type&#39;</span><span class="p">:</span> <span class="n">attribute_type</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute_type/modify_attribute_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="delete_attribute_type"><a class="viewcode-back" href="../../des.html#des.views.delete_attribute_type">[docs]</a><span class="k">def</span> <span class="nf">delete_attribute_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Elimina un tipo de attribute del sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute_type</span> <span class="o">=</span> <span class="n">AttributeType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">attribute_type</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attribute_types/&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attribute_type&#39;</span><span class="p">:</span><span class="n">attribute_type</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute_type/delete_attribute_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    </div>
+<div class="viewcode-block" id="visualize_attribute_type"><a class="viewcode-back" href="../../des.html#des.views.visualize_attribute_type">[docs]</a><span class="k">def</span> <span class="nf">visualize_attribute_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Despliega los campos de un tipo de atributo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute_type</span> <span class="o">=</span> <span class="n">AttributeType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute_type</span><span class="p">)</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attribute_type&#39;</span><span class="p">:</span> <span class="n">attribute_type</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute_type/visualize_attribute_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="list_attributes"><a class="viewcode-back" href="../../des.html#des.views.list_attributes">[docs]</a><span class="k">def</span> <span class="nf">list_attributes</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Lista los atributos existentes en el sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attributes</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attributes&#39;</span><span class="p">:</span><span class="n">attributes</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/list_attributes.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="create_attribute"><a class="viewcode-back" href="../../des.html#des.views.create_attribute">[docs]</a><span class="k">def</span> <span class="nf">create_attribute</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crea un atributo y lo almacena en el sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CreateAttributeForm</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CreateAttributeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span>
+            <span class="n">attribute</span> <span class="o">=</span> <span class="n">Attribute</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+            <span class="n">attribute</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attributes/&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+            <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/create_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/create_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    </div>
+<div class="viewcode-block" id="modify_attribute"><a class="viewcode-back" href="../../des.html#des.views.modify_attribute">[docs]</a><span class="k">def</span> <span class="nf">modify_attribute</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modifica un atributo del sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModifyAttributeForm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span>
+            <span class="n">attribute</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">attribute</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+            <span class="n">attribute</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attributes/&#39;</span><span class="p">)</span>
+            
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModifyAttributeForm</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">attribute</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s">&#39;description&#39;</span><span class="p">:</span><span class="n">attribute</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+            <span class="p">})</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s">&#39;attribute&#39;</span><span class="p">:</span> <span class="n">attribute</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/modify_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="delete_attribute"><a class="viewcode-back" href="../../des.html#des.views.delete_attribute">[docs]</a><span class="k">def</span> <span class="nf">delete_attribute</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Elimina un atributo del sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">attribute</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attributes/&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attribute&#39;</span><span class="p">:</span><span class="n">attribute</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/delete_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="visualize_attribute"><a class="viewcode-back" href="../../des.html#des.views.visualize_attribute">[docs]</a><span class="k">def</span> <span class="nf">visualize_attribute</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Despliega los campos de un atributo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attribute&#39;</span><span class="p">:</span> <span class="n">attribute</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/visualize_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="assign_attribute_type"><a class="viewcode-back" href="../../des.html#des.views.assign_attribute_type">[docs]</a><span class="k">def</span> <span class="nf">assign_attribute_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">):</span>
+    <span class="n">attribute</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="n">attribute_types</span> <span class="o">=</span> <span class="n">AttributeType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attribute&#39;</span><span class="p">:</span><span class="n">attribute</span><span class="p">,</span> <span class="s">&#39;attribute_types&#39;</span><span class="p">:</span><span class="n">attribute_types</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="grant_attribute_type"><a class="viewcode-back" href="../../des.html#des.views.grant_attribute_type">[docs]</a><span class="k">def</span> <span class="nf">grant_attribute_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">,</span> <span class="n">id_attribute_type</span><span class="p">):</span>
+    <span class="n">attribute</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="n">attribute_type</span> <span class="o">=</span> <span class="n">AttributeType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute_type</span><span class="p">)</span>
+    <span class="n">attribute</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">attribute_type</span>
+    <span class="n">attribute</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;attribute&#39;</span><span class="p">:</span><span class="n">attribute</span><span class="p">,</span> <span class="s">&#39;attribute_type&#39;</span><span class="p">:</span><span class="n">attribute_type</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/grant_attribute_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="assign_attribute_value"><a class="viewcode-back" href="../../des.html#des.views.assign_attribute_value">[docs]</a><span class="k">def</span> <span class="nf">assign_attribute_value</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Asigna un valor al tipo de attribute.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">attribute</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">attribute</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">choice</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignIntegerForm</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignIntegerForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+                <span class="n">attr_int</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;attr_int&#39;</span><span class="p">]</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">attr_int</span> <span class="o">=</span> <span class="n">attr_int</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attributes/&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+                <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    
+    <span class="k">elif</span> <span class="n">attribute</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">choice</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignStringForm</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignStringForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+                <span class="n">attr_str</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;attr_str&#39;</span><span class="p">]</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">attr_str</span> <span class="o">=</span> <span class="n">attr_str</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attributes/&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+                <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    
+    <span class="k">elif</span> <span class="n">attribute</span><span class="o">.</span><span class="n">type</span><span class="o">.</span><span class="n">choice</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignBooleanForm</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignBooleanForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+                <span class="n">attr_bool</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;attr_bool&#39;</span><span class="p">]</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">attr_bool</span> <span class="o">=</span> <span class="n">attr_bool</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attributes/&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+                <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+        
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignDateForm</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+            <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">AssignDateForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+                <span class="n">attr_date</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;attr_date&#39;</span><span class="p">]</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">attr_date</span> <span class="o">=</span> <span class="n">attr_date</span>
+                <span class="n">attribute</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+                <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_attributes/&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+                <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/attribute/assign_attribute_value.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="list_item_types"><a class="viewcode-back" href="../../des.html#des.views.list_item_types">[docs]</a><span class="k">def</span> <span class="nf">list_item_types</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Lista los tipos de atributos existentes en el sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item_ts</span> <span class="o">=</span> <span class="n">ItemType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;item_ts&#39;</span><span class="p">:</span><span class="n">item_ts</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/list_item_types.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="create_item_type"><a class="viewcode-back" href="../../des.html#des.views.create_item_type">[docs]</a><span class="k">def</span> <span class="nf">create_item_type</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crea un tipo de item y lo almacena en el sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CreateItemTypeForm</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CreateItemTypeForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span>
+            <span class="n">item_t</span> <span class="o">=</span> <span class="n">ItemType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+            <span class="n">item_t</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_item_types/&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+            <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/create_item_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span><span class="n">form</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/create_item_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    </div>
+<div class="viewcode-block" id="modify_item_type"><a class="viewcode-back" href="../../des.html#des.views.modify_item_type">[docs]</a><span class="k">def</span> <span class="nf">modify_item_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_item_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modifica un tipo de item del sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item_t</span> <span class="o">=</span> <span class="n">ItemType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_item_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModifyItemTypeForm</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span>
+            <span class="n">item_t</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="n">item_t</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+            <span class="n">item_t</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_item_types/&#39;</span><span class="p">)</span>
+            
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModifyItemTypeForm</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="p">{</span>
+            <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">item_t</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s">&#39;description&#39;</span><span class="p">:</span><span class="n">item_t</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+            <span class="p">})</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s">&#39;item_t&#39;</span><span class="p">:</span> <span class="n">item_t</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/modify_item_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="delete_item_type"><a class="viewcode-back" href="../../des.html#des.views.delete_item_type">[docs]</a><span class="k">def</span> <span class="nf">delete_item_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_item_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Elimina un atributo del sistema.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item_t</span> <span class="o">=</span> <span class="n">ItemType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_item_type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">item_t</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="s">&#39;/des/list_item_types/&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;item_t&#39;</span><span class="p">:</span><span class="n">item_t</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/delete_item_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="assign_item_attribute"><a class="viewcode-back" href="../../des.html#des.views.assign_item_attribute">[docs]</a><span class="k">def</span> <span class="nf">assign_item_attribute</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_item_type</span><span class="p">):</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">item_t</span> <span class="o">=</span> <span class="n">ItemType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_item_type</span><span class="p">)</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;item_t&#39;</span><span class="p">:</span><span class="n">item_t</span><span class="p">,</span> <span class="s">&#39;attr&#39;</span><span class="p">:</span><span class="n">attr</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/assign_item_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+    </div>
+<div class="viewcode-block" id="grant_attribute"><a class="viewcode-back" href="../../des.html#des.views.grant_attribute">[docs]</a><span class="k">def</span> <span class="nf">grant_attribute</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_item_type</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">):</span>
+    <span class="n">item_t</span> <span class="o">=</span> <span class="n">ItemType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_item_type</span><span class="p">)</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="n">new_attr</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">attr</span> <span class="o">=</span> <span class="n">item_t</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="n">new_attr</span> <span class="o">=</span> <span class="bp">True</span>      
+    <span class="k">if</span> <span class="n">new_attr</span><span class="p">:</span>
+        <span class="n">item_t</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+        <span class="n">item_t</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;item_t&#39;</span><span class="p">:</span><span class="n">item_t</span><span class="p">,</span> <span class="s">&#39;attr&#39;</span><span class="p">:</span><span class="n">attr</span><span class="p">,</span> <span class="s">&#39;valid&#39;</span><span class="p">:</span><span class="n">new_attr</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/grant_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="deny_attribute"><a class="viewcode-back" href="../../des.html#des.views.deny_attribute">[docs]</a><span class="k">def</span> <span class="nf">deny_attribute</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_item_type</span><span class="p">,</span> <span class="n">id_attribute</span><span class="p">):</span>
+    <span class="n">item_t</span> <span class="o">=</span> <span class="n">ItemType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_item_type</span><span class="p">)</span>
+    <span class="n">attr</span> <span class="o">=</span> <span class="n">Attribute</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_attribute</span><span class="p">)</span>
+    <span class="n">item_t</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
+    <span class="n">item_t</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;item_t&#39;</span><span class="p">:</span><span class="n">item_t</span><span class="p">,</span> <span class="s">&#39;attr&#39;</span><span class="p">:</span><span class="n">attr</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/deny_attribute.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+</div>
+<div class="viewcode-block" id="visualize_item_type"><a class="viewcode-back" href="../../des.html#des.views.visualize_item_type">[docs]</a><span class="k">def</span> <span class="nf">visualize_item_type</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">id_item_type</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Despliega los campos de un tipo de item.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item_t</span> <span class="o">=</span> <span class="n">ItemType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">id_item_type</span><span class="p">)</span>
+    <span class="n">attrs</span> <span class="o">=</span> <span class="n">item_t</span><span class="o">.</span><span class="n">attributes</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;item_t&#39;</span><span class="p">:</span> <span class="n">item_t</span><span class="p">,</span> <span class="s">&#39;attrs&#39;</span><span class="p">:</span><span class="n">attrs</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;des/item_type/visualize_item_type.html&#39;</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">context_instance</span><span class="o">=</span><span class="n">RequestContext</span><span class="p">(</span><span class="n">request</span><span class="p">))</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014, Akira Shimosoeda - Marcos Aquino.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

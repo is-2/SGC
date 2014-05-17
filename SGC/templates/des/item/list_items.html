@@ -1,0 +1,52 @@
+{% extends "index.html" %} {% block title %}SGC - Administración de
+Ítems{% endblock %} {% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Administración Ítems</h2>
+		<div class="btn-group">
+			<a class="btn btn-success" href="{% url 'create_item' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-plus"></span> Crear Ítem</a> 
+			<a class="btn btn-default" href="{% url 'list_deleted_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-search"></span> Ver Ítems Eliminados</a>
+		</div>
+		<br><br>
+		{% if items %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre de Ítem</th>
+						<th>Descripción</th>
+						<th>Predecesor</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in items %}
+					<tr>
+						<td>{{ i.id }}</td>
+						<td>{{ i.name }}</td>
+						<td>{{ i.description }}</td>
+						<td>{{ i.predecessor.name }}</td>
+						<td>
+							<div class="btn-group">
+								<a class="btn btn-sm btn-default" href="{% url 'assign_item_type' id_item=i.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok-sign"></span> Asignar Tipo</a> 
+								<a class="btn btn-sm btn-default" href="{% url 'list_attributes' id_item=i.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-search"></span> Listar Atributos</a>
+								<a class="btn btn-sm btn-default" href="{% url 'list_predecessors' id_item=i.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-search"></span> Asignar predecesor</a>
+								<a class="btn btn-sm btn-warning" href="{% url 'modify_item' id_item=i.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Modificar</a>
+								<a class="btn btn-sm btn-warning" href="{% url 'item_history' id_item=i.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-time"></span> Revertir</a> 
+								<a class="btn btn-sm btn-danger" href="{% url 'delete_item' id_item=i.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+							</div>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		<h3>No existen Ítems</h3>
+		{% endif %}
+	</div>
+	<a class="btn btn-default" href="{% url 'list_project_phases' id_user=id_user id_project=id_project %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

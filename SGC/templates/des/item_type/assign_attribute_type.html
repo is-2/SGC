@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block title %}SGC - Tipo de Ítem {{ item_t.name }}{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h1><small>Tipo de Ítem {{ item_t.name }}</small></h1>
+		<br><br>
+		{% if attr_t %}
+			<div class="table-responsive"> 
+        		<table class="table table-hover">
+            		<thead>
+                		<tr>
+                    		<th>ID</th>
+                    		<th>Nombre del Tipo de Atributo</th>
+                    		<th>Descripción</th>
+                    		<th></th>
+                    	</tr>
+                    </thead>
+                	<tbody>
+                		{% for a in attr_t %}
+                			<tr>
+                    			<td>{{ a.id }}</td>
+                    			<td>{{ a.name }}</td>
+                    			<td>{{ a.description }}</td>
+                    			{% if a in item_t.attribute_types.all %}
+                    				<td><a class="btn btn-sm btn-default" href="{% url 'deny_attribute_type' id_item_type=item_t.id id_attr_type=a.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                    			{% else %}
+                    				<td><a class="btn btn-sm btn-default" href="{% url 'grant_attribute_type' id_item_type=item_t.id id_attr_type=a.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    			{% endif %}
+                			</tr>
+                		{% endfor %}
+                	</tbody>
+        		</table>
+    		</div>
+    	{% else %}
+    		<h3>No posee Tipo de Atributos.</h3>
+    	{% endif %}
+	</div>
+	<br>
+		<a class="btn btn-default" href="{% url 'list_item_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

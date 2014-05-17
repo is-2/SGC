@@ -4,7 +4,7 @@
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1><small>{{ group.name }} - Permisos</small></h1>
+		<h2>{{ group.name }}</h2>
 		{% if permissions %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
@@ -24,9 +24,9 @@
 	                    			<td>{{ p.name }}</td>
 	                    			<td>{{ p.codename }}</td>
 	                    				{% if p in group.permissions.all %}
-	                    					<td><a class="btn btn-sm btn-default" href="{% url 'deny_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+	                    					<td><a class="btn btn-sm btn-danger" href="{% url 'deny_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
 	                    				{% else %}
-	                    					<td><a class="btn btn-sm btn-default" href="{% url 'grant_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-plus"></span> Agregar</a></td>
+	                    					<td><a class="btn btn-sm btn-primary" href="{% url 'grant_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Agregar</a></td>
 	                    				{% endif %}	
 	                			</tr>
                 			{% endif %}

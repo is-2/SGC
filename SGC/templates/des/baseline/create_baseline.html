@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block title %} SGC {% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Crear Línea base</h2>
+		<form class="form-horizontal" method="POST">
+			{% csrf_token %}
+			{{ form.as_p }}
+            <button class="btn btn-success" type="submit" class="btn btn-primary"> Crear </button>
+            <a class="btn btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=phase.id%}"><span class="glyphicon glyphicon-chevron-left"></span> Volver </a>                                   
+		</form>		
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block title %}SGC - Confirmación{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<div class="panel panel-success">
+      		<div class="panel-heading">
+        		<h3 class="panel-title">¡Éxito!</h3>
+      		</div>
+      		<div class="panel-body">
+        		El Tipo de Atributo {{ attr_t.name }} fue desasignado del Tipo de Ítem {{ item_t.name }}.
+      		</div>
+      	</div>
+		<br>
+		<a class="btn btn-default" href="{% url 'assign_attribute_type' id_item_type=item_t.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}

@@ -1,12 +1,14 @@
 {% extends "index.html" %}
-{% block title %}SGC - Gestión de roles{% endblock %}
+{% block title %}SGC{% endblock %}
 {% block content %}
 
 <div class="jumbotron">
 	<div class="bs-example">
-		<h1>Gestión de roles</h1>
-		<a class="btn btn-sm btn-default" href="{% url 'create_group' %}"><span class="glyphicon glyphicon-record"></span> Crear</a>
-		<br><br>
+		<h2>Administración de roles</h2>
+		<div class="btn-group">
+			<a class="btn btn-success" href="{% url 'create_group' %}"><span class="glyphicon glyphicon-plus"></span> Crear rol</a>
+		</div>
+		<br><br>		
 		{% if groups %}
 			<div class="table-responsive"> 
         		<table class="table table-hover">
@@ -15,9 +17,6 @@
                     		<th>ID</th>
                     		<th>Nombre de rol</th>   
                     		<th></th>
-                    		<th></th>
-                    		<th></th>
-                    		<th></th>
                     	</tr>
                     </thead>
                 	<tbody>
@@ -25,9 +24,13 @@
                 			<tr>
                     			<td>{{ g.id }}</td>
                     			<td>{{ g.name }}</td>
-                    			<td><a class="btn btn-sm btn-default" href="{% url 'modify_group' id_group=g.id %}"><span class="glyphicon glyphicon-edit"></span> Modificar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="{% url 'delete_group' id_group=g.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-                    			<td><a class="btn btn-sm btn-default" href="{% url 'assign_perm' id_group=g.id %}"><span class="glyphicon glyphicon-cog"></span> Permisos</a></td>
+                    			<td>
+                    			<div class="btn-group">
+                    				<a class="btn btn-sm btn-default" href="{% url 'assign_perm' id_group=g.id %}"><span class="glyphicon glyphicon-cog"></span> Permisos</a>
+                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_group' id_group=g.id %}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_group' id_group=g.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>                    				
+                    			</div>
+                    			</td>
                 			</tr>
                 		{% endfor %}
                 	</tbody>

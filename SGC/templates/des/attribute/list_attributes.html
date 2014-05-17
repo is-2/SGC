@@ -1,0 +1,50 @@
+{% extends "index.html" %} {% block title %}SGC - Administración de
+Atributo{% endblock %} {% block content %}
+
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Administración de los Atributos del Ítem <b>{{ item.name }}</b></h2>
+		<br> {% if attr %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre</th>
+						<th>Tipo</th>
+						<th>Valor</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for a in attr %}
+					<tr>
+						<td>{{ a.id }}</td>
+						<td>{{ a.name }}</td>
+						<td>{{ a.type }}</td>
+						{% if a.type = "Numerico" %}
+							<td>{{ a.attr_int }}</td>
+						{% elif a.type == 'Cadena' %}
+							<td>{{ a.attr_str }}</td>
+						{% elif a.type == 'Booleano' %}
+							<td>{{ a.attr_bool }}</td>
+						{% else %}
+							<td>{{ a.attr_date }}</td>
+						{% endif %}
+						<td>
+							<a class="btn btn-sm btn-success" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id id_user=id_user id_project=id_project id_phase=id_phase %}"><spanclass="glyphicon glyphicon-pencil"></span> Asignar valor</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		<h3>No existen Atributos</h3>
+		{% endif %}
+	</div>
+	<br> <a class="btn btn-default" href="{% url 'list_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span
+		class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}
