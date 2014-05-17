@@ -612,11 +612,12 @@ def list_predecessors(request, id_user, id_project, id_phase, id_item):
     actual_phase = Phase.objects.get(id=id_phase)
     order = actual_phase.order - 1
     valid = False
+    item = Item.objects.get(id=id_item)
     if(order >= 1): # If there is a previous phase
         valid = True
-        previous_phase = Phase.objects.get(order=order)
+        previous_phase = Phase.objects.get(project=actual_phase.project, order=order)
         previous_items = Item.objects.filter(phase=previous_phase)
-        ctx={'prev_items':previous_items, 'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
+        ctx={'prev_items':previous_items,'item':item, 'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
     else:
         ctx={'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
     return render(request, 'des/item/list_predecessors.html', ctx)
