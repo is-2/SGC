@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import transaction
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -630,3 +630,21 @@ def set_predecessor(request, id_user, id_project, id_phase, id_item, id_pred):
     ctx={'predecessor':pred, 'item':item, 'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/set_predecessor.html', ctx)
     
+def list_fathers(request, id_user, id_project, id_phase, id_item):
+    phase = Phase.objects.get(id=id_phase)
+    item_fs = Item.objects.filter(phase=phase).exclude(id=id_item)
+    item = Item.objects.get(id=id_item)
+    valid = False
+    if item_fs:
+        valid = True
+    ctx = {'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'item_fs':item_fs, 'valid':valid, 'item':item}
+    return render(request, 'des/item/list_fathers.html', ctx)
+    
+def set_father(request, id_user, id_project, id_phase, id_item, id_father):
+    father = Item.objects.get(id=id_father)
+    item = Item.objects.get(id=id_item)
+    item.predecessor = father
+    item.save()
+    ctx = {'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase,'id_item':id_item}
+    return redirect(reverse('list_fathers', kwargs=ctx))
+
