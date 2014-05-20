@@ -68,7 +68,7 @@ class Item(models.Model):
     """
     name        = models.CharField('Name', max_length=100, unique=True)
     description = models.CharField('Description', max_length=100)
-    
+    cost        = models.IntegerField('Cost')
     
     DEVELOPED   = 0
     DEPLOYED    = 1

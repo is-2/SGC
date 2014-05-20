@@ -1,16 +1,14 @@
 {% extends "index.html" %}
 {% block title %}SGC - Crear Tipo de Atributo{% endblock %}
 {% block content %}
+{% load bootstrap %}
 <div class="jumbotron">
-	<div class="bs-example">
-		<h2>Crear Tipo de Atributo</h2>
-		<form class="form-horizontal" method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Crear</button>
-		</form>
-		<br>
-		<a class="btn btn-sm btn-default" href="{% url 'list_attribute_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
-	</div>
+	<h2>Crear Tipo de Atributo</h2>
+	<form class="form-horizontal" method="POST">
+		{% csrf_token %}
+    	{{ form|bootstrap }}
+ 		<button type="submit" class="btn btn-success">Crear</button>
+	</form>
+	<a class="btn btn-sm btn-default" href="{% url 'list_attribute_types' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

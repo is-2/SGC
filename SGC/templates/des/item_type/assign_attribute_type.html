@@ -24,9 +24,9 @@
                     			<td>{{ a.name }}</td>
                     			<td>{{ a.description }}</td>
                     			{% if a in item_t.attribute_types.all %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'deny_attribute_type' id_item_type=item_t.id id_attr_type=a.id %}"><span class="glyphicon glyphicon-minus"></span> Quitar</a></td>
+                    				<td><a class="btn btn-sm btn-danger" href="{% url 'deny_attribute_type' id_item_type=item_t.id id_attr_type=a.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
                     			{% else %}
-                    				<td><a class="btn btn-sm btn-default" href="{% url 'grant_attribute_type' id_item_type=item_t.id id_attr_type=a.id %}"><span class="glyphicon glyphicon-plus"></span> Asignar</a></td>
+                    				<td><a class="btn btn-sm btn-primary" href="{% url 'grant_attribute_type' id_item_type=item_t.id id_attr_type=a.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Asignar</a></td>
                     			{% endif %}
                 			</tr>
                 		{% endfor %}

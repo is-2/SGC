@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 {% block title %}SGC - Modificar Tipo de Atributo {{ attribute_type.name }}{% endblock %}
 {% block content %}
+{% load bootstrap %}
 <div class="jumbotron">
 	<h2>Modificar Tipo de Atributo</h2>
 	<form class="form-horizontal" method="POST">
@@ -36,19 +37,7 @@
         </div>
         {% endif %}
         <!-- Fin del manejo de errores del formulario -->
-		
-		<p class="text-muted">Campos obligatorios (*)</p>
-		<div class="input-group">
-			<span class="input-group-addon"><b>* Nombre</b></span>
-			<input type="text" class="form-control" id="name" name="name" value="{{ attribute_type.name }}">
-        </div>
-        <br>
-		<div class="input-group">
-			<span class="input-group-addon"><b>* Descripción</b></span>
-			<input type="text" class="form-control" id="description" name="description" value="{{ attribute_type.description }}">
-        </div>
-		<br>
-		<input type="radio" name="">
+		{{ form|bootstrap }}
         <button type="submit" class="btn btn-success">Modificar</button>
 	</form>
 	<br>

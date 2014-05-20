@@ -54,6 +54,12 @@ def modify_attribute_type(request, id_attribute_type):
     """
     Función que modifica un Tipo de Atributo seleccionado del Sistema.
     """
+    type_parse = {
+               "0": "Numerico",
+               "1": "Cadena",
+               "2": "Booleano",
+               "3": "Fecha",
+    }
     attribute_type = AttributeType.objects.get(id=id_attribute_type)
     
     if request.method == "POST":
@@ -61,8 +67,10 @@ def modify_attribute_type(request, id_attribute_type):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
+            attr_type = form.cleaned_data['attr_type']
             attribute_type.name = name
             attribute_type.description = description
+            attribute_type.attr_type = type_parse[attr_type]
             attribute_type.save()
             return redirect('list_attribute_types')
             
@@ -74,7 +82,6 @@ def modify_attribute_type(request, id_attribute_type):
             })
     ctx = {'form': form, 'attribute_type': attribute_type}
     return render(request, 'des/attribute_type/modify_attribute_type.html', ctx)
-    #return render_to_response('des/attribute_type/modify_attribute_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def delete_attribute_type(request, id_attribute_type):
@@ -82,12 +89,14 @@ def delete_attribute_type(request, id_attribute_type):
     Función que elimina un Tipo de Atributo del Sistema.
     """
     attribute_type = AttributeType.objects.get(id=id_attribute_type)
+    # POST
     if request.method == "POST":
         attribute_type.delete()
-        return HttpResponseRedirect('/des/list_attribute_types/')
+        return redirect('list_attribute_types')
+    # GET
     if request.method == "GET":
         ctx = {'attribute_type':attribute_type}
-        return render_to_response('des/attribute_type/delete_attribute_type.html', ctx, context_instance=RequestContext(request))
+        return render(request, 'des/attribute_type/delete_attribute_type.html', ctx)
 
 @login_required(login_url='/login/')   
 def visualize_attribute_type(request, id_attribute_type):
@@ -96,7 +105,7 @@ def visualize_attribute_type(request, id_attribute_type):
     """
     attribute_type = AttributeType.objects.get(id=id_attribute_type)
     ctx = {'attribute_type': attribute_type}
-    return render_to_response('des/attribute_type/visualize_attribute_type.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/attribute_type/visualize_attribute_type.html', ctx)
 
 @login_required(login_url='/login/')
 def list_item_types(request):
@@ -105,7 +114,7 @@ def list_item_types(request):
     """
     item_ts = ItemType.objects.all()
     ctx = {'item_ts':item_ts}
-    return render_to_response('des/item_type/list_item_types.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/item_type/list_item_types.html', ctx)
 
 @login_required(login_url='/login/')
 def create_item_type(request):
@@ -113,6 +122,7 @@ def create_item_type(request):
     Función que crea un Tipo de Ítem y lo almacena en el Sistema.
     """
     form = forms.CreateItemTypeForm()
+    # POST
     if request.method == "POST":
         form = forms.CreateItemTypeForm(request.POST)
         if form.is_valid():
@@ -120,12 +130,9 @@ def create_item_type(request):
             description = form.cleaned_data['description']
             item_t = ItemType(name=name, description=description)
             item_t.save()
-            return HttpResponseRedirect('/des/list_item_types/')
-        else:
-            ctx = {'form':form}
-            return render_to_response('des/item_type/create_item_type.html', ctx, context_instance=RequestContext(request))
+            return redirect('list_item_types')
     ctx = {'form':form}
-    return render_to_response('des/item_type/create_item_type.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/item_type/create_item_type.html', ctx)
 
 @login_required(login_url='/login/')
 def modify_item_type(request, id_item_type):
@@ -148,8 +155,8 @@ def modify_item_type(request, id_item_type):
             'name': item_t.name,
             'description':item_t.description,
             })
-    ctx = {'form': form, 'item_t': item_t}
-    return render_to_response('des/item_type/modify_item_type.html', ctx, context_instance=RequestContext(request))
+        ctx = {'form': form, 'item_t': item_t}
+        return render_to_response('des/item_type/modify_item_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def delete_item_type(request, id_item_type):
@@ -172,7 +179,8 @@ def visualize_item_type(request, id_item_type):
     item_t = ItemType.objects.get(id=id_item_type)
     attr_types = item_t.attribute_types.all()
     ctx = {'item_t': item_t, 'attr_types':attr_types}
-    return render_to_response('des/item_type/visualize_item_type.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/item_type/visualize_item_type.html', ctx)
+    #return render_to_response('des/item_type/visualize_item_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def assign_attribute_type(request, id_item_type):
@@ -183,7 +191,8 @@ def assign_attribute_type(request, id_item_type):
     attr_t = AttributeType.objects.all()
     item_t = ItemType.objects.get(id=id_item_type)
     ctx = {'item_t':item_t, 'attr_t':attr_t}
-    return render_to_response('des/item_type/assign_attribute_type.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/item_type/assign_attribute_type.html', ctx)
+    #return render_to_response('des/item_type/assign_attribute_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/') 
 def grant_attribute_type(request, id_item_type, id_attr_type):
@@ -200,8 +209,12 @@ def grant_attribute_type(request, id_item_type, id_attr_type):
     if new_attr_t:
         item_t.attribute_types.add(attr_t)
         item_t.save()
-    ctx = {'item_t':item_t, 'attr_t':attr_t, 'valid':new_attr_t}
-    return render_to_response('des/item_type/grant_attribute_type.html', ctx, context_instance=RequestContext(request))
+    #ctx = {'item_t':item_t, 'attr_t':attr_t, 'valid':new_attr_t}
+    #ctx = {'item_t':item_t, 'attr_t':attr_t}
+    ctx = {'id_item_type':id_item_type}
+    return redirect(reverse('assign_attribute_type', kwargs=ctx))
+    #return render(request, 'des/item_type/assign_attribute_type.html', ctx)
+    #return render_to_response('des/item_type/grant_attribute_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/') 
 def deny_attribute_type(request, id_item_type, id_attr_type):
@@ -212,8 +225,12 @@ def deny_attribute_type(request, id_item_type, id_attr_type):
     attr_t = AttributeType.objects.get(id=id_attr_type)
     item_t.attribute_types.remove(attr_t)
     item_t.save()
-    ctx = {'item_t':item_t, 'attr_t':attr_t}
-    return render_to_response('des/item_type/deny_attribute_type.html', ctx, context_instance=RequestContext(request))
+    #ctx = {'item_t':item_t, 'attr_t':attr_t}
+    #return redirect('assign_attribute_type')
+    ctx = {'id_item_type':id_item_type}
+    return redirect(reverse('assign_attribute_type', kwargs=ctx))
+    #return render(request, 'des/item_type/assign_attribute_type.html', ctx)
+    #return render_to_response('des/item_type/deny_attribute_type.html', ctx, context_instance=RequestContext(request))
 
 def list_items(request, id_user, id_project, id_phase):
     """
@@ -237,8 +254,9 @@ def create_item(request, id_user, id_project, id_phase):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
+            cost = form.cleaned_data['cost']
             phase = Phase.objects.get(id=id_phase)
-            Item.objects.create(name=name, description=description, phase=phase)
+            Item.objects.create(name=name, description=description, cost=cost, phase=phase)
             ctx = {'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
             return HttpResponseRedirect(reverse('list_items', kwargs=ctx))
         else:
