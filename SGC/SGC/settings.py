@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'home',
     'adm',
     'des',
+    'gdc',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,4 +89,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/nobu/git/SGC/SGC/static/'
+STATIC_ROOT = '/home/akira/git/SGC/SGC/static/'

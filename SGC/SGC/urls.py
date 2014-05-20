@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^', include('home.urls')),
     url(r'^', include('adm.urls')),
     url(r'^', include('des.urls')),
+    url(r'^', include('gdc.urls')),
 )

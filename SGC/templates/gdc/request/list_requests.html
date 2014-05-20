@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% block title %}SGC - Peticion de Cambios{% endblock %} 
+{% block content %}
+<div class="jumbotron">
+ 	<div class="bs-example">
+	<h2>Lista de peticiones</h2>
+	{% if requests %}
+	  <div class="table-responsive">
+	    <table class="table table-hover">
+	      <thead>
+		  <tr>
+		    <th>ID</th>
+		    <th>Titulo</th>
+		    <th></th>
+		  </tr>
+	    </thead>
+	    <tbody>
+	      {% for r in requests %}
+		    <tr>
+			<td>{{ r.id }}</td>
+			<td>{{ r.title }}</td>
+			<td>
+			  <div class="btn-group">
+				<a class="btn btn-sm btn-success" href="{% url 'visualize_request' id_request=r.id %}"><span class="glyphicon glyphicon-search"></span> Ver</a>
+			  </div>
+			</td>
+		  </tr>
+		  {% endfor %}
+		</tbody>
+	  </table>
+	</div>
+	{% else %}
+		<h3>No existen peticiones.</h3>
+	{% endif %}
+	</div>
+	<a class="btn btn-default" href="{% url 'index' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

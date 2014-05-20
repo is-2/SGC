@@ -20,7 +20,7 @@ def list_attribute_types(request):
     """
     attribute_types = AttributeType.objects.all()
     ctx = {'attribute_types':attribute_types}
-    return render_to_response('des/attribute_type/list_attribute_types.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/attribute_type/list_attribute_types.html', ctx)
 
 @login_required(login_url='/login/')
 def create_attribute_type(request):
@@ -42,12 +42,12 @@ def create_attribute_type(request):
             attr_type = form.cleaned_data['attr_type']
             attribute_type = AttributeType(name=name, description=description, attr_type=type_parse[attr_type])
             attribute_type.save()
-            return HttpResponseRedirect('/des/list_attribute_types/')
+            return redirect('list_attribute_types')
         else:
             ctx = {'form':form}
-            return render_to_response('des/attribute_type/create_attribute_type.html', ctx, context_instance=RequestContext(request))
+            return render(request, 'des/attribute_type/create_attribute_type.html', ctx)
     ctx = {'form':form}
-    return render_to_response('des/attribute_type/create_attribute_type.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/attribute_type/create_attribute_type.html', ctx)
 
 @login_required(login_url='/login/') 
 def modify_attribute_type(request, id_attribute_type):
@@ -64,7 +64,7 @@ def modify_attribute_type(request, id_attribute_type):
             attribute_type.name = name
             attribute_type.description = description
             attribute_type.save()
-            return HttpResponseRedirect('/des/list_attribute_types/')
+            return redirect('list_attribute_types')
             
     if request.method == "GET":
         form = forms.ModifyAttributeTypeForm(initial={
@@ -73,7 +73,8 @@ def modify_attribute_type(request, id_attribute_type):
             'attr_type':attribute_type.attr_type,
             })
     ctx = {'form': form, 'attribute_type': attribute_type}
-    return render_to_response('des/attribute_type/modify_attribute_type.html', ctx, context_instance=RequestContext(request))
+    return render(request, 'des/attribute_type/modify_attribute_type.html', ctx)
+    #return render_to_response('des/attribute_type/modify_attribute_type.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def delete_attribute_type(request, id_attribute_type):
@@ -647,4 +648,5 @@ def set_father(request, id_user, id_project, id_phase, id_item, id_father):
     item.save()
     ctx = {'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase,'id_item':id_item}
     return redirect(reverse('list_fathers', kwargs=ctx))
+
 
