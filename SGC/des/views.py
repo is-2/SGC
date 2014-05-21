@@ -229,7 +229,7 @@ def list_items(request, id_user, id_project, id_phase):
     """
     phase=Phase.objects.get(id=id_phase)
     items = Item.objects.exclude(status=Item.DELETED).filter(phase=phase)
-    ctx = {'items':items, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
+    ctx = {'items':items, 'id_user':request.user.id, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/list_items.html', ctx)
 
 @login_required(login_url='/login/')
@@ -463,137 +463,124 @@ def revive_item(request, id_item, id_user, id_project, id_phase):
     return render(request, 'des/item/revive_item.html', ctx)
 
 @login_required(login_url='/login/')
-def list_user_projects(request, id_user):
+def list_user_projects(request):
     """
-
     """
-    user = User.objects.get(id=id_user)
-    projects = user.projects.all()
-    ctx = {'user': user, 'projects':projects}
-    return render_to_response('des/baseline/list_user_projects.html', ctx, context_instance=RequestContext(request))
+    projects = request.user.projects.all()    
+    ctx = {'projects':projects}
+    return render(request, 'des/baseline/list_user_projects.html', ctx)
 
 @login_required(login_url='/login/')
-def list_project_phases(request, id_user, id_project):
+def list_project_phases(request, id_project):
     """
-    
     """
-    user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)    
     phases = Phase.objects.filter(project_id=id_project)
-    ctx = {'user':user, 'project':project, 'phases':phases}
-    return render_to_response('des/baseline/list_project_phases.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'phases':phases}
+    return render(request, 'des/baseline/list_project_phases.html', ctx)
 
 @login_required(login_url='/login/')
-def list_phase_baseline(request, id_user, id_project, id_phase):
+def list_phase_baseline(request, id_project, id_phase):
     """
     """
-    user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.filter(phase_id=id_phase)
-    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
-    return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'phase':phase, 'baseline':baseline}
+    return render(request, 'des/baseline/list_phase_baseline.html', ctx)
 
 @login_required(login_url='/login/')
-def create_baseline(request, id_user, id_project, id_phase):
+def create_baseline(request, id_project, id_phase):
     """
     """
-    user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     form = forms.CreateBaseLineForm()
     
-    if request.method == 'POST':
-        
+    if request.method == 'POST':        
         form = forms.CreateBaseLineForm(request.POST)
         
         if form.is_valid():
             name = form.cleaned_data['name']            
             baseline = BaseLine.objects.create(name=name, state=0, phase=phase)
             baseline.save()
-            ctx = {'user':user, 'project':project, 'phase': phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
-            return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+            ctx = {'project':project, 'phase': phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+            return render(request, 'des/baseline/list_phase_baseline.html', ctx)
         
         else:
-            ctx = {'form':form, 'user':user, 'project':project, 'phase':phase}
-            return render_to_response('des/baseline/create_baseline.html', ctx, context_instance=RequestContext(request))
+            ctx = {'form':form, 'project':project, 'phase':phase}
+            return render(request, 'des/baseline/create_baseline.html', ctx)
         
-    ctx = {'form':form, 'user':user, 'project':project, 'phase':phase}
-    return render_to_response('des/baseline/create_baseline.html', ctx, context_instance=RequestContext(request))
+    ctx = {'form':form, 'project':project, 'phase':phase}
+    return render(request, 'des/baseline/create_baseline.html', ctx)
 
 @login_required(login_url='/login/')
-def modify_baseline(request, id_user, id_project, id_phase, id_baseline):
+def modify_baseline(request, id_project, id_phase, id_baseline):
     """
     """
-    user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
     
     if request.method == "POST":
         form = forms.ModifyBaseLineForm(data=request.POST)
+        
         if form.is_valid():
-
             name = form.cleaned_data['name']
             baseline.name = name
-            baseline.save()
-            
-            ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
-            return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+            baseline.save()            
+            ctx = {'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+            return render(request, 'des/baseline/list_phase_baseline.html', ctx)
             
     if request.method == "GET":
         form = forms.ModifyBaseLineForm(initial={
             'name' : baseline.name,
             })
-    ctx = {'form': form, 'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
-    return render_to_response('des/baseline/modify_baseline.html', ctx, context_instance=RequestContext(request))    
+    ctx = {'form': form, 'project':project, 'phase':phase, 'baseline':baseline}
+    return render(request, 'des/baseline/modify_baseline.html', ctx)    
 
 @login_required(login_url='/login/')
 def modify_baseline_state(request, id_project, id_phase, id_baseline):
     """
     """
-    user = request.user
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
     
     if request.method == "POST":
         form = forms.ModifyBaseLineStateForm(data=request.POST)
+        
         if form.is_valid():
             state = form.cleaned_data['state']
             baseline.state = state
-            baseline.save()
-            
-            ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
-            return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+            baseline.save()            
+            ctx = {'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+            return render(request, 'des/baseline/list_phase_baseline.html', ctx)
             
     if request.method == "GET":
         form = forms.ModifyBaseLineStateForm(initial={
             'state' : baseline.state,
             })
     ctx = {'form': form, 'project':project, 'phase':phase, 'baseline':baseline}
-    return render_to_response('des/baseline/modify_baseline_state.html', ctx, context_instance=RequestContext(request))    
+    return render(request, 'des/baseline/modify_baseline_state.html', ctx)    
 
 @login_required(login_url='/login/')
-def manage_baseline_items(request, id_user, id_project, id_phase, id_baseline):
+def manage_baseline_items(request, id_project, id_phase, id_baseline):
     """
     """
-    user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
     items = Item.objects.filter(phase_id=id_phase)
     bsitems = Item.objects.filter(baseline_id=id_baseline)
     
-    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
-    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render(request, 'des/baseline/manage_baseline_items.html', ctx)
 
 @login_required(login_url='/login/')
-def assign_baseline_item(request, id_user, id_project, id_phase, id_baseline, id_item):
+def assign_baseline_item(request, id_project, id_phase, id_baseline, id_item):
+    """    
     """
-    
-    """
-    user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
@@ -606,15 +593,13 @@ def assign_baseline_item(request, id_user, id_project, id_phase, id_baseline, id
     item.status = Item.FINISHED
     item.save()
                 
-    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
-    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render(request, 'des/baseline/manage_baseline_items.html', ctx)
 
 @login_required(login_url='/login/')
-def remove_baseline_item(request, id_user, id_project, id_phase, id_baseline, id_item):
+def remove_baseline_item(request, id_project, id_phase, id_baseline, id_item):
+    """    
     """
-    
-    """
-    user = User.objects.get(id=id_user)
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
@@ -626,27 +611,30 @@ def remove_baseline_item(request, id_user, id_project, id_phase, id_baseline, id
     item.status = Item.ACTIVE
     item.save()
     
-    ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
-    return render_to_response('des/baseline/manage_baseline_items.html', ctx, context_instance=RequestContext(request))   
+    ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
+    return render(request, 'des/baseline/manage_baseline_items.html', ctx)   
 
 @login_required(login_url='/login/')
-def delete_baseline(request, id_user, id_project, id_phase, id_baseline):
-    user = User.objects.get(id=id_user)
+def delete_baseline(request, id_project, id_phase, id_baseline):
+    """
+    """
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)  
     
     if request.method == "POST":
         baseline.delete()
-        ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
-        return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+        ctx = {'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+        return render(request, 'des/baseline/list_phase_baseline.html', ctx)
    
     if request.method == "GET":
-        ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline}
-        return render_to_response('des/baseline/delete_baseline.html', ctx, context_instance=RequestContext(request))
+        ctx = {'project':project, 'phase':phase, 'baseline':baseline}
+        return render(request, 'des/baseline/delete_baseline.html', ctx)
 
 @login_required(login_url='/login/')
 def list_predecessors(request, id_user, id_project, id_phase, id_item):
+    """
+    """
     actual_phase = Phase.objects.get(id=id_phase)
     order = actual_phase.order - 1
     valid = False
@@ -685,5 +673,3 @@ def set_father(request, id_user, id_project, id_phase, id_item, id_father):
     item.save()
     ctx = {'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase,'id_item':id_item}
     return redirect(reverse('list_fathers', kwargs=ctx))
-
-

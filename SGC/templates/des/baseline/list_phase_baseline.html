@@ -5,7 +5,7 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Líneas bases</h2>
-		<a class="btn btn-success" href="{% url 'create_baseline' id_user=user.id id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-plus"></span> Crear Línea base </a>
+		<a class="btn btn-success" href="{% url 'create_baseline' id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-plus"></span> Crear Línea base </a>
 		<br><br>
 		{% if baseline %}
 			<div class="table-responsive"> 
@@ -27,10 +27,10 @@
 	                    			<td>
 	                    			<div class="btn-group">
                     					<a class="btn btn-sm btn-default" href="{% url 'modify_baseline_state' id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-retweet"></span> Estado</a>	                    				
-	                    				{% if b.state != 1%}
-		                    				<a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-briefcase"></span> Ítem</a>	                    					                    				
-		                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
-		                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+	                    				{% if b.state != 1%} <!-- ESTADO NO CERRADO (ABIERTO) -->
+		                    				<a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-briefcase"></span> Ítem</a>	                    					                    				
+		                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_baseline' id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+		                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_baseline' id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
 										{% endif %}		                    						              	                    					                    				
 	                    			</div>
 	                    			</td>	                    				                    			
@@ -43,6 +43,6 @@
     		<h3>No existen líneas bases</h3>
     	{% endif %}
 	</div>
-	<a class="btn btn-default" href="{% url 'list_project_phases' id_user=user.id id_project=project.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	<a class="btn btn-default" href="{% url 'list_project_phases' id_project=project.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}
