@@ -26,7 +26,7 @@
 								{% if item.predecessor == i %}
 									<a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a> 
 								{% else %}
-									<a class="btn btn-sm btn-default" href="{% url 'set_father' id_father=i.id id_item=id_item id_user=id_user id_project=id_project id_phase=id_phase%}"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a>
+									<a class="btn btn-sm btn-default" href="{% url 'set_father' id_father=i.id id_item=id_item id_project=id_project id_phase=id_phase%}"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a>
 								{% endif %}
 							</div>
 						</td>
@@ -39,6 +39,6 @@
 		  <h3>No existen items padres.</h3>
 		{% endif %}
 	</div>
-	<a class="btn btn-default" href="{% url 'list_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	<a class="btn btn-default" href="{% url 'list_items' id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

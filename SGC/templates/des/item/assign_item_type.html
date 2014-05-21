@@ -21,7 +21,7 @@
                 			<tr>
                     			<td>{{ item_type.id }}</td>
                     			<td>{{ item_type.name }}</td>
-                    				<td><a class="btn btn-sm btn-success" href="{% url 'add_item_type' id_item=item.id id_item_type=item_type.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok"></span> Asignar</a></td>
+                    				<td><a class="btn btn-sm btn-success" href="{% url 'add_item_type' id_item=item.id id_item_type=item_type.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok"></span> Asignar</a></td>
                 			</tr>
                 		{% endfor %}
                 	</tbody>
@@ -32,6 +32,6 @@
     	{% endif %}
 	</div>
 	<br>
-		<a class="btn btn-default" href="{% url 'list_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<a class="btn btn-default" href="{% url 'list_items' id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

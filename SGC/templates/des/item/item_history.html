@@ -19,7 +19,7 @@
 		      <td>{{ v.revision.date_created }}</td>
 			  <td>
 			    <div class="btn-group">
-			      <a class="btn btn-sm btn-default" href="{% url 'revert_item' id_item=item.id id_version=v.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-time"></span> Revertir</a>
+			      <a class="btn btn-sm btn-default" href="{% url 'revert_item' id_item=item.id id_version=v.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-time"></span> Revertir</a>
 			    </div>
 			  </td>
 		    </tr>
@@ -30,7 +30,7 @@
     {% else %}
 	  <h3>No existe historial</h3>
 	{% endif %} 
-	<a class="btn btn-default" href="{% url 'list_items' id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	<a class="btn btn-default" href="{% url 'list_items' id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
   </div>
 </div>
 {% endblock %}
