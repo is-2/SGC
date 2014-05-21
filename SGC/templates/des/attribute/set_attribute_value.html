@@ -1,12 +1,13 @@
 {% extends "index.html" %}
 {% block title %}SGC - Asignar Valor al Atributo{% endblock %}
 {% block content %}
+{% load bootstrap %}
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Asignar Valor al Atributo</h2>
 		<form class="form-horizontal" method="POST">
 			{% csrf_token %}
-			{{ form.as_p }}
+			{{ form|bootstrap }}
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Asignar</button>
 		</form>
 		<br>
