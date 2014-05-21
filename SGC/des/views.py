@@ -327,7 +327,7 @@ def add_item_type(request, id_item, id_item_type, id_user, id_project, id_phase)
     item = Item.objects.get(id=id_item)
     item_type = ItemType.objects.get(id=id_item_type)
     
-    if item.status != Item.ACTIVE:
+    if item.status != Item.ACTIVE: #
         item.status = Item.ACTIVE  # Set to phase deployment
         item.save()
         for a in item_type.attribute_types.all():  # Create all attribute skeletons to item
@@ -623,7 +623,7 @@ def remove_baseline_item(request, id_user, id_project, id_phase, id_baseline, id
     bsitems = Item.objects.filter(baseline_id=id_baseline)    
        
     item.baseline_id = None
-    item.status = Item.DEVELOPED
+    item.status = Item.ACTIVE
     item.save()
     
     ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
