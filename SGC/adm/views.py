@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import permission_required, login_required
 from adm import forms
 from home.models import Client
 from adm.models import Project, Phase
+from des.models import Item, BaseLine
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -479,28 +480,50 @@ def modify_project_state(request, id_project):
     """    
     project = Project.objects.get(id=id_project)
     
-    if request.method == "POST":
-                
-        form = forms.ModifyProjectStateForm(data=request.POST)
-                
+    if request.method == "POST":                
+        form = forms.ModifyProjectStateForm(data=request.POST)                
         if form.is_valid():            
             state = form.cleaned_data['state']
-            validOrder = True
-                        
-            if state=="1":                
-                               
-                phases = Phase.objects.filter(project_id=id_project)
-                project = Project.objects.get(id=id_project)                                   
+            
+            # ESTADO a PENDIENTE.
+            if state == "0":
+                for phase in Phase.objects.filter(project=project):
+                    phase.state="0"
+                    phase.save()    # FASES: INICIAL.
+                project.state = state
+                project.save()  # PROYECTO: PENDIENTE.
+                return HttpResponseRedirect('/adm/list_projects/')
+            
+            # ESTADO a ACTIVO.                                   
+            if state == "1":
+                validOrder = True                               
+                phases = Phase.objects.filter(project=project)                                  
                 for i in range(1, (len(phases)+1)):                                                                                   
                     if not Phase.objects.filter(project=project, order=i):
                         validOrder = False
                         break
                     
-            if validOrder:
-                project.state = state
-                project.save()
-                return HttpResponseRedirect('/adm/list_projects/')
+                if validOrder:  # ORDEN CORRECTO.
+                    for phase in Phase.objects.filter(project=project):
+                        phase.state="1"
+                        phase.save()    # FASES: DESARROLLO.
+                    project.state = state
+                    project.save()  # PROYECTO: ACTIVO.
+                    return HttpResponseRedirect('/adm/list_projects/')
+                
+            # ESTADO a FINALIZADO.
+            if state == "2":
+                phasesFinished = True
+                for phase in Phase.objects.filter(project=project):
+                    if phase.state != 2:
+                        phasesFinished = False
+                        break
             
+                if phasesFinished:
+                    project.state = state
+                    project.save()  # PROYECTO: FINALIZADO.
+                    return HttpResponseRedirect('/adm/list_projects/')                    
+                            
     if request.method == "GET":
         form = forms.ModifyProjectStateForm(initial={
             'state': project.state,
@@ -519,11 +542,43 @@ def modify_phase_state(request, id_project, id_phase):
         form = forms.ModifyPhaseStateForm(data=request.POST)
         if form.is_valid():
             state = form.cleaned_data['state']
-            phase.state = state
-            phase.save()
-            phases = Phase.objects.filter(project_id=id_project)
-            ctx = {'project':project, 'phases':phases}
-            return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))            
+            
+            # ESTADO a INICIAL. **
+            if state == "0":
+                phase.state = state
+                phase.save()    # FASE: INICIAL.
+                phases = Phase.objects.filter(project=project)
+                ctx = {'project':project, 'phases':phases}
+                return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+            
+            # ESTADO a DESARROLLO. **
+            if state == "1":
+                phase.state = state
+                phase.save()    # FASE: DESARROLLO.
+                phases = Phase.objects.filter(project=project)
+                ctx = {'project':project, 'phases':phases}
+                return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
+            
+            # ESTADO A FINALIZADO.
+            if state == "2": 
+                itemsApproved = True
+                for item in Item.objects.filter(phase=phase):
+                    if item.baseline is None:
+                        itemsApproved = False
+                        break
+                
+                baselineClosed = True
+                for baseline in BaseLine.objects.filter(phase=phase):
+                    if baseline.state != 1:
+                        baselineClosed = False
+                        break
+                
+                if itemsApproved and baselineClosed:    # ITEMS APROBADOS Y LB CERRADAS.
+                    phase.state = state
+                    phase.save()    # FASE: FINALIZADA.
+                    phases = Phase.objects.filter(project=project)
+                    ctx = {'project':project, 'phases':phases}
+                    return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))            
             
     if request.method == "GET":
         form = forms.ModifyPhaseStateForm(initial={

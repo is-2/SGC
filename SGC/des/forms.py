@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from des.models import AttributeType, Attribute, ItemType, Item
+from des.models import AttributeType, Attribute, ItemType, Item, BASELINE_STATES
 import datetime
 
 CHOICES = (
@@ -144,3 +144,8 @@ class ModifyBaseLineForm(forms.Form):
     """
     """
     name = forms.CharField(label="Nombre", widget=forms.TextInput, required=True)
+
+class ModifyBaseLineStateForm(forms.Form):
+    """
+    """
+    state = forms.ChoiceField(label="Estado", choices=BASELINE_STATES, required=True)

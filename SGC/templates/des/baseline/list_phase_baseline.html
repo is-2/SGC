@@ -14,6 +14,7 @@
                 		<tr>
                     		<th>ID</th>
                     		<th>Nombre</th>
+                    		<th>Estado</th>
 							<th></th>
                     	</tr>
                     </thead>
@@ -22,12 +23,15 @@
 	                			<tr>
 	                    			<td>{{ b.id }}</td>
 	                    			<td>{{ b.name }}</td>
+	                    			<td>{{ b.state}}</td>
 	                    			<td>
 	                    			<div class="btn-group">
-	                    				<a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-briefcase"></span> Ítem</a>
-	                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
-	                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
-	                    					                    				
+                    					<a class="btn btn-sm btn-default" href="{% url 'modify_baseline_state' id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-retweet"></span> Estado</a>	                    				
+	                    				{% if b.state != 1%}
+		                    				<a class="btn btn-sm btn-default" href="{% url 'manage_baseline_items' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-briefcase"></span> Ítem</a>	                    					                    				
+		                    				<a class="btn btn-sm btn-warning" href="{% url 'modify_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
+		                    				<a class="btn btn-sm btn-danger" href="{% url 'delete_baseline' id_user=user.id id_project=project.id id_phase=phase.id id_baseline=b.id%}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+										{% endif %}		                    						              	                    					                    				
 	                    			</div>
 	                    			</td>	                    				                    			
 	                			</tr>

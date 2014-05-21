@@ -539,6 +539,32 @@ def modify_baseline(request, id_user, id_project, id_phase, id_baseline):
     return render_to_response('des/baseline/modify_baseline.html', ctx, context_instance=RequestContext(request))    
 
 @login_required(login_url='/login/')
+def modify_baseline_state(request, id_project, id_phase, id_baseline):
+    """
+    """
+    user = request.user
+    project = Project.objects.get(id=id_project)
+    phase = Phase.objects.get(id=id_phase)
+    baseline = BaseLine.objects.get(id=id_baseline)
+    
+    if request.method == "POST":
+        form = forms.ModifyBaseLineStateForm(data=request.POST)
+        if form.is_valid():
+            state = form.cleaned_data['state']
+            baseline.state = state
+            baseline.save()
+            
+            ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':BaseLine.objects.filter(phase_id=id_phase)}            
+            return render_to_response('des/baseline/list_phase_baseline.html', ctx, context_instance=RequestContext(request))
+            
+    if request.method == "GET":
+        form = forms.ModifyBaseLineStateForm(initial={
+            'state' : baseline.state,
+            })
+    ctx = {'form': form, 'project':project, 'phase':phase, 'baseline':baseline}
+    return render_to_response('des/baseline/modify_baseline_state.html', ctx, context_instance=RequestContext(request))    
+
+@login_required(login_url='/login/')
 def manage_baseline_items(request, id_user, id_project, id_phase, id_baseline):
     """
     """
@@ -567,6 +593,7 @@ def assign_baseline_item(request, id_user, id_project, id_phase, id_baseline, id
         
     #if item not in bsitems:
     item.baseline_id = baseline.id
+    item.status = Item.FINISHED
     item.save()
                 
     ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
@@ -586,6 +613,7 @@ def remove_baseline_item(request, id_user, id_project, id_phase, id_baseline, id
     bsitems = Item.objects.filter(baseline_id=id_baseline)    
        
     item.baseline_id = None
+    item.status = Item.DEVELOPED
     item.save()
     
     ctx = {'user':user, 'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}

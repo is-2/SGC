@@ -104,5 +104,5 @@ class BaseLine(models.Model):
     """
     """
     name = models.CharField(max_length=30, blank=False)
-    state = models.IntegerField(max_length=30,choices= BASELINE_STATES, default=0)
+    state = models.IntegerField(choices= BASELINE_STATES, default=0)
     phase = models.ForeignKey(Phase)
