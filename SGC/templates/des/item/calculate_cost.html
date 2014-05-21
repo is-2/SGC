@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block title %} Costo - {{ item.name }}{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Detalles del costo</h2>
+		<p><label><b>Nombre:</b></label> {{ item.name }}</p>
+		<p><label><b>Descripción:</b></label> {{ item.description }}</p> 
+	    <p><label><b>Costo:</b></label> {{ cost }}</p>
+		<br>
+		<a class="btn btn-sm btn-default" href="{% url 'list_items' id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}
