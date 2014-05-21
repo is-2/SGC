@@ -7,7 +7,7 @@
 			{% csrf_token %}
 			{{ form.as_p }}
             <button class="btn btn-default" type="submit" class="btn btn-primary">Cambiar de estado</button>
-            <a class="btn btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+            <a class="btn btn-default" href="{% url 'list_phase_baseline' id_project=project.id id_phase=phase.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 		</form>
 		<br>		
 </div>

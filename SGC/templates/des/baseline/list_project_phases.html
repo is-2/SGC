@@ -20,14 +20,16 @@
                 	<tbody>
                 		{% for p in phases %}
 	                			<tr>
-	                    			<td>{{ p.id }}</td>
-	                    			<td>{{ p.name }}</a></td>
-	                    			<td>
-	                    				<div class="btn-group">
-	                    					<a class="btn btn-sm btn-default" href="{% url 'list_items' id_user=user.id id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-briefcase"></span> Ítems</a>
-	                    					<a class="btn btn-sm btn-default" href="{% url 'list_phase_baseline' id_user=user.id id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-stats"></span> Líneas bases</a>
-	                    				</div>
-                    				</td>
+	                				{% if p.state == 1 %} <!-- ESTADO DESARROLLO -->
+		                    			<td>{{ p.id }}</td>
+		                    			<td>{{ p.name }}</a></td>
+		                    			<td>
+		                    				<div class="btn-group">
+		                    					<a class="btn btn-sm btn-default" href="{% url 'list_items' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-briefcase"></span> Ítems</a>
+		                    					<a class="btn btn-sm btn-default" href="{% url 'list_phase_baseline' id_project=project.id id_phase=p.id %}"><span class="glyphicon glyphicon-stats"></span> Líneas bases</a>
+		                    				</div>
+	                    				</td>
+                    				{% endif %}                    				
 	                			</tr>
                 		{% endfor %}
                 	</tbody>
@@ -37,6 +39,6 @@
     		<h3>No existen fases</h3>
     	{% endif %}
 	</div>
-	<a class="btn btn-default" href="{% url 'list_user_projects' id_user=user.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	<a class="btn btn-default" href="{% url 'list_user_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}
