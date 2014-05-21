@@ -14,7 +14,7 @@ class CreateAttributeTypeForm(forms.Form):
     
     
     name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
-    description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    description = forms.CharField(label=u"Descripción", widget=forms.Textarea, required=True)
     attr_type = forms.ChoiceField(label='Tipo', widget=forms.RadioSelect(), choices=CHOICES, required=True)
     
     def clean_name(self):
@@ -110,6 +110,7 @@ class ModifyItemTypeForm(forms.Form):
 class CreateItemForm(forms.Form):
     name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    cost = forms.IntegerField(label=u'Costo', required=True)
     
     def clean_name(self):
         name = self.cleaned_data['name']

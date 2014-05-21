@@ -4,8 +4,7 @@ de Atributo{% endblock %} {% block content %}
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Administración de Tipo de Atributos</h2>
-		<a class="btn btn-sm btn-default" href="{% url 'create_attribute_type' %}"><span
-			class="glyphicon glyphicon-plus"></span> Crear Tipo de Atributos</a> <br>
+		<a class="btn btn-sm btn-success" href="{% url 'create_attribute_type' %}"><span class="glyphicon glyphicon-plus"></span> Crear Tipo de Atributo</a> <br>
 		<br> 
 		{% if attribute_types %}
 		<div class="table-responsive">
@@ -13,10 +12,8 @@ de Atributo{% endblock %} {% block content %}
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nombre de Tipo de Atributos</th>
+						<th>Nombre de Tipo de Atributo</th>
 						<th>Tipo</th>
-						<th></th>
-						<th></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -26,23 +23,22 @@ de Atributo{% endblock %} {% block content %}
 						<td>{{ attribute_type.id }}</td>
 						<td>{{ attribute_type.name }}</td>
 						<td>{{ attribute_type.attr_type }}</td>
-						<td><a class="btn btn-sm btn-default"
-							href="{% url 'modify_attribute_type' id_attribute_type=attribute_type.id %}"><span class="#"></span>
-								Modificar</a></td>
-						<td><a class="btn btn-sm btn-default"
-							href="{% url 'delete_attribute_type' id_attribute_type=attribute_type.id %}"><span
-								class="glyphicon glyphicon-trash"></span> Eliminar</a></td>
-						<td><a class="btn btn-sm btn-default"
-							href="{% url 'visualize_attribute_type' id_attribute_type=attribute_type.id %}"><span
-								class="glyphicon glyphicon-search"></span> Visualizar</a></td>
+						<td>
+							<div class="btn-group">
+								<a class="btn btn-sm btn-default" href="{% url 'visualize_attribute_type' id_attribute_type=attribute_type.id %}"><span	class="glyphicon glyphicon-search"></span> Visualizar</a>
+								<a class="btn btn-sm btn-warning" href="{% url 'modify_attribute_type' id_attribute_type=attribute_type.id %}"><span class="#"></span>Modificar</a> 
+								<a class="btn btn-sm btn-danger" href="{% url 'delete_attribute_type' id_attribute_type=attribute_type.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+							</div>
+						</td>
 					</tr>
 					{% endfor %}
 				</tbody>
 			</table>
 		</div>
 		{% else %}
-		<h3>No existen Tipo de Atributo</h3>
+			<h3>No existen Tipo de Atributo</h3>
 		{% endif %}
 	</div>
+	<a class="btn btn-default" href="{% url 'index' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 </div>
 {% endblock %}

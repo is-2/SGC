@@ -33,7 +33,7 @@ Atributo{% endblock %} {% block content %}
 							<td>{{ a.attr_date }}</td>
 						{% endif %}
 						<td>
-							<a class="btn btn-sm btn-success" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id id_user=id_user id_project=id_project id_phase=id_phase %}"><spanclass="glyphicon glyphicon-pencil"></span> Asignar valor</a>
+							<a class="btn btn-sm btn-success" href="{% url 'set_attribute_value' id_item=item.id id_attr=a.id id_user=id_user id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-pencil"></span> Asignar valor</a>
 						</td>
 					</tr>
 					{% endfor %}

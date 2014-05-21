@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block title %}{{ mod_request.title }}{% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>{{ mod_request.title }}</h2>
+		<p><label><b>Descripcion:</b></label></p>
+		<div class="well well-sm">{{ mod_request.description }}</div>
+		<div class="btn-group">
+			<a class="btn btn-sm btn-default" href="{% url 'list_requests' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+			<a class="btn btn-sm btn-success" href="#"><span class="glyphicon glyphicon-ok-sign"></span> Aceptar</a>
+			<a class="btn btn-sm btn-danger" href="#"><span class="glyphicon glyphicon-remove-sign"></span> Rechazar</a>
+		</div>
+	</div>
+</div>
+{% endblock %}

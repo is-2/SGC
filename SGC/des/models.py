@@ -68,18 +68,27 @@ class Item(models.Model):
     """
     name        = models.CharField('Name', max_length=100, unique=True)
     description = models.CharField('Description', max_length=100)
+    cost        = models.IntegerField('Cost')
     
-    
+    ACTIVE      = 0
+    FINISHED    = 1
+    DELETED     = 2
+    """
     DEVELOPED   = 0
     DEPLOYED    = 1
     FINISHED    = 2
     DELETED     = 3
+    
     STATUS_CHOICES = ((DEVELOPED, 'Desarrollado'),
                       (DEPLOYED, 'Desplegado'),
                       (FINISHED, 'Terminado'),
                       (DELETED, 'Eliminado'),)
+    """
+    STATUS_CHOICES = ((ACTIVE, 'Activo'),
+                      (FINISHED, 'Finalizado'),
+                      (DELETED, 'Eliminado'),)
     
-    status      = models.SmallIntegerField(choices=STATUS_CHOICES, default=DEVELOPED)
+    status      = models.SmallIntegerField(choices=STATUS_CHOICES, default=ACTIVE)
     predecessor = models.ForeignKey('Item', blank=True, null=True, on_delete=models.SET_NULL)
     baseline    = models.ForeignKey('BaseLine', blank=True, null=True, on_delete=models.SET_NULL)
     phase       = models.ForeignKey('adm.Phase', blank=True, null=False, on_delete=models.CASCADE)

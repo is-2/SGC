@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 {% block title %}SGC - Modificar Tipo de Ítem {{ item_t.name }}{% endblock %}
 {% block content %}
+{% load bootstrap %}
 <div class="jumbotron">
 	<h2>Modificar Tipo de Ítem</h2>
 	<form class="form-horizontal" method="POST">
@@ -35,18 +36,7 @@
         </div>
         {% endif %}
         <!-- Fin del manejo de errores del formulario -->
-		
-		<p class="text-muted">Campos obligatorios (*)</p>
-		<div class="input-group">
-			<span class="input-group-addon"><b>* Nombre</b></span>
-			<input type="text" class="form-control" id="name" name="name" value="{{ item_t.name }}">
-        </div>
-        <br>
-		<div class="input-group">
-			<span class="input-group-addon"><b>* Descripción</b></span>
-			<input type="text" class="form-control" id="description" name="description" value="{{ item_t.description }}">
-        </div>
-		<br>
+		{{ form|bootstrap }}
         <button type="submit" class="btn btn-success">Modificar</button>
 	</form>
 	<br>

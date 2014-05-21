@@ -11,7 +11,11 @@ def index(request):
     """
     Pagina principal.
     """
-    return render_to_response('index.html', context_instance = RequestContext(request))
+    if request.user.is_authenticated(): # If user is authenticated.
+        count = request.user.modificationrequest_set.all().count()
+        ctx = {'count':count}
+        return render(request, 'index.html', ctx)
+    return render(request, 'index.html')
 
 def sign_up(request):
     """
