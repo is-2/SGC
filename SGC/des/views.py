@@ -312,9 +312,9 @@ def assign_item_type(request, id_item, id_user, id_project, id_phase):
     
     item_types = ItemType.objects.all()
     item = Item.objects.get(id=id_item)
-    valid = False
-    if item.attribute_set.all():  # If new instance
-        valid = True
+    valid = True
+    if item.attribute_set.exists():  # If item has attributes
+        valid = False
     ctx = {'item':item, 'item_types':item_types, 'valid':valid, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/assign_item_type.html', ctx)
 
@@ -326,11 +326,8 @@ def add_item_type(request, id_item, id_item_type, id_user, id_project, id_phase)
     """
     item = Item.objects.get(id=id_item)
     item_type = ItemType.objects.get(id=id_item_type)
-    
-    if item.status != Item.ACTIVE: #
-        item.status = Item.ACTIVE  # Set to phase deployment
-        item.save()
-        for a in item_type.attribute_types.all():  # Create all attribute skeletons to item
+    if not item.attribute_set.exists(): # If there is already some attributes in the queryset... Double assignment error solved here.
+        for a in item_type.attribute_types.all(): # Create all attribute skeletons to item
             Attribute.objects.create(name=a.name, description=a.description, type=a.attr_type, item=item)
     ctx = {'item':item, 'item_type':item_type, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/add_item_type.html', ctx)
@@ -660,6 +657,7 @@ def list_predecessors(request, id_user, id_project, id_phase, id_item):
         ctx={'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
     return render(request, 'des/item/list_predecessors.html', ctx)
     
+@login_required(login_url='/login/')  
 def set_predecessor(request, id_user, id_project, id_phase, id_item, id_pred):
     item = Item.objects.get(id=id_item)
     pred = Item.objects.get(id=id_pred)
@@ -667,7 +665,8 @@ def set_predecessor(request, id_user, id_project, id_phase, id_item, id_pred):
     item.save()
     ctx={'predecessor':pred, 'item':item, 'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/set_predecessor.html', ctx)
-    
+
+@login_required(login_url='/login/')    
 def list_fathers(request, id_user, id_project, id_phase, id_item):
     phase = Phase.objects.get(id=id_phase)
     item_fs = Item.objects.filter(phase=phase).exclude(id=id_item)
@@ -677,7 +676,8 @@ def list_fathers(request, id_user, id_project, id_phase, id_item):
         valid = True
     ctx = {'id_item':id_item, 'id_user':id_user, 'id_project':id_project, 'id_phase':id_phase, 'item_fs':item_fs, 'valid':valid, 'item':item}
     return render(request, 'des/item/list_fathers.html', ctx)
-    
+
+@login_required(login_url='/login/')    
 def set_father(request, id_user, id_project, id_phase, id_item, id_father):
     father = Item.objects.get(id=id_father)
     item = Item.objects.get(id=id_item)
