@@ -568,7 +568,7 @@ def manage_baseline_items(request, id_project, id_phase, id_baseline):
     project = Project.objects.get(id=id_project)
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
-    items = Item.objects.filter(phase_id=id_phase)
+    items = Item.objects.filter(phase_id=id_phase).exclude(status=Item.DELETED)
     bsitems = Item.objects.filter(baseline_id=id_baseline)
     
     ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
@@ -582,13 +582,18 @@ def assign_baseline_item(request, id_project, id_phase, id_baseline, id_item):
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
     item = Item.objects.get(id=id_item)
-    items = Item.objects.filter(phase_id=id_phase)
+    items = Item.objects.filter(phase_id=id_phase).exclude(status=Item.DELETED)
     bsitems = Item.objects.filter(baseline_id=id_baseline)   
-        
-    #if item not in bsitems:
-    item.baseline_id = baseline.id
-    item.status = Item.FINISHED
-    item.save()
+
+    if phase.order == 1: # Primera fase.
+        item.baseline_id = baseline.id
+        item.status = Item.FINISHED
+        item.save()        
+    else:                               # En las fases subsiguientes
+        if item.predecessor != None:    # los items requieren predecesores.
+            item.baseline_id = baseline.id
+            item.status = Item.FINISHED
+            item.save()
                 
     ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
     return render(request, 'des/baseline/manage_baseline_items.html', ctx)
@@ -601,7 +606,7 @@ def remove_baseline_item(request, id_project, id_phase, id_baseline, id_item):
     phase = Phase.objects.get(id=id_phase)
     baseline = BaseLine.objects.get(id=id_baseline)
     item = Item.objects.get(id=id_item)
-    items = Item.objects.filter(phase_id=id_phase)
+    items = Item.objects.filter(phase_id=id_phase).exclude(status=Item.DELETED)
     bsitems = Item.objects.filter(baseline_id=id_baseline)    
        
     item.baseline_id = None

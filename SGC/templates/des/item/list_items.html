@@ -41,6 +41,8 @@
 									<a class="btn btn-sm btn-warning" href="{% url 'modify_item' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Modificar</a>
 									<a class="btn btn-sm btn-warning" href="{% url 'item_history' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-time"></span> Revertir</a> 
 									<a class="btn btn-sm btn-danger" href="{% url 'delete_item' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+								{% elif i.status == 1%}
+									<a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-comment"></span> Crear petición de cambio</a>
 								{% endif %}
 							</div>
 						</td>
