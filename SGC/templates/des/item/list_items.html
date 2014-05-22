@@ -15,7 +15,8 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nombre de Ítem</th>
+						<th>Estado</th>
+						<th>Nombre</th>
 						<th>Descripción</th>
 						<th>Predecesor</th>
 						<th></th>
@@ -25,18 +26,21 @@
 					{% for i in items %}
 					<tr>
 						<td>{{ i.id }}</td>
+						<td>{{ i.status}}</td>
 						<td>{{ i.name }}</td>
 						<td>{{ i.description }}</td>
 						<td>{{ i.predecessor.name }}</td>
 						<td>
 							<div class="btn-group">
-								<a class="btn btn-sm btn-default" href="{% url 'assign_item_type' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok-sign"></span> Tipo</a> 
-								<a class="btn btn-sm btn-default" href="{% url 'list_attributes' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon glyphicon-list"></span> Atributos</a>
-								<a class="btn btn-sm btn-default" href="{% url 'list_predecessors' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok-sign"></span> Predecesor</a>
-								<a class="btn btn-sm btn-default" href="{% url 'list_fathers' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok-sign"></span> Padre</a>
-								<a class="btn btn-sm btn-warning" href="{% url 'modify_item' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Modificar</a>
-								<a class="btn btn-sm btn-warning" href="{% url 'item_history' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-time"></span> Revertir</a> 
-								<a class="btn btn-sm btn-danger" href="{% url 'delete_item' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+								{% if i.status == 0%}
+									<a class="btn btn-sm btn-default" href="{% url 'assign_item_type' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok-sign"></span> Tipo</a> 
+									<a class="btn btn-sm btn-default" href="{% url 'list_attributes' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon glyphicon-list"></span> Atributos</a>
+									<a class="btn btn-sm btn-default" href="{% url 'list_predecessors' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok-sign"></span> Predecesor</a>
+									<a class="btn btn-sm btn-default" href="{% url 'list_fathers' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-ok-sign"></span> Padre</a>
+									<a class="btn btn-sm btn-warning" href="{% url 'modify_item' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Modificar</a>
+									<a class="btn btn-sm btn-warning" href="{% url 'item_history' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-time"></span> Revertir</a> 
+									<a class="btn btn-sm btn-danger" href="{% url 'delete_item' id_item=i.id id_project=id_project id_phase=id_phase %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+								{% endif %}
 							</div>
 						</td>
 					</tr>
