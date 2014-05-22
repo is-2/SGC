@@ -673,3 +673,23 @@ def set_father(request, id_project, id_phase, id_item, id_father):
     item.save()
     ctx = {'id_project':id_project, 'id_phase':id_phase,'id_item':id_item}
     return redirect(reverse('list_fathers', kwargs=ctx))
+
+def calculate_cost(request, id_project, id_phase , id_item):
+    
+    def sum_cost(base_item):
+        """
+        Suma recursivamente el costo total atravesando por depth-first
+        """
+        if base_item:
+            cost = base_item.cost
+            children = base_item.item_set.all()
+            for i in children: # For each succeeding items
+                cost = cost + sum_cost(i) # Sum his total cost
+        return cost # Return total cost of the tree
+    
+    base_item = Item.objects.get(id=id_item)
+    cost = sum_cost(base_item)
+    ctx={'id_project':id_project, 'id_phase':id_phase, 'id_item':id_item, 'item':base_item, 'cost':cost}
+    return render(request, 'des/item/calculate_cost.html', ctx)
+
+    
