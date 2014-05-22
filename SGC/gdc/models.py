@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+# Custom imports
+from des.models import Item
 # Create your models here.
 class ModificationRequest(models.Model):
     """
@@ -8,7 +10,8 @@ class ModificationRequest(models.Model):
     La peticion envia mensaje a los comites de cambios para aceptar o rechazar el pedido
     de cambio.
     """
-    committees = models.ManyToManyField(User)
+    committee = models.ManyToManyField(User)
+    item = models.ForeignKey(Item)
     title = models.CharField('Title', max_length=100)
     description = models.TextField('Description', max_length=300)
     total_requests = models.IntegerField('Total Requests')
