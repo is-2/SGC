@@ -17,7 +17,7 @@ class AttributeTypeTests(TestCase):
     def setUp(self):
         # Every test needs access to the request factory.
         self.factory = RequestFactory()
-        self.user = User.objects.create_user(username='akira', email='akirashimosoeda@gmail.com', password='wtf')
+        self.user = User.objects.create_user(username='alfredo', email='akirashimosoeda@gmail.com', password='wtf')
         
     def tearDown(self):
         del self.factory

@@ -144,10 +144,19 @@
   }
 },
 {
-  "pk": "9kpdbvk8z4811lxqvz2wg9eer3fzqjmo", 
+  "pk": 17, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "modificationrequest", 
+    "name": "modification request", 
+    "app_label": "gdc"
+  }
+},
+{
+  "pk": "sj1sa64r2t6385ua6jabb0ygiwj9auje", 
   "model": "sessions.session", 
   "fields": {
-    "expire_date": "2014-05-31T01:11:39.119Z", 
+    "expire_date": "2014-06-07T07:39:55.435Z", 
     "session_data": "NTdhODQ3NmYxOGE3YjU3ZTZhMzZmMmQ4Y2ViMmY3YjQxYWMyMWQ3Zjp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
   }
 },
@@ -160,7 +169,7 @@
     "object_id": "1", 
     "content_type": 15, 
     "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"i1\", \"phase\": 1, \"name\": \"i1\"}}]", 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"i1\", \"cost\": 1, \"phase\": 1, \"name\": \"i1\"}}]", 
     "revision": 1
   }
 },
@@ -173,7 +182,7 @@
     "object_id": "2", 
     "content_type": 15, 
     "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"i2\", \"phase\": 1, \"name\": \"i2\"}}]", 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"i2\", \"cost\": 2, \"phase\": 1, \"name\": \"i2\"}}]", 
     "revision": 2
   }
 },
@@ -182,11 +191,11 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i3", 
-    "object_id": "3", 
-    "content_type": 15, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"i3\", \"phase\": 1, \"name\": \"i3\"}}]", 
+    "object_repr": "ta1", 
+    "object_id": "1", 
+    "content_type": 13, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
     "revision": 3
   }
 },
@@ -195,12 +204,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i3", 
-    "object_id": "3", 
-    "content_type": 15, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"i3\", \"phase\": 1, \"name\": \"i3\"}}]", 
-    "revision": 4
+    "object_repr": "ta2", 
+    "object_id": "2", 
+    "content_type": 13, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 3
   }
 },
 {
@@ -208,12 +217,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "1", 
+    "object_repr": "ta3", 
+    "object_id": "3", 
     "content_type": 13, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 4
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 3
   }
 },
 {
@@ -221,12 +230,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "2", 
+    "object_repr": "ta4", 
+    "object_id": "4", 
     "content_type": 13, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 4
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 3
   }
 },
 {
@@ -234,11 +243,11 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "3", 
+    "object_repr": "ta4", 
+    "object_id": "8", 
     "content_type": 13, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
     "revision": 4
   }
 },
@@ -247,12 +256,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i2", 
-    "object_id": "2", 
-    "content_type": 15, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"i2\", \"phase\": 1, \"name\": \"i2\"}}]", 
-    "revision": 5
+    "object_repr": "ta1", 
+    "object_id": "5", 
+    "content_type": 13, 
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 4
   }
 },
 {
@@ -260,12 +269,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "4", 
+    "object_repr": "ta2", 
+    "object_id": "6", 
     "content_type": 13, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 5
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 4
   }
 },
 {
@@ -274,11 +283,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta3", 
-    "object_id": "5", 
+    "object_id": "7", 
     "content_type": 13, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 5
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 4
   }
 },
 {
@@ -286,12 +295,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "8", 
+    "object_repr": "ta1", 
+    "object_id": "1", 
     "content_type": 13, 
-    "object_id_int": 8, 
-    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 6
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 5
   }
 },
 {
@@ -299,12 +308,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i1", 
-    "object_id": "1", 
+    "object_repr": "i2", 
+    "object_id": "2", 
     "content_type": 15, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"i1\", \"phase\": 1, \"name\": \"i1\"}}]", 
-    "revision": 6
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": 1, \"baseline\": null, \"description\": \"i2\", \"cost\": 2, \"phase\": 1, \"name\": \"i2\"}}]", 
+    "revision": 5
   }
 },
 {
@@ -312,12 +321,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "6", 
+    "object_repr": "ta3", 
+    "object_id": "3", 
     "content_type": 13, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 6
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 5
   }
 },
 {
@@ -325,12 +334,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "7", 
+    "object_repr": "ta4", 
+    "object_id": "4", 
     "content_type": 13, 
-    "object_id_int": 7, 
-    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 6
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 5
   }
 },
 {
@@ -338,12 +347,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii1", 
-    "object_id": "4", 
-    "content_type": 15, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"ii1\", \"phase\": 2, \"name\": \"ii1\"}}]", 
-    "revision": 7
+    "object_repr": "ta2", 
+    "object_id": "2", 
+    "content_type": 13, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 5
   }
 },
 {
@@ -351,12 +360,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 8
+    "object_repr": "ta1", 
+    "object_id": "1", 
+    "content_type": 13, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 6
   }
 },
 {
@@ -364,12 +373,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
+    "object_repr": "i2", 
+    "object_id": "2", 
     "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 9
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": 1, \"description\": \"i2\", \"cost\": 2, \"phase\": 1, \"name\": \"i2\"}}]", 
+    "revision": 6
   }
 },
 {
@@ -377,12 +386,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
+    "object_repr": "ta3", 
+    "object_id": "3", 
     "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 10
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 6
   }
 },
 {
@@ -390,12 +399,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
+    "object_repr": "ta4", 
+    "object_id": "4", 
     "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 10
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 6
   }
 },
 {
@@ -403,12 +412,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
+    "object_repr": "ta2", 
+    "object_id": "2", 
     "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 10
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 6
   }
 },
 {
@@ -416,12 +425,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 10
+    "object_repr": "ta4", 
+    "object_id": "8", 
+    "content_type": 13, 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 7
   }
 },
 {
@@ -429,12 +438,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii1", 
-    "object_id": "4", 
+    "object_repr": "i1", 
+    "object_id": "1", 
     "content_type": 15, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"ii1\", \"phase\": 2, \"name\": \"ii1\"}}]", 
-    "revision": 11
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i1\", \"cost\": 1, \"phase\": 1, \"name\": \"i1\"}}]", 
+    "revision": 7
   }
 },
 {
@@ -443,11 +452,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta1", 
-    "object_id": "12", 
+    "object_id": "5", 
     "content_type": 13, 
-    "object_id_int": 12, 
-    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 11
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 7
   }
 },
 {
@@ -456,11 +465,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta2", 
-    "object_id": "13", 
+    "object_id": "6", 
     "content_type": 13, 
-    "object_id_int": 13, 
-    "serialized_data": "[{\"pk\": 13, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 11
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 7
   }
 },
 {
@@ -469,11 +478,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta3", 
-    "object_id": "14", 
+    "object_id": "7", 
     "content_type": 13, 
-    "object_id_int": 14, 
-    "serialized_data": "[{\"pk\": 14, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 11
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 7
   }
 },
 {
@@ -481,12 +490,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
+    "object_repr": "ta4", 
+    "object_id": "8", 
     "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 12
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": \"2014-05-22\", \"name\": \"ta4\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 8
   }
 },
 {
@@ -494,12 +503,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 12
+    "object_repr": "ta3", 
+    "object_id": "7", 
+    "content_type": 13, 
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": true, \"description\": \"ta3\"}}]", 
+    "revision": 9
   }
 },
 {
@@ -507,12 +516,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 12
+    "object_repr": "ii1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 10
   }
 },
 {
@@ -520,12 +529,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 13
+    "object_repr": "ii1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": 2, \"baseline\": null, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 11
   }
 },
 {
@@ -533,12 +542,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 13
+    "object_repr": "ii1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": 2, \"baseline\": null, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 12
   }
 },
 {
@@ -546,11 +555,11 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
+    "object_repr": "ta1", 
+    "object_id": "9", 
     "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
     "revision": 13
   }
 },
@@ -559,11 +568,11 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
+    "object_repr": "ta2", 
+    "object_id": "10", 
+    "content_type": 13, 
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
     "revision": 13
   }
 },
@@ -572,12 +581,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
+    "object_repr": "ta3", 
+    "object_id": "11", 
     "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 14
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 13
   }
 },
 {
@@ -585,12 +594,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
+    "object_repr": "ta4", 
+    "object_id": "12", 
     "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 14
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 13
   }
 },
 {
@@ -602,7 +611,7 @@
     "object_id": "11", 
     "content_type": 13, 
     "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
     "revision": 14
   }
 },
@@ -611,11 +620,11 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
+    "object_repr": "ta1", 
+    "object_id": "9", 
+    "content_type": 13, 
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
     "revision": 14
   }
 },
@@ -624,12 +633,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
+    "object_repr": "ta2", 
+    "object_id": "10", 
     "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 15
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 14
   }
 },
 {
@@ -637,12 +646,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
+    "object_repr": "ii1", 
+    "object_id": "3", 
     "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 15
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 14
   }
 },
 {
@@ -650,12 +659,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
+    "object_repr": "ta4", 
+    "object_id": "12", 
     "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 15
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 14
   }
 },
 {
@@ -664,11 +673,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta3", 
-    "object_id": "16", 
+    "object_id": "11", 
     "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 16
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 15
   }
 },
 {
@@ -676,12 +685,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 16
+    "object_repr": "ta1", 
+    "object_id": "9", 
+    "content_type": 13, 
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 15
   }
 },
 {
@@ -689,12 +698,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
+    "object_repr": "ta2", 
+    "object_id": "10", 
     "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 16
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 15
   }
 },
 {
@@ -702,12 +711,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 17
+    "object_repr": "ii1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 15
   }
 },
 {
@@ -715,12 +724,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 17
+    "object_repr": "ta4", 
+    "object_id": "12", 
+    "content_type": 13, 
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 15
   }
 },
 {
@@ -728,12 +737,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
+    "object_repr": "ta3", 
+    "object_id": "11", 
     "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 17
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 16
   }
 },
 {
@@ -741,12 +750,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
+    "object_repr": "ta1", 
+    "object_id": "9", 
     "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 18
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 16
   }
 },
 {
@@ -754,12 +763,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 18
+    "object_repr": "ta2", 
+    "object_id": "10", 
+    "content_type": 13, 
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 16
   }
 },
 {
@@ -767,12 +776,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 18
+    "object_repr": "ii1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 16
   }
 },
 {
@@ -780,12 +789,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
+    "object_repr": "ta4", 
+    "object_id": "12", 
     "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 19
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 16
   }
 },
 {
@@ -793,12 +802,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 19
+    "object_repr": "ta3", 
+    "object_id": "11", 
+    "content_type": 13, 
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 17
   }
 },
 {
@@ -807,11 +816,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta1", 
-    "object_id": "15", 
+    "object_id": "9", 
     "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 19
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 17
   }
 },
 {
@@ -819,12 +828,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
+    "object_repr": "ta2", 
+    "object_id": "10", 
     "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 20
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 17
   }
 },
 {
@@ -832,12 +841,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
+    "object_repr": "ii1", 
+    "object_id": "3", 
     "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 20
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 17
   }
 },
 {
@@ -845,12 +854,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
+    "object_repr": "ta4", 
+    "object_id": "12", 
     "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 20
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 17
   }
 },
 {
@@ -859,11 +868,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta3", 
-    "object_id": "3", 
+    "object_id": "11", 
     "content_type": 13, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 21
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 18
   }
 },
 {
@@ -872,11 +881,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta1", 
-    "object_id": "1", 
+    "object_id": "9", 
     "content_type": 13, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 21
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 18
   }
 },
 {
@@ -885,11 +894,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta2", 
-    "object_id": "2", 
+    "object_id": "10", 
     "content_type": 13, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 21
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 18
   }
 },
 {
@@ -897,12 +906,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i3", 
+    "object_repr": "ii1", 
     "object_id": "3", 
     "content_type": 15, 
     "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i3\", \"phase\": 1, \"name\": \"i3\"}}]", 
-    "revision": 21
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 18
   }
 },
 {
@@ -910,12 +919,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "3", 
+    "object_repr": "ta4", 
+    "object_id": "12", 
     "content_type": 13, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 22
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 18
   }
 },
 {
@@ -923,12 +932,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "1", 
+    "object_repr": "ta3", 
+    "object_id": "11", 
     "content_type": 13, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 22
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 19
   }
 },
 {
@@ -936,12 +945,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "2", 
+    "object_repr": "ta1", 
+    "object_id": "9", 
     "content_type": 13, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 22
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 19
   }
 },
 {
@@ -949,12 +958,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i3", 
-    "object_id": "3", 
-    "content_type": 15, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i3\", \"phase\": 1, \"name\": \"i3\"}}]", 
-    "revision": 22
+    "object_repr": "ta2", 
+    "object_id": "10", 
+    "content_type": 13, 
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 19
   }
 },
 {
@@ -962,12 +971,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i2", 
-    "object_id": "2", 
+    "object_repr": "ii1", 
+    "object_id": "3", 
     "content_type": 15, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i2\", \"phase\": 1, \"name\": \"i2\"}}]", 
-    "revision": 23
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 19
   }
 },
 {
@@ -975,12 +984,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "4", 
+    "object_repr": "ta4", 
+    "object_id": "12", 
     "content_type": 13, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 23
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 19
   }
 },
 {
@@ -989,11 +998,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta3", 
-    "object_id": "5", 
+    "object_id": "11", 
     "content_type": 13, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 23
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 20
   }
 },
 {
@@ -1001,12 +1010,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i2", 
-    "object_id": "2", 
-    "content_type": 15, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i2\", \"phase\": 1, \"name\": \"i2\"}}]", 
-    "revision": 24
+    "object_repr": "ta1", 
+    "object_id": "9", 
+    "content_type": 13, 
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 20
   }
 },
 {
@@ -1014,12 +1023,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "4", 
+    "object_repr": "ta2", 
+    "object_id": "10", 
     "content_type": 13, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 24
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 20
   }
 },
 {
@@ -1027,12 +1036,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "5", 
-    "content_type": 13, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 24
+    "object_repr": "ii1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 20
   }
 },
 {
@@ -1040,12 +1049,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "8", 
+    "object_repr": "ta4", 
+    "object_id": "12", 
     "content_type": 13, 
-    "object_id_int": 8, 
-    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 25
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 20
   }
 },
 {
@@ -1053,12 +1062,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i1", 
-    "object_id": "1", 
-    "content_type": 15, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i1\", \"phase\": 1, \"name\": \"i1\"}}]", 
-    "revision": 25
+    "object_repr": "ta3", 
+    "object_id": "11", 
+    "content_type": 13, 
+    "object_id_int": 11, 
+    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
+    "revision": 21
   }
 },
 {
@@ -1067,11 +1076,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta1", 
-    "object_id": "6", 
+    "object_id": "9", 
     "content_type": 13, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 25
+    "object_id_int": 9, 
+    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 21
   }
 },
 {
@@ -1080,11 +1089,11 @@
   "fields": {
     "format": "json", 
     "object_repr": "ta2", 
-    "object_id": "7", 
+    "object_id": "10", 
     "content_type": 13, 
-    "object_id_int": 7, 
-    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 25
+    "object_id_int": 10, 
+    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 21
   }
 },
 {
@@ -1092,12 +1101,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "8", 
-    "content_type": 13, 
-    "object_id_int": 8, 
-    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 26
+    "object_repr": "ii1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": 2, \"description\": \"ii1\", \"cost\": 3, \"phase\": 2, \"name\": \"ii1\"}}]", 
+    "revision": 21
   }
 },
 {
@@ -1105,12 +1114,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i1", 
-    "object_id": "1", 
-    "content_type": 15, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i1\", \"phase\": 1, \"name\": \"i1\"}}]", 
-    "revision": 26
+    "object_repr": "ta4", 
+    "object_id": "12", 
+    "content_type": 13, 
+    "object_id_int": 12, 
+    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta4\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 21
   }
 },
 {
@@ -1118,12 +1127,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "6", 
+    "object_repr": "ta4", 
+    "object_id": "8", 
     "content_type": 13, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 26
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": \"2014-05-22\", \"name\": \"ta4\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 22
   }
 },
 {
@@ -1131,12 +1140,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "7", 
-    "content_type": 13, 
-    "object_id_int": 7, 
-    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 26
+    "object_repr": "i1", 
+    "object_id": "1", 
+    "content_type": 15, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 1, \"description\": \"i1\", \"cost\": 1, \"phase\": 1, \"name\": \"i1\"}}]", 
+    "revision": 22
   }
 },
 {
@@ -1144,12 +1153,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "8", 
+    "object_repr": "ta1", 
+    "object_id": "5", 
     "content_type": 13, 
-    "object_id_int": 8, 
-    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 27
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 22
   }
 },
 {
@@ -1157,12 +1166,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i1", 
-    "object_id": "1", 
-    "content_type": 15, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 2, \"description\": \"i1\", \"phase\": 1, \"name\": \"i1\"}}]", 
-    "revision": 27
+    "object_repr": "ta2", 
+    "object_id": "6", 
+    "content_type": 13, 
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 22
   }
 },
 {
@@ -1170,12 +1179,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "6", 
+    "object_repr": "ta3", 
+    "object_id": "7", 
     "content_type": 13, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 27
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": true, \"description\": \"ta3\"}}]", 
+    "revision": 22
   }
 },
 {
@@ -1183,12 +1192,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "7", 
+    "object_repr": "ta4", 
+    "object_id": "8", 
     "content_type": 13, 
-    "object_id_int": 7, 
-    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 27
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": \"2014-05-22\", \"name\": \"ta4\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 23
   }
 },
 {
@@ -1196,12 +1205,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "8", 
-    "content_type": 13, 
-    "object_id_int": 8, 
-    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 28
+    "object_repr": "i1", 
+    "object_id": "1", 
+    "content_type": 15, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"i1\", \"cost\": 1, \"phase\": 1, \"name\": \"i1\"}}]", 
+    "revision": 23
   }
 },
 {
@@ -1209,12 +1218,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i1", 
-    "object_id": "1", 
-    "content_type": 15, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 2, \"description\": \"i1\", \"phase\": 1, \"name\": \"i1\"}}]", 
-    "revision": 28
+    "object_repr": "ta1", 
+    "object_id": "5", 
+    "content_type": 13, 
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 23
   }
 },
 {
@@ -1222,12 +1231,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
+    "object_repr": "ta2", 
     "object_id": "6", 
     "content_type": 13, 
     "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 28
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 23
   }
 },
 {
@@ -1235,12 +1244,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta2", 
+    "object_repr": "ta3", 
     "object_id": "7", 
     "content_type": 13, 
     "object_id_int": 7, 
-    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 28
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": true, \"description\": \"ta3\"}}]", 
+    "revision": 23
   }
 },
 {
@@ -1248,12 +1257,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i2", 
-    "object_id": "2", 
-    "content_type": 15, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 2, \"description\": \"i2\", \"phase\": 1, \"name\": \"i2\"}}]", 
-    "revision": 29
+    "object_repr": "ta4", 
+    "object_id": "8", 
+    "content_type": 13, 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": \"2014-05-22\", \"name\": \"ta4\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Fecha\", \"attr_bool\": false, \"description\": \"ta4\"}}]", 
+    "revision": 24
   }
 },
 {
@@ -1261,12 +1270,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "4", 
-    "content_type": 13, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 29
+    "object_repr": "i1", 
+    "object_id": "1", 
+    "content_type": 15, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 1, \"description\": \"i1\", \"cost\": 1, \"phase\": 1, \"name\": \"i1\"}}]", 
+    "revision": 24
   }
 },
 {
@@ -1274,12 +1283,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta3", 
+    "object_repr": "ta1", 
     "object_id": "5", 
     "content_type": 13, 
     "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 29
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
+    "revision": 24
   }
 },
 {
@@ -1287,12 +1296,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "i2", 
-    "object_id": "2", 
-    "content_type": 15, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 2, \"description\": \"i2\", \"phase\": 1, \"name\": \"i2\"}}]", 
-    "revision": 30
+    "object_repr": "ta2", 
+    "object_id": "6", 
+    "content_type": 13, 
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
+    "revision": 24
   }
 },
 {
@@ -1300,974 +1309,12 @@
   "model": "reversion.version", 
   "fields": {
     "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "4", 
-    "content_type": 13, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 30
-  }
-},
-{
-  "pk": 90, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
     "object_repr": "ta3", 
-    "object_id": "5", 
+    "object_id": "7", 
     "content_type": 13, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 30
-  }
-},
-{
-  "pk": 91, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "3", 
-    "content_type": 13, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 31
-  }
-},
-{
-  "pk": 92, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "1", 
-    "content_type": 13, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 31
-  }
-},
-{
-  "pk": 93, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "2", 
-    "content_type": 13, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 31
-  }
-},
-{
-  "pk": 94, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "i3", 
-    "object_id": "3", 
-    "content_type": 15, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 2, \"description\": \"i3\", \"phase\": 1, \"name\": \"i3\"}}]", 
-    "revision": 31
-  }
-},
-{
-  "pk": 95, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "3", 
-    "content_type": 13, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 32
-  }
-},
-{
-  "pk": 96, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "1", 
-    "content_type": 13, 
-    "object_id_int": 1, 
-    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 32
-  }
-},
-{
-  "pk": 97, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "2", 
-    "content_type": 13, 
-    "object_id_int": 2, 
-    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 32
-  }
-},
-{
-  "pk": 98, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "i3", 
-    "object_id": "3", 
-    "content_type": 15, 
-    "object_id_int": 3, 
-    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 2, \"description\": \"i3\", \"phase\": 1, \"name\": \"i3\"}}]", 
-    "revision": 32
-  }
-},
-{
-  "pk": 99, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 33
-  }
-},
-{
-  "pk": 100, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 3, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 33
-  }
-},
-{
-  "pk": 101, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 33
-  }
-},
-{
-  "pk": 102, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 34
-  }
-},
-{
-  "pk": 103, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 3, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 34
-  }
-},
-{
-  "pk": 104, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 34
-  }
-},
-{
-  "pk": 105, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "12", 
-    "content_type": 13, 
-    "object_id_int": 12, 
-    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 35
-  }
-},
-{
-  "pk": 106, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii1", 
-    "object_id": "4", 
-    "content_type": 15, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 3, \"description\": \"ii1\", \"phase\": 2, \"name\": \"ii1\"}}]", 
-    "revision": 35
-  }
-},
-{
-  "pk": 107, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "13", 
-    "content_type": 13, 
-    "object_id_int": 13, 
-    "serialized_data": "[{\"pk\": 13, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 35
-  }
-},
-{
-  "pk": 108, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "14", 
-    "content_type": 13, 
-    "object_id_int": 14, 
-    "serialized_data": "[{\"pk\": 14, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 35
-  }
-},
-{
-  "pk": 109, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "12", 
-    "content_type": 13, 
-    "object_id_int": 12, 
-    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 36
-  }
-},
-{
-  "pk": 110, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii1", 
-    "object_id": "4", 
-    "content_type": 15, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 3, \"description\": \"ii1\", \"phase\": 2, \"name\": \"ii1\"}}]", 
-    "revision": 36
-  }
-},
-{
-  "pk": 111, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "13", 
-    "content_type": 13, 
-    "object_id_int": 13, 
-    "serialized_data": "[{\"pk\": 13, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 36
-  }
-},
-{
-  "pk": 112, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "14", 
-    "content_type": 13, 
-    "object_id_int": 14, 
-    "serialized_data": "[{\"pk\": 14, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 36
-  }
-},
-{
-  "pk": 113, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 37
-  }
-},
-{
-  "pk": 114, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 37
-  }
-},
-{
-  "pk": 115, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 37
-  }
-},
-{
-  "pk": 116, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 38
-  }
-},
-{
-  "pk": 117, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 38
-  }
-},
-{
-  "pk": 118, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 38
-  }
-},
-{
-  "pk": 119, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 39
-  }
-},
-{
-  "pk": 120, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 39
-  }
-},
-{
-  "pk": 121, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
-    "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 39
-  }
-},
-{
-  "pk": 122, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 3, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 39
-  }
-},
-{
-  "pk": 123, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 40
-  }
-},
-{
-  "pk": 124, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 40
-  }
-},
-{
-  "pk": 125, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
-    "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 40
-  }
-},
-{
-  "pk": 126, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 3, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 40
-  }
-},
-{
-  "pk": 127, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 41
-  }
-},
-{
-  "pk": 128, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 41
-  }
-},
-{
-  "pk": 129, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
-    "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 41
-  }
-},
-{
-  "pk": 130, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 41
-  }
-},
-{
-  "pk": 131, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 42
-  }
-},
-{
-  "pk": 132, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 42
-  }
-},
-{
-  "pk": 133, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
-    "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 42
-  }
-},
-{
-  "pk": 134, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": null, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 42
-  }
-},
-{
-  "pk": 135, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 43
-  }
-},
-{
-  "pk": 136, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 43
-  }
-},
-{
-  "pk": 137, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
-    "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 43
-  }
-},
-{
-  "pk": 138, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 3, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 43
-  }
-},
-{
-  "pk": 139, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 44
-  }
-},
-{
-  "pk": 140, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 3, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 44
-  }
-},
-{
-  "pk": 141, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 44
-  }
-},
-{
-  "pk": 142, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 45
-  }
-},
-{
-  "pk": 143, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 4, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 45
-  }
-},
-{
-  "pk": 144, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 45
-  }
-},
-{
-  "pk": 145, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "16", 
-    "content_type": 13, 
-    "object_id_int": 16, 
-    "serialized_data": "[{\"pk\": 16, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 46
-  }
-},
-{
-  "pk": 146, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii2", 
-    "object_id": "5", 
-    "content_type": 15, 
-    "object_id_int": 5, 
-    "serialized_data": "[{\"pk\": 5, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 4, \"description\": \"ii2\", \"phase\": 2, \"name\": \"ii2\"}}]", 
-    "revision": 46
-  }
-},
-{
-  "pk": 147, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "15", 
-    "content_type": 13, 
-    "object_id_int": 15, 
-    "serialized_data": "[{\"pk\": 15, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 5, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 46
-  }
-},
-{
-  "pk": 148, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 47
-  }
-},
-{
-  "pk": 149, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 47
-  }
-},
-{
-  "pk": 150, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
-    "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 47
-  }
-},
-{
-  "pk": 151, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 4, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 47
-  }
-},
-{
-  "pk": 152, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "9", 
-    "content_type": 13, 
-    "object_id_int": 9, 
-    "serialized_data": "[{\"pk\": 9, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 48
-  }
-},
-{
-  "pk": 153, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "10", 
-    "content_type": 13, 
-    "object_id_int": 10, 
-    "serialized_data": "[{\"pk\": 10, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 48
-  }
-},
-{
-  "pk": 154, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "11", 
-    "content_type": 13, 
-    "object_id_int": 11, 
-    "serialized_data": "[{\"pk\": 11, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 6, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 48
-  }
-},
-{
-  "pk": 155, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii3", 
-    "object_id": "6", 
-    "content_type": 15, 
-    "object_id_int": 6, 
-    "serialized_data": "[{\"pk\": 6, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 3, \"baseline\": 4, \"description\": \"ii3\", \"phase\": 2, \"name\": \"ii3\"}}]", 
-    "revision": 48
-  }
-},
-{
-  "pk": 156, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "12", 
-    "content_type": 13, 
-    "object_id_int": 12, 
-    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 49
-  }
-},
-{
-  "pk": 157, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii1", 
-    "object_id": "4", 
-    "content_type": 15, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 4, \"description\": \"ii1\", \"phase\": 2, \"name\": \"ii1\"}}]", 
-    "revision": 49
-  }
-},
-{
-  "pk": 158, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "13", 
-    "content_type": 13, 
-    "object_id_int": 13, 
-    "serialized_data": "[{\"pk\": 13, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 49
-  }
-},
-{
-  "pk": 159, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "14", 
-    "content_type": 13, 
-    "object_id_int": 14, 
-    "serialized_data": "[{\"pk\": 14, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 49
-  }
-},
-{
-  "pk": 160, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta1", 
-    "object_id": "12", 
-    "content_type": 13, 
-    "object_id_int": 12, 
-    "serialized_data": "[{\"pk\": 12, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"ta1\"}}]", 
-    "revision": 50
-  }
-},
-{
-  "pk": 161, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ii1", 
-    "object_id": "4", 
-    "content_type": 15, 
-    "object_id_int": 4, 
-    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 4, \"description\": \"ii1\", \"phase\": 2, \"name\": \"ii1\"}}]", 
-    "revision": 50
-  }
-},
-{
-  "pk": 162, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta2", 
-    "object_id": "13", 
-    "content_type": 13, 
-    "object_id_int": 13, 
-    "serialized_data": "[{\"pk\": 13, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"ta2\"}}]", 
-    "revision": 50
-  }
-},
-{
-  "pk": 163, 
-  "model": "reversion.version", 
-  "fields": {
-    "format": "json", 
-    "object_repr": "ta3", 
-    "object_id": "14", 
-    "content_type": 13, 
-    "object_id_int": 14, 
-    "serialized_data": "[{\"pk\": 14, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": false, \"description\": \"ta3\"}}]", 
-    "revision": 50
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"ta3\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Booleano\", \"attr_bool\": true, \"description\": \"ta3\"}}]", 
+    "revision": 24
   }
 },
 {
@@ -2275,8 +1322,8 @@
   "model": "adm.phase", 
   "fields": {
     "project": 1, 
-    "state": 0, 
-    "name": "p1f1", 
+    "state": 1, 
+    "name": "f1", 
     "order": 1
   }
 },
@@ -2285,48 +1332,8 @@
   "model": "adm.phase", 
   "fields": {
     "project": 1, 
-    "state": 0, 
-    "name": "p1f2", 
-    "order": 2
-  }
-},
-{
-  "pk": 3, 
-  "model": "adm.phase", 
-  "fields": {
-    "project": 2, 
-    "state": 0, 
-    "name": "p2f1", 
-    "order": 1
-  }
-},
-{
-  "pk": 4, 
-  "model": "adm.phase", 
-  "fields": {
-    "project": 2, 
-    "state": 0, 
-    "name": "p2f2", 
-    "order": 2
-  }
-},
-{
-  "pk": 5, 
-  "model": "adm.phase", 
-  "fields": {
-    "project": 3, 
-    "state": 0, 
-    "name": "p3f1", 
-    "order": 1
-  }
-},
-{
-  "pk": 6, 
-  "model": "adm.phase", 
-  "fields": {
-    "project": 3, 
-    "state": 0, 
-    "name": "p3f2", 
+    "state": 1, 
+    "name": "f2", 
     "order": 2
   }
 },
@@ -2372,7 +1379,7 @@
   "fields": {
     "attr_date": null, 
     "name": "ta1", 
-    "item": 3, 
+    "item": 2, 
     "attr_int": null, 
     "attr_str": null, 
     "type": "Numerico", 
@@ -2386,7 +1393,7 @@
   "fields": {
     "attr_date": null, 
     "name": "ta2", 
-    "item": 3, 
+    "item": 2, 
     "attr_int": null, 
     "attr_str": null, 
     "type": "Cadena", 
@@ -2400,7 +1407,7 @@
   "fields": {
     "attr_date": null, 
     "name": "ta3", 
-    "item": 3, 
+    "item": 2, 
     "attr_int": null, 
     "attr_str": null, 
     "type": "Booleano", 
@@ -2413,31 +1420,17 @@
   "model": "des.attribute", 
   "fields": {
     "attr_date": null, 
-    "name": "ta1", 
+    "name": "ta4", 
     "item": 2, 
     "attr_int": null, 
     "attr_str": null, 
-    "type": "Numerico", 
+    "type": "Fecha", 
     "attr_bool": false, 
-    "description": "ta1"
+    "description": "ta4"
   }
 },
 {
   "pk": 5, 
-  "model": "des.attribute", 
-  "fields": {
-    "attr_date": null, 
-    "name": "ta3", 
-    "item": 2, 
-    "attr_int": null, 
-    "attr_str": null, 
-    "type": "Booleano", 
-    "attr_bool": false, 
-    "description": "ta3"
-  }
-},
-{
-  "pk": 6, 
   "model": "des.attribute", 
   "fields": {
     "attr_date": null, 
@@ -2451,7 +1444,7 @@
   }
 },
 {
-  "pk": 7, 
+  "pk": 6, 
   "model": "des.attribute", 
   "fields": {
     "attr_date": null, 
@@ -2465,7 +1458,7 @@
   }
 },
 {
-  "pk": 8, 
+  "pk": 7, 
   "model": "des.attribute", 
   "fields": {
     "attr_date": null, 
@@ -2474,8 +1467,22 @@
     "attr_int": null, 
     "attr_str": null, 
     "type": "Booleano", 
-    "attr_bool": false, 
+    "attr_bool": true, 
     "description": "ta3"
+  }
+},
+{
+  "pk": 8, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": "2014-05-22", 
+    "name": "ta4", 
+    "item": 1, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Fecha", 
+    "attr_bool": false, 
+    "description": "ta4"
   }
 },
 {
@@ -2484,7 +1491,7 @@
   "fields": {
     "attr_date": null, 
     "name": "ta1", 
-    "item": 6, 
+    "item": 3, 
     "attr_int": null, 
     "attr_str": null, 
     "type": "Numerico", 
@@ -2498,7 +1505,7 @@
   "fields": {
     "attr_date": null, 
     "name": "ta2", 
-    "item": 6, 
+    "item": 3, 
     "attr_int": null, 
     "attr_str": null, 
     "type": "Cadena", 
@@ -2512,7 +1519,7 @@
   "fields": {
     "attr_date": null, 
     "name": "ta3", 
-    "item": 6, 
+    "item": 3, 
     "attr_int": null, 
     "attr_str": null, 
     "type": "Booleano", 
@@ -2525,69 +1532,13 @@
   "model": "des.attribute", 
   "fields": {
     "attr_date": null, 
-    "name": "ta1", 
-    "item": 4, 
+    "name": "ta4", 
+    "item": 3, 
     "attr_int": null, 
     "attr_str": null, 
-    "type": "Numerico", 
+    "type": "Fecha", 
     "attr_bool": false, 
-    "description": "ta1"
-  }
-},
-{
-  "pk": 13, 
-  "model": "des.attribute", 
-  "fields": {
-    "attr_date": null, 
-    "name": "ta2", 
-    "item": 4, 
-    "attr_int": null, 
-    "attr_str": null, 
-    "type": "Cadena", 
-    "attr_bool": false, 
-    "description": "ta2"
-  }
-},
-{
-  "pk": 14, 
-  "model": "des.attribute", 
-  "fields": {
-    "attr_date": null, 
-    "name": "ta3", 
-    "item": 4, 
-    "attr_int": null, 
-    "attr_str": null, 
-    "type": "Booleano", 
-    "attr_bool": false, 
-    "description": "ta3"
-  }
-},
-{
-  "pk": 15, 
-  "model": "des.attribute", 
-  "fields": {
-    "attr_date": null, 
-    "name": "ta1", 
-    "item": 5, 
-    "attr_int": null, 
-    "attr_str": null, 
-    "type": "Numerico", 
-    "attr_bool": false, 
-    "description": "ta1"
-  }
-},
-{
-  "pk": 16, 
-  "model": "des.attribute", 
-  "fields": {
-    "attr_date": null, 
-    "name": "ta3", 
-    "item": 5, 
-    "attr_int": null, 
-    "attr_str": null, 
-    "type": "Booleano", 
-    "attr_bool": false, 
-    "description": "ta3"
+    "description": "ta4"
   }
 },
 {
@@ -2597,35 +1548,11 @@
     "attribute_types": [
       1, 
       2, 
-      3
-    ], 
-    "name": "ti1", 
-    "description": "ti1"
-  }
-},
-{
-  "pk": 2, 
-  "model": "des.itemtype", 
-  "fields": {
-    "attribute_types": [
-      1, 
-      3
-    ], 
-    "name": "ti2", 
-    "description": "ti2"
-  }
-},
-{
-  "pk": 3, 
-  "model": "des.itemtype", 
-  "fields": {
-    "attribute_types": [
-      2, 
       3, 
       4
     ], 
-    "name": "ti3", 
-    "description": "ti3"
+    "name": "ti1", 
+    "description": "ti1"
   }
 },
 {
@@ -2633,9 +1560,10 @@
   "model": "des.item", 
   "fields": {
     "status": 1, 
-    "predecessor": null, 
-    "baseline": 2, 
+    "predecessor": 2, 
+    "baseline": 1, 
     "description": "i1", 
+    "cost": 1, 
     "phase": 1, 
     "name": "i1"
   }
@@ -2645,9 +1573,10 @@
   "model": "des.item", 
   "fields": {
     "status": 1, 
-    "predecessor": null, 
-    "baseline": 2, 
+    "predecessor": 1, 
+    "baseline": 1, 
     "description": "i2", 
+    "cost": 2, 
     "phase": 1, 
     "name": "i2"
   }
@@ -2657,47 +1586,12 @@
   "model": "des.item", 
   "fields": {
     "status": 1, 
-    "predecessor": null, 
+    "predecessor": 1, 
     "baseline": 2, 
-    "description": "i3", 
-    "phase": 1, 
-    "name": "i3"
-  }
-},
-{
-  "pk": 4, 
-  "model": "des.item", 
-  "fields": {
-    "status": 1, 
-    "predecessor": null, 
-    "baseline": 4, 
     "description": "ii1", 
+    "cost": 3, 
     "phase": 2, 
     "name": "ii1"
-  }
-},
-{
-  "pk": 5, 
-  "model": "des.item", 
-  "fields": {
-    "status": 1, 
-    "predecessor": 3, 
-    "baseline": 4, 
-    "description": "ii2", 
-    "phase": 2, 
-    "name": "ii2"
-  }
-},
-{
-  "pk": 6, 
-  "model": "des.item", 
-  "fields": {
-    "status": 1, 
-    "predecessor": 3, 
-    "baseline": 4, 
-    "description": "ii3", 
-    "phase": 2, 
-    "name": "ii3"
   }
 },
 {
@@ -2705,7 +1599,7 @@
   "model": "des.baseline", 
   "fields": {
     "phase": 1, 
-    "state": 0, 
+    "state": 1, 
     "name": "lb1"
   }
 },
@@ -2713,27 +1607,9 @@
   "pk": 2, 
   "model": "des.baseline", 
   "fields": {
-    "phase": 1, 
-    "state": 0, 
+    "phase": 2, 
+    "state": 1, 
     "name": "lb2"
-  }
-},
-{
-  "pk": 3, 
-  "model": "des.baseline", 
-  "fields": {
-    "phase": 2, 
-    "state": 0, 
-    "name": "lb3"
-  }
-},
-{
-  "pk": 4, 
-  "model": "des.baseline", 
-  "fields": {
-    "phase": 2, 
-    "state": 0, 
-    "name": "lb4"
   }
 },
 {
@@ -3358,6 +2234,60 @@
   }
 },
 {
+  "pk": 70, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_modificationrequest", 
+    "name": "Can add modification request", 
+    "content_type": 17
+  }
+},
+{
+  "pk": 71, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_modificationrequest", 
+    "name": "Can change modification request", 
+    "content_type": 17
+  }
+},
+{
+  "pk": 72, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_modificationrequest", 
+    "name": "Can delete modification request", 
+    "content_type": 17
+  }
+},
+{
+  "pk": 73, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_peticion_de_cambio", 
+    "name": "Puede crear Peticion de cambio", 
+    "content_type": 17
+  }
+},
+{
+  "pk": 74, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_peticion_de_cambio", 
+    "name": "Puede modificar Peticion de cambio", 
+    "content_type": 17
+  }
+},
+{
+  "pk": 75, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_peticion_de_cambio", 
+    "name": "Puede eliminar Peticion de cambio", 
+    "content_type": 17
+  }
+},
+{
   "pk": 1, 
   "model": "auth.user", 
   "fields": {
@@ -3367,12 +2297,48 @@
     "is_active": true, 
     "is_superuser": true, 
     "is_staff": true, 
-    "last_login": "2014-05-17T01:11:39.108Z", 
+    "last_login": "2014-05-24T07:39:55.346Z", 
     "groups": [], 
     "user_permissions": [], 
-    "password": "pbkdf2_sha256$12000$u4Gwwp4QO1dQ$BTfQ/hYe9SS+YqhFIMqQ0CqLNYQeQqCKk9T0JwgA/fk=", 
+    "password": "pbkdf2_sha256$12000$486Qbmc2fmx4$R4//RiFTEY2rE3+/KBGKIVby+b7nsUPPbNLBl2bhmOQ=", 
     "email": "", 
-    "date_joined": "2014-05-17T01:11:21.736Z"
+    "date_joined": "2014-05-24T06:55:09.058Z"
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "akira", 
+    "first_name": "akira", 
+    "last_name": "shimosoeda", 
+    "is_active": true, 
+    "is_superuser": false, 
+    "is_staff": false, 
+    "last_login": "2014-05-24T07:39:36.145Z", 
+    "groups": [], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$12000$OIVDV7Q364Yj$kmtw8+XHD2sczXeX38LTdYG5+MdhoyJYZxxqXr+4N1c=", 
+    "email": "akirashimosoeda@gmail.com", 
+    "date_joined": "2014-05-24T06:55:32.703Z"
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "nobu", 
+    "first_name": "nobu", 
+    "last_name": "ishii", 
+    "is_active": true, 
+    "is_superuser": false, 
+    "is_staff": false, 
+    "last_login": "2014-05-24T07:39:46.179Z", 
+    "groups": [], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$12000$DkbCCmSziWbi$FhpVrP548KJT2GJ0bVaCxiHpXTCiXO66aOSDt00I6ds=", 
+    "email": "aquinoishii@gmail.com", 
+    "date_joined": "2014-05-24T06:55:46.016Z"
   }
 },
 {
@@ -3380,7 +2346,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:13:58.255Z", 
+    "date_created": "2014-05-24T06:59:58.236Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3390,7 +2356,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:14:04.526Z", 
+    "date_created": "2014-05-24T07:00:05.261Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3400,7 +2366,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:14:09.536Z", 
+    "date_created": "2014-05-24T07:00:23.345Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3410,7 +2376,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:15:31.438Z", 
+    "date_created": "2014-05-24T07:00:26.857Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3420,7 +2386,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:15:39.568Z", 
+    "date_created": "2014-05-24T07:00:39.143Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3430,7 +2396,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:15:43.637Z", 
+    "date_created": "2014-05-24T07:01:27.049Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3440,7 +2406,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:16:15.007Z", 
+    "date_created": "2014-05-24T07:01:27.719Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3450,7 +2416,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:16:19.441Z", 
+    "date_created": "2014-05-24T07:12:59.727Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3460,7 +2426,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:16:26.618Z", 
+    "date_created": "2014-05-24T07:14:39.785Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3470,7 +2436,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:16:31.329Z", 
+    "date_created": "2014-05-24T07:38:05.465Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3480,7 +2446,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:16:38.494Z", 
+    "date_created": "2014-05-24T07:38:08.855Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3490,7 +2456,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:16:42.842Z", 
+    "date_created": "2014-05-24T07:38:09.222Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3500,7 +2466,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:18:41.186Z", 
+    "date_created": "2014-05-24T07:38:17.169Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3510,7 +2476,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:18:41.539Z", 
+    "date_created": "2014-05-24T07:38:30.329Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3520,7 +2486,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:19:09.287Z", 
+    "date_created": "2014-05-24T07:38:30.674Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3530,7 +2496,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:19:09.607Z", 
+    "date_created": "2014-05-24T07:43:21.820Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3540,7 +2506,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:35:54.001Z", 
+    "date_created": "2014-05-24T07:43:23.146Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3550,7 +2516,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:35:54.309Z", 
+    "date_created": "2014-05-24T07:43:24.324Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3560,7 +2526,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:35:56.021Z", 
+    "date_created": "2014-05-24T07:43:29.924Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3570,7 +2536,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T01:35:56.356Z", 
+    "date_created": "2014-05-24T07:45:56.447Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3580,7 +2546,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T02:42:51.064Z", 
+    "date_created": "2014-05-24T07:45:57.549Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3590,7 +2556,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T02:42:51.382Z", 
+    "date_created": "2014-05-24T08:06:18.128Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3600,7 +2566,7 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T02:42:52.007Z", 
+    "date_created": "2014-05-24T08:06:20.182Z", 
     "manager_slug": "default", 
     "user": 1
   }
@@ -3610,269 +2576,29 @@
   "model": "reversion.revision", 
   "fields": {
     "comment": "", 
-    "date_created": "2014-05-17T02:42:52.336Z", 
+    "date_created": "2014-05-24T08:06:21.406Z", 
     "manager_slug": "default", 
     "user": 1
   }
 },
 {
-  "pk": 25, 
-  "model": "reversion.revision", 
+  "pk": 1, 
+  "model": "home.client", 
   "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:42:56.458Z", 
-    "manager_slug": "default", 
-    "user": 1
+    "observation": "", 
+    "user": 2, 
+    "address": "", 
+    "telephone": "1"
   }
 },
 {
-  "pk": 26, 
-  "model": "reversion.revision", 
+  "pk": 2, 
+  "model": "home.client", 
   "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:42:56.894Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 27, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:42:59.646Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 28, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:42:59.946Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 29, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:00.358Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 30, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:00.680Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 31, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:00.988Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 32, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:01.310Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 33, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:06.667Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 34, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:06.975Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 35, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:07.365Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 36, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:07.706Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 37, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:08.019Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 38, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:08.334Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 39, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:08.671Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 40, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:08.945Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 41, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:09.257Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 42, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:09.557Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 43, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:11.415Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 44, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:12.219Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 45, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:15.313Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 46, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:15.629Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 47, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:15.995Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 48, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:16.314Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 49, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:16.629Z", 
-    "manager_slug": "default", 
-    "user": 1
-  }
-},
-{
-  "pk": 50, 
-  "model": "reversion.revision", 
-  "fields": {
-    "comment": "", 
-    "date_created": "2014-05-17T02:43:16.938Z", 
-    "manager_slug": "default", 
-    "user": 1
+    "observation": "", 
+    "user": 3, 
+    "address": "", 
+    "telephone": "1"
   }
 },
 {
@@ -3880,44 +2606,50 @@
   "model": "adm.project", 
   "fields": {
     "users": [
+      2, 
+      3, 
       1
     ], 
     "state": 1, 
     "name": "p1", 
     "committee": [
+      2, 
+      3, 
       1
     ], 
     "description": "p1"
   }
 },
 {
-  "pk": 2, 
-  "model": "adm.project", 
+  "pk": 1, 
+  "model": "gdc.modificationrequest", 
   "fields": {
-    "users": [
-      1
-    ], 
-    "state": 0, 
-    "name": "p2", 
-    "committee": [
-      1
-    ], 
-    "description": "p2"
+    "description": "lol", 
+    "title": "modificar", 
+    "rejected_requests": 0, 
+    "accepted_requests": 3, 
+    "item": 1, 
+    "cost": 3, 
+    "committee": [], 
+    "requester": 1, 
+    "voting": 3, 
+    "total_requests": 3
   }
 },
 {
-  "pk": 3, 
-  "model": "adm.project", 
+  "pk": 2, 
+  "model": "gdc.modificationrequest", 
   "fields": {
-    "users": [
-      1
-    ], 
-    "state": 0, 
-    "name": "p3", 
-    "committee": [
-      1
-    ], 
-    "description": "p3"
+    "description": "pet", 
+    "title": "pet", 
+    "rejected_requests": 0, 
+    "accepted_requests": 3, 
+    "item": 3, 
+    "cost": 3, 
+    "committee": [], 
+    "requester": 1, 
+    "voting": 3, 
+    "total_requests": 3
   }
 }
 ]
