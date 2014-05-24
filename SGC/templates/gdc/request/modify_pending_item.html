@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block title %}SGC - Crear Ítem{% endblock %}
+{% block content %}
+{% load bootstrap %}
+<div class="jumbotron">
+	<div class="bs-example">
+	<h2>Modificar Ítem</h2>
+    	<form class="form-horizontal" method="POST">
+    		{% csrf_token %}
+			{{ form|bootstrap }}
+      		<button type="submit" class="btn btn-success">Crear</button>
+		</form>
+		<br>
+		<a class="btn btn-default" href="{% url 'list_pending' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+  	</div>
+</div>
+{% endblock %}

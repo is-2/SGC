@@ -12,7 +12,7 @@ def index(request):
     Pagina principal.
     """
     if request.user.is_authenticated(): # If user is authenticated.
-        count = request.user.modificationrequest_set.all().count()
+        count = request.user.mod_requests_committee.all().count()
         ctx = {'count':count}
         return render(request, 'index.html', ctx)
     return render(request, 'index.html')

@@ -1,0 +1,48 @@
+{% extends "index.html" %} 
+{% block title %}SGC - Administración de Ítems a modificar{% endblock %} 
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Administración Ítems</h2>
+		<div class="btn-group">
+		</div>
+		<br><br>
+		{% if items %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre de Ítem</th>
+						<th>Costo</th>
+						<th>Predecesor</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in items %}
+					<tr>
+						<td>{{ i.id }}</td>
+						<td>{{ i.name }}</td>
+						<td>{{ i.cost }}</td>
+						<td>{{ i.predecessor.name }}</td>
+						<td>
+							<div class="btn-group">
+								<a class="btn btn-sm btn-default" href="{% url 'list_pending_attr' id_item=i.id %}"><span class="glyphicon glyphicon glyphicon-list"></span> Atributos</a>
+								<a class="btn btn-sm btn-default" href="{% url 'list_pending_predecessors' id_item=i.id %}"><span class="glyphicon glyphicon-ok-sign"></span> Predecesor</a>
+								<a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-ok-sign"></span> Padre</a>
+								<a class="btn btn-sm btn-warning" href="{% url 'modify_pending_item' id_item=i.id %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Modificar</a>
+							</div>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		<h3>No existen Ítems</h3>
+		{% endif %}
+	</div>
+	<a class="btn btn-default" href="{% url 'index' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}
