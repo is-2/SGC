@@ -130,6 +130,7 @@ def grant_user_group(request, id_user, id_group):
     """
     u = User.objects.get(id=id_user)
     g = Group.objects.get(id=id_group)
+    groups = Group.objects.all()
     new_group = False
     try:
         g = u.groups.get(id=id_group)
@@ -137,8 +138,8 @@ def grant_user_group(request, id_user, id_group):
         new_group = True
     if new_group:
         u.groups.add(g)
-    ctx = {'user':u, 'group':g, 'valid':new_group}
-    return render_to_response('adm/group/grant_user_group.html', ctx, context_instance=RequestContext(request))
+    ctx = {'user':u, 'groups':groups}
+    return render_to_response('adm/group/assign_user_groups.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def deny_user_group(request, id_user, id_group):
@@ -147,9 +148,11 @@ def deny_user_group(request, id_user, id_group):
     """
     user = User.objects.get(id=id_user)
     group = Group.objects.get(id=id_group)
+    groups = Group.objects.all()
+    
     user.groups.remove(group)
-    ctx = {'user':user, 'group':group}
-    return render_to_response('adm/group/deny_user_group.html', ctx, context_instance=RequestContext(request))
+    ctx = {'user':user, 'groups':groups}
+    return render_to_response('adm/group/assign_user_groups.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def list_groups(request):
@@ -217,6 +220,7 @@ def assign_permissions(request, id_group):
 def grant_permissions(request, id_group, id_perm):
     group = Group.objects.get(id=id_group)
     permission = Permission.objects.get(id=id_perm)
+    perms = Permission.objects.all()
     new_permission = False
     try:
         permission = group.permissions.get(id=id_perm)
@@ -225,16 +229,18 @@ def grant_permissions(request, id_group, id_perm):
     if new_permission:
         group.permissions.add(permission)
         group.save()
-    ctx = {'group':group, 'permission':permission, 'valid':new_permission}
-    return render_to_response('adm/perm/grant_perm.html', ctx, context_instance=RequestContext(request))
+    ctx = {'group':group, 'permissions':perms}
+    return render_to_response('adm/perm/assign_perm.html', ctx, context_instance=RequestContext(request))
 
 def deny_permissions(request, id_group, id_perm):
     group = Group.objects.get(id=id_group)
     permission = Permission.objects.get(id=id_perm)
+    perms = Permission.objects.all()
+    
     group.permissions.remove(permission)
     group.save()
-    ctx = {'group':group, 'permission':permission}
-    return render_to_response('adm/perm/deny_perm.html', ctx, context_instance=RequestContext(request))
+    ctx = {'group':group, 'permissions':perms}
+    return render_to_response('adm/perm/assign_perm.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def list_projects(request):
@@ -378,7 +384,8 @@ def assign_project_user(request, id_user, id_project):
     """
     
     project = Project.objects.get(id=id_project) 
-    user = User.objects.get(id=id_user)          
+    user = User.objects.get(id=id_user)
+    users = User.objects.all()          
     new_user = False
     
     try:
@@ -389,8 +396,8 @@ def assign_project_user(request, id_user, id_project):
     if new_user:
         project.users.add(user)
         project.save()
-    ctx = { 'user':user, 'project':project, 'valid':new_user}
-    return render_to_response('adm/project/assign_project_user.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'users':users }
+    return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def remove_project_user(request, id_user, id_project):
@@ -398,12 +405,14 @@ def remove_project_user(request, id_user, id_project):
     Quita un usuario del proyecto.
     """
     user = User.objects.get(id=id_user)
-    project = Project.objects.get(id=id_project)    
+    project = Project.objects.get(id=id_project)
+    users = User.objects.all()     
+        
     project.users.remove(user)
     project.save()
     
-    ctx = { 'user':user, 'project':project}
-    return render_to_response('adm/project/remove_project_user.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'users':users}
+    return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def manage_project_committee(request, id_project):
@@ -423,7 +432,8 @@ def assign_committee_user(request, id_project, id_user):
     Asigna un usuario al comité de gestión de cambio.
     """
     project = Project.objects.get(id=id_project) 
-    user = User.objects.get(id=id_user)          
+    user = User.objects.get(id=id_user)
+    users = project.users.all()          
     new_user = False
     
     try:
@@ -434,8 +444,8 @@ def assign_committee_user(request, id_project, id_user):
     if new_user:
         project.committee.add(user)
         project.save()
-    ctx = {'project':project, 'user':user, 'valid':new_user}
-    return render_to_response('adm/project/assign_committee_user.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'users':users}
+    return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def remove_committee_user(request, id_project, id_user):
@@ -443,12 +453,14 @@ def remove_committee_user(request, id_project, id_user):
     Quita un usuario del comité  de cambio.
     """
     project = Project.objects.get(id=id_project)
-    user = User.objects.get(id=id_user)    
+    user = User.objects.get(id=id_user)
+    users = project.users.all()
+        
     project.committee.remove(user)
     project.save()
     
-    ctx = {'project':project, 'user':user}
-    return render_to_response('adm/project/remove_committee_user.html', ctx, context_instance=RequestContext(request))
+    ctx = {'project':project, 'users':users}
+    return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def modify_project(request, id_project):
