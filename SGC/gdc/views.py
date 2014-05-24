@@ -12,6 +12,9 @@ import forms
 
 @login_required(login_url='/login/')
 def list_requests(request):
+    """
+    Lista todas las peticiones recibidas.
+    """
     user = request.user # Get logged in user
     requests = user.mod_requests_committee.all() # Get all modification requests to user
     ctx = {'requests':requests}
@@ -19,6 +22,9 @@ def list_requests(request):
 
 @login_required(login_url='/login/')
 def create_request(request, id_item):
+    """
+    Crea una peticion de cambio.
+    """
     
     def sum_cost(base_item):
         """
@@ -55,6 +61,9 @@ def create_request(request, id_item):
 
 @login_required(login_url='/login/')
 def accept_request(request, id_request):
+    """
+    Aceptar una peticion.
+    """
     
     if request.method == "GET":
         user = request.user
@@ -64,7 +73,6 @@ def accept_request(request, id_request):
         percentage = int(mod_request.accepted_requests / mod_request.total_requests * 100)
         if percentage >= 70: # If request is accepted by majority
             mod_request.voting = ModificationRequest.ACCEPTED
-            mod_request.item.requester = mod_request.requester
         elif mod_request.total_requests == mod_request.accepted_requests + mod_request.rejected_requests:
             mod_request.voting = ModificationRequest.REJECTED
         mod_request.save()
@@ -72,7 +80,9 @@ def accept_request(request, id_request):
 
 @login_required(login_url='/login/')
 def reject_request(request, id_request):
-    
+    """
+    Rechazar una peticion.
+    """
     if request.method == "GET":
         user = request.user
         mod_request = ModificationRequest.objects.get(id=id_request)
@@ -94,7 +104,9 @@ def visualize_request(request, id_request):
 
 @login_required(login_url='/login/')
 def list_pending(request):
-    
+    """
+    Lista los items peticionados
+    """
     if request.method == "GET":
         items = Item.objects.filter(mod_requests__requester=request.user, mod_requests__voting=ModificationRequest.ACCEPTED)
         ctx = {'items':items}
@@ -102,7 +114,9 @@ def list_pending(request):
     
 @login_required(login_url='/login/')     
 def modify_pending_item(request, id_item):
-    
+    """
+    Modificar item peticionado
+    """
     item = Item.objects.get(id=id_item)
     if request.method == "POST":
         form = ModifyItemForm(data=request.POST)
@@ -123,6 +137,9 @@ def modify_pending_item(request, id_item):
     return render(request, 'gdc/request/modify_pending_item.html', ctx)
 
 def list_pending_attr(request, id_item):
+    """
+    Listar atributos del item peticionado
+    """
     item = Item.objects.get(id=id_item)
     attr = item.attribute_set.all()
     ctx = {'attr':attr}
@@ -250,3 +267,47 @@ def unset_pending_predecessor(request, id_item):
         item.save()
         ctx = {'id_item':id_item}
         return redirect(reverse('list_pending_predecessors', kwargs=ctx))
+
+@login_required(login_url='/login/')    
+def list_pending_fathers(request, id_item):
+    """
+    """
+    if request.method == "GET":
+        item = Item.objects.get(id=id_item)
+        item_fs = Item.objects.filter(phase=item.phase).exclude(id=id_item)
+        valid = False
+        if item_fs:
+            valid = True
+        ctx = {'item_fs':item_fs, 'valid':valid, 'item':item}
+        return render(request, 'gdc/request/list_pending_fathers.html', ctx)
+
+@login_required(login_url='/login/')    
+def set_pending_father(request, id_item, id_father):
+    father = Item.objects.get(id=id_father)
+    item = Item.objects.get(id=id_item)
+    item.predecessor = father
+    item.save()
+    ctx = {'id_item':id_item}
+    return redirect(reverse('list_pending_fathers', kwargs=ctx))
+
+@login_required(login_url='/login/')  
+def unset_pending_father(request, id_item):
+    """
+    """
+    if request.method == "GET":
+        item = Item.objects.get(id=id_item)
+        item.predecessor = None
+        item.save()
+        ctx = {'id_item':id_item}
+        return redirect(reverse('list_pending_fathers', kwargs=ctx))
+    
+@login_required(login_url='/login/')
+def finish_pending_item(request, id_item):
+    """
+    """
+    if request.method == "GET":
+        item = Item.objects.get(id=id_item)
+        mod_request = ModificationRequest.objects.get(item=item)
+        mod_request.voting = ModificationRequest.MODIFIED
+        mod_request.save()
+        return redirect('list_pending')

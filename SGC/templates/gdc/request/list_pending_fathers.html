@@ -1,0 +1,44 @@
+{% extends "index.html" %} 
+{% block title %}SGC - Administración de Ítems{% endblock %} 
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<h2>Lista de padres.</h2>
+		{% if valid %}
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Nombre de Ítem</th>
+						<th>Descripción</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for i in item_fs %}
+					<tr>
+						<td>{{ i.id }}</td>
+						<td>{{ i.name }}</td>
+						<td>{{ i.description }}</td>
+						<td>
+							<div class="btn-group">
+								{% if item.predecessor == i %}
+									<a class="btn btn-sm btn-danger" href="{% url 'unset_pending_father' id_item=item.id %}"><span class="glyphicon glyphicon-ok-sign"></span> Quitar antecesor</a> 
+								{% else %}
+									<a class="btn btn-sm btn-default" href="{% url 'set_pending_father' id_father=i.id id_item=item.id %}"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a>
+								{% endif %}
+							</div>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% else %}
+		  <h3>No existen items padres.</h3>
+		{% endif %}
+	</div>
+	<a class="btn btn-default" href="{% url 'list_pending' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+</div>
+{% endblock %}

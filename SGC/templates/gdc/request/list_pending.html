@@ -30,8 +30,9 @@
 							<div class="btn-group">
 								<a class="btn btn-sm btn-default" href="{% url 'list_pending_attr' id_item=i.id %}"><span class="glyphicon glyphicon glyphicon-list"></span> Atributos</a>
 								<a class="btn btn-sm btn-default" href="{% url 'list_pending_predecessors' id_item=i.id %}"><span class="glyphicon glyphicon-ok-sign"></span> Predecesor</a>
-								<a class="btn btn-sm btn-default" href="#"><span class="glyphicon glyphicon-ok-sign"></span> Padre</a>
+								<a class="btn btn-sm btn-default" href="{% url 'list_pending_fathers' id_item=i.id %}"><span class="glyphicon glyphicon-ok-sign"></span> Padre</a>
 								<a class="btn btn-sm btn-warning" href="{% url 'modify_pending_item' id_item=i.id %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Modificar</a>
+								<a class="btn btn-sm btn-danger" href="{% url 'finish_pending_item' id_item=i.id %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Finalizar</a>
 							</div>
 						</td>
 					</tr>
