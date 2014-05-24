@@ -4,8 +4,8 @@ from django import forms
 from models import ModificationRequest
 
 class CreateModificationRequestForm(forms.Form):
-    title = forms.CharField(label=u'Titulo', widget=forms.TextInput, required=True)
-    description = forms.CharField(label=u'Descripcion', widget=forms.Textarea, required=True)
+    title = forms.CharField(label=u'Titulo', widget=forms.TextInput(), required=True)
+    description = forms.CharField(label=u'Descripcion', widget=forms.Textarea(), required=True)
     
     def clean_title(self):
         title = self.cleaned_data['title']
@@ -16,3 +16,18 @@ class CreateModificationRequestForm(forms.Form):
         except ModificationRequest.DoesNotExist:
             return title
         raise forms.ValidationError('La peticion ya existe.')
+    
+class ModifyPendingItemForm(forms.Form):
+    title = forms.CharField(label=u'Titulo', widget=forms.TextInput(), required=True)
+    description = forms.CharField(label=u'Descripcion', widget=forms.Textarea(), required=True)
+    
+    def clean_title(self):
+        title = self.cleaned_data['title']
+        try:
+            mod_request = ModificationRequest.objects.get(title=title)
+            if mod_request.title == title:
+                return title
+        except ModificationRequest.DoesNotExist:
+            return title
+        raise forms.ValidationError('La peticion ya existe.')
+    

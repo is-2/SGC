@@ -73,17 +73,7 @@ class Item(models.Model):
     ACTIVE      = 0
     FINISHED    = 1
     DELETED     = 2
-    """
-    DEVELOPED   = 0
-    DEPLOYED    = 1
-    FINISHED    = 2
-    DELETED     = 3
     
-    STATUS_CHOICES = ((DEVELOPED, 'Desarrollado'),
-                      (DEPLOYED, 'Desplegado'),
-                      (FINISHED, 'Terminado'),
-                      (DELETED, 'Eliminado'),)
-    """
     STATUS_CHOICES = ((ACTIVE, 'Activo'),
                       (FINISHED, 'Finalizado'),
                       (DELETED, 'Eliminado'),)
