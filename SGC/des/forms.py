@@ -109,7 +109,7 @@ class ModifyItemTypeForm(forms.Form):
     
 class CreateItemForm(forms.Form):
     name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
-    description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    description = forms.CharField(label=u"Descripción", widget=forms.Textarea, required=True)
     cost = forms.IntegerField(label=u'Costo', required=True)
     
     def clean_name(self):
@@ -125,6 +125,7 @@ class CreateItemForm(forms.Form):
 class ModifyItemForm(forms.Form):
     name = forms.CharField(label="Nombre", widget=forms.TextInput(), required=True)
     description = forms.CharField(label=u"Descripción", widget=forms.TextInput(), required=True)
+    cost = forms.IntegerField(label=u'Costo', required=True)
     
     def clean_name(self):
         name = self.cleaned_data['name']

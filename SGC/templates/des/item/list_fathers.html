@@ -24,9 +24,9 @@
 						<td>
 							<div class="btn-group">
 								{% if item.predecessor == i %}
-									<a class="btn btn-sm btn-primary" href="#"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a> 
+									<a class="btn btn-sm btn-primary" href="{% url 'unset_father' id_item=id_item %}"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a> 
 								{% else %}
-									<a class="btn btn-sm btn-default" href="{% url 'set_father' id_father=i.id id_item=id_item id_project=id_project id_phase=id_phase%}"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a>
+									<a class="btn btn-sm btn-default" href="{% url 'set_father' id_father=i.id id_item=id_item %}"><span class="glyphicon glyphicon-ok-sign"></span> Asignar antecesor</a>
 								{% endif %}
 							</div>
 						</td>

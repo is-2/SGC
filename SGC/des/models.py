@@ -79,7 +79,7 @@ class Item(models.Model):
                       (DELETED, 'Eliminado'),)
     
     status      = models.SmallIntegerField(choices=STATUS_CHOICES, default=ACTIVE)
-    predecessor = models.ForeignKey('Item', blank=True, null=True, on_delete=models.SET_NULL)
+    predecessor = models.ForeignKey('Item', blank=True, null=True, on_delete=models.SET_NULL, related_name='successors')
     baseline    = models.ForeignKey('BaseLine', blank=True, null=True, on_delete=models.SET_NULL)
     phase       = models.ForeignKey('adm.Phase', blank=True, null=False, on_delete=models.CASCADE)
     

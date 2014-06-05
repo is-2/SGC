@@ -2,7 +2,7 @@
 from django.db import transaction
 from django.shortcuts import render, render_to_response, redirect
 from django.template import RequestContext
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import permission_required, login_required
@@ -18,9 +18,10 @@ def list_attribute_types(request):
     """
     Función que lista los Tipos de Atributos existentes en el Sistema.
     """
-    attribute_types = AttributeType.objects.all()
-    ctx = {'attribute_types':attribute_types}
-    return render(request, 'des/attribute_type/list_attribute_types.html', ctx)
+    if request.method == "GET":
+        attribute_types = AttributeType.objects.all()
+        ctx = {'attribute_types':attribute_types}
+        return render(request, 'des/attribute_type/list_attribute_types.html', ctx)
 
 @login_required(login_url='/login/')
 def create_attribute_type(request):
@@ -227,10 +228,11 @@ def list_items(request, id_project, id_phase):
     """
     Función que visualiza todos los Ítems del Sistema.
     """
-    phase=Phase.objects.get(id=id_phase)
-    items = Item.objects.exclude(status=Item.DELETED).filter(phase=phase)
-    ctx = {'items':items, 'id_project':id_project, 'id_phase':id_phase}
-    return render(request, 'des/item/list_items.html', ctx)
+    if request.method == "GET":
+        phase=Phase.objects.get(id=id_phase)
+        items = Item.objects.exclude(status=Item.DELETED).filter(phase=phase)
+        ctx = {'items':items, 'id_project':id_project, 'id_phase':id_phase}
+        return render(request, 'des/item/list_items.html', ctx)
 
 @login_required(login_url='/login/')
 @transaction.atomic()
@@ -239,7 +241,11 @@ def create_item(request, id_project, id_phase):
     """
     Función que crea un Ítem y lo almacena en el Sistema.
     """
-    form = forms.CreateItemForm()
+    if request.method == "GET":
+        form = forms.CreateItemForm()
+        ctx = {'form':form, 'id_project':id_project, 'id_phase':id_phase}
+        return render(request, 'des/item/create_item.html', ctx)
+    
     if request.method == "POST":
         form = forms.CreateItemForm(request.POST)
         if form.is_valid():
@@ -250,9 +256,9 @@ def create_item(request, id_project, id_phase):
             Item.objects.create(name=name, description=description, cost=cost, phase=phase)
             ctx = {'id_project':id_project, 'id_phase':id_phase}
             return redirect(reverse('list_items', kwargs=ctx))
-        
-    ctx = {'form':form, 'id_project':id_project, 'id_phase':id_phase}
-    return render(request, 'des/item/create_item.html', ctx)
+        else:
+            ctx = {'form':form, 'id_project':id_project, 'id_phase':id_phase}
+            return render(request, 'des/item/create_item.html', ctx)
  
 @login_required(login_url='/login/')
 @transaction.atomic()
@@ -264,25 +270,32 @@ def modify_item(request, id_item, id_project, id_phase):
     pertinentes.
     """
     item = Item.objects.get(id=id_item)
-    if request.method == "POST":
-        form = forms.ModifyItemForm(data=request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            description = form.cleaned_data['description']
-            item.name = name
-            item.description = description
-            item.save()
-            ctx = {'id_project':id_project, 'id_phase':id_phase}
-            return redirect(reverse('list_items', kwargs=ctx))
-            
+    
     if request.method == "GET":
         form = forms.ModifyItemForm(initial={
             'name': item.name,
             'description':item.description,
+            'cost':item.cost,
             })
-    ctx = {'form': form, 'item': item, 'id_project':id_project, 'id_phase':id_phase}
-    return render(request, 'des/item/modify_item.html', ctx)
-
+        ctx = {'form': form, 'item': item, 'id_project':id_project, 'id_phase':id_phase}
+        return render(request, 'des/item/modify_item.html', ctx)
+    
+    if request.method == "POST":
+        form = forms.ModifyItemForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            description = form.cleaned_data['description']
+            cost = form.cleaned_data['cost']
+            item.name = name
+            item.description = description
+            item.cost = cost
+            item.save()
+            ctx = {'id_project':id_project, 'id_phase':id_phase}
+            return redirect(reverse('list_items', kwargs=ctx))
+        else:
+            ctx = {'form': form, 'item': item, 'id_project':id_project, 'id_phase':id_phase}
+            return render(request, 'des/item/modify_item.html', ctx)
+    
 @login_required(login_url='/login/')
 @transaction.atomic()
 @reversion.create_revision()
@@ -293,14 +306,18 @@ def delete_item(request, id_item, id_project, id_phase):
     pertinentes.
     """
     item = Item.objects.get(id=id_item)
+    
+    if request.method == "GET":    
+        ctx = {'item':item, 'id_project':id_project, 'id_phase':id_phase}
+        return render(request, 'des/item/delete_item.html', ctx)
+    
     if request.method == "POST":
         item.status = Item.DELETED
         item.save()
         ctx = {'id_project':id_project, 'id_phase':id_phase}
         return redirect(reverse('list_items', kwargs=ctx))
-    if request.method == "GET":
-        ctx = {'item':item, 'id_project':id_project, 'id_phase':id_phase}
-        return render(request, 'des/item/delete_item.html', ctx)
+    
+    
 
 @login_required(login_url='/login/')
 def assign_item_type(request, id_item, id_project, id_phase):
@@ -458,6 +475,101 @@ def revive_item(request, id_item, id_project, id_phase):
     item.save()
     ctx = {'item':item, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/revive_item.html', ctx)
+
+@login_required(login_url='/login/')
+def list_predecessors(request, id_project, id_phase, id_item):
+    """
+    """
+    actual_phase = Phase.objects.get(id=id_phase)
+    order = actual_phase.order - 1
+    valid = False
+    item = Item.objects.get(id=id_item)
+    if(order >= 1): # If there is a previous phase
+        valid = True
+        previous_phase = Phase.objects.get(project=actual_phase.project, order=order)
+        previous_items = Item.objects.filter(phase=previous_phase)
+        ctx={'prev_items':previous_items,'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
+    else:
+        ctx={'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
+    return render(request, 'des/item/list_predecessors.html', ctx)
+    
+@login_required(login_url='/login/')  
+def set_predecessor(request, id_project, id_phase, id_item, id_pred):
+    item = Item.objects.get(id=id_item)
+    pred = Item.objects.get(id=id_pred)
+    item.predecessor = pred
+    item.save()
+    ctx={'predecessor':pred, 'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase}
+    return render(request, 'des/item/set_predecessor.html', ctx)
+
+@login_required(login_url='/login/')    
+def list_fathers(request, id_project, id_phase, id_item):
+    """
+    """
+    if request.method == "GET":
+        phase = Phase.objects.get(id=id_phase)
+        item_fs = Item.objects.filter(phase=phase).exclude(id=id_item)
+        item = Item.objects.get(id=id_item)
+        valid = False
+        if item_fs:
+            valid = True
+        ctx = {'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'item_fs':item_fs, 'valid':valid, 'item':item}
+        return render(request, 'des/item/list_fathers.html', ctx)
+
+@login_required(login_url='/login/')    
+def set_father(request, id_item, id_father):
+    """
+    
+    """
+    # Function that search cycles by DFS
+    def check_acyclic(base_id, item_id):
+        item = Item.objects.get(id=item_id)
+        successors = item.successors.all()
+        is_acyclic = True
+        for s in successors:            # Get every successors
+            if s.id == base_id:         # If successor is the base item, return False (cyclic)
+                is_acyclic = False
+            elif is_acyclic:            # Else, check his successors in recursion.
+                is_acyclic = check_acyclic(base_id, s.id)
+        return is_acyclic               # If none of them returned False, then return True
+    
+    if request.method == "GET":
+        acyclic = check_acyclic(int(id_father), id_item)
+        item = Item.objects.get(id=id_item)
+        if acyclic:
+            father = Item.objects.get(id=id_father)
+            item.predecessor = father
+            item.save()
+        ctx = {'id_project':item.phase.project.id, 'id_phase':item.phase.id,'id_item':id_item}
+        return redirect(reverse('list_fathers', kwargs=ctx))
+
+def unset_father(request, id_item):
+    """
+    """
+    if request.method == "GET":
+        item = Item.objects.get(id=id_item)
+        item.predecessor = None
+        item.save()
+        ctx = {'id_project':item.phase.project.id, 'id_phase':item.phase.id, 'id_item':id_item}
+        return redirect(reverse('list_fathers', kwargs=ctx))
+    
+def calculate_cost(request, id_project, id_phase , id_item):
+    
+    def sum_cost(base_item):
+        """
+        Suma recursivamente el costo total atravesando por depth-first
+        """
+        if base_item:
+            cost = base_item.cost
+            children = base_item.successors.all()
+            for i in children: # For each succeeding items
+                cost = cost + sum_cost(i) # Sum his total cost
+        return cost # Return total cost of the tree
+    
+    base_item = Item.objects.get(id=id_item)
+    cost = sum_cost(base_item)
+    ctx={'id_project':id_project, 'id_phase':id_phase, 'id_item':id_item, 'item':base_item, 'cost':cost}
+    return render(request, 'des/item/calculate_cost.html', ctx)
 
 @login_required(login_url='/login/')
 def list_user_projects(request):
@@ -632,69 +744,3 @@ def delete_baseline(request, id_project, id_phase, id_baseline):
     if request.method == "GET":
         ctx = {'project':project, 'phase':phase, 'baseline':baseline}
         return render(request, 'des/baseline/delete_baseline.html', ctx)
-
-@login_required(login_url='/login/')
-def list_predecessors(request, id_project, id_phase, id_item):
-    """
-    """
-    actual_phase = Phase.objects.get(id=id_phase)
-    order = actual_phase.order - 1
-    valid = False
-    item = Item.objects.get(id=id_item)
-    if(order >= 1): # If there is a previous phase
-        valid = True
-        previous_phase = Phase.objects.get(project=actual_phase.project, order=order)
-        previous_items = Item.objects.filter(phase=previous_phase)
-        ctx={'prev_items':previous_items,'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
-    else:
-        ctx={'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
-    return render(request, 'des/item/list_predecessors.html', ctx)
-    
-@login_required(login_url='/login/')  
-def set_predecessor(request, id_project, id_phase, id_item, id_pred):
-    item = Item.objects.get(id=id_item)
-    pred = Item.objects.get(id=id_pred)
-    item.predecessor = pred
-    item.save()
-    ctx={'predecessor':pred, 'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase}
-    return render(request, 'des/item/set_predecessor.html', ctx)
-
-@login_required(login_url='/login/')    
-def list_fathers(request, id_project, id_phase, id_item):
-    phase = Phase.objects.get(id=id_phase)
-    item_fs = Item.objects.filter(phase=phase).exclude(id=id_item)
-    item = Item.objects.get(id=id_item)
-    valid = False
-    if item_fs:
-        valid = True
-    ctx = {'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'item_fs':item_fs, 'valid':valid, 'item':item}
-    return render(request, 'des/item/list_fathers.html', ctx)
-
-@login_required(login_url='/login/')    
-def set_father(request, id_project, id_phase, id_item, id_father):
-    father = Item.objects.get(id=id_father)
-    item = Item.objects.get(id=id_item)
-    item.predecessor = father
-    item.save()
-    ctx = {'id_project':id_project, 'id_phase':id_phase,'id_item':id_item}
-    return redirect(reverse('list_fathers', kwargs=ctx))
-
-def calculate_cost(request, id_project, id_phase , id_item):
-    
-    def sum_cost(base_item):
-        """
-        Suma recursivamente el costo total atravesando por depth-first
-        """
-        if base_item:
-            cost = base_item.cost
-            children = base_item.item_set.all()
-            for i in children: # For each succeeding items
-                cost = cost + sum_cost(i) # Sum his total cost
-        return cost # Return total cost of the tree
-    
-    base_item = Item.objects.get(id=id_item)
-    cost = sum_cost(base_item)
-    ctx={'id_project':id_project, 'id_phase':id_phase, 'id_item':id_item, 'item':base_item, 'cost':cost}
-    return render(request, 'des/item/calculate_cost.html', ctx)
-
-    
