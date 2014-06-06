@@ -566,12 +566,15 @@ def calculate_cost(request, id_project, id_phase , id_item):
     """
     
     def sum_cost(base_item):
-        if base_item:
+        if base_item.status == Item.DELETED:
+            cost = 0
+        else:
             cost = base_item.cost
-            children = base_item.successors.all()
-            for i in children:  # For each succeeding items
-                cost = cost + sum_cost(i)  # Sum his total cost
-        return cost  # Return total cost of the tree
+        children = base_item.successors.all()
+        for c in children:
+            cost = cost + sum_cost(c)
+        return cost
+        
     
     base_item = Item.objects.get(id=id_item)
     cost = sum_cost(base_item)

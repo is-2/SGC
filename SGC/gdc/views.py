@@ -27,15 +27,14 @@ def create_request(request, id_item):
     """
     
     def sum_cost(base_item):
-        """
-        Suma recursivamente el costo total atravesando por depth-first
-        """
-        if base_item:
+        if base_item.status == Item.DELETED:
+            cost = 0
+        else:
             cost = base_item.cost
-            children = base_item.item_set.all()
-            for i in children: # For each succeeding items
-                cost = cost + sum_cost(i) # Sum his total cost
-        return cost # Retu
+        children = base_item.successors.all()
+        for c in children:
+            cost = cost + sum_cost(c)
+        return cost
     
     if request.method == "POST":
         form = forms.CreateModificationRequestForm(request.POST)
@@ -123,8 +122,10 @@ def modify_pending_item(request, id_item):
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
+            cost = form.cleaned_data['cost']
             item.name = name
             item.description = description
+            item.cost = cost
             item.save()
             return redirect('list_pending')
             
