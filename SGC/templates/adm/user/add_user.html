@@ -1,15 +1,16 @@
 {% extends "index.html" %}
-{% block title %}SGC{% endblock %}
+{% block title %}SGC - Crear Usuario{% endblock %}
 {% block content %}
+{% load bootstrap %}
 <div class="jumbotron">
 	<div class="bs-example">
-		<h2>Crear usuario</h2>
-		<form class="form-horizontal" method="POST">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<button type="submit" class="btn btn-success"> Crear </button>
-			<a class="btn btn-default" href="{% url 'list_users' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>           
+	<h2>Crear usuario</h2>
+    	<form class="form-horizontal" method="POST">
+    		{% csrf_token %}
+			{{ form|bootstrap_horizontal }}
+      		<button type="submit" class="btn btn-success">Crear</button>
+      		<a class="btn btn-default" href="{% url 'list_users' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 		</form>		
-	</div>
+  	</div>
 </div>
 {% endblock %}

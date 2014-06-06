@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render, redirect
+from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User, Group, Permission
@@ -11,22 +12,22 @@ from adm.models import Project, Phase
 from des.models import Item, BaseLine
 
 # Create your views here.
-@login_required(login_url='/login/')
+@permission_required('home.puede_visualizar_usuario', login_url='access_denied')
 def list_users(request):
     """
     Lista todos los usuarios almacenados en el sistema.
     Otorga las opciones de eliminar y modificar a usuario listado.
     """
-    users = User.objects.all()
-    ctx = {'users':users}
-    return render_to_response('adm/user/list_users.html', ctx, context_instance=RequestContext(request))
+    if request.method == "GET":
+        users = User.objects.filter(is_active=True)
+        ctx = {'users':users}
+        return render(request, 'adm/user/list_users.html', ctx)
     
-@login_required(login_url='/login/')
+@permission_required('home.puede_crear_usuario', login_url='access_denied')
 def add_user(request):
     """
     Crea un usuario y lo almacena en el sistema.
     """
-    form = forms.AddUserForm()
     if request.method == "POST":
         form = forms.AddUserForm(request.POST)
         if form.is_valid():
@@ -47,10 +48,13 @@ def add_user(request):
         else:
             ctx = {'form':form}
             return render_to_response('adm/user/add_user.html', ctx, context_instance=RequestContext(request))
-    ctx = {'form':form}
-    return render_to_response('adm/user/add_user.html', ctx, context_instance=RequestContext(request))
+        
+    if request.method == "GET":     
+        form = forms.AddUserForm()   
+        ctx = {'form':form}
+        return render_to_response('adm/user/add_user.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_modificar_usuario', login_url='access_denied')
 def modify_user(request, id_user):
     """
     Modifica un usuario.
@@ -77,6 +81,9 @@ def modify_user(request, id_user):
             u.client.observation = observation
             u.client.save()
             return HttpResponseRedirect('/adm/list_users/')
+        else:
+            ctx = {'form': form, 'user': u}
+            return render_to_response('adm/user/modify_user.html', ctx, context_instance=RequestContext(request))
             
     if request.method == "GET":
         form = forms.ModUserForm(initial={
@@ -88,23 +95,26 @@ def modify_user(request, id_user):
             'address': u.client.address,
             'observation' : u.client.observation
             })
-    ctx = {'form': form, 'user': u}
-    return render_to_response('adm/user/modify_user.html', ctx, context_instance=RequestContext(request))
+        ctx = {'form': form, 'user': u}
+        return render_to_response('adm/user/modify_user.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_eliminar_usuario', login_url='access_denied')
 def delete_user(request, id_user):
     """
     Elimina un usuario.
     """
-    u = User.objects.get(id=id_user)
     if request.method == "POST":
-        User.objects.get(id=id_user).delete()
-        return HttpResponseRedirect('/adm/list_users/')
+        user = User.objects.get(id=id_user)
+        user.is_active = False
+        user.save()
+        return redirect(reverse('list_users'))
+    
     if request.method == "GET":
-        ctx = {'user':u}
-        return render_to_response('adm/user/delete_user.html', ctx, context_instance=RequestContext(request))
+        user = User.objects.get(id=id_user)
+        ctx = {'user':user}
+        return render(request, 'adm/user/delete_user.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_visualizar_usuario', login_url='access_denied')
 def visualize_user(request, id_user):
     """
     Despliega los campos de un usuario.
@@ -113,18 +123,18 @@ def visualize_user(request, id_user):
     ctx = {'user': u}
     return render_to_response('adm/user/visualize_user.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_rol', login_url='access_denied')
 def assign_user_groups(request, id_user):
     """
-    
+    Funcion que asigna un Rol a un Usuario.
     """
-    user = User.objects.get(id=id_user)
-    # groups = Group.objects.filter(user__id=id_user)
-    groups = Group.objects.all()
-    ctx = {'user':user, 'groups':groups}
-    return render_to_response('adm/group/assign_user_groups.html', ctx, context_instance=RequestContext(request))
+    if request.method == "GET":
+        user = User.objects.get(id=id_user)
+        groups = Group.objects.all()
+        ctx = {'user':user, 'groups':groups}
+        return render_to_response('adm/group/assign_user_groups.html', ctx, context_instance=RequestContext(request))
     
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_rol', login_url='access_denied')
 def grant_user_group(request, id_user, id_group):
     """
     """
@@ -141,7 +151,7 @@ def grant_user_group(request, id_user, id_group):
     ctx = {'user':u, 'groups':groups}
     return render_to_response('adm/group/assign_user_groups.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_rol', login_url='access_denied')
 def deny_user_group(request, id_user, id_group):
     """
     Quitar un rol al usuario previamente seleccionado.
@@ -154,13 +164,13 @@ def deny_user_group(request, id_user, id_group):
     ctx = {'user':user, 'groups':groups}
     return render_to_response('adm/group/assign_user_groups.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_visualizar_rol', login_url='access_denied')
 def list_groups(request):
     groups = Group.objects.all()
     ctx = {'groups':groups}
     return render_to_response('adm/group/list_groups.html', ctx, context_instance=RequestContext(request))
 
-@permission_required('home.puede_crear_rol', login_url='/login/')
+@permission_required('home.puede_crear_rol', login_url='access_denied')
 def create_group(request):
     form = forms.CreateGroupForm()
     if request.method == "POST":
@@ -176,7 +186,7 @@ def create_group(request):
     ctx = {'form':form}
     return render_to_response('adm/group/create_group.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_modificar_rol', login_url='access_denied')
 def modify_group(request, id_group):
     """
     Modifica un rol del sistema.
@@ -197,7 +207,7 @@ def modify_group(request, id_group):
     ctx = {'form': form, 'group': group}
     return render_to_response('adm/group/modify_group.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_eliminar_rol', login_url='access_denied')
 def delete_group(request, id_group):
     """
     Elimina un rol del sistema.
@@ -210,39 +220,36 @@ def delete_group(request, id_group):
     if request.method == "GET":
         ctx = {'group':group}
         return render_to_response('adm/group/delete_group.html', ctx, context_instance=RequestContext(request))
-    
+
+@permission_required('home.puede_asignar_permiso', login_url='access_denied')
 def assign_permissions(request, id_group):
-    group = Group.objects.get(id=id_group)
-    perms = Permission.objects.all()
-    ctx = {'group':group, 'permissions':perms}
-    return render_to_response('adm/perm/assign_perm.html', ctx, context_instance=RequestContext(request))
+    if request.method == "GET":
+        group = Group.objects.get(id=id_group)
+        perms = Permission.objects.exclude(name__startswith="Can").order_by('id')
+        ctx = {'group':group, 'permissions':perms}
+        return render(request, 'adm/perm/assign_perm.html', ctx)
 
+@permission_required('home.puede_asignar_permiso', login_url='access_denied')
 def grant_permissions(request, id_group, id_perm):
-    group = Group.objects.get(id=id_group)
-    permission = Permission.objects.get(id=id_perm)
-    perms = Permission.objects.all()
-    new_permission = False
-    try:
-        permission = group.permissions.get(id=id_perm)
-    except Permission.DoesNotExist:
-        new_permission = True      
-    if new_permission:
-        group.permissions.add(permission)
+    if request.method == "GET":
+        group = Group.objects.get(id=id_group)
+        perm = Permission.objects.get(id=id_perm)
+        group.permissions.add(perm)
         group.save()
-    ctx = {'group':group, 'permissions':perms}
-    return render_to_response('adm/perm/assign_perm.html', ctx, context_instance=RequestContext(request))
+        ctx = {'id_group':id_group}
+        return redirect(reverse('assign_perm', kwargs=ctx))
 
+@permission_required('home.puede_asignar_permiso', login_url='access_denied')
 def deny_permissions(request, id_group, id_perm):
-    group = Group.objects.get(id=id_group)
-    permission = Permission.objects.get(id=id_perm)
-    perms = Permission.objects.all()
-    
-    group.permissions.remove(permission)
-    group.save()
-    ctx = {'group':group, 'permissions':perms}
-    return render_to_response('adm/perm/assign_perm.html', ctx, context_instance=RequestContext(request))
+    if request.method == "GET":
+        group = Group.objects.get(id=id_group)
+        perm = Permission.objects.get(id=id_perm)
+        group.permissions.remove(perm)
+        group.save()
+        ctx = {'id_group':id_group}
+        return redirect(reverse('assign_perm', kwargs=ctx))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_visualizar_proyecto', login_url='access_denied')
 def list_projects(request):
     """
     Listan todos los projectos existentes en el sistema.
@@ -251,7 +258,7 @@ def list_projects(request):
     ctx = {'projects':projects}
     return render_to_response('adm/project/list_projects.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_crear_proyecto', login_url='access_denied')
 def create_project(request):
     """
     Crea un nuevo proyecto.
@@ -271,7 +278,7 @@ def create_project(request):
     ctx = {'form':form}
     return render_to_response('adm/project/create_project.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_visualizar_fase', login_url='access_denied')
 def manage_project_phases(request, id_project):
     """
     Despliega las fases que tiene el proyecto seleccionado.
@@ -281,7 +288,7 @@ def manage_project_phases(request, id_project):
     ctx = {'project':project, 'phases':phases}
     return render_to_response('adm/project/manage_project_phases.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_crear_fase', login_url='access_denied')
 def create_project_phase(request, id_project):
     """
     Crea un nueva fase para el proyecto.
@@ -309,7 +316,7 @@ def create_project_phase(request, id_project):
     ctx = {'form':form, 'project':project}
     return render_to_response('adm/project/create_project_phase.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_modificar_fase', login_url='access_denied')
 def modify_project_phase(request, id_project, id_phase):
     """
     Modifica una fase.
@@ -339,7 +346,7 @@ def modify_project_phase(request, id_project, id_phase):
     ctx = {'form': form, 'project':project, 'phase': phase}
     return render_to_response('adm/project/modify_project_phase.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_visualizar_fase', login_url='access_denied')
 def visualize_phase(request,id_project, id_phase):
     """
     """
@@ -348,7 +355,7 @@ def visualize_phase(request,id_project, id_phase):
     ctx = {'project':project, 'phase': p}
     return render_to_response('adm/project/visualize_phase.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_eliminar_fase', login_url='access_denied')
 def delete_project_phase(request, id_project, id_phase):
     """
     Elimina una fase.
@@ -365,7 +372,7 @@ def delete_project_phase(request, id_project, id_phase):
         ctx = {'project':project, 'phases': Phase.objects.filter(project_id=id_project)}
         return render_to_response('adm/project/delete_project_phase.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_usuario', login_url='access_denied')
 def manage_project_users(request, id_project):
     """
     Despliega la lista de todos los usuarios del sistema,
@@ -377,7 +384,7 @@ def manage_project_users(request, id_project):
     ctx = {'project':project, 'users':users}
     return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_usuario', login_url='access_denied')
 def assign_project_user(request, id_user, id_project):
     """
     Asigna un usuario al proyecto.
@@ -399,7 +406,7 @@ def assign_project_user(request, id_user, id_project):
     ctx = {'project':project, 'users':users }
     return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_usuario', login_url='access_denied')
 def remove_project_user(request, id_user, id_project):
     """
     Quita un usuario del proyecto.
@@ -414,7 +421,7 @@ def remove_project_user(request, id_user, id_project):
     ctx = {'project':project, 'users':users}
     return render_to_response('adm/project/manage_project_users.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_usuario', login_url='access_denied')
 def manage_project_committee(request, id_project):
     """
     Despliega la lista de usuarios relacionados con el proyecto,
@@ -426,7 +433,7 @@ def manage_project_committee(request, id_project):
     ctx = {'users':users, 'project':project}
     return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_usuario', login_url='access_denied')
 def assign_committee_user(request, id_project, id_user):
     """
     Asigna un usuario al comité de gestión de cambio.
@@ -447,7 +454,7 @@ def assign_committee_user(request, id_project, id_user):
     ctx = {'project':project, 'users':users}
     return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('home.puede_asignar_usuario', login_url='access_denied')
 def remove_committee_user(request, id_project, id_user):
     """
     Quita un usuario del comité  de cambio.
@@ -462,7 +469,7 @@ def remove_committee_user(request, id_project, id_user):
     ctx = {'project':project, 'users':users}
     return render_to_response('adm/project/manage_project_committee.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_modificar_proyecto', login_url='access_denied')
 def modify_project(request, id_project):
     """
     Modifica un proyecto del sistema.
@@ -486,7 +493,7 @@ def modify_project(request, id_project):
     ctx = {'form': form, 'project': project}
     return render_to_response('adm/project/modify_project.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_modificar_proyecto', login_url='access_denied')
 def modify_project_state(request, id_project):
     """
     """    
@@ -543,7 +550,7 @@ def modify_project_state(request, id_project):
     ctx = {'form': form, 'project': project}
     return render_to_response('adm/project/modify_project_state.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_modificar_fase', login_url='access_denied')
 def modify_phase_state(request, id_project, id_phase):
     """
     """
@@ -599,7 +606,7 @@ def modify_phase_state(request, id_project, id_phase):
     ctx = {'form': form, 'project': project, 'phase':phase}
     return render_to_response('adm/project/modify_phase_state.html', ctx, context_instance=RequestContext(request))
     
-@login_required(login_url='/login/')
+@permission_required('adm.puede_eliminar_proyecto', login_url='access_denied')
 def delete_project(request, id_project):
     """
     Elimina un proyecto.
@@ -612,7 +619,7 @@ def delete_project(request, id_project):
         ctx = {'project':p}
         return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_visualizar_proyecto', login_url='access_denied')
 def visualize_project(request, id_project):
     """
     """

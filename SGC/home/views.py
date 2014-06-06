@@ -70,3 +70,11 @@ def log_out(request):
     """
     logout(request)
     return HttpResponseRedirect('/')
+
+def access_denied(request):
+    """
+    Funcion que visualiza un mensaje de error por falta de permisos.
+    """
+        
+    if request.method == "GET":
+        return render(request, 'home/access_denied.html')

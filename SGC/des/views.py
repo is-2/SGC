@@ -229,7 +229,7 @@ def list_items(request, id_project, id_phase):
     Función que visualiza todos los Ítems del Sistema.
     """
     if request.method == "GET":
-        phase=Phase.objects.get(id=id_phase)
+        phase = Phase.objects.get(id=id_phase)
         items = Item.objects.exclude(status=Item.DELETED).filter(phase=phase)
         ctx = {'items':items, 'id_project':id_project, 'id_phase':id_phase}
         return render(request, 'des/item/list_items.html', ctx)
@@ -343,8 +343,8 @@ def add_item_type(request, id_item, id_item_type, id_project, id_phase):
     """
     item = Item.objects.get(id=id_item)
     item_type = ItemType.objects.get(id=id_item_type)
-    if not item.attribute_set.exists(): # If there is already some attributes in the queryset... Double assignment error solved here.
-        for a in item_type.attribute_types.all(): # Create all attribute skeletons to item
+    if not item.attribute_set.exists():  # If there is already some attributes in the queryset... Double assignment error solved here.
+        for a in item_type.attribute_types.all():  # Create all attribute skeletons to item
             Attribute.objects.create(name=a.name, description=a.description, type=a.attr_type, item=item)
     ctx = {'item':item, 'item_type':item_type, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/add_item_type.html', ctx)
@@ -484,27 +484,32 @@ def list_predecessors(request, id_project, id_phase, id_item):
     order = actual_phase.order - 1
     valid = False
     item = Item.objects.get(id=id_item)
-    if(order >= 1): # If there is a previous phase
+    if(order >= 1):  # If there is a previous phase
         valid = True
         previous_phase = Phase.objects.get(project=actual_phase.project, order=order)
         previous_items = Item.objects.filter(phase=previous_phase)
-        ctx={'prev_items':previous_items,'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
+        ctx = {'prev_items':previous_items, 'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
     else:
-        ctx={'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
+        ctx = {'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
     return render(request, 'des/item/list_predecessors.html', ctx)
     
 @login_required(login_url='/login/')  
 def set_predecessor(request, id_project, id_phase, id_item, id_pred):
-    item = Item.objects.get(id=id_item)
-    pred = Item.objects.get(id=id_pred)
-    item.predecessor = pred
-    item.save()
-    ctx={'predecessor':pred, 'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase}
-    return render(request, 'des/item/set_predecessor.html', ctx)
+    """
+    Funcion que asigna un antecesor al item.
+    """
+    if request.method == "GET":
+        item = Item.objects.get(id=id_item)
+        pred = Item.objects.get(id=id_pred)
+        item.predecessor = pred
+        item.save()
+        ctx = {'predecessor':pred, 'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase}
+        return render(request, 'des/item/set_predecessor.html', ctx)
 
 @login_required(login_url='/login/')    
 def list_fathers(request, id_project, id_phase, id_item):
     """
+    Función que lista todos los ítems de la misma fase.
     """
     if request.method == "GET":
         phase = Phase.objects.get(id=id_phase)
@@ -519,19 +524,19 @@ def list_fathers(request, id_project, id_phase, id_item):
 @login_required(login_url='/login/')    
 def set_father(request, id_item, id_father):
     """
-    
+    Función que asigna un padre para el item respectivo. Verifica internamente que el grafo sea acíclico.
     """
     # Function that search cycles by DFS
     def check_acyclic(base_id, item_id):
         item = Item.objects.get(id=item_id)
         successors = item.successors.all()
         is_acyclic = True
-        for s in successors:            # Get every successors
-            if s.id == base_id:         # If successor is the base item, return False (cyclic)
+        for s in successors:  # Get every successors
+            if s.id == base_id:  # If successor is the base item, return False (cyclic)
                 is_acyclic = False
-            elif is_acyclic:            # Else, check his successors in recursion.
+            elif is_acyclic:  # Else, check his successors in recursion.
                 is_acyclic = check_acyclic(base_id, s.id)
-        return is_acyclic               # If none of them returned False, then return True
+        return is_acyclic  # If none of them returned False, then return True
     
     if request.method == "GET":
         acyclic = check_acyclic(int(id_father), id_item)
@@ -540,11 +545,13 @@ def set_father(request, id_item, id_father):
             father = Item.objects.get(id=id_father)
             item.predecessor = father
             item.save()
-        ctx = {'id_project':item.phase.project.id, 'id_phase':item.phase.id,'id_item':id_item}
+        ctx = {'id_project':item.phase.project.id, 'id_phase':item.phase.id, 'id_item':id_item}
         return redirect(reverse('list_fathers', kwargs=ctx))
 
+@login_required(login_url='/login/')
 def unset_father(request, id_item):
     """
+    Función que deasigna el padre del ítem respectivo.
     """
     if request.method == "GET":
         item = Item.objects.get(id=id_item)
@@ -552,23 +559,24 @@ def unset_father(request, id_item):
         item.save()
         ctx = {'id_project':item.phase.project.id, 'id_phase':item.phase.id, 'id_item':id_item}
         return redirect(reverse('list_fathers', kwargs=ctx))
-    
+
+@login_required(login_url='/login/')    
 def calculate_cost(request, id_project, id_phase , id_item):
+    """
+    Suma recursivamente el costo total atravesando por depth-first
+    """
     
     def sum_cost(base_item):
-        """
-        Suma recursivamente el costo total atravesando por depth-first
-        """
         if base_item:
             cost = base_item.cost
             children = base_item.successors.all()
-            for i in children: # For each succeeding items
-                cost = cost + sum_cost(i) # Sum his total cost
-        return cost # Return total cost of the tree
+            for i in children:  # For each succeeding items
+                cost = cost + sum_cost(i)  # Sum his total cost
+        return cost  # Return total cost of the tree
     
     base_item = Item.objects.get(id=id_item)
     cost = sum_cost(base_item)
-    ctx={'id_project':id_project, 'id_phase':id_phase, 'id_item':id_item, 'item':base_item, 'cost':cost}
+    ctx = {'id_project':id_project, 'id_phase':id_phase, 'id_item':id_item, 'item':base_item, 'cost':cost}
     return render(request, 'des/item/calculate_cost.html', ctx)
 
 @login_required(login_url='/login/')
@@ -697,12 +705,12 @@ def assign_baseline_item(request, id_project, id_phase, id_baseline, id_item):
     items = Item.objects.filter(phase_id=id_phase).exclude(status=Item.DELETED)
     bsitems = Item.objects.filter(baseline_id=id_baseline)   
 
-    if phase.order == 1: # Primera fase.
+    if phase.order == 1:  # Primera fase.
         item.baseline_id = baseline.id
         item.status = Item.FINISHED
         item.save()        
-    else:                               # En las fases subsiguientes
-        if item.predecessor != None:    # los items requieren predecesores.
+    else:  # En las fases subsiguientes
+        if item.predecessor != None:  # los items requieren predecesores.
             item.baseline_id = baseline.id
             item.status = Item.FINISHED
             item.save()

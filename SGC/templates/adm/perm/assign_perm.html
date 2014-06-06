@@ -18,18 +18,16 @@
                     </thead>
                 	<tbody>
                 		{% for p in permissions %}
-                			{% if p.id >= 22 %}
-	                			<tr>
-	                    			<td>{{ p.id }}</td>
-	                    			<td>{{ p.name }}</td>
-	                    			<td>{{ p.codename }}</td>
-	                    				{% if p in group.permissions.all %}
-	                    					<td><a class="btn btn-sm btn-danger" href="{% url 'deny_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
-	                    				{% else %}
-	                    					<td><a class="btn btn-sm btn-primary" href="{% url 'grant_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Agregar</a></td>
-	                    				{% endif %}	
-	                			</tr>
-                			{% endif %}
+                			<tr>
+                    			<td>{{ p.id }}</td>
+                    			<td>{{ p.name }}</td>
+                    			<td>{{ p.codename }}</td>
+                    				{% if p in group.permissions.all %}
+                    					<td><a class="btn btn-sm btn-danger" href="{% url 'deny_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-remove-circle"></span> Quitar</a></td>
+                    				{% else %}
+                    					<td><a class="btn btn-sm btn-primary" href="{% url 'grant_perm' id_group=group.id id_perm=p.id %}"><span class="glyphicon glyphicon-ok-circle"></span> Agregar</a></td>
+                    				{% endif %}	
+                			</tr>
                 		{% endfor %}
                 	</tbody>
         		</table>
