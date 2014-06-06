@@ -20,9 +20,9 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 SECRET_KEY = 'tln8nm13c743z#r%%+t=bpq2)@h_2k56+%=$y(8k9_qg=rc26('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -88,4 +88,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/nobu/git/SGC/SGC/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
