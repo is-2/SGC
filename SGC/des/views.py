@@ -13,7 +13,7 @@ import reversion
 from reversion.models import Version
 
 # Create your views here.
-@login_required(login_url='/login/')
+@permission_required('des.puede_visualizar_tipo_de_atributo', login_url='access_denied')
 def list_attribute_types(request):
     """
     Función que lista los Tipos de Atributos existentes en el Sistema.
@@ -23,7 +23,7 @@ def list_attribute_types(request):
         ctx = {'attribute_types':attribute_types}
         return render(request, 'des/attribute_type/list_attribute_types.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_crear_tipo_de_atributo', login_url='access_denied')
 def create_attribute_type(request):
     """
     Función que crea un Tipo de Atributo y lo almacena en el Sistema.
@@ -50,7 +50,7 @@ def create_attribute_type(request):
     ctx = {'form':form}
     return render(request, 'des/attribute_type/create_attribute_type.html', ctx)
 
-@login_required(login_url='/login/') 
+@permission_required('des.puede_modificar_tipo_de_atributo', login_url='access_denied')
 def modify_attribute_type(request, id_attribute_type):
     """
     Función que modifica un Tipo de Atributo seleccionado del Sistema.
@@ -84,7 +84,7 @@ def modify_attribute_type(request, id_attribute_type):
     ctx = {'form': form, 'attribute_type': attribute_type}
     return render(request, 'des/attribute_type/modify_attribute_type.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_eliminar_tipo_de_atributo', login_url='access_denied')
 def delete_attribute_type(request, id_attribute_type):
     """
     Función que elimina un Tipo de Atributo del Sistema.
@@ -99,7 +99,7 @@ def delete_attribute_type(request, id_attribute_type):
         ctx = {'attribute_type':attribute_type}
         return render(request, 'des/attribute_type/delete_attribute_type.html', ctx)
 
-@login_required(login_url='/login/')   
+@permission_required('des.puede_visualizar_tipo_de_atributo', login_url='access_denied')  
 def visualize_attribute_type(request, id_attribute_type):
     """
     Función que despliega los campos de un Tipo de Atributo.
@@ -108,7 +108,7 @@ def visualize_attribute_type(request, id_attribute_type):
     ctx = {'attribute_type': attribute_type}
     return render(request, 'des/attribute_type/visualize_attribute_type.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_visualizar_tipo_de_item', login_url='access_denied')
 def list_item_types(request):
     """
     Función que lista los Tipo de Ítems existentes en el Sistema.
@@ -117,7 +117,7 @@ def list_item_types(request):
     ctx = {'item_ts':item_ts}
     return render(request, 'des/item_type/list_item_types.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_crear_tipo_de_item', login_url='access_denied')
 def create_item_type(request):
     """
     Función que crea un Tipo de Ítem y lo almacena en el Sistema.
@@ -135,7 +135,7 @@ def create_item_type(request):
     ctx = {'form':form}
     return render(request, 'des/item_type/create_item_type.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_tipo_de_item', login_url='access_denied')
 def modify_item_type(request, id_item_type):
     """
     Función que modifica un Tipo de Ítem del Sistema.
@@ -159,7 +159,7 @@ def modify_item_type(request, id_item_type):
         ctx = {'form': form, 'item_t': item_t}
         return render(request, 'des/item_type/modify_item_type.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_eliminar_tipo_de_item', login_url='access_denied')
 def delete_item_type(request, id_item_type):
     """
     Función que elimina un Tipo de Ítem del Sistema.
@@ -173,7 +173,7 @@ def delete_item_type(request, id_item_type):
         ctx = {'item_t':item_t}
         return render(request, 'des/item_type/delete_item_type.html', ctx)
 
-@login_required(login_url='/login/') 
+@permission_required('des.puede_visualizar_tipo_de_item', login_url='access_denied')
 def visualize_item_type(request, id_item_type):
     """
     Función que despliega los campos de un Tipo de Ítem.
@@ -183,7 +183,7 @@ def visualize_item_type(request, id_item_type):
     ctx = {'item_t': item_t, 'attr_types':attr_types}
     return render(request, 'des/item_type/visualize_item_type.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_tipo_de_atributo', login_url='access_denied')
 def assign_attribute_type(request, id_item_type):
     """
     Función que despliega todos los Tipo de Atributos disponibles en el sistema para ser asignados/desasignados 
@@ -194,7 +194,7 @@ def assign_attribute_type(request, id_item_type):
     ctx = {'item_t':item_t, 'attr_t':attr_t}
     return render(request, 'des/item_type/assign_attribute_type.html', ctx)
 
-@login_required(login_url='/login/') 
+@permission_required('des.puede_asignar_tipo_de_atributo', login_url='access_denied')
 def grant_attribute_type(request, id_item_type, id_attr_type):
     """
     Función que asigna un Atributo al Tipo de Ítem.
@@ -212,7 +212,7 @@ def grant_attribute_type(request, id_item_type, id_attr_type):
     ctx = {'id_item_type':id_item_type}
     return redirect(reverse('assign_attribute_type', kwargs=ctx))
 
-@login_required(login_url='/login/') 
+@permission_required('des.puede_asignar_tipo_de_atributo', login_url='access_denied')
 def deny_attribute_type(request, id_item_type, id_attr_type):
     """
     Función que desasigna un Atributo al Tipo de Ítem.
@@ -224,6 +224,7 @@ def deny_attribute_type(request, id_item_type, id_attr_type):
     ctx = {'id_item_type':id_item_type}
     return redirect(reverse('assign_attribute_type', kwargs=ctx))
 
+@permission_required('des.puede_visualizar_item', login_url='access_denied')
 def list_items(request, id_project, id_phase):
     """
     Función que visualiza todos los Ítems del Sistema.
@@ -234,7 +235,7 @@ def list_items(request, id_project, id_phase):
         ctx = {'items':items, 'id_project':id_project, 'id_phase':id_phase}
         return render(request, 'des/item/list_items.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_crear_item', login_url='access_denied')
 @transaction.atomic()
 @reversion.create_revision()
 def create_item(request, id_project, id_phase):
@@ -260,7 +261,7 @@ def create_item(request, id_project, id_phase):
             ctx = {'form':form, 'id_project':id_project, 'id_phase':id_phase}
             return render(request, 'des/item/create_item.html', ctx)
  
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_item', login_url='access_denied')
 @transaction.atomic()
 @reversion.create_revision()   
 def modify_item(request, id_item, id_project, id_phase):
@@ -296,7 +297,7 @@ def modify_item(request, id_item, id_project, id_phase):
             ctx = {'form': form, 'item': item, 'id_project':id_project, 'id_phase':id_phase}
             return render(request, 'des/item/modify_item.html', ctx)
     
-@login_required(login_url='/login/')
+@permission_required('des.puede_eliminar_item', login_url='access_denied')
 @transaction.atomic()
 @reversion.create_revision()
 def delete_item(request, id_item, id_project, id_phase):
@@ -317,9 +318,7 @@ def delete_item(request, id_item, id_project, id_phase):
         ctx = {'id_project':id_project, 'id_phase':id_phase}
         return redirect(reverse('list_items', kwargs=ctx))
     
-    
-
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_tipo_de_item', login_url='access_denied')
 def assign_item_type(request, id_item, id_project, id_phase):
     """
     Función que lista los Tipo de Ítems asignables al Ítem seleccionado. El usuario debe seleccionar el botón
@@ -335,7 +334,7 @@ def assign_item_type(request, id_item, id_project, id_phase):
     ctx = {'item':item, 'item_types':item_types, 'valid':valid, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/assign_item_type.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_tipo_de_item', login_url='access_denied')
 def add_item_type(request, id_item, id_item_type, id_project, id_phase):
     """
     Función que asigna el Tipo de Item al Item seleccionado. El Item sera la instancia del Tipo de Items con
@@ -349,14 +348,14 @@ def add_item_type(request, id_item, id_item_type, id_project, id_phase):
     ctx = {'item':item, 'item_type':item_type, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/add_item_type.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_visualizar_atributo', login_url='access_denied')
 def list_attributes(request, id_item, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     attr = item.attribute_set.all()
     ctx = {'item':item, 'attr':attr, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/attribute/list_attributes.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_atributo', login_url='access_denied')
 def set_attribute_value(request, id_item, id_attr, id_project, id_phase):
     """
     Asigna un valor al Atributo.
@@ -446,7 +445,7 @@ def set_attribute_value(request, id_item, id_attr, id_project, id_phase):
         ctx = {'form':form, 'item':item, 'id_project':id_project, 'id_phase':id_phase}
         return render_to_response('des/attribute/set_attribute_value.html', ctx, context_instance=RequestContext(request))
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_item', login_url='access_denied')
 def item_history(request, id_item, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     # Build a list of all previous versions, latest versions first:
@@ -454,7 +453,7 @@ def item_history(request, id_item, id_project, id_phase):
     ctx = {'item':item, 'version_list':version_list, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/item_history.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_item', login_url='access_denied')
 def revert_item(request, id_item, id_version, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     version = Version.objects.get(id=id_version)
@@ -462,13 +461,13 @@ def revert_item(request, id_item, id_version, id_project, id_phase):
     ctx = {'item':item, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/revert_item.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_visualizar_item', login_url='access_denied')
 def list_deleted_items(request, id_project, id_phase):
     items = Item.objects.filter(status=Item.DELETED)
     ctx = {'items':items, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/list_deleted_items.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_item', login_url='access_denied')
 def revive_item(request, id_item, id_project, id_phase):
     item = Item.objects.get(id=id_item)
     item.status = Item.ACTIVE
@@ -476,7 +475,7 @@ def revive_item(request, id_item, id_project, id_phase):
     ctx = {'item':item, 'id_project':id_project, 'id_phase':id_phase}
     return render(request, 'des/item/revive_item.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_item', login_url='access_denied')
 def list_predecessors(request, id_project, id_phase, id_item):
     """
     """
@@ -493,7 +492,7 @@ def list_predecessors(request, id_project, id_phase, id_item):
         ctx = {'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'valid':valid}
     return render(request, 'des/item/list_predecessors.html', ctx)
     
-@login_required(login_url='/login/')  
+@permission_required('des.puede_asignar_item', login_url='access_denied')
 def set_predecessor(request, id_project, id_phase, id_item, id_pred):
     """
     Funcion que asigna un antecesor al item.
@@ -506,7 +505,7 @@ def set_predecessor(request, id_project, id_phase, id_item, id_pred):
         ctx = {'predecessor':pred, 'item':item, 'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase}
         return render(request, 'des/item/set_predecessor.html', ctx)
 
-@login_required(login_url='/login/')    
+@permission_required('des.puede_asignar_item', login_url='access_denied')  
 def list_fathers(request, id_project, id_phase, id_item):
     """
     Función que lista todos los ítems de la misma fase.
@@ -521,7 +520,7 @@ def list_fathers(request, id_project, id_phase, id_item):
         ctx = {'id_item':id_item, 'id_project':id_project, 'id_phase':id_phase, 'item_fs':item_fs, 'valid':valid, 'item':item}
         return render(request, 'des/item/list_fathers.html', ctx)
 
-@login_required(login_url='/login/')    
+@permission_required('des.puede_asignar_item', login_url='access_denied')   
 def set_father(request, id_item, id_father):
     """
     Función que asigna un padre para el item respectivo. Verifica internamente que el grafo sea acíclico.
@@ -548,7 +547,7 @@ def set_father(request, id_item, id_father):
         ctx = {'id_project':item.phase.project.id, 'id_phase':item.phase.id, 'id_item':id_item}
         return redirect(reverse('list_fathers', kwargs=ctx))
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_item', login_url='access_denied')
 def unset_father(request, id_item):
     """
     Función que deasigna el padre del ítem respectivo.
@@ -560,7 +559,7 @@ def unset_father(request, id_item):
         ctx = {'id_project':item.phase.project.id, 'id_phase':item.phase.id, 'id_item':id_item}
         return redirect(reverse('list_fathers', kwargs=ctx))
 
-@login_required(login_url='/login/')    
+@permission_required('des.puede_visualizar_item', login_url='access_denied')     
 def calculate_cost(request, id_project, id_phase , id_item):
     """
     Suma recursivamente el costo total atravesando por depth-first
@@ -579,7 +578,7 @@ def calculate_cost(request, id_project, id_phase , id_item):
     ctx = {'id_project':id_project, 'id_phase':id_phase, 'id_item':id_item, 'item':base_item, 'cost':cost}
     return render(request, 'des/item/calculate_cost.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_visualizar_proyecto', login_url='access_denied')  
 def list_user_projects(request):
     """
     """
@@ -587,7 +586,7 @@ def list_user_projects(request):
     ctx = {'projects':projects}
     return render(request, 'des/baseline/list_user_projects.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('adm.puede_visualizar_fase', login_url='access_denied')
 def list_project_phases(request, id_project):
     """
     """
@@ -596,7 +595,7 @@ def list_project_phases(request, id_project):
     ctx = {'project':project, 'phases':phases}
     return render(request, 'des/baseline/list_project_phases.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_visualizar_linea_base', login_url='access_denied')
 def list_phase_baseline(request, id_project, id_phase):
     """
     """
@@ -606,7 +605,7 @@ def list_phase_baseline(request, id_project, id_phase):
     ctx = {'project':project, 'phase':phase, 'baseline':baseline}
     return render(request, 'des/baseline/list_phase_baseline.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_crear_linea_base', login_url='access_denied')
 def create_baseline(request, id_project, id_phase):
     """
     """
@@ -631,7 +630,7 @@ def create_baseline(request, id_project, id_phase):
     ctx = {'form':form, 'project':project, 'phase':phase}
     return render(request, 'des/baseline/create_baseline.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_linea_base', login_url='access_denied')
 def modify_baseline(request, id_project, id_phase, id_baseline):
     """
     """
@@ -656,7 +655,7 @@ def modify_baseline(request, id_project, id_phase, id_baseline):
     ctx = {'form': form, 'project':project, 'phase':phase, 'baseline':baseline}
     return render(request, 'des/baseline/modify_baseline.html', ctx)    
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_linea_base', login_url='access_denied')
 def modify_baseline_state(request, id_project, id_phase, id_baseline):
     """
     """
@@ -681,7 +680,7 @@ def modify_baseline_state(request, id_project, id_phase, id_baseline):
     ctx = {'form': form, 'project':project, 'phase':phase, 'baseline':baseline}
     return render(request, 'des/baseline/modify_baseline_state.html', ctx)    
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_item', login_url='access_denied')
 def manage_baseline_items(request, id_project, id_phase, id_baseline):
     """
     """
@@ -694,7 +693,7 @@ def manage_baseline_items(request, id_project, id_phase, id_baseline):
     ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
     return render(request, 'des/baseline/manage_baseline_items.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_item', login_url='access_denied')
 def assign_baseline_item(request, id_project, id_phase, id_baseline, id_item):
     """    
     """
@@ -718,7 +717,7 @@ def assign_baseline_item(request, id_project, id_phase, id_baseline, id_item):
     ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
     return render(request, 'des/baseline/manage_baseline_items.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_item', login_url='access_denied')
 def remove_baseline_item(request, id_project, id_phase, id_baseline, id_item):
     """    
     """
@@ -736,7 +735,7 @@ def remove_baseline_item(request, id_project, id_phase, id_baseline, id_item):
     ctx = {'project':project, 'phase':phase, 'baseline':baseline, 'items':items, 'bsitems':bsitems}
     return render(request, 'des/baseline/manage_baseline_items.html', ctx)   
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_eliminar_linea_base', login_url='access_denied')
 def delete_baseline(request, id_project, id_phase, id_baseline):
     """
     """

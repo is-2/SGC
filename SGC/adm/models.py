@@ -19,7 +19,8 @@ class Project(models.Model):
     class Meta:
         permissions = (("puede_crear_proyecto","Puede crear proyecto"),
                        ("puede_modificar_proyecto","Puede modificar proyecto"),
-                       ("puede_eliminar_proyecto","Puede eliminar proyecto"),)
+                       ("puede_eliminar_proyecto","Puede eliminar proyecto"),
+                       ("puede_visualizar_proyecto","Puede visualizar proyecto"),)
 
 PHASE_STATES = (
     (0, "Inicial"),
@@ -35,3 +36,9 @@ class Phase(models.Model):
     state = models.IntegerField(max_length=30,choices=PHASE_STATES, default=0)
     order = models.IntegerField(max_length=30, blank=False)
     project = models.ForeignKey(Project)
+    
+    class Meta:
+        permissions = (("puede_crear_fase","Puede crear fase"),
+                       ("puede_modificar_fase","Puede modificar fase"),
+                       ("puede_eliminar_fase","Puede eliminar fase"),
+                       ("puede_visualizar_fase","Puede visualizar fase"),)

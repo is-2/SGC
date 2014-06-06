@@ -10,7 +10,7 @@ from des.models import Item, Attribute
 import forms
 # Create your views here.
 
-@login_required(login_url='/login/')
+@permission_required('gdc.puede_visualizar_peticion_de_cambio', login_url='access_denied')
 def list_requests(request):
     """
     Lista todas las peticiones recibidas.
@@ -20,7 +20,7 @@ def list_requests(request):
     ctx = {'requests':requests}
     return render(request, 'gdc/request/list_requests.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('gdc.puede_crear_peticion_de_cambio', login_url='access_denied')
 def create_request(request, id_item):
     """
     Crea una peticion de cambio.
@@ -59,7 +59,7 @@ def create_request(request, id_item):
         ctx = {'id_project':item.phase.project.id,'id_phase':item.phase.id, 'form':form}
         return render(request, 'gdc/request/create_request.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('gdc.puede_visualizar_peticion_de_cambio', login_url='access_denied')
 def accept_request(request, id_request):
     """
     Aceptar una peticion.
@@ -78,7 +78,7 @@ def accept_request(request, id_request):
         mod_request.save()
         return redirect(reverse('list_requests'))
 
-@login_required(login_url='/login/')
+@permission_required('gdc.puede_visualizar_peticion_de_cambio', login_url='access_denied')
 def reject_request(request, id_request):
     """
     Rechazar una peticion.
@@ -96,13 +96,13 @@ def reject_request(request, id_request):
         mod_request.save()
         return redirect(reverse('list_requests'))
     
-@login_required(login_url='/login/')        
+@permission_required('gdc.puede_visualizar_peticion_de_cambio', login_url='access_denied')       
 def visualize_request(request, id_request):
     mod_request = ModificationRequest.objects.get(id=id_request)
     ctx = {'mod_request':mod_request}
     return render(request, 'gdc/request/visualize_request.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('gdc.puede_visualizar_peticion_de_cambio', login_url='access_denied')
 def list_pending(request):
     """
     Lista los items peticionados
@@ -112,7 +112,7 @@ def list_pending(request):
         ctx = {'items':items}
         return render(request, 'gdc/request/list_pending.html', ctx)
     
-@login_required(login_url='/login/')     
+@permission_required('des.puede_modificar_item', login_url='access_denied')  
 def modify_pending_item(request, id_item):
     """
     Modificar item peticionado
@@ -136,6 +136,7 @@ def modify_pending_item(request, id_item):
     ctx = {'form': form}
     return render(request, 'gdc/request/modify_pending_item.html', ctx)
 
+@permission_required('des.puede_modificar_item', login_url='access_denied')  
 def list_pending_attr(request, id_item):
     """
     Listar atributos del item peticionado
@@ -145,7 +146,7 @@ def list_pending_attr(request, id_item):
     ctx = {'attr':attr}
     return render(request, 'gdc/request/list_pending_attr.html', ctx)
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_modificar_item', login_url='access_denied')  
 def set_pending_attr_value(request, id_attr):
     """
     Asigna un valor al Atributo.
@@ -227,7 +228,7 @@ def set_pending_attr_value(request, id_attr):
             ctx = {'form':form, 'id_item':attribute.item.id}
             return render(request, 'gdc/request/set_pending_attr_value.html', ctx)
         
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_item', login_url='access_denied')  
 def list_pending_predecessors(request, id_item):
     """
     """
@@ -245,7 +246,7 @@ def list_pending_predecessors(request, id_item):
             ctx={'item':item, 'valid':valid}
         return render(request, 'gdc/request/list_pending_predecessors.html', ctx)
 
-@login_required(login_url='/login/')  
+@permission_required('des.puede_asignar_item', login_url='access_denied')  
 def set_pending_predecessor(request, id_item, id_pred):
     """
     """
@@ -257,7 +258,7 @@ def set_pending_predecessor(request, id_item, id_pred):
         ctx = {'id_item':id_item}
         return redirect(reverse('list_pending_predecessors', kwargs=ctx))
 
-@login_required(login_url='/login/')
+@permission_required('des.puede_asignar_item', login_url='access_denied') 
 def unset_pending_predecessor(request, id_item):
     """
     """
@@ -268,7 +269,7 @@ def unset_pending_predecessor(request, id_item):
         ctx = {'id_item':id_item}
         return redirect(reverse('list_pending_predecessors', kwargs=ctx))
 
-@login_required(login_url='/login/')    
+@permission_required('des.puede_asignar_item', login_url='access_denied')  
 def list_pending_fathers(request, id_item):
     """
     """
@@ -281,16 +282,33 @@ def list_pending_fathers(request, id_item):
         ctx = {'item_fs':item_fs, 'valid':valid, 'item':item}
         return render(request, 'gdc/request/list_pending_fathers.html', ctx)
 
-@login_required(login_url='/login/')    
+@permission_required('des.puede_asignar_item', login_url='access_denied')   
 def set_pending_father(request, id_item, id_father):
-    father = Item.objects.get(id=id_father)
-    item = Item.objects.get(id=id_item)
-    item.predecessor = father
-    item.save()
-    ctx = {'id_item':id_item}
-    return redirect(reverse('list_pending_fathers', kwargs=ctx))
+    """
+    """
+    # Function that search cycles by DFS
+    def check_acyclic(base_id, item_id):
+        item = Item.objects.get(id=item_id)
+        successors = item.successors.all()
+        is_acyclic = True
+        for s in successors:  # Get every successors
+            if s.id == base_id:  # If successor is the base item, return False (cyclic)
+                is_acyclic = False
+            elif is_acyclic:  # Else, check his successors in recursion.
+                is_acyclic = check_acyclic(base_id, s.id)
+        return is_acyclic  # If none of them returned False, then return True
+    
+    if request.method == "GET":
+        acyclic = check_acyclic(int(id_father), id_item)
+        item = Item.objects.get(id=id_item)
+        if acyclic:
+            father = Item.objects.get(id=id_father)
+            item.predecessor = father
+            item.save()
+        ctx = {'id_item':id_item}
+        return redirect(reverse('list_pending_fathers', kwargs=ctx))
 
-@login_required(login_url='/login/')  
+@permission_required('des.puede_asignar_item', login_url='access_denied') 
 def unset_pending_father(request, id_item):
     """
     """
@@ -301,7 +319,7 @@ def unset_pending_father(request, id_item):
         ctx = {'id_item':id_item}
         return redirect(reverse('list_pending_fathers', kwargs=ctx))
     
-@login_required(login_url='/login/')
+@permission_required('gdc.puede_visualizar_peticion_de_cambio', login_url='access_denied')
 def finish_pending_item(request, id_item):
     """
     """

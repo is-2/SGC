@@ -34,7 +34,8 @@ class ModificationRequest(models.Model):
     class Meta:
         permissions = (("puede_crear_peticion_de_cambio",u"Puede crear Peticion de cambio"),
                        ("puede_modificar_peticion_de_cambio",u"Puede modificar Peticion de cambio"),
-                       ("puede_eliminar_peticion_de_cambio",u"Puede eliminar Peticion de cambio"),)
+                       ("puede_eliminar_peticion_de_cambio",u"Puede eliminar Peticion de cambio"),
+                       ("puede_visualizar_peticion_de_cambio",u"Puede visualizar Peticion de cambio"),)
         
     def __unicode__(self):
         return self.title

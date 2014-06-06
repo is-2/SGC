@@ -15,7 +15,9 @@ class AttributeType(models.Model):
     class Meta:
         permissions = (("puede_crear_tipo_de_atributo",u"Puede crear Tipo de Atributo"),
                        ("puede_modificar_tipo_de_atributo",u"Puede modificar Tipo de Atributo"),
-                       ("puede_eliminar_tipo_de_atributo",u"Puede eliminar Tipo de Atributo"),)
+                       ("puede_eliminar_tipo_de_atributo",u"Puede eliminar Tipo de Atributo"),
+                       ("puede_visualizar_tipo_de_atributo",u"Puede visualizar Tipo de Atributo"),
+                       ("puede_asignar_tipo_de_atributo",u"Puede asignar Tipo de Atributo"),)
         
     def __unicode__(self):
         return self.name
@@ -37,7 +39,9 @@ class Attribute(models.Model):
     class Meta:
         permissions = (("puede_crear_atributo",u"Puede crear Atributo"),
                        ("puede_modificar_atributo",u"Puede modificar Atributo"),
-                       ("puede_eliminar_atributo",u"Puede eliminar Atributo"),)
+                       ("puede_eliminar_atributo",u"Puede eliminar Atributo"),
+                       ("puede_visualizar_atributo",u"Puede visualizar Atributo"),
+                       ("puede_asignar_atributo",u"Puede asignar Atributo"),)
         
     def __unicode__(self):
         return self.name
@@ -56,7 +60,9 @@ class ItemType(models.Model):
     class Meta:
         permissions = (("puede_crear_tipo_de_item",u"Puede crear Tipo de Ítem"),
                        ("puede_modificar_tipo_de_item",u"Puede modificar Tipo de Ítem"),
-                       ("puede_eliminar_tipo_de_item",u"Puede eliminar Tipo de Ítem"),)
+                       ("puede_eliminar_tipo_de_item",u"Puede eliminar Tipo de Ítem"),
+                       ("puede_visualizar_tipo_de_item",u"Puede visualizar Tipo de Ítem"),
+                       ("puede_asignar_tipo_de_item",u"Puede asignar Tipo de Ítem"),)
         
     def __unicode__(self):
         return self.name
@@ -86,7 +92,9 @@ class Item(models.Model):
     class Meta:
         permissions = (("puede_crear_item", u"Puede crear Ítem"),
                        ("puede_modificar_item", u"Puede modificar Ítem"),
-                       ("puede_eliminar_item", u"Puede eliminar Ítem"),)
+                       ("puede_eliminar_item", u"Puede eliminar Ítem"),
+                       ("puede_visualizar_item", u"Puede visualizar Ítem"),
+                       ("puede_asignar_item", u"Puede asignar Ítem"),)
         
     def __unicode__(self):
         return self.name
@@ -105,3 +113,10 @@ class BaseLine(models.Model):
     name = models.CharField(max_length=30, blank=False)
     state = models.IntegerField(choices= BASELINE_STATES, default=0)
     phase = models.ForeignKey(Phase)
+
+    class Meta:
+        permissions = (("puede_crear_linea_base", u"Puede crear Linea Base"),
+                       ("puede_modificar_linea_base", u"Puede modificar Linea Base"),
+                       ("puede_eliminar_linea_base", u"Puede eliminar Linea Base"),
+                       ("puede_visualizar_linea_base", u"Puede visualizar Linea Base"),
+                       ("puede_asignar_linea_base", u"Puede asignar Linea Base"),)
