@@ -1,0 +1,659 @@
+[
+{
+  "pk": 1, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "logentry", 
+    "name": "log entry", 
+    "app_label": "admin"
+  }
+},
+{
+  "pk": 2, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "permission", 
+    "name": "permission", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 3, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "group", 
+    "name": "group", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 4, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "user", 
+    "name": "user", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 5, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "contenttype", 
+    "name": "content type", 
+    "app_label": "contenttypes"
+  }
+},
+{
+  "pk": 6, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "session", 
+    "name": "session", 
+    "app_label": "sessions"
+  }
+},
+{
+  "pk": 7, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "permission", 
+    "name": "permission", 
+    "app_label": "adm"
+  }
+},
+{
+  "pk": 8, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "role", 
+    "name": "role", 
+    "app_label": "adm"
+  }
+},
+{
+  "pk": 9, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "project", 
+    "name": "project", 
+    "app_label": "adm"
+  }
+},
+{
+  "pk": "w6nyqqt8z7dliazjcmf0wt1scyqoaqdt", 
+  "model": "sessions.session", 
+  "fields": {
+    "expire_date": "2014-06-21T02:40:12.447Z", 
+    "session_data": "Y2RjMzRhNThlZmNlZGU4ODQ4MWFkYzRiODYyMDM1YTJlYTM5Yjk5MDp7fQ=="
+  }
+},
+{
+  "pk": 1, 
+  "model": "adm.permission", 
+  "fields": {
+    "name": "Add user"
+  }
+},
+{
+  "pk": 2, 
+  "model": "adm.permission", 
+  "fields": {
+    "name": "Modify user"
+  }
+},
+{
+  "pk": 3, 
+  "model": "adm.permission", 
+  "fields": {
+    "name": "Delete user"
+  }
+},
+{
+  "pk": 4, 
+  "model": "adm.permission", 
+  "fields": {
+    "name": "View user"
+  }
+},
+{
+  "pk": 5, 
+  "model": "adm.permission", 
+  "fields": {
+    "name": "View role"
+  }
+},
+{
+  "pk": 1, 
+  "model": "adm.role", 
+  "fields": {
+    "permissions": [
+      1, 
+      2, 
+      3, 
+      4, 
+      5
+    ], 
+    "name": "Administrador", 
+    "description": "Administrador del sistema"
+  }
+},
+{
+  "pk": 2, 
+  "model": "adm.role", 
+  "fields": {
+    "permissions": [
+      1, 
+      2, 
+      3, 
+      4, 
+      5
+    ], 
+    "name": "Cliente", 
+    "description": "Cliente"
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_logentry", 
+    "name": "Can add log entry", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_logentry", 
+    "name": "Can change log entry", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_logentry", 
+    "name": "Can delete log entry", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 4, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_permission", 
+    "name": "Can add permission", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 5, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_permission", 
+    "name": "Can change permission", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 6, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_permission", 
+    "name": "Can delete permission", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 7, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_group", 
+    "name": "Can add group", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 8, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_group", 
+    "name": "Can change group", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 9, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_group", 
+    "name": "Can delete group", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 10, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_user", 
+    "name": "Can add user", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 11, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_user", 
+    "name": "Can change user", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 12, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_user", 
+    "name": "Can delete user", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 13, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_contenttype", 
+    "name": "Can add content type", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 14, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_contenttype", 
+    "name": "Can change content type", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 15, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_contenttype", 
+    "name": "Can delete content type", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 16, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_session", 
+    "name": "Can add session", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 17, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_session", 
+    "name": "Can change session", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 18, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_session", 
+    "name": "Can delete session", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 19, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_permission", 
+    "name": "Can add permission", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 20, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_permission", 
+    "name": "Can change permission", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 21, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_permission", 
+    "name": "Can delete permission", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 22, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_role", 
+    "name": "Can add role", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 23, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_role", 
+    "name": "Can change role", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 24, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_role", 
+    "name": "Can delete role", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 25, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_project", 
+    "name": "Can add project", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 26, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_project", 
+    "name": "Can change project", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 27, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_project", 
+    "name": "Can delete project", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "admin", 
+    "status": true, 
+    "first_name": "", 
+    "last_name": "", 
+    "observation": "", 
+    "firstName": "", 
+    "phonenum": "", 
+    "lastName": "", 
+    "is_active": true, 
+    "is_superuser": true, 
+    "is_staff": true, 
+    "last_login": "2014-06-07T02:20:43Z", 
+    "roles": [], 
+    "groups": [], 
+    "address": "", 
+    "user_permissions": [
+      19, 
+      20, 
+      21, 
+      25, 
+      26, 
+      27, 
+      22, 
+      23, 
+      24, 
+      1, 
+      2, 
+      3, 
+      7, 
+      8, 
+      9, 
+      4, 
+      5, 
+      6, 
+      10, 
+      11, 
+      12, 
+      13, 
+      14, 
+      15, 
+      16, 
+      17, 
+      18
+    ], 
+    "password": "pbkdf2_sha256$12000$g5DNeeYbZJfN$zjU0Szp1MgtmE17ayPknc3r1vmUqrymtje9Ygfj9rF0=", 
+    "email": "", 
+    "date_joined": "2014-06-07T02:19:21Z"
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "akira", 
+    "status": true, 
+    "first_name": "", 
+    "last_name": "", 
+    "observation": "Owner", 
+    "firstName": "Akira", 
+    "phonenum": "+595983506377", 
+    "lastName": "Shimosoeda", 
+    "is_active": true, 
+    "is_superuser": false, 
+    "is_staff": false, 
+    "last_login": "2014-06-07T02:35:24.733Z", 
+    "roles": [], 
+    "groups": [], 
+    "address": "Indio Francisco 3370", 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$12000$POhQKrO0x0F6$Ljp41CRjWUv8V40hRXgTsfcLx96GJ3Swrsyo2o+NQe4=", 
+    "email": "akirashimosoeda@gmail.com", 
+    "date_joined": "2014-06-07T02:35:24.733Z"
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "marcos", 
+    "status": true, 
+    "first_name": "", 
+    "last_name": "", 
+    "observation": "Owner", 
+    "firstName": "Marcos", 
+    "phonenum": "0", 
+    "lastName": "Aquino", 
+    "is_active": true, 
+    "is_superuser": false, 
+    "is_staff": false, 
+    "last_login": "2014-06-07T02:37:06.957Z", 
+    "roles": [], 
+    "groups": [], 
+    "address": "Indio Francisco 3370", 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$12000$UQm5aXR4m6ew$AEdgmYgNv4CbyIWJyqj6I3iXAXNWEHarn15Uqx6w4dU=", 
+    "email": "aquinoishii@gmail.com", 
+    "date_joined": "2014-06-07T02:37:06.957Z"
+  }
+},
+{
+  "pk": 1, 
+  "model": "adm.project", 
+  "fields": {
+    "committee": [
+      1
+    ], 
+    "name": "Projecto 1", 
+    "roles": [
+      1
+    ], 
+    "description": "Projecto"
+  }
+},
+{
+  "pk": 1, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2014-06-07T02:24:28.943Z", 
+    "object_repr": "Add user", 
+    "object_id": "1", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 7
+  }
+},
+{
+  "pk": 2, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2014-06-07T02:24:46.590Z", 
+    "object_repr": "Modify user", 
+    "object_id": "2", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 7
+  }
+},
+{
+  "pk": 3, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2014-06-07T02:24:58.391Z", 
+    "object_repr": "Delete user", 
+    "object_id": "3", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 7
+  }
+},
+{
+  "pk": 4, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2014-06-07T02:25:05.867Z", 
+    "object_repr": "View user", 
+    "object_id": "4", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 7
+  }
+},
+{
+  "pk": 5, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2014-06-07T02:25:13.299Z", 
+    "object_repr": "View role", 
+    "object_id": "5", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 7
+  }
+},
+{
+  "pk": 6, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2014-06-07T02:25:31.034Z", 
+    "object_repr": "Administrador", 
+    "object_id": "1", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 8
+  }
+},
+{
+  "pk": 7, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 1, 
+    "action_time": "2014-06-07T02:26:17.494Z", 
+    "object_repr": "Projecto 1", 
+    "object_id": "1", 
+    "change_message": "", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 8, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2014-06-07T02:26:23.533Z", 
+    "object_repr": "Projecto 1", 
+    "object_id": "1", 
+    "change_message": "No fields changed.", 
+    "user": 1, 
+    "content_type": 9
+  }
+},
+{
+  "pk": 9, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2014-06-07T02:28:17.476Z", 
+    "object_repr": "admin", 
+    "object_id": "1", 
+    "change_message": "Changed user_permissions.", 
+    "user": 1, 
+    "content_type": 4
+  }
+},
+{
+  "pk": 10, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2014-06-07T02:29:58.542Z", 
+    "object_repr": "Administrador", 
+    "object_id": "1", 
+    "change_message": "No fields changed.", 
+    "user": 1, 
+    "content_type": 8
+  }
+},
+{
+  "pk": 11, 
+  "model": "admin.logentry", 
+  "fields": {
+    "action_flag": 2, 
+    "action_time": "2014-06-07T02:30:30.991Z", 
+    "object_repr": "admin", 
+    "object_id": "1", 
+    "change_message": "No fields changed.", 
+    "user": 1, 
+    "content_type": 4
+  }
+}
+]
