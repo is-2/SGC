@@ -63,7 +63,7 @@ WSGI_APPLICATION = 'SGC.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sgcdev',
+        'NAME': 'sgc',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
