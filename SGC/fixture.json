@@ -1,0 +1,2001 @@
+[
+{
+  "pk": 1, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "logentry", 
+    "name": "log entry", 
+    "app_label": "admin"
+  }
+},
+{
+  "pk": 2, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "permission", 
+    "name": "permission", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 3, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "group", 
+    "name": "group", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 4, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "user", 
+    "name": "user", 
+    "app_label": "auth"
+  }
+},
+{
+  "pk": 5, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "contenttype", 
+    "name": "content type", 
+    "app_label": "contenttypes"
+  }
+},
+{
+  "pk": 6, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "session", 
+    "name": "session", 
+    "app_label": "sessions"
+  }
+},
+{
+  "pk": 7, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "revision", 
+    "name": "revision", 
+    "app_label": "reversion"
+  }
+},
+{
+  "pk": 8, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "version", 
+    "name": "version", 
+    "app_label": "reversion"
+  }
+},
+{
+  "pk": 9, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "client", 
+    "name": "client", 
+    "app_label": "home"
+  }
+},
+{
+  "pk": 10, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "project", 
+    "name": "project", 
+    "app_label": "adm"
+  }
+},
+{
+  "pk": 11, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "phase", 
+    "name": "phase", 
+    "app_label": "adm"
+  }
+},
+{
+  "pk": 12, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "attributetype", 
+    "name": "attribute type", 
+    "app_label": "des"
+  }
+},
+{
+  "pk": 13, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "attribute", 
+    "name": "attribute", 
+    "app_label": "des"
+  }
+},
+{
+  "pk": 14, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "itemtype", 
+    "name": "item type", 
+    "app_label": "des"
+  }
+},
+{
+  "pk": 15, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "item", 
+    "name": "item", 
+    "app_label": "des"
+  }
+},
+{
+  "pk": 16, 
+  "model": "contenttypes.contenttype", 
+  "fields": {
+    "model": "baseline", 
+    "name": "base line", 
+    "app_label": "des"
+  }
+},
+{
+  "pk": "oo4rrilc6mn7263rrfcqt7d5676f0cel", 
+  "model": "sessions.session", 
+  "fields": {
+    "expire_date": "2014-06-21T02:12:19.667Z", 
+    "session_data": "Y2RjMzRhNThlZmNlZGU4ODQ4MWFkYzRiODYyMDM1YTJlYTM5Yjk5MDp7fQ=="
+  }
+},
+{
+  "pk": 1, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1", 
+    "object_id": "1", 
+    "content_type": 15, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"item 1\", \"phase\": 1, \"name\": \"item 1\"}}]", 
+    "revision": 1
+  }
+},
+{
+  "pk": 2, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1", 
+    "object_id": "1", 
+    "content_type": 15, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"item 1\", \"phase\": 1, \"name\": \"item 1\"}}]", 
+    "revision": 2
+  }
+},
+{
+  "pk": 3, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "2", 
+    "content_type": 13, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 2
+  }
+},
+{
+  "pk": 4, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "1", 
+    "content_type": 13, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 2
+  }
+},
+{
+  "pk": 5, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2", 
+    "object_id": "2", 
+    "content_type": 15, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"item 2\", \"phase\": 1, \"name\": \"item 2\"}}]", 
+    "revision": 3
+  }
+},
+{
+  "pk": 6, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2", 
+    "object_id": "2", 
+    "content_type": 15, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"item 2\", \"phase\": 1, \"name\": \"item 2\"}}]", 
+    "revision": 4
+  }
+},
+{
+  "pk": 7, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "3", 
+    "content_type": 13, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 4
+  }
+},
+{
+  "pk": 8, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "4", 
+    "content_type": 13, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 4
+  }
+},
+{
+  "pk": 9, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2", 
+    "object_id": "2", 
+    "content_type": 15, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"item 2\", \"phase\": 1, \"name\": \"item 2\"}}]", 
+    "revision": 5
+  }
+},
+{
+  "pk": 10, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "3", 
+    "content_type": 13, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 5
+  }
+},
+{
+  "pk": 11, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "4", 
+    "content_type": 13, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 5
+  }
+},
+{
+  "pk": 12, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2", 
+    "object_id": "2", 
+    "content_type": 15, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"item 2\", \"phase\": 1, \"name\": \"item 2\"}}]", 
+    "revision": 6
+  }
+},
+{
+  "pk": 13, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "3", 
+    "content_type": 13, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 6
+  }
+},
+{
+  "pk": 14, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "4", 
+    "content_type": 13, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 2, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 6
+  }
+},
+{
+  "pk": 15, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1", 
+    "object_id": "1", 
+    "content_type": 15, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"item 1\", \"phase\": 1, \"name\": \"item 1\"}}]", 
+    "revision": 7
+  }
+},
+{
+  "pk": 16, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "2", 
+    "content_type": 13, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 7
+  }
+},
+{
+  "pk": 17, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "1", 
+    "content_type": 13, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 7
+  }
+},
+{
+  "pk": 18, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1", 
+    "object_id": "1", 
+    "content_type": 15, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": 1, \"description\": \"item 1\", \"phase\": 1, \"name\": \"item 1\"}}]", 
+    "revision": 8
+  }
+},
+{
+  "pk": 19, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "2", 
+    "content_type": 13, 
+    "object_id_int": 2, 
+    "serialized_data": "[{\"pk\": 2, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 8
+  }
+},
+{
+  "pk": 20, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "1", 
+    "content_type": 13, 
+    "object_id_int": 1, 
+    "serialized_data": "[{\"pk\": 1, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 1, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 8
+  }
+},
+{
+  "pk": 21, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1.1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"item 1.1\", \"phase\": 2, \"name\": \"item 1.1\"}}]", 
+    "revision": 9
+  }
+},
+{
+  "pk": 22, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1.1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"item 1.1\", \"phase\": 2, \"name\": \"item 1.1\"}}]", 
+    "revision": 10
+  }
+},
+{
+  "pk": 23, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "5", 
+    "content_type": 13, 
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 10
+  }
+},
+{
+  "pk": 24, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "6", 
+    "content_type": 13, 
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 10
+  }
+},
+{
+  "pk": 25, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1.1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": null, \"description\": \"item 1.1\", \"phase\": 2, \"name\": \"item 1.1\"}}]", 
+    "revision": 11
+  }
+},
+{
+  "pk": 26, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "5", 
+    "content_type": 13, 
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 11
+  }
+},
+{
+  "pk": 27, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "6", 
+    "content_type": 13, 
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 11
+  }
+},
+{
+  "pk": 28, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1.1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": null, \"description\": \"item 1.1\", \"phase\": 2, \"name\": \"item 1.1\"}}]", 
+    "revision": 12
+  }
+},
+{
+  "pk": 29, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "5", 
+    "content_type": 13, 
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 12
+  }
+},
+{
+  "pk": 30, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "6", 
+    "content_type": 13, 
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 12
+  }
+},
+{
+  "pk": 31, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2.1", 
+    "object_id": "4", 
+    "content_type": 15, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 0, \"predecessor\": null, \"baseline\": null, \"description\": \"item 2.1\", \"phase\": 2, \"name\": \"item 2.1\"}}]", 
+    "revision": 13
+  }
+},
+{
+  "pk": 32, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "8", 
+    "content_type": 13, 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 14
+  }
+},
+{
+  "pk": 33, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2.1", 
+    "object_id": "4", 
+    "content_type": 15, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": null, \"baseline\": null, \"description\": \"item 2.1\", \"phase\": 2, \"name\": \"item 2.1\"}}]", 
+    "revision": 14
+  }
+},
+{
+  "pk": 34, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "7", 
+    "content_type": 13, 
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 14
+  }
+},
+{
+  "pk": 35, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "8", 
+    "content_type": 13, 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 15
+  }
+},
+{
+  "pk": 36, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2.1", 
+    "object_id": "4", 
+    "content_type": 15, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": null, \"description\": \"item 2.1\", \"phase\": 2, \"name\": \"item 2.1\"}}]", 
+    "revision": 15
+  }
+},
+{
+  "pk": 37, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "7", 
+    "content_type": 13, 
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 15
+  }
+},
+{
+  "pk": 38, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "8", 
+    "content_type": 13, 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 16
+  }
+},
+{
+  "pk": 39, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2.1", 
+    "object_id": "4", 
+    "content_type": 15, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": null, \"description\": \"item 2.1\", \"phase\": 2, \"name\": \"item 2.1\"}}]", 
+    "revision": 16
+  }
+},
+{
+  "pk": 40, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "7", 
+    "content_type": 13, 
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 16
+  }
+},
+{
+  "pk": 41, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "8", 
+    "content_type": 13, 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 17
+  }
+},
+{
+  "pk": 42, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2.1", 
+    "object_id": "4", 
+    "content_type": 15, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 2, \"description\": \"item 2.1\", \"phase\": 2, \"name\": \"item 2.1\"}}]", 
+    "revision": 17
+  }
+},
+{
+  "pk": 43, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "7", 
+    "content_type": 13, 
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 17
+  }
+},
+{
+  "pk": 44, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "8", 
+    "content_type": 13, 
+    "object_id_int": 8, 
+    "serialized_data": "[{\"pk\": 8, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 18
+  }
+},
+{
+  "pk": 45, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 2.1", 
+    "object_id": "4", 
+    "content_type": 15, 
+    "object_id_int": 4, 
+    "serialized_data": "[{\"pk\": 4, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 2, \"baseline\": 2, \"description\": \"item 2.1\", \"phase\": 2, \"name\": \"item 2.1\"}}]", 
+    "revision": 18
+  }
+},
+{
+  "pk": 46, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "7", 
+    "content_type": 13, 
+    "object_id_int": 7, 
+    "serialized_data": "[{\"pk\": 7, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 4, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 18
+  }
+},
+{
+  "pk": 47, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1.1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": 2, \"description\": \"item 1.1\", \"phase\": 2, \"name\": \"item 1.1\"}}]", 
+    "revision": 19
+  }
+},
+{
+  "pk": 48, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "5", 
+    "content_type": 13, 
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 19
+  }
+},
+{
+  "pk": 49, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "6", 
+    "content_type": 13, 
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 19
+  }
+},
+{
+  "pk": 50, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "item 1.1", 
+    "object_id": "3", 
+    "content_type": 15, 
+    "object_id_int": 3, 
+    "serialized_data": "[{\"pk\": 3, \"model\": \"des.item\", \"fields\": {\"status\": 1, \"predecessor\": 1, \"baseline\": 2, \"description\": \"item 1.1\", \"phase\": 2, \"name\": \"item 1.1\"}}]", 
+    "revision": 20
+  }
+},
+{
+  "pk": 51, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 1", 
+    "object_id": "5", 
+    "content_type": 13, 
+    "object_id_int": 5, 
+    "serialized_data": "[{\"pk\": 5, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 1\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Numerico\", \"attr_bool\": false, \"description\": \"Atributo 1\"}}]", 
+    "revision": 20
+  }
+},
+{
+  "pk": 52, 
+  "model": "reversion.version", 
+  "fields": {
+    "format": "json", 
+    "object_repr": "Atributo 2", 
+    "object_id": "6", 
+    "content_type": 13, 
+    "object_id_int": 6, 
+    "serialized_data": "[{\"pk\": 6, \"model\": \"des.attribute\", \"fields\": {\"attr_date\": null, \"name\": \"Atributo 2\", \"item\": 3, \"attr_int\": null, \"attr_str\": null, \"type\": \"Cadena\", \"attr_bool\": false, \"description\": \"Atributo 2\"}}]", 
+    "revision": 20
+  }
+},
+{
+  "pk": 1, 
+  "model": "adm.phase", 
+  "fields": {
+    "project": 1, 
+    "state": 0, 
+    "name": "Fase 1", 
+    "order": 1
+  }
+},
+{
+  "pk": 2, 
+  "model": "adm.phase", 
+  "fields": {
+    "project": 1, 
+    "state": 0, 
+    "name": "Fase 2", 
+    "order": 2
+  }
+},
+{
+  "pk": 1, 
+  "model": "des.attributetype", 
+  "fields": {
+    "attr_type": "Numerico", 
+    "name": "Atributo 1", 
+    "description": "Atributo 1"
+  }
+},
+{
+  "pk": 2, 
+  "model": "des.attributetype", 
+  "fields": {
+    "attr_type": "Cadena", 
+    "name": "Atributo 2", 
+    "description": "Atributo 2"
+  }
+},
+{
+  "pk": 1, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 1", 
+    "item": 1, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Numerico", 
+    "attr_bool": false, 
+    "description": "Atributo 1"
+  }
+},
+{
+  "pk": 2, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 2", 
+    "item": 1, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Cadena", 
+    "attr_bool": false, 
+    "description": "Atributo 2"
+  }
+},
+{
+  "pk": 3, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 1", 
+    "item": 2, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Numerico", 
+    "attr_bool": false, 
+    "description": "Atributo 1"
+  }
+},
+{
+  "pk": 4, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 2", 
+    "item": 2, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Cadena", 
+    "attr_bool": false, 
+    "description": "Atributo 2"
+  }
+},
+{
+  "pk": 5, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 1", 
+    "item": 3, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Numerico", 
+    "attr_bool": false, 
+    "description": "Atributo 1"
+  }
+},
+{
+  "pk": 6, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 2", 
+    "item": 3, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Cadena", 
+    "attr_bool": false, 
+    "description": "Atributo 2"
+  }
+},
+{
+  "pk": 7, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 1", 
+    "item": 4, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Numerico", 
+    "attr_bool": false, 
+    "description": "Atributo 1"
+  }
+},
+{
+  "pk": 8, 
+  "model": "des.attribute", 
+  "fields": {
+    "attr_date": null, 
+    "name": "Atributo 2", 
+    "item": 4, 
+    "attr_int": null, 
+    "attr_str": null, 
+    "type": "Cadena", 
+    "attr_bool": false, 
+    "description": "Atributo 2"
+  }
+},
+{
+  "pk": 1, 
+  "model": "des.itemtype", 
+  "fields": {
+    "attribute_types": [
+      1, 
+      2
+    ], 
+    "name": "Tipo 1", 
+    "description": "Tipo 1"
+  }
+},
+{
+  "pk": 1, 
+  "model": "des.item", 
+  "fields": {
+    "status": 1, 
+    "predecessor": null, 
+    "baseline": 1, 
+    "description": "item 1", 
+    "phase": 1, 
+    "name": "item 1"
+  }
+},
+{
+  "pk": 2, 
+  "model": "des.item", 
+  "fields": {
+    "status": 1, 
+    "predecessor": null, 
+    "baseline": 1, 
+    "description": "item 2", 
+    "phase": 1, 
+    "name": "item 2"
+  }
+},
+{
+  "pk": 3, 
+  "model": "des.item", 
+  "fields": {
+    "status": 1, 
+    "predecessor": 1, 
+    "baseline": 2, 
+    "description": "item 1.1", 
+    "phase": 2, 
+    "name": "item 1.1"
+  }
+},
+{
+  "pk": 4, 
+  "model": "des.item", 
+  "fields": {
+    "status": 1, 
+    "predecessor": 2, 
+    "baseline": 2, 
+    "description": "item 2.1", 
+    "phase": 2, 
+    "name": "item 2.1"
+  }
+},
+{
+  "pk": 1, 
+  "model": "des.baseline", 
+  "fields": {
+    "phase": 1, 
+    "state": 0, 
+    "name": "lineabase 1 "
+  }
+},
+{
+  "pk": 2, 
+  "model": "des.baseline", 
+  "fields": {
+    "phase": 2, 
+    "state": 0, 
+    "name": "lineabase 2"
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_logentry", 
+    "name": "Can add log entry", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_logentry", 
+    "name": "Can change log entry", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_logentry", 
+    "name": "Can delete log entry", 
+    "content_type": 1
+  }
+},
+{
+  "pk": 4, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_permission", 
+    "name": "Can add permission", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 5, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_permission", 
+    "name": "Can change permission", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 6, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_permission", 
+    "name": "Can delete permission", 
+    "content_type": 2
+  }
+},
+{
+  "pk": 7, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_group", 
+    "name": "Can add group", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 8, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_group", 
+    "name": "Can change group", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 9, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_group", 
+    "name": "Can delete group", 
+    "content_type": 3
+  }
+},
+{
+  "pk": 10, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_user", 
+    "name": "Can add user", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 11, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_user", 
+    "name": "Can change user", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 12, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_user", 
+    "name": "Can delete user", 
+    "content_type": 4
+  }
+},
+{
+  "pk": 13, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_contenttype", 
+    "name": "Can add content type", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 14, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_contenttype", 
+    "name": "Can change content type", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 15, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_contenttype", 
+    "name": "Can delete content type", 
+    "content_type": 5
+  }
+},
+{
+  "pk": 16, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_session", 
+    "name": "Can add session", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 17, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_session", 
+    "name": "Can change session", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 18, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_session", 
+    "name": "Can delete session", 
+    "content_type": 6
+  }
+},
+{
+  "pk": 19, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_revision", 
+    "name": "Can add revision", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 20, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_revision", 
+    "name": "Can change revision", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 21, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_revision", 
+    "name": "Can delete revision", 
+    "content_type": 7
+  }
+},
+{
+  "pk": 22, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_version", 
+    "name": "Can add version", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 23, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_version", 
+    "name": "Can change version", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 24, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_version", 
+    "name": "Can delete version", 
+    "content_type": 8
+  }
+},
+{
+  "pk": 25, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_client", 
+    "name": "Can add client", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 26, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_client", 
+    "name": "Can change client", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 27, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_client", 
+    "name": "Can delete client", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 28, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_usuario", 
+    "name": "Puede crear usuario", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 29, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_usuario", 
+    "name": "Puede modificar usuario", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 30, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_usuario", 
+    "name": "Puede eliminar usuario", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 31, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_rol", 
+    "name": "Puede crear rol", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 32, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_rol", 
+    "name": "Puede modificar rol", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 33, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_rol", 
+    "name": "Puede eliminar rol", 
+    "content_type": 9
+  }
+},
+{
+  "pk": 34, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_project", 
+    "name": "Can add project", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 35, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_project", 
+    "name": "Can change project", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 36, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_project", 
+    "name": "Can delete project", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 37, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_proyecto", 
+    "name": "Puede crear proyecto", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 38, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_proyecto", 
+    "name": "Puede modificar proyecto", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 39, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_proyecto", 
+    "name": "Puede eliminar proyecto", 
+    "content_type": 10
+  }
+},
+{
+  "pk": 40, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_phase", 
+    "name": "Can add phase", 
+    "content_type": 11
+  }
+},
+{
+  "pk": 41, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_phase", 
+    "name": "Can change phase", 
+    "content_type": 11
+  }
+},
+{
+  "pk": 42, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_phase", 
+    "name": "Can delete phase", 
+    "content_type": 11
+  }
+},
+{
+  "pk": 43, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_attributetype", 
+    "name": "Can add attribute type", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 44, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_attributetype", 
+    "name": "Can change attribute type", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 45, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_attributetype", 
+    "name": "Can delete attribute type", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 46, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_tipo_de_atributo", 
+    "name": "Puede crear Tipo de Atributo", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 47, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_tipo_de_atributo", 
+    "name": "Puede modificar Tipo de Atributo", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 48, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_tipo_de_atributo", 
+    "name": "Puede eliminar Tipo de Atributo", 
+    "content_type": 12
+  }
+},
+{
+  "pk": 49, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_attribute", 
+    "name": "Can add attribute", 
+    "content_type": 13
+  }
+},
+{
+  "pk": 50, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_attribute", 
+    "name": "Can change attribute", 
+    "content_type": 13
+  }
+},
+{
+  "pk": 51, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_attribute", 
+    "name": "Can delete attribute", 
+    "content_type": 13
+  }
+},
+{
+  "pk": 52, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_atributo", 
+    "name": "Puede crear Atributo", 
+    "content_type": 13
+  }
+},
+{
+  "pk": 53, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_atributo", 
+    "name": "Puede modificar Atributo", 
+    "content_type": 13
+  }
+},
+{
+  "pk": 54, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_atributo", 
+    "name": "Puede eliminar Atributo", 
+    "content_type": 13
+  }
+},
+{
+  "pk": 55, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_itemtype", 
+    "name": "Can add item type", 
+    "content_type": 14
+  }
+},
+{
+  "pk": 56, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_itemtype", 
+    "name": "Can change item type", 
+    "content_type": 14
+  }
+},
+{
+  "pk": 57, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_itemtype", 
+    "name": "Can delete item type", 
+    "content_type": 14
+  }
+},
+{
+  "pk": 58, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_tipo_de_item", 
+    "name": "Puede crear Tipo de \u00cdtem", 
+    "content_type": 14
+  }
+},
+{
+  "pk": 59, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_tipo_de_item", 
+    "name": "Puede modificar Tipo de \u00cdtem", 
+    "content_type": 14
+  }
+},
+{
+  "pk": 60, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_tipo_de_item", 
+    "name": "Puede eliminar Tipo de \u00cdtem", 
+    "content_type": 14
+  }
+},
+{
+  "pk": 61, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_item", 
+    "name": "Can add item", 
+    "content_type": 15
+  }
+},
+{
+  "pk": 62, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_item", 
+    "name": "Can change item", 
+    "content_type": 15
+  }
+},
+{
+  "pk": 63, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_item", 
+    "name": "Can delete item", 
+    "content_type": 15
+  }
+},
+{
+  "pk": 64, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_crear_item", 
+    "name": "Puede crear \u00cdtem", 
+    "content_type": 15
+  }
+},
+{
+  "pk": 65, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_modificar_item", 
+    "name": "Puede modificar \u00cdtem", 
+    "content_type": 15
+  }
+},
+{
+  "pk": 66, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "puede_eliminar_item", 
+    "name": "Puede eliminar \u00cdtem", 
+    "content_type": 15
+  }
+},
+{
+  "pk": 67, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "add_baseline", 
+    "name": "Can add base line", 
+    "content_type": 16
+  }
+},
+{
+  "pk": 68, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "change_baseline", 
+    "name": "Can change base line", 
+    "content_type": 16
+  }
+},
+{
+  "pk": 69, 
+  "model": "auth.permission", 
+  "fields": {
+    "codename": "delete_baseline", 
+    "name": "Can delete base line", 
+    "content_type": 16
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.group", 
+  "fields": {
+    "name": "Administrador", 
+    "permissions": [
+      40, 
+      41, 
+      42, 
+      34, 
+      35, 
+      36, 
+      37, 
+      39, 
+      38, 
+      49, 
+      50, 
+      51, 
+      52, 
+      54, 
+      53, 
+      24
+    ]
+  }
+},
+{
+  "pk": 1, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "admin", 
+    "first_name": "", 
+    "last_name": "", 
+    "is_active": true, 
+    "is_superuser": true, 
+    "is_staff": true, 
+    "last_login": "2014-06-07T02:01:40.449Z", 
+    "groups": [], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$12000$ftqqIzbGZlPm$mXC3KtxFmZJP5ALkpf4/ODwFFHr/tGOLCOggCacZDtA=", 
+    "email": "", 
+    "date_joined": "2014-06-07T02:00:24.470Z"
+  }
+},
+{
+  "pk": 2, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "akira", 
+    "first_name": "Akira", 
+    "last_name": "Shimosoeda", 
+    "is_active": true, 
+    "is_superuser": false, 
+    "is_staff": false, 
+    "last_login": "2014-06-07T02:02:50.697Z", 
+    "groups": [
+      1
+    ], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$12000$makK88TSztuj$KbZXxzLfcEOddMxr+bLKPwwYGtZvaK0QH9iL6ee2gmk=", 
+    "email": "akirashimosoeda@gmail.com", 
+    "date_joined": "2014-06-07T02:02:50.697Z"
+  }
+},
+{
+  "pk": 3, 
+  "model": "auth.user", 
+  "fields": {
+    "username": "nobu", 
+    "first_name": "Marcos", 
+    "last_name": "Aquino", 
+    "is_active": true, 
+    "is_superuser": false, 
+    "is_staff": false, 
+    "last_login": "2014-06-07T02:12:14.011Z", 
+    "groups": [
+      1
+    ], 
+    "user_permissions": [], 
+    "password": "pbkdf2_sha256$12000$gbOstM70gvC1$QmgToD4TpMh7nWf5lCvwyMMl+FktseI4weFp7KmKhdU=", 
+    "email": "aquinoishii@gmail.com", 
+    "date_joined": "2014-06-07T02:03:17.340Z"
+  }
+},
+{
+  "pk": 1, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:02.833Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 2, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:17.783Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 3, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:30.287Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 4, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:34.040Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 5, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:54.936Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 6, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:55.370Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 7, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:55.812Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 8, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:09:56.180Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 9, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:10:31.803Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 10, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:10:34.807Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 11, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:10:41.763Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 12, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:10:42.014Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 13, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:10:58.210Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 14, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:11:03.194Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 15, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:11:14.903Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 16, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:11:15.185Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 17, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:11:33.433Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 18, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:11:33.839Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 19, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:11:34.250Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 20, 
+  "model": "reversion.revision", 
+  "fields": {
+    "comment": "", 
+    "date_created": "2014-06-07T02:11:34.548Z", 
+    "manager_slug": "default", 
+    "user": 1
+  }
+},
+{
+  "pk": 1, 
+  "model": "home.client", 
+  "fields": {
+    "observation": "Owner", 
+    "user": 2, 
+    "address": "Indio Francisco 3370", 
+    "telephone": "+59583506377"
+  }
+},
+{
+  "pk": 2, 
+  "model": "home.client", 
+  "fields": {
+    "observation": "Owner", 
+    "user": 3, 
+    "address": "Indio Francisco 3370", 
+    "telephone": "+59583184214"
+  }
+},
+{
+  "pk": 1, 
+  "model": "adm.project", 
+  "fields": {
+    "users": [
+      1, 
+      2, 
+      3
+    ], 
+    "state": 0, 
+    "name": "Proyecto 1", 
+    "committee": [
+      1, 
+      2, 
+      3
+    ], 
+    "description": "Proyecto 1"
+  }
+}
+]
