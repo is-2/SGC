@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
 from des import views
+from des import ajax
 
 urlpatterns = patterns('',
     url(r'des/list_attribute_types/$', views.list_attribute_types, name='list_attribute_types'),
@@ -16,6 +17,8 @@ urlpatterns = patterns('',
     url(r'des/list_item_types/assign_attribute_type/(?P<id_item_type>\d+)/grant_attribute_type/(?P<id_attr_type>\d+)/$', views.grant_attribute_type, name='grant_attribute_type'),
     url(r'des/list_item_types/assign_attribute_type/(?P<id_item_type>\d+)/deny_attribute_type/(?P<id_attr_type>\d+)/$', views.deny_attribute_type, name='deny_attribute_type'),
     url(r'des/list_user_projects/$', views.list_user_projects, name='list_user_projects'),
+    url(r'des/list_user_projects/view_graph/(?P<id_project>\d+)/$', views.graph_project, name='graph_project'),
+    url(r'des/list_user_projects/view_graph/graph/(?P<id_project>\d+)/$', ajax.graph, name='graph'),
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/$', views.list_project_phases, name='list_project_phases'),
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_items/(?P<id_phase>\d+)/$', views.list_items, name='list_items'),
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_items/(?P<id_phase>\d+)/create_item/$', views.create_item, name='create_item'),
@@ -43,4 +46,5 @@ urlpatterns = patterns('',
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/manage_baseline_items/(?P<id_baseline>\d+)/assign_baseline_item/(?P<id_item>\d+)/$', views.assign_baseline_item, name='assign_baseline_item'),
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/manage_baseline_items/(?P<id_baseline>\d+)/remove_baseline_item/(?P<id_item>\d+)/$', views.remove_baseline_item, name='remove_baseline_item'),
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/delete_baseline/(?P<id_baseline>\d+)/$', views.delete_baseline, name='delete_baseline'),
+    
 )

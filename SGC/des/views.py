@@ -754,3 +754,11 @@ def delete_baseline(request, id_project, id_phase, id_baseline):
     if request.method == "GET":
         ctx = {'project':project, 'phase':phase, 'baseline':baseline}
         return render(request, 'des/baseline/delete_baseline.html', ctx)
+
+def graph_project(request, id_project):
+    """
+    
+    """
+    if request.method == "GET":
+        ctx = {'id_project':id_project}
+        return render(request, 'des/graph/graph.html', ctx)

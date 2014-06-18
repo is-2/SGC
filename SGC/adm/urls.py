@@ -35,5 +35,5 @@ urlpatterns = patterns('',
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/$', views.manage_project_committee, name='manage_project_committee'),
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/assign_committee_user/(?P<id_user>\d+)/$', views.assign_committee_user, name='assign_committee_user'),
     url(r'^adm/list_projects/manage_project_committee/(?P<id_project>\d+)/remove_committee_user/(?P<id_user>\d+)/$', views.remove_committee_user, name='remove_committee_user'),
-       
+    
 )
