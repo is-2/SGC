@@ -4,6 +4,8 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Grafo del proyecto.</h2>
+		<button onclick="byPhase()">Por Fase</button>
+		<button onclick="byItem()">Por Item</button>
 		<a class="btn btn-default" href="{% url 'list_user_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 		<div id="body">
 		</div>
@@ -47,25 +49,47 @@ var vis = d3.select("#body").append("svg:svg")
     .attr("height", h + m[0] + m[2])
   .append("svg:g")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+// Graph by phase
 
+function byPhase(){
+	d3.json("{% url 'graph_by_phase' id_project=id_project %}" ,function(json) {
+		  root = json;
+		  root.x0 = h / 2;
+		  root.y0 = 0;
 
-d3.json("{% url 'graph' id_project=id_project %}", function(json) {
-  root = json;
-  root.x0 = h / 2;
-  root.y0 = 0;
+		  function toggleAll(d) {
+		    if (d.children) {
+		      d.children.forEach(toggleAll);
+		      toggle(d);
+		    }
+		  }
 
-  function toggleAll(d) {
-    if (d.children) {
-      d.children.forEach(toggleAll);
-      toggle(d);
-    }
-  }
+		  // Initialize the display to show a few nodes.
+		  root.children.forEach(toggleAll);
 
-  // Initialize the display to show a few nodes.
-  root.children.forEach(toggleAll);
+		  update(root);
+		});
+}
 
-  update(root);
-});
+function byItem(){
+	d3.json("{% url 'graph_by_item' id_project=id_project %}" ,function(json) {
+		  root = json;
+		  root.x0 = h / 2;
+		  root.y0 = 0;
+
+		  function toggleAll(d) {
+		    if (d.children) {
+		      d.children.forEach(toggleAll);
+		      toggle(d);
+		    }
+		  }
+
+		  // Initialize the display to show a few nodes.
+		  root.children.forEach(toggleAll);
+
+		  update(root);
+		});
+}
 
 function update(source) {
   var duration = d3.event && d3.event.altKey ? 5000 : 500;
