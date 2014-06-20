@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from itertools import chain
 from django.shortcuts import render_to_response, render, redirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -10,6 +11,7 @@ from adm import forms
 from home.models import Client
 from adm.models import Project, Phase
 from des.models import Item, BaseLine
+from gdc.models import ModificationRequest
 
 # Create your views here.
 @permission_required('home.puede_visualizar_usuario', login_url='access_denied')
@@ -620,10 +622,34 @@ def delete_project(request, id_project):
         return render_to_response('adm/project/delete_project.html', ctx, context_instance=RequestContext(request))
 
 @permission_required('adm.puede_visualizar_proyecto', login_url='access_denied')
-def visualize_project(request, id_project):
+def changes_report(request, id_project):
     """
     """
     project = Project.objects.get(id=id_project)
-    ctx = {'project':project}
-    return render_to_response('adm/project/visualize_project.html', ctx, context_instance=RequestContext(request))
+    phases = Phase.objects.filter(project_id=id_project)
+    items = []
+    modRequest = []
+    
+    for p in phases:
+        items = items + list(Item.objects.filter(phase_id=p.id))
+        
+    for i in items:
+        modRequest = modRequest + list(ModificationRequest.objects.filter(item_id=i.id))
+        
+    ctx = {'project':project, 'items':items, 'modRequest':modRequest}
+    return render_to_response('adm/project/changes_report.html', ctx, context_instance=RequestContext(request))
+    
+def project_report(request, id_project):
+    """
+    """
+    project = Project.objects.get(id=id_project)
+    phases = Phase.objects.filter(project_id=id_project)
+    items = []
+    
+    for p in phases:
+        items = items + list(Item.objects.filter(phase_id=p.id))
+        
+    ctx = {'project':project, 'phases':phases, 'items':items}
+    return render_to_response('adm/project/project_report.html', ctx, context_instance=RequestContext(request))
+    
     

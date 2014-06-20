@@ -29,7 +29,8 @@
 			       			<a class="btn btn-sm btn-default" href="{% url 'manage_project_phases' id_project=p.id %}"><span class="glyphicon glyphicon-th"></span> Fases</a>
 			       			<a class="btn btn-sm btn-default" href="{% url 'manage_project_users' id_project=p.id %}"><span class="glyphicon glyphicon-user"></span> Usuarios</a>
 			       			<a class="btn btn-sm btn-default" href="{% url 'manage_project_committee' id_project=p.id %}"><span class="glyphicon glyphicon-tower"></span> Comité</a>
-			       			<a class="btn btn-sm btn-default" href="{% url 'visualize_project' id_project=p.id %}"><span class="glyphicon glyphicon-search"></span> Visualizar </a>
+			       			<a class="btn btn-sm btn-default" href="{% url 'project_report' id_project=p.id %}"><span class="glyphicon glyphicon-file"></span> Rep. Proyecto </a>
+			       			<a class="btn btn-sm btn-default" href="{% url 'changes_report' id_project=p.id %}"><span class="glyphicon glyphicon-file"></span> Rep. Cambios </a>
 			       			<a class="btn btn-sm btn-default" href="{% url 'modify_project_state' id_project=p.id %}"><span class="glyphicon glyphicon-retweet"></span> Estado </a>
 			       			<a class="btn btn-sm btn-warning" href="{% url 'modify_project' id_project=p.id %}"><span class="glyphicon glyphicon-edit"></span> Modificar</a>
 			       			<a class="btn btn-sm btn-danger" href="{% url 'delete_project' id_project=p.id %}"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>

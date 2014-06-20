@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% block title %} SGC {% endblock %}
+{% block content %}
+<div class="jumbotron">
+	<div class="bs-example">
+		<p><label><b>Nombre del proyecto: </b></label> {{ project.name }}</p>
+		<br>
+		{% for m in modRequest %}		
+			<p><label><b>ID de la solicitud: </b></label> {{m.id}}</p>
+			
+			{% for i in items%}
+				{% if m.item == i%}
+					<p><label><b>Línea base afectada: </b></label> {{i.baseline.name}}</p>
+				{% endif %}
+			{% endfor %}						
+
+			<p><label><b>Item modificado: </b></label> {{m.item}}</p>
+			<p><label><b>Usuario solicitante: </b></label> {{m.requester}}</p>
+			<p><label><b>Resultado de la votación: </b></label> {{m.voting}}</p>
+				<br>
+		{% endfor %}
+		<br>
+		<a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+	</div>
+</div>
+{% endblock %}

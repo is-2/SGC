@@ -18,11 +18,11 @@
                     </thead>
                 	<tbody>
                 		{% for p in projects %}
-                				{% if p.state == 1 %}<!-- ESTADO ACTIVO -->
+                				{% if p.state == 1 %} <!-- ESTADO ACTIVO -->
 		                			<tr>
 		                    			<td>{{ p.id }}</td>
 		                    			<td><a href = "{% url 'list_project_phases' id_project=p.id %}">{{ p.name }}</a></td>
-		                    			<td><a class="btn btn-default" href="{% url 'graph_project' id_project=p.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Graficar </a></td>>        			
+		                    			<td><a class="btn btn-default" href="{% url 'graph_project' id_project=p.id %}"><span class="glyphicon glyphicon-chevron-left"></span> Graficar </a></td>      			
 		                			</tr>
 	                			{% endif %}
                 		{% endfor %}
