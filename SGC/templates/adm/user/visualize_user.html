@@ -4,13 +4,44 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Detalles del usuario</h2>
-		<p><label><b>Username:</b></label> {{ user.username }}</p>
-		<p><label><b>Nombre:</b></label> {{ user.first_name }}</p>
-		<p><label><b>Apellido:</b></label> {{ user.last_name}}</p>
-		<p><label><b>Email:</b></label> {{ user.email }}</p>
-		<p><label><b>Teléfono:</b></label> {{ user.client.telephone }}</p>
-		<p><label><b>Dirección:</b></label> {{ user.client.address }}</p>
-		<p><label><b>Observación:</b></label> {{ user.client.observation }}</p>
+		<form class="form-horizontal" method="POST">
+			<div class="form-group">
+    			<label class="control-label col-sm-2 col-lg-2 " for="id_first_name">Nombre</label>
+				<div class=" col-sm-10 col-lg-10 ">
+           			<input class=" form-control" id="id_first_name" name="first_name" type="text" value="{{ user.first_name }}" disabled/>
+				</div>
+			</div>
+			<div class="form-group">
+    			<label class="control-label col-sm-2 col-lg-2 " for="id_last_name">Apellido</label>
+				<div class=" col-sm-10 col-lg-10 ">
+            		<input class=" form-control" id="id_last_name" name="last_name" type="text" value="{{ user.last_name}}" disabled/>
+				</div>
+    		</div>
+			<div class="form-group">
+    			<label class="control-label col-sm-2 col-lg-2 " for="id_email">E-mail</label>
+       			<div class=" col-sm-10 col-lg-10 ">
+            		<input class=" form-control" id="id_email" name="email" type="text" value="{{ user.email }}" disabled/>
+				</div>
+    		</div>
+			<div class="form-group">
+	    		<label class="control-label col-sm-2 col-lg-2 " for="id_telephone">Teléfono</label>
+       			<div class=" col-sm-10 col-lg-10 ">
+   					<input class=" form-control" id="id_telephone" name="telephone" type="text" value="{{ user.client.telephone }}" disabled/>
+				</div>
+			</div>
+			<div class="form-group">
+    			<label class="control-label col-sm-2 col-lg-2 " for="id_address">Dirección</label>
+        		<div class=" col-sm-10 col-lg-10 ">
+            		<input class=" form-control" id="id_address" name="address" type="text" value="{{ user.client.address }}" disabled/>
+				</div>
+			</div>
+			<div class="form-group">
+	    		<label class="control-label col-sm-2 col-lg-2 " for="id_observation">Observación</label>
+       			<div class=" col-sm-10 col-lg-10 ">
+            		<input class=" form-control" id="id_observation" name="observation" type="text" value="{{ user.client.observation }}" disabled/>
+				</div>  
+			</div>
+		</form>	
 		<br>
 		<a class="btn btn-default" href="{% url 'list_users' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
 	</div>
