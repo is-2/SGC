@@ -4,9 +4,11 @@
 <div class="jumbotron">
 	<div class="bs-example">
 		<h2>Grafo del proyecto.</h2>
-		<button onclick="byPhase()">Por Fase</button>
-		<button onclick="byItem()">Por Item</button>
-		<a class="btn btn-default" href="{% url 'list_user_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		<div class="btn-group">
+			<button class="btn btn-default" onclick="byPhase()">Por Fase</button>
+			<button class="btn btn-default" onclick="byItem()">Por Item</button>
+			<a class="btn btn-default" href="{% url 'list_user_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+		</div>
 		<div id="body">
 		</div>
   	</div>
@@ -37,7 +39,21 @@ var m = [20, 120, 20, 120],
     h = 800 - m[0] - m[2],
     i = 0,
     root;
+//-----------------------------------------------------------
+var margin = {top: 20, right: 120, bottom: 20, left: 120},
+	width = 1280 - margin.left - margin.right,
+	height = 800 - margin.top - margin.bottom;
+	
+var zoom = d3.behavior.zoom()
+.scaleExtent([1, 10])
+.on("zoom", zoomed);
 
+var drag = d3.behavior.drag()
+.origin(function(d) { return d; })
+.on("dragstart", dragstarted)
+.on("drag", dragged)
+.on("dragend", dragended);
+//-----
 var tree = d3.layout.tree()
     .size([h, w]);
 
@@ -47,8 +63,70 @@ var diagonal = d3.svg.diagonal()
 var vis = d3.select("#body").append("svg:svg")
     .attr("width", w + m[1] + m[3])
     .attr("height", h + m[0] + m[2])
-  .append("svg:g")
-    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+  	.append("svg:g")
+    .attr("transform", "translate(" + m[3] + "," + m[0] + ")")
+    .call(zoom);
+//-----------------------------------------------
+var rect = vis.append("rect")
+.attr("width", width)
+.attr("height", height)
+.style("fill", "none")
+.style("pointer-events", "all");
+
+var container = vis.append("svg:g");
+
+container.append("svg:g")
+.attr("class", "x axis")
+.selectAll("line")
+.data(d3.range(0, width, 10))
+.enter().append("line")
+.attr("x1", function(d) { return d; })
+.attr("y1", 0)
+.attr("x2", function(d) { return d; })
+.attr("y2", height);
+
+container.append("svg:g")
+.attr("class", "y axis")
+.selectAll("line")
+.data(d3.range(0, height, 10))
+.enter().append("line")
+.attr("x1", 0)
+.attr("y1", function(d) { return d; })
+.attr("x2", width)
+.attr("y2", function(d) { return d; });
+
+d3.tsv("dots.tsv", dottype, function(error, dots) {
+	  dot = container.append("g")
+	      .attr("class", "dot")
+	    .selectAll("circle")
+	      .data(dots)
+	    .enter().append("circle")
+	      .attr("r", 5)
+	      .attr("cx", function(d) { return d.x; })
+	      .attr("cy", function(d) { return d.y; })
+	      .call(drag);
+	});
+	
+	
+function zoomed() {
+container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
+
+function dragstarted(d) {
+d3.event.sourceEvent.stopPropagation();
+d3.select(this).classed("dragging", true);
+}
+
+function dragged(d) {
+d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+}
+
+function dragended(d) {
+d3.select(this).classed("dragging", false);
+}
+//-----------------------------------------------------------
+
+
 // Graph by phase
 
 function byPhase(){
@@ -191,6 +269,8 @@ function toggle(d) {
     d._children = null;
   }
 }
+
+
   	</script>
 </div>
 {% endblock %}
