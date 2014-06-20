@@ -1,26 +1,27 @@
-{% extends "index.html" %}
 {% block title %} SGC {% endblock %}
 {% block content %}
 <div class="jumbotron">
 	<div class="bs-example">
 		<p><label><b>Nombre del proyecto: </b></label> {{ project.name }}</p>
-		<br>
 		{% for m in modRequest %}		
-			<p><label><b>ID de la solicitud: </b></label> {{m.id}}</p>
-			
+			<p>	<label><b>ID de la solicitud: </b></label> {{m.id}}<br>			
 			{% for i in items%}
 				{% if m.item == i%}
-					<p><label><b>Línea base afectada: </b></label> {{i.baseline.name}}</p>
+					<label><b>Linea base afectada: </b></label> {{i.baseline.name}}<br>
 				{% endif %}
-			{% endfor %}						
-
-			<p><label><b>Item modificado: </b></label> {{m.item}}</p>
-			<p><label><b>Usuario solicitante: </b></label> {{m.requester}}</p>
-			<p><label><b>Resultado de la votación: </b></label> {{m.voting}}</p>
-				<br>
-		{% endfor %}
-		<br>
-		<a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+			{% endfor %}
+				<label><b>Item modificado: </b></label> {{m.item}}<br>
+				<label><b>Usuario solicitante: </b></label> {{m.requester}}<br>				
+				{% if m.voting == 0%}
+					<label><b>Resultado de la votacion: </b></label>En votacion</p>					
+				{% elif m.voting == 1%}
+					<label><b>Resultado de la votacion: </b></label>Aceptado</p>
+				{% elif m.voting == 2%}
+					<label><b>Resultado de la votacion: </b></label>Rechazado</p>
+				{% elif m.voting == 3%}
+					<label><b>Resultado de la votacion: </b></label>Modificado</p>
+				{% endif %}	
+		{% endfor %}		
 	</div>
 </div>
 {% endblock %}

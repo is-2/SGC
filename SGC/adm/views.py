@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from itertools import chain
+import ho.pisa as pisa
+import cStringIO as StringIO
+import cgi
+from django.template.loader import render_to_string
+from django.http import HttpResponse
+
 from django.shortcuts import render_to_response, render, redirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -636,8 +641,9 @@ def changes_report(request, id_project):
     for i in items:
         modRequest = modRequest + list(ModificationRequest.objects.filter(item_id=i.id))
         
-    ctx = {'project':project, 'items':items, 'modRequest':modRequest}
-    return render_to_response('adm/project/changes_report.html', ctx, context_instance=RequestContext(request))
+    ctx = {'pagesize':'A4', 'project':project, 'items':items, 'modRequest':modRequest}
+    html = render_to_string('adm/project/changes_report.html', ctx, context_instance=RequestContext(request))
+    return generar_pdf(html)
     
 def project_report(request, id_project):
     """
@@ -649,7 +655,16 @@ def project_report(request, id_project):
     for p in phases:
         items = items + list(Item.objects.filter(phase_id=p.id))
         
-    ctx = {'project':project, 'phases':phases, 'items':items}
-    return render_to_response('adm/project/project_report.html', ctx, context_instance=RequestContext(request))
+    ctx = {'pagesize':'A4','project':project, 'phases':phases, 'items':items}
+    html = render_to_string('adm/project/project_report.html', ctx, context_instance=RequestContext(request))
+    return generar_pdf(html)
     
-    
+def generar_pdf(html):
+    """
+    Función para generar el archivo PDF y devolverlo mediante HttpResponse
+    """
+    result = StringIO.StringIO()
+    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), mimetype='application/pdf')
+    return HttpResponse('Error al generar el PDF: %s' % cgi.escape(html))    

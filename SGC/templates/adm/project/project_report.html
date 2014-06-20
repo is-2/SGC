@@ -1,27 +1,23 @@
-{% extends "index.html" %}
+
 {% block title %} SGC {% endblock %}
 {% block content %}
 <div class="jumbotron">
 	<div class="bs-example">
 		<p><label><b>Nombre del proyecto: </b></label> {{ project.name }}</p>
-		<br>
 		{% for p in phases %}
-			<p><label><b>Nombre de la fase: </b></label> {{ p.name }}</p>
-			<p><label><b>--- Items de la fase ---</b></label></p>
-			<br>
+			<p>	<label><b>Nombre de la fase: </b></label> {{ p.name }}<br>
+				<label><b>--- Items de la fase ---</b></label></p>
+				
 			{% for i in items %}
 				{% if i.phase == p%}		
-					<p><label><b>ID: </b></label> {{i.id}}</p>
-					<p><label><b>Nombre: </b></label> {{i.name}}</p>
-					<p><label><b>Costo: </b></label> {{i.cost}}</p>
-					<p><label><b>Predecesor: </b></label> {{i.predecessor}}</p>
-					<p><label><b>Versión: </b></label></p>
-					<br>
+					<p>	<label><b>ID: </b></label> {{i.id}}<br>
+						<label><b>Nombre: </b></label> {{i.name}}<br>
+						<label><b>Costo: </b></label> {{i.cost}}<br>
+						<label><b>Predecesor: </b></label> {{i.predecessor}}<br>
+						<label><b>Versión: </b></label></p>
 				{% endif %}
-			{% endfor %}
-			<br>					
-		{% endfor %}
-		<a class="btn btn-default" href="{% url 'list_projects' %}"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>
+			{% endfor %}					
+		{% endfor %}		
 	</div>
 </div>
 {% endblock %}
