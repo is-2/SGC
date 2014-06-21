@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from adm.models import Project, Phase
 from des.models import BaseLine, Item
 import json
+import reversion
 
 def graph_by_phase(request, id_project):
     """
@@ -81,3 +82,11 @@ def graph_by_item(request, id_project):
         
         tree = get_nodes(project.name) # This sets the root node!
         return HttpResponse(json.dumps(tree), content_type = "application/json")
+    
+def count_version(request, id_item):
+    
+    if request.method == "GET":
+        item = Item.objects.get(id=id_item)
+        version_list = reversion.get_for_object(item)
+        counter = version_list.count()
+        return HttpResponse(json.dumps(counter), content_type = "application/json")

@@ -47,5 +47,6 @@ urlpatterns = patterns('',
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/manage_baseline_items/(?P<id_baseline>\d+)/assign_baseline_item/(?P<id_item>\d+)/$', views.assign_baseline_item, name='assign_baseline_item'),
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/manage_baseline_items/(?P<id_baseline>\d+)/remove_baseline_item/(?P<id_item>\d+)/$', views.remove_baseline_item, name='remove_baseline_item'),
     url(r'des/list_user_projects/list_project_phases/(?P<id_project>\d+)/list_phase_baseline/(?P<id_phase>\d+)/delete_baseline/(?P<id_baseline>\d+)/$', views.delete_baseline, name='delete_baseline'),
-    
+    # AJAX
+    url(r'count_version/(?P<id_item>\d+)/$', ajax.count_version, name='count_version'),
 )
